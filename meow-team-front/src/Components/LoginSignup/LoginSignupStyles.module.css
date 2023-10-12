@@ -1,0 +1,66 @@
+.index {
+    /* text-align: center; */
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-image: linear-gradient(to right, #4b5d67, #705174, #87556F);
+    padding: 0.5em 0.5em 0.5em
+}
+
+.authformcontainer, .loginform, .signupform {
+    display: flex;
+    flex-direction: column;
+    vertical-align: center;
+    padding: 0.5rem 0.5rem 0.5rem
+}
+
+.authformcontainer {
+    padding: 5rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 5px #3e2c41;
+}
+
+h2 {
+    padding-top: 0rem;
+}
+
+label {
+    text-align: left;
+    padding: 0.25rem 0;
+}
+
+input {
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    border: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.linkbtn {
+    background: none;
+    font-weight: bold;
+    color: primary;
+}
+
+p{
+    text-align: left;
+}
+
+.errormessage {
+    text-align: left;
+    color: rgb(82, 1, 29) !important;
+}
+
+.VisibilityOff{
+    color: white
+}
