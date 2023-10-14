@@ -1,11 +1,10 @@
 .index {
-    /* text-align: center; */
     display: flex;
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-    color: white;
-    background-image: linear-gradient(to right, #4b5d67, #705174, #87556F);
+    color: rgb(13, 11, 11);
+    background-image: linear-gradient(to right, #4b4b4b, #4b4b4b, #4b4b4b);
     padding: 0.5em 0.5em 0.5em
 }
 
@@ -17,9 +16,9 @@
 }
 
 .authformcontainer {
-    padding: 5rem;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px 5px #3e2c41;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 5px #000000;
 }
 
 h2 {
@@ -48,8 +47,9 @@ button {
 
 .linkbtn {
     background: none;
-    font-weight: bold;
-    color: primary;
+    margin-bottom: -1.5rem;
+    font-size: large;
+    color: #0011ff;
 }
 
 p{

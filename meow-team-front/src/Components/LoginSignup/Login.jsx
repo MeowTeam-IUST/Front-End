@@ -66,15 +66,20 @@ function Login(props) {
         <div className={Styles.authformcontainer}>
             <form className={Styles.signupform} onSubmit={handleSubmit(onLogin)}>
                 <TextField 
+                    dir="rtl"
                     sx={{
                         '& .MuiInput-underline:before': { borderBottomColor: 'white' },
                         label: { color: 'white' },
-                        input: { color: 'white'}
+                        input: { color: 'white'},
+                        "& .MuiInputLabel-root": {
+                            right: 0,
+                            textAlign: "right"
+                        },
                     }}
                     onChange={UsernameOrEmailHandler} 
                     type="text" 
                     id="usernameOrEmail" 
-                    label="Username Or Email" 
+                    label="یوزرنیم یا ایمیل خود را وارد کنید" 
                     variant="standard" 
                     {...register('usernameOrEmail')}
                     className={`${errors.usernameOrEmail ? 'is-invalid' : ''}`}
@@ -82,14 +87,19 @@ function Login(props) {
                 <div className={Styles.errormessage}>{errors.usernameOrEmail?.message}</div>
                 <p></p>
                 <FormControl
+                    dir="rtl"
                     sx={{ width: '100%', 
                         '& .MuiInput-underline:before': { borderBottomColor: 'white' },
                         label: { color: 'white' },
-                        input: { color: 'white'}
+                        input: { color: 'white'},
+                        "& .MuiInputLabel-root": {
+                            right: 0,
+                            textAlign: "right"
+                        },
                     }} 
                     variant="standard">
                     <InputLabel htmlFor="password">
-                        Password
+                        پسورد خود را وارد کنید
                     </InputLabel>
                     <Input 
                         {...register('password')}
@@ -99,9 +109,9 @@ function Login(props) {
                         onChange={ChangePassword('password')}
                         className={`${errors.password ? 'is-invalid' : ''}`}
                         endAdornment={
-                            <InputAdornment position="end">
+                            <InputAdornment position="start">
                                 <IconButton
-                                    onClick={ShowPasswordWhenClick}
+                                    // onClick={ShowPasswordWhenClick}
                                     onMouseDown={CancelType}
                                 >
                                     {login_values.show_password ? <Visibility style={{ color: 'white' }}/> : <VisibilityOff style={{ color: 'white' }}/>}
@@ -111,10 +121,10 @@ function Login(props) {
                     />
                 </FormControl>
                 <div className={Styles.errormessage}>{errors.password?.message}</div>
-                <p><br></br></p>
-                <Button variant="contained" type="submit">Log In</Button>
+                <p></p>
+                <Button variant="contained" type="submit">ورود</Button>
             </form>
-            <button className={Styles.linkbtn} onClick={() => props.Switch('Signup')}>Sign Up</button>
+            <button className={Styles.linkbtn} onClick={() => props.Switch('Signup')}>ثبت نام</button>
             <ToastContainer />
         </div>
     );
