@@ -9,6 +9,7 @@ export default function PopularGame({ name, image }) {
     backgroundRepeat: 'no-repeat',
     backgroundSize: "cover",
     background: 'lightgray',
+    
   };
 
   return (
