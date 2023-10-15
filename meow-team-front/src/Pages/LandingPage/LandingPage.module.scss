@@ -1,0 +1,66 @@
+@import "../../App.scss";
+
+.fullPage{
+    margin: -8px;
+    padding: 0;
+    background-color: $Buttons ;
+    display: flex;
+    flex-direction: column;
+    padding-top: 75px;
+    padding-left: 216px ;
+    padding-right: 216px ;
+    gap: 32px;
+    .Header{
+        height: 48px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 8px;
+        .logo{
+            height: 48px;
+        }
+
+    }
+    .icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        color: --opex--red;
+    }
+    .Category{
+        display: flex;
+        flex-direction: column;
+        .CategoryItems{
+            display: flex;
+            flex-direction: row;
+            margin-top: 32px;
+        }
+    }
+    .CategoryHeader{
+        display: flex;
+        flex-direction: row;
+        width: 200px;
+        .CategoryTitle{
+            color: #000;
+            text-align: center;
+            padding-right: 10px;
+            /* Body • Heavy */
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 22px; /* 137.5% */
+            letter-spacing: -0.32px;
+        }
+    }
+    .PopularGames{
+        margin-top: 32px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .item{
+            flex: 50%
+        }
+    }
+
+}
