@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 75px;
+    padding-bottom: 75px;
     padding-left: 216px ;
     padding-right: 216px ;
     gap: 32px;
@@ -36,22 +37,7 @@
             margin-top: 32px;
         }
     }
-    .CategoryHeader{
-        display: flex;
-        flex-direction: row;
-        width: 200px;
-        .CategoryTitle{
-            color: #000;
-            text-align: center;
-            padding-right: 10px;
-            /* Body • Heavy */
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 22px; /* 137.5% */
-            letter-spacing: -0.32px;
-        }
-    }
+
     .PopularGames{
         margin-top: 32px;
         display: flex;

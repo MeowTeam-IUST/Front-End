@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './CartHeader.module.scss'
-import shopping from '../../../public/shopping-cart.svg'
+import shopping from '../../assets/shopping-cart.svg'
 export default function CartHeader() {
   return (
     <div className={styles.part}>

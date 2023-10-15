@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './SearchHeader.module.scss'
-import search from '../../../public/search.svg'
+import search from '../../assets/search.svg'
 
 export default function SearchHeader() {
   return (

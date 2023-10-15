@@ -1,0 +1,18 @@
+@import "../../App.scss";
+
+.CategoryHeader{
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    .CategoryTitle{
+        color: #000;
+        text-align: center;
+        padding-right: 10px;
+        /* Body • Heavy */
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 22px; /* 137.5% */
+        letter-spacing: -0.32px;
+    }
+}

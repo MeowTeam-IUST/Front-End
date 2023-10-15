@@ -8,8 +8,12 @@
   border-radius: 50px;
   display: flex;
   flex-direction: row;
-  align-items: end;
+  align-items: flex-end; /* Changed 'end' to 'flex-end' */
   background-size: cover;
+  background-image: url(../../assets/4.jfif); /* Removed single quotes and fixed the URL */
+  background-position: -2.842px -20.969px;
+  background-repeat: no-repeat; /* Removed single quotes */
+  
 
   .PopularGameTitle{
     width: 700px;
