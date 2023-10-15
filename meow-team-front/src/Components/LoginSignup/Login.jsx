@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
-import Styles from "./LoginSignupStyles.module.css"
+import Styles from "./LoginStyles.module.css"
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -15,6 +15,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close';
 
 function Login(props) {
     const [login_values, SetLoginValues] = useState({
@@ -50,82 +51,111 @@ function Login(props) {
     };
 
     const formSchema = Yup.object().shape({
-        usernameOrEmail: Yup.string('Not A Proper Username Or Email')
-        .required('Required'),
         password: Yup.string()
-        .required('Password Required')
-        .min(3, 'Password Must Be At Least 3 Characters'),
-    })
+        .required('شماره مبایل الزامی است')
+        .min(11, 'شماره مبایل 11 رقمی خود را به شکل صحیح وارد کنید')
+        .max(11, 'شماره مبایل 11 رقمی خود را به شکل صحیح وارد کنید'),
+    });
     const formOptions = { resolver: yupResolver(formSchema) }
     const { register, handleSubmit, formState } = useForm(formOptions)
     const { errors } = formState
 
     async function onLogin(data, event) {}
 
+    const openForm = (event) => {
+        document.getElementById("myForm").style.display = "block";
+    };
+    const closeForm = (event) => {
+        document.getElementById("myForm").style.display = "none";
+    };
+
     return(
-        <div className={Styles.authformcontainer}>
-            <form className={Styles.signupform} onSubmit={handleSubmit(onLogin)}>
-                <TextField 
-                    dir="rtl"
-                    sx={{
-                        '& .MuiInput-underline:before': { borderBottomColor: 'white' },
-                        label: { color: 'white' },
-                        input: { color: 'white'},
-                        "& .MuiInputLabel-root": {
-                            right: 0,
-                            textAlign: "right"
-                        },
-                    }}
-                    onChange={UsernameOrEmailHandler} 
-                    type="text" 
-                    id="usernameOrEmail" 
-                    label="یوزرنیم یا ایمیل خود را وارد کنید" 
-                    variant="standard" 
-                    {...register('usernameOrEmail')}
-                    className={`${errors.usernameOrEmail ? 'is-invalid' : ''}`}
-                />
-                <div className={Styles.errormessage}>{errors.usernameOrEmail?.message}</div>
-                <p></p>
-                <FormControl
-                    dir="rtl"
-                    sx={{ width: '100%', 
-                        '& .MuiInput-underline:before': { borderBottomColor: 'white' },
-                        label: { color: 'white' },
-                        input: { color: 'white'},
-                        "& .MuiInputLabel-root": {
-                            right: 0,
-                            textAlign: "right"
-                        },
-                    }} 
-                    variant="standard">
-                    <InputLabel htmlFor="password">
-                        پسورد خود را وارد کنید
-                    </InputLabel>
-                    <Input 
+        <div className={Styles.index}>
+            <div>
+                <button className={Styles.openbtn} onClick={openForm} >باز کردن</button>
+            </div>
+            {/* <button className={Styles.openbtn} onClick={openForm} >Open Form</button> */}
+            <div className={Styles.authformcontainer} id="myForm">
+                {/* <div> */}
+                <Button sx={{ color: 'black', display: 'inline-block', marginLeft: '1%', padding: '0rem'}} startIcon={<CloseIcon />} onClick={closeForm}/>
+                <p className={Styles.textstyle}>
+                    ورود/ثبت نام
+                </p>
+                {/* </div> */}
+                <form className={Styles.loginform} onSubmit={handleSubmit(onLogin)}>
+                    <TextField 
+                        dir="rtl"
+                        sx={{
+                            '& .MuiInput-underline:before': { borderBottomColor: 'rgba(72, 72, 72, 0.7)' },
+                            '& .MuiInput-underline:after': { borderBottomColor: 'black' },
+                            label: { color: 'rgba(72, 72, 72, 0.7)' },
+                            input: { color: 'black'},
+                            "& .MuiInputLabel-root": {
+                                right: 0,
+                                textAlign: "right",
+                                color: 'rgba(72, 72, 72, 0.7)',
+                                paddingRight: '3%'
+                            },
+                            "& .MuiInputLabel-shrink":{
+                                color: 'black',
+                                transformOrigin: "top right",
+                                paddingRight: '3%',
+                                fontSize: 'mediom',
+                            }
+                        }}
+                        onChange={UsernameOrEmailHandler} 
+                        type="number" 
+                        step="1"
+                        style={{ direction: "rtl" }}
+                        id="phonenumber"
+                        label = "شماره تلفن خود را وارد کنید"
+                        variant="standard" 
                         {...register('password')}
-                        name="password"
-                        type={login_values.show_password ? 'text' : 'password'}
-                        value={login_values.password}
-                        onChange={ChangePassword('password')}
                         className={`${errors.password ? 'is-invalid' : ''}`}
-                        endAdornment={
-                            <InputAdornment position="start">
-                                <IconButton
-                                    // onClick={ShowPasswordWhenClick}
-                                    onMouseDown={CancelType}
-                                >
-                                    {login_values.show_password ? <Visibility style={{ color: 'white' }}/> : <VisibilityOff style={{ color: 'white' }}/>}
-                                </IconButton>
-                            </InputAdornment>
-                        }
                     />
-                </FormControl>
-                <div className={Styles.errormessage}>{errors.password?.message}</div>
-                <p></p>
-                <Button variant="contained" type="submit">ورود</Button>
-            </form>
-            <button className={Styles.linkbtn} onClick={() => props.Switch('Signup')}>ثبت نام</button>
-            <ToastContainer />
+                    <div className={Styles.errormessage}>{errors.password?.message}</div>
+                    {/* <p></p> */}
+                    {/* <FormControl
+                        dir="rtl"
+                        sx={{ width: '100%', 
+                            '& .MuiInput-underline:before': { borderBottomColor: 'black' },
+                            label: { color: 'black' },
+                            input: { color: 'black'},
+                            "& .MuiInputLabel-root": {
+                                right: 0,
+                                textAlign: "right"
+                            },
+                        }} 
+                        variant="standard">
+                        <InputLabel htmlFor="password">
+                            پسورد خود را وارد کنید
+                        </InputLabel>
+                        <Input 
+                            {...register('password')}
+                            name="password"
+                            type={login_values.show_password ? 'text' : 'password'}
+                            value={login_values.password}
+                            onChange={ChangePassword('password')}
+                            className={`${errors.password ? 'is-invalid' : ''}`}
+                            endAdornment={
+                                <InputAdornment position="start">
+                                    <IconButton
+                                        onClick={ShowPasswordWhenClick}
+                                        onMouseDown={CancelType}
+                                    >
+                                        {login_values.show_password ? <Visibility style={{ color: 'black' }}/> : <VisibilityOff style={{ color: 'black' }}/>}
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                        />
+                    </FormControl> */}
+                    {/* <div className={Styles.errormessage}>{errors.password?.message}</div> */}
+                    {/* <p></p> */}
+                    <Button sx={{ marginTop: '1rem', backgroundColor: 'rgb(242, 27, 27)' }} variant="contained" type="submit">ارسال کد تائید</Button>
+                </form>
+                {/* <button className={Styles.linkbtn} onClick={() => props.Switch('Signup')}>ثبت نام</button> */}
+                <ToastContainer />
+            </div>
         </div>
     );
 }

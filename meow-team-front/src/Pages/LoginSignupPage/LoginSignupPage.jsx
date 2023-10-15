@@ -1,8 +1,8 @@
-import LoginSignup from "../../Components/LoginSignup/LoginSignup";
+import Login from "../../Components/LoginSignup/Login";
 function LoginSignupPage() {
   return (
-    <div className="Page">
-      <LoginSignup/>
+    <div>
+      <Login/>
     </div>
   );
 }
