@@ -8,7 +8,7 @@ export default function GameList({Products}) {
         {Products.map((item,index) => {
             return (
               <div className={styles.item}>
-                <LittleCart key={index} />
+                <LittleCart key={index} name={item.name}  />
               </div>
             )
           })}

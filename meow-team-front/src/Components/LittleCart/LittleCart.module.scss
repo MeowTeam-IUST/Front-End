@@ -1,12 +1,12 @@
 @import "../../App.scss";
 
 .LittleCart{
-    width: 198px;
-    height: 261px;
+    width: 213px;
+    height: 270px;
     flex-shrink: 0;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin: 15px;
-    border-radius: 50px;
+    border-radius: 30px;
     display: flex;
     flex-direction: row;
     align-items: flex-end; /* Changed 'end' to 'flex-end' */
@@ -16,24 +16,50 @@
     background-repeat: no-repeat; /* Removed single quotes */
 
     .GameTitle{
-        width: 198px;
-        height: 80px;
+        width: 213px;
+        height: 60px;
         background: var(--Blur---back, rgba(0, 0, 0, 0.20));
         backdrop-filter: blur(15px);
         border-radius: 0px 0px 30px 30px;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: space-around;
+        padding: 10px 0 10px 0;
         .GameTitleText{
+          display: flex;
+          width: 166px;
+          height: 31px;
+          flex-direction: column;
+          justify-content: center;
+          flex-shrink: 0;
           color: #FFF;
-          // text-align: center;
           /* H3 */
-          font-size: 24px;
+          font-size: 13px;
           font-style: normal;
-          font-weight: 700;
-          line-height: 30px; /* 125% */
-          letter-spacing: -0.48px;
+          font-weight: 600;
+          line-height: 30px; /* 230.769% */
+          letter-spacing: -0.26px;
+        }
+      }
+      .under{
+        display: flex;
+        flex-direction: row;
+        .underText{
+          color: #FFF;
+          text-align: right;
+          font-family: B Yekan;
+          font-size: 10px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 30px; /* 300% */
+          letter-spacing: -0.2px;
+          display: flex;
+          width: 91px;
+          height: 32px;
+          flex-direction: column;
+          justify-content: center;
+          flex-shrink: 0;
         }
       }
 }
