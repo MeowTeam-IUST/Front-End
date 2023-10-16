@@ -7,8 +7,10 @@ export default function Footer() {
     <>
     <div className={styles.Footer}>
         <div className={styles.Text}>هفت روز هفته 24 ساعت شبانه روز آماده پاسخگویی</div>
-        <img width={230} height={100} src={footer} alt="" />
-        {/* <img className={styles.support} src={support} alt="" /> */}
+        <div className={styles.parent}>
+        <img className={styles.image1} width={230} height={100} src={footer} alt="" />
+        <img className={styles.image2} src={support} alt="" />
+        </div>
         <div className={styles.Text}>ارتباط با ما : ۰۲۱۴۴۳۲۲۵۹۵       OpexShop@gmail.com</div>
     </div >
     </>
