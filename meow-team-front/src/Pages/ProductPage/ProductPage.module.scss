@@ -1,0 +1,389 @@
+@import "../../App.scss";
+  .store{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    direction: ltr;
+  }
+  
+  .fullPage{
+    margin: -8px;
+    padding: 0;
+    background-color: $Buttons ;
+    display: flex;
+    flex-direction: column;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    padding-left: 216px ;
+    padding-right: 216px ;
+    gap: 32px;
+    direction: rtl;
+    .Header{
+        height: 48px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 8px;
+        .logo{
+            height: 48px;
+        }
+
+    }
+    .icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        color: --opex--red;
+    }
+    .Category{
+        display: flex;
+        flex-direction: column;
+        .CategoryItems{
+            display: flex;
+            flex-direction: row;
+            margin-top: 32px;
+        }
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  .wholepc{
+    display: flex;
+    height: 533px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 32px !important;
+    align-self: stretch;
+    direction: ltr;
+  
+    
+  }
+  .w{
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  }
+  .pcpic{
+    width: 533px ;
+    height: 535px;
+    border-radius: 64px;
+    background: url("https://www.uplooder.net/img/image/85/1ddd4b3d1b4cd880b4de3fe2c8a8fac2/peakpx-(2).jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+  }
+  .pccap{
+    display: flex;
+    height: 533px;
+    max-height: 543px;
+    padding: 10px 0px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 32px;
+    flex: 1 0 0;
+  }
+  .pccap1{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  color: #000;
+  text-align: right;
+  font-family: Anjoman;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  }
+  .pccap2{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    color: var(--Opex---font-on-gray, #8E888C);
+    text-align: right;
+    font-family: Shabnam FD-WOL;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .pccap3{
+    display: flex;
+    height: 50px;
+    padding: 10px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    flex-shrink: 0;
+    align-self: stretch;
+    border-radius: 100px;
+    background: var(--Opex---gray, #E8E8E8);
+  }
+  .pccap4{
+    display: flex;
+    align-items: flex-end;
+    gap: 31px;
+  }
+  .lcap{
+    color: #000;
+    text-align: center;
+    font-family: Anjoman;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .appinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    align-self: stretch;
+  }
+  .appinfo1{
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    }
+  .appinfo2{
+    color: #000;
+    text-align: center;
+    /* Body • Heavy */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px; /* 137.5% */
+    letter-spacing: -0.32px;
+  }
+  .appinfo3{
+    color: #000;
+    text-align: justify;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 22px; /* 169.231% */
+    letter-spacing: -0.26px;
+    direction: rtl;
+  }
+  
+  
+  
+  .whole{
+      background-color: #fff !important;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      z-index: 3;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+  
+      margin-top: -3%;
+  }
+  .ipmr{
+    
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: 10% 27%; 
+    
+    }
+    .css-1oqv2c0-MuiPaper-root-MuiCard-root{
+      direction: rtl;
+      background-color: #E8E8E8 !important;
+      justify-content: space-between !important;
+      border-radius:20px !important;
+    }
+    .css-mhc70k-MuiGrid-root {
+      margin-top: 3% !important;
+      width: calc(90%) !important;
+      margin-left: 4% !important;
+      margin-right: 5% !important;
+      margin-bottom: 5%;
+    }
+    .css-mhc70k-MuiGrid-root>.MuiGrid-item {
+      padding-left: 2% !important;
+    }
+    .css-1rorjgf-MuiCardMedia-root{
+      border-radius:20px !important;
+    }
+  .css-1qaznj3-MuiCardContent-root:last-child{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .css-1ndgitk {
+      padding-left: 0px !important;
+      padding-bottom: 0px !important;
+  }
+  .css-mmst5v {
+      /* display: flex;
+      justify-content: center; */
+      position: relative;
+      z-index: 3;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+  }
+  .css-1wf8b0h-MuiTabs-flexContainer {
+      margin-top: 5%;
+      background-color: #E8E8E8;
+      border-radius: 50PX;
+      direction: rtl;
+      
+  
+  }
+  .MuiTabs-indicator {
+      background-color: black !important;
+  }
+  .Mui-selected {
+  color: #E52A49 !important;
+  }
+  .cardsofpro{
+  display: flex;
+  padding: 10px 0px;
+  align-items: flex-end;
+  align-content: flex-end;
+  gap: 20px;
+  align-self: stretch;
+  flex-wrap: wrap;
+  direction: rtl;
+  }
+  .cardofpro {
+      width: 236.666px;
+      height: 343.165px;
+      flex-shrink: 0;
+      background: 
+        linear-gradient(180deg, rgba(0, 0, 0, 0.00) 47.92%, #000 100%),
+        url("https://www.uplooder.net/img/image/85/1ddd4b3d1b4cd880b4de3fe2c8a8fac2/peakpx-(2).jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border-radius: 30px;
+        box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.905);
+  }
+  .cardofpro1 {
+      display: flex;
+      width: 192.99px;
+      height: 147.365px;
+      padding: 15px 22px;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 7px;
+      border-radius: 0 0 30px 30px;
+      flex-shrink: 0;
+      background: rgba(0, 0, 0, 0.20);
+      backdrop-filter: blur(15px);
+     
+      
+  
+  }
+  .t1{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex: 1 0 0;
+      align-self: stretch;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.20);
+      backdrop-filter: blur(5px);
+      color: #FFF;
+      text-align: center;
+      font-family: Shabnam FD-WOL;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 22px; /* 146.667% */
+      letter-spacing: -0.3px;
+  
+  }
+  .t2{display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex: 1 0 0;
+      align-self: stretch;
+      border-radius: 10px;
+      background: #FFF;
+      color: #000;
+      text-align: center;
+      font-family: Shabnam FD-WOL;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 22px; /* 146.667% */
+      letter-spacing: -0.3px;
+  
+  }
+  .t3{display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex: 1 0 0;
+      align-self: stretch;
+      border-radius: 10px;
+      background: var(--Opex---red, #E52A49);
+      color: #FFF;
+      text-align: center;
+      font-family: Shabnam FD-WOL;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 22px; /* 146.667% */
+      letter-spacing: -0.3px;
+  
+  }
+  // @media only screen 
+  // and (max-width:  430px)  {
+
+  // .fullPage{
+  //   width: 430px !important;
+  //   height: 1847px !important;
+  //   margin: 0 !important;
+  //   padding: 0 !important;
+  //   background-color: inherit !important;
+  //   display: inherit !important;
+  //   flex-direction: inherit !important;
+  //   gap: inherit !important;
+  //   direction: inherit !important;
+  // }
+  //   .pcpic{
+  //     width: 430px !important;
+  //     height: 430px !important;
+  //     flex-shrink: 0;
+  //     border-radius: 0px !important;
+  //     background: url("https://www.uplooder.net/img/image/85/1ddd4b3d1b4cd880b4de3fe2c8a8fac2/peakpx-(2).jpg");
+  //     background-repeat: no-repeat;
+  //     background-size: cover;
+  //   }
+  //   .wholepc{
+  //     display:inherit !important;
+  //     height: 0px !important;
+  //     justify-content: inherit !important;
+  //     align-items: inherit !important;
+  //     gap: 0px !important;
+  //     align-self: inherit !important;
+  //     direction: inherit !important;
+    
+      
+  //   }
+
+  //  }
+  
