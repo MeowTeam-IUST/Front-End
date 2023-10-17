@@ -1,8 +1,8 @@
-import Login from "../../Components/LoginSignup/Login";
+import LoginVerify from "../../Components/LoginSignup/LoginVerify";
 function LoginSignupPage() {
   return (
     <div>
-      <Login/>
+      <LoginVerify/>
     </div>
   );
 }

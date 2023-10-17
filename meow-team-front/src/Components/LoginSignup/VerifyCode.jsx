@@ -18,7 +18,7 @@ import { Button } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close';
 import { inputLabelClasses } from "@mui/material/InputLabel";
 
-function Login(props) {
+function VerifyCode(props) {
     const [login_values, SetLoginValues] = useState({
         username_or_email: '',
         password: '',
@@ -113,13 +113,18 @@ function Login(props) {
                               }
                         }}
                         id="phonenumber"
-                        label = "شماره تلفن خود را وارد کنید"
+                        label = "کد تایید را وارد کنید"
                         variant="standard" 
                         {...register('password')}
                         className={`${errors.password ? 'is-invalid' : ''}`}
                     />
                     <div className={Styles.errormessage}>{errors.password?.message}</div>
-                    <Button sx={{ marginTop: '0.8rem', backgroundColor: 'rgb(242, 27, 27)' }} variant="contained" type="submit" onClick={() => props.onFormSwitch('Verify')}>ارسال کد تائید</Button>
+                    <div className={Styles.divbutton}>
+                        <Button sx={{ fontWeight: "bold", width: '10rem' , marginRight: '0.5rem', marginTop: '0.8rem', backgroundColor: 'rgb(242, 27, 27)' }} variant="contained" type="submit">تایید و ورود</Button>
+                        <Button sx={{ fontWeight: "bold",width: '10rem' , marginLeft: '0.5rem' , marginTop: '0.8rem', backgroundColor: 'rgb(255, 255, 255)', color: 'black', border: 1 }} variant="contained" onClick={() => props.onFormSwitch('Login')}>
+                            تغییر شماره تلفن
+                        </Button>
+                    </div>
                 </form>
                 <ToastContainer />
             </div>
@@ -127,4 +132,4 @@ function Login(props) {
     );
 }
 
-export default Login;
+export default VerifyCode;
