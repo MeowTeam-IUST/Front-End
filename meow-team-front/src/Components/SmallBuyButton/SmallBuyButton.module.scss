@@ -1,0 +1,20 @@
+@import "../../App.scss";
+
+.Button{
+    width: 65px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: $Buttons;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: IRAN Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px; /* 137.5% */
+    letter-spacing: -0.32px;
+}

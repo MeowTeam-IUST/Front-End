@@ -18,64 +18,70 @@ import { Button } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close';
 import { inputLabelClasses } from "@mui/material/InputLabel";
 
-function VerifyCode(props) {
-    const [login_values, SetLoginValues] = useState({
-        username_or_email: '',
-        password: '',
-        show_password: false,
-    });
+function ConfirmCode(props) {
+    const [verify_code, SetConfirmCode] = useState('');
 
-    const [username_or_email, SetUsernameOrEmail] = useState('');
-    const [password, SetPassword] = useState('');
-
-    const PasswordHandler = (ps) => {
-       SetPassword({ password: ps.target.value });
+    const ConfirmCodeHandler = (inp) => {
+        SetConfirmCode({ verify_code: inp.target.value })
     }
-
-    const UsernameOrEmailHandler = (inp) => {
-        SetUsernameOrEmail({ username_or_email: inp.target.value })
-    }
-    
-    const ChangePassword = (prop) => (event) => {
-        SetLoginValues({ ...login_values,
-            [prop]: event.target.value });
-        PasswordHandler();
-    };
-
-    const ShowPasswordWhenClick = () => {
-        SetLoginValues({ ...login_values,
-            show_password: !login_values.show_password });
-    };
-
-    const CancelType = (event) => {
-        event.preventDefault();
-    };
 
     const formSchema = Yup.object().shape({
-        password: Yup.string()
-        .required('شماره مبایل الزامی است')
-        .min(11, 'شماره مبایل 11 رقمی خود را به شکل صحیح وارد کنید')
-        .max(11, 'شماره مبایل 11 رقمی خود را به شکل صحیح وارد کنید'),
+        ConfirmCode: Yup.string()
+        .required('وارد کردن کد تایید الزامی است')
+        .min(5, 'کد تایید 5 رقمی را به شکل صحیح وارد کنید')
+        .max(5, 'کد تایید 5 رقمی را به شکل صحیح وارد کنید'),
     });
     const formOptions = { resolver: yupResolver(formSchema) }
     const { register, handleSubmit, formState } = useForm(formOptions)
     const { errors } = formState
 
-    async function onLogin(data, event) {}
+    async function onLogin(data, event) {
+        event.preventDefault();
+        try{
+            window.location = '/';
+            await axios.post('', {
+                PhoneNumber: props.PhoneNumber,
+                Step: 2,
+                ConfirmCode: data.verify_code,
+            },
+            {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            },).then((response) =>(localStorage.setItem('token' , response.data.access), console.log(response.data.access)));
+            ShowToast("success", "با موفقیت وارد شدید.");
+            window.location = '/';
+        }
+        catch (error)
+        {
+            if (error.response.data.phonenumber === undefined)
+            {
+                ShowToast("error", `${error.response.data.detail}!`);
+            }
+            if (error.response.data.phonenumber !== undefined)
+            {
+                ShowToast("error", "کد تایید اشتباه است !");
+            }
+            else {
+                ShowToast("error", "مشکلی پیش آمده است !");
+            }
+        }
+        return false
+    }
 
     const openForm = (event) => {
         document.getElementById("myForm").style.display = "block";
     };
+
     const closeForm = (event) => {
-        document.getElementById("myForm").style.display = "none";
+        window.location = '/';
     };
+
     return(
         <div className={Styles.index}>
-            <div>
+            {/* <div>
                 <button className={Styles.openbtn} onClick={openForm} >باز کردن</button>
-            </div>
+            </div> */}
             <div className={Styles.authformcontainer} id="myForm">
-                {/* <Button sx={{ color: 'black', display: 'inline-block', marginLeft: '1%', padding: '0rem'}} startIcon={<CloseIcon />} onClick={closeForm}/> */}
                 <CloseIcon sx={{ display: 'inline-block' , cursor: 'pointer', color: 'rgba(0, 0, 0, 0.7)', marginLeft: '0.8rem'}} onClick={closeForm} />
                 <p className={Styles.textstyle}>
                     ورود/ثبت نام
@@ -101,10 +107,10 @@ function VerifyCode(props) {
                                 fontSize: 'mediom',
                             },
                         }}
-                        onChange={UsernameOrEmailHandler} 
+                        onChange={ConfirmCodeHandler} 
                         type="number" 
-                        step="1"
-                        style={{ direction: "rtl" }}
+                        Step="1"
+                        ConfirmCode
                         InputLabelProps={{
                             sx: {
                                 [`&.${inputLabelClasses.shrink}`]: {
@@ -112,16 +118,16 @@ function VerifyCode(props) {
                                 }
                               }
                         }}
-                        id="phonenumber"
+                        id="ConfirmCode"
                         label = "کد تایید را وارد کنید"
                         variant="standard" 
-                        {...register('password')}
-                        className={`${errors.password ? 'is-invalid' : ''}`}
+                        {...register('ConfirmCode')}
+                        className={`${errors.ConfirmCode ? 'is-invalid' : ''}`}
                     />
-                    <div className={Styles.errormessage}>{errors.password?.message}</div>
+                    <div className={Styles.errormessage}>{errors.ConfirmCode?.message}</div>
                     <div className={Styles.divbutton}>
                         <Button sx={{ fontWeight: "bold", width: '10rem' , marginRight: '0.5rem', marginTop: '0.8rem', backgroundColor: 'rgb(242, 27, 27)' }} variant="contained" type="submit">تایید و ورود</Button>
-                        <Button sx={{ fontWeight: "bold",width: '10rem' , marginLeft: '0.5rem' , marginTop: '0.8rem', backgroundColor: 'rgb(255, 255, 255)', color: 'black', border: 1 }} variant="contained" onClick={() => props.onFormSwitch('Login')}>
+                        <Button sx={{ fontWeight: "bold",width: '10rem' , marginLeft: '0.5rem' , marginTop: '0.8rem', backgroundColor: 'rgb(255, 255, 255)', color: 'black', border: 1 }} variant="contained" onClick={() => props.onFormSwitch('Login' , null)}>
                             تغییر شماره تلفن
                         </Button>
                     </div>
@@ -132,4 +138,4 @@ function VerifyCode(props) {
     );
 }
 
-export default VerifyCode;
+export default ConfirmCode;

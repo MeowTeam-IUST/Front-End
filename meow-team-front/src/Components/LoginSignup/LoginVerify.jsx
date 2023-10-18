@@ -1,20 +1,23 @@
 import React,{useState} from "react";
-// import {Login} from "./Login";
-// import {Signup} from "./Signup";
 import Login from "./Login";
 import VerifyCode from "./VerifyCode";
 
 function LoginVerify() {
-    const [currentForm, setCurrentForm] = useState("Login");
-    console.log(currentForm);
-    const toggleForm = (formName) =>
+    const [propvalues, setPropValues] = React.useState({
+        currentForm: "Login",
+        phone_number: null,
+    });
+    const toggleForm = (formName , prop_phone_number) =>
     {
-        setCurrentForm(formName);
+        setPropValues({
+            currentForm: formName,
+            phone_number: prop_phone_number,
+        });
     }
     return(
     <div>
     {
-        currentForm === "Login" ? <Login onFormSwitch={toggleForm} /> : <VerifyCode onFormSwitch={toggleForm}/>
+        propvalues.currentForm === "Login" ? <Login onFormSwitch={toggleForm} /> : <VerifyCode PhoneNumber={propvalues.phone_number} onFormSwitch={toggleForm}/>
     }
     </div>
     );

@@ -1,0 +1,60 @@
+@import "../../App.scss";
+.page{
+    display: flex;
+    flex-direction: column;
+    margin: -8px;
+    padding: 0;
+}
+.fullPage{
+    background-color: $Buttons ;
+    display: flex;
+    flex-direction: column;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    padding-left: 216px ;
+    padding-right: 216px ;
+    gap: 32px;
+    .Header{
+        height: 48px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 8px;
+        .logo{
+            height: 48px;
+        }
+
+    }
+    .icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        color: --opex--red;
+    }
+    .Category{
+        display: flex;
+        flex-direction: column;
+        .CategoryItems{
+            display: flex;
+            flex-direction: row;
+            margin-top: 32px;
+        }
+    }
+
+    .PopularGames{
+        margin-top: 32px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .item{
+            flex: 50%
+        }
+    }
+    .AllGames{
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+}
