@@ -1,8 +1,6 @@
 import React from 'react'
 import styles from './LandingPage.module.scss'
-import ProfileHeader from '../../Components/ProfileHeader/ProfileHeader'
-import CartHeader from '../../Components/CartHeader/CartHeader'
-import SearchHeader from '../../Components/SearchHeader/SearchHeader'
+
 import logo from '../../assets/logo.png'
 import bars from '../../assets/bars.svg'
 import CategoryItem from '../../Components/CategoryItem/CategoryItem'
@@ -15,6 +13,7 @@ import GameList from '../../Components/GameList/GameList'
 import gameControlle from '../../assets/game-controlle.svg'
 import apps from '../../assets/apps.svg'
 import Footer from '../../Components/Footer/Footer'
+import PageLayout from '../../Layout/PageLayout'
 
 export default function LandingPage() {
   const Categorys = ["کالاف دیوتی موبایل" ,"گنشین ایمپکت" , "کلش آف کلنز", "محصولات فیزیکی", "ایپکس لجندز"]
@@ -63,14 +62,8 @@ export default function LandingPage() {
     }
   ]
   return (
-    <div className={styles.page}  dir='rtl'>
-      <div className={styles.fullPage}>
-        <div className={styles.Header}>
-          <ProfileHeader name={"محمدعلی آژینی"} image={azhini}/>
-          <CartHeader/>
-          <SearchHeader/>
-          <img className={styles.logo} src={logo}/>
-        </div>
+
+    <PageLayout>
         <div className={styles.Category}>
           <CategoryHeader icon={bars} title={"دسته‌بندی محصولات"}/>
           <div className={styles.CategoryItems}>
@@ -101,9 +94,8 @@ export default function LandingPage() {
             <CategoryHeader icon={apps} title={"محصولات دیگر"}/>
             <GameList Products={all}/>
         </div>
-      </div>
-      <Footer/>
-    </div>
+    </PageLayout>
+
 
   )
 }

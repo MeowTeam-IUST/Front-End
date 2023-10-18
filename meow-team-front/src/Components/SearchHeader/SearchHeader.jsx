@@ -7,7 +7,7 @@ export default function SearchHeader() {
     
     <div className={styles.SearchHeader}>
         <input className={styles.input} placeholder='جستجو در اپکس شاپ'></input>
-        <img className={styles.icon} src={search} alt="" />
+        <img className={styles.icon} src={search}  alt="" />
     </div>
   )
 }
