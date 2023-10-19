@@ -42,8 +42,8 @@ function ConfirmCode(props) {
         event.preventDefault();
         try{
             let number = '' + data.phonenumber;
-            console.log(data.ConfirmCode)
-            console.log(props.PhoneNumber,)
+            // console.log(data.ConfirmCode)
+            // console.log(props.PhoneNumber,)
             await axios.post('http://localhost:5056/api/Account/login',
             {
                 phoneNumber: props.PhoneNumber,
@@ -57,11 +57,12 @@ function ConfirmCode(props) {
                 }
             },).then((response) =>(
                 localStorage.setItem('token' , response.data.access),
-                console.log(response.data.access),
-                SetResponce({ res: response.data }),
-                console.log(res)
+                // console.log(response),
+                // console.log(response.data.access),
+                SetResponce({ res: response.data })
+                // console.log(res)
             ));
-            console.log(res.res.isSuccess)
+            // console.log(res.res.isSuccess)
             if (res.res.isSuccess === false)
             {
                 ShowToast("error", `${res.res.message}!`);
@@ -70,8 +71,8 @@ function ConfirmCode(props) {
             {
                 ShowToast("success", "با موفقیت وارد شدید.");
                 setTimeout(function(){
-                    // window.location = '/';
-                }, 2000);
+                    window.location = '/';
+                }, 4000);
             }
         }
         catch (error)

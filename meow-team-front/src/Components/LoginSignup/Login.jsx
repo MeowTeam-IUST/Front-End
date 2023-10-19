@@ -65,7 +65,7 @@ function Login(props) {
                 ShowToast("success", "کد تایید برای شما ارسال شد.");
                 setTimeout(function(){
                     props.onFormSwitch('Verify' , number);
-                }, 2000);
+                }, 4000);
             }
         }
         catch (error)
