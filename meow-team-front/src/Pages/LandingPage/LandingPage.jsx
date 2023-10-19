@@ -14,7 +14,8 @@ import gameControlle from '../../assets/game-controlle.svg'
 import apps from '../../assets/apps.svg'
 import Footer from '../../Components/Footer/Footer'
 import PageLayout from '../../Layout/PageLayout'
-
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
 export default function LandingPage() {
   const Categorys = ["کالاف دیوتی موبایل" ,"گنشین ایمپکت" , "کلش آف کلنز", "محصولات فیزیکی", "ایپکس لجندز"]
   const Populares = [

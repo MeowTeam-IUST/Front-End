@@ -1,66 +1,169 @@
 @import "../../App.scss";
-.profile{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 37.5px;
-    background: var(--Opex---gray, #E8E8E8);
-    height: 48px;
-    flex-shrink: 0;
-    padding-right: 7px;
-    .image{
-        width: 30px;
-        height: 30px;
-        border-radius: 33.358px;
-        width: 33.358px;
-        height: 33.28px;
-        flex-shrink: 0;
-
-    }
-    .name{
-        color: #000;
-        text-align: center;
-        margin-left: 10px;
-        width: fit-content;
-        padding-right: 10px;
-        cursor: pointer;
-        /* Opex - font */
-        font-family: IRAN Sans;
-        font-size: 15px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-    }
-}
 
 
 /* Media Query for Mobile Devices */ 
 @media (max-width: 480px) { 
-    body { 
-        background-color: red; 
-    } 
+    .profile{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 37.5px;
+        background: var(--Opex---gray, #E8E8E8);
+        height: 48px;
+        flex-shrink: 0;
+        padding-right: 7px;
+        display: none;
+        .image{
+            width: 30px;
+            height: 30px;
+            border-radius: 33.358px;
+            width: 33.358px;
+            height: 33.28px;
+            flex-shrink: 0;
+            display: none;
+
+    
+        }
+        .name{
+            color: #000;
+            display: none;
+
+            text-align: center;
+            margin-left: 10px;
+            width: fit-content;
+            padding-right: 10px;
+            cursor: pointer;
+            /* Opex - font */
+            font-family: IRAN Sans;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+    }
 } 
     
 /* Media Query for low resolution  Tablets, Ipads */ 
 @media (min-width: 481px) and (max-width: 767px) { 
-    body { 
-        background-color: yellow; 
-    } 
+    .profile{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 37.5px;
+        background: var(--Opex---gray, #E8E8E8);
+        height: 48px;
+        flex-shrink: 0;
+        padding-right: 7px;
+        display: none;
+        .image{
+            width: 30px;
+            height: 30px;
+            border-radius: 33.358px;
+            width: 33.358px;
+            height: 33.28px;
+            flex-shrink: 0;
+            display: none;
+
+    
+        }
+        .name{
+            color: #000;
+            display: none;
+
+            text-align: center;
+            margin-left: 10px;
+            width: fit-content;
+            padding-right: 10px;
+            cursor: pointer;
+            /* Opex - font */
+            font-family: IRAN Sans;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+    }
 } 
     
 /* Media Query for Tablets Ipads portrait mode */ 
 @media (min-width: 768px) and (max-width: 1024px){ 
-    body { 
-        background-color: blue; 
+    .profile{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 37.5px;
+        background: var(--Opex---gray, #E8E8E8);
+        height: 48px;
+        flex-shrink: 0;
+        padding-right: 7px;
+        .image{
+            width: 30px;
+            height: 30px;
+            border-radius: 33.358px;
+            width: 33.358px;
+            height: 33.28px;
+            flex-shrink: 0;
+
+    
+        }
+        .name{
+            color: #000;
+
+            text-align: center;
+            margin-left: 10px;
+            width: fit-content;
+            padding-right: 10px;
+            cursor: pointer;
+            /* Opex - font */
+            font-family: IRAN Sans;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
     } 
 } 
     
 /* Media Query for Laptops and Desktops */ 
 @media (min-width: 1025px) and (max-width: 1280px){ 
-    body { 
-        background-color: green; 
-    } 
+    .profile{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 37.5px;
+        background: var(--Opex---gray, #E8E8E8);
+        height: 48px;
+        flex-shrink: 0;
+        padding-right: 7px;
+        .image{
+            width: 30px;
+            height: 30px;
+            border-radius: 33.358px;
+            width: 33.358px;
+            height: 33.28px;
+            flex-shrink: 0;
+
+    
+        }
+        .name{
+            color: #000;
+            text-align: center;
+            margin-left: 10px;
+            width: fit-content;
+            padding-right: 10px;
+            cursor: pointer;
+            /* Opex - font */
+            font-family: IRAN Sans;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+    }
 } 
     
 /* Media Query for Large screens */ 

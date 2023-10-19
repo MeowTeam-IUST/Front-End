@@ -1,49 +1,100 @@
 @import '../App.scss';
 
 
-.PageLayout{
-    display: flex;
-    flex-direction: column;
-    margin: -8px;
-    padding: 0;
-
-    .container{
-        background-color: $Buttons ;
-        display: flex;
-        flex-direction: column;
-        padding-top: 75px;
-        padding-bottom: 75px;
-        padding-left: 216px ;
-        padding-right: 216px ;
-        gap: 32px;
-    }
-}
 /* Media Query for Mobile Devices */ 
 @media (max-width: 480px) { 
-    body { 
-        background-color: red; 
-    } 
+    .PageLayout{
+        display: flex;
+        flex-direction: column;
+        margin: -8px;
+        padding: 0;
+        justify-content: center; /* Reset vertical centering */
+        // align-items: flex-start; /* Reset horizontal centering */
+        // min-width: 1281; /* Reset width to fill the screen */
+    
+        .container{
+            background-color: $Buttons ;
+            display: flex;
+            flex-direction: column;
+            padding-top: 45px;
+            padding-bottom: 75px;
+            padding-left: 10% ;
+            padding-right: 10% ;
+            gap: 32px;
+        }
+    }
 } 
     
 /* Media Query for low resolution  Tablets, Ipads */ 
 @media (min-width: 481px) and (max-width: 767px) { 
-    body { 
-        background-color: yellow; 
-    } 
+    .PageLayout{
+        display: flex;
+        flex-direction: column;
+        margin: -8px;
+        padding: 0;
+        justify-content: center; /* Reset vertical centering */
+        // align-items: flex-start; /* Reset horizontal centering */
+        // min-width: 1281; /* Reset width to fill the screen */
+    
+        .container{
+            background-color: $Buttons ;
+            display: flex;
+            flex-direction: column;
+            padding-top: 45px;
+            padding-bottom: 75px;
+            padding-left: 10% ;
+            padding-right: 10% ;
+            gap: 32px;
+        }
+    }
 } 
     
 /* Media Query for Tablets Ipads portrait mode */ 
 @media (min-width: 768px) and (max-width: 1024px){ 
-    body { 
-        background-color: blue; 
-    } 
+    .PageLayout{
+        display: flex;
+        flex-direction: column;
+        margin: -8px;
+        padding: 0;
+        justify-content: center; /* Reset vertical centering */
+        // align-items: flex-start; /* Reset horizontal centering */
+        // min-width: 1281; /* Reset width to fill the screen */
+    
+        .container{
+            background-color: $Buttons ;
+            display: flex;
+            flex-direction: column;
+            padding-top: 75px;
+            padding-bottom: 75px;
+            padding-left: 13% ;
+            padding-right: 10% ;
+            gap: 32px;
+        }
+    }
 } 
     
 /* Media Query for Laptops and Desktops */ 
 @media (min-width: 1025px) and (max-width: 1280px){ 
-    body { 
-        background-color: green; 
-    } 
+    .PageLayout{
+        display: flex;
+        flex-direction: column;
+        margin: -8px;
+        padding: 0;
+        justify-content: center; /* Reset vertical centering */
+        // align-items: flex-start; /* Reset horizontal centering */
+        // min-width: 1281; /* Reset width to fill the screen */
+    
+        .container{
+            background-color: $Buttons ;
+            display: flex;
+            flex-direction: column;
+            padding-top: 75px;
+            padding-bottom: 75px;
+            padding-left: 18% ;
+            padding-right: 10% ;
+            gap: 32px;
+        }
+    }
 } 
     
 /* Media Query for Large screens */ 
@@ -55,7 +106,7 @@
         padding: 0;
         justify-content: center; /* Reset vertical centering */
         // align-items: flex-start; /* Reset horizontal centering */
-        min-width: 1281; /* Reset width to fill the screen */
+        // min-width: 1281; /* Reset width to fill the screen */
     
         .container{
             background-color: $Buttons ;
@@ -63,8 +114,8 @@
             flex-direction: column;
             padding-top: 75px;
             padding-bottom: 75px;
-            padding-left: 10% ;
-            // padding-right: 10% ;
+            padding-left: 13% ;
+            padding-right: 10% ;
             gap: 32px;
         }
     }

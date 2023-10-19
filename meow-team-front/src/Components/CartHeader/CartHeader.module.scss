@@ -1,48 +1,93 @@
 @import "../../App.scss";
-.part{
-    width: 48px;
-    height: 48px;
-    flex-shrink: 0;
-    background: var(--Opex---gray, #E8E8E8);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
 
-    .icon{
-        width: 33px;
-        height: 33px;
-        flex-shrink: 0;
-        color: --opex--red;
-    }
-}
 /* Media Query for Mobile Devices */ 
 @media (max-width: 480px) { 
-    body { 
-        background-color: red; 
-    } 
+    .part{
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        background: var(--Opex---gray, #E8E8E8);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        display: none;
+    
+        .icon{
+            width: 33px;
+            height: 33px;
+            flex-shrink: 0;
+            color: --opex--red;
+        }
+    }
 } 
     
 /* Media Query for low resolution  Tablets, Ipads */ 
 @media (min-width: 481px) and (max-width: 767px) { 
-    body { 
-        background-color: yellow; 
-    } 
+    .part{
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        background: var(--Opex---gray, #E8E8E8);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        display: none;
+    
+        .icon{
+            width: 33px;
+            height: 33px;
+            flex-shrink: 0;
+            color: --opex--red;
+        }
+    }
 } 
     
 /* Media Query for Tablets Ipads portrait mode */ 
 @media (min-width: 768px) and (max-width: 1024px){ 
-    body { 
-        background-color: blue; 
-    } 
+    .part{
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        background: var(--Opex---gray, #E8E8E8);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+    
+        .icon{
+            width: 33px;
+            height: 33px;
+            flex-shrink: 0;
+            color: --opex--red;
+        }
+    }
 } 
     
 /* Media Query for Laptops and Desktops */ 
 @media (min-width: 1025px) and (max-width: 1280px){ 
-    body { 
-        background-color: green; 
-    } 
+    .part{
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        background: var(--Opex---gray, #E8E8E8);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+    
+        .icon{
+            width: 33px;
+            height: 33px;
+            flex-shrink: 0;
+            color: --opex--red;
+        }
+    }
 } 
     
 /* Media Query for Large screens */ 
@@ -59,10 +104,10 @@
         border-radius: 100%;
     
         .icon{
-            width: 32px;
-            height: 32px;
+            width: 33px;
+            height: 33px;
             flex-shrink: 0;
             color: --opex--red;
         }
-    } 
+    }
 }
