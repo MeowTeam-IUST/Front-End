@@ -17,6 +17,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Button } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close';
 import { inputLabelClasses } from "@mui/material/InputLabel";
+import axios from "axios";
+import { ShowToast } from "./Toastify";
 
 function ConfirmCode(props) {
     const [verify_code, SetConfirmCode] = useState('');
@@ -28,45 +30,101 @@ function ConfirmCode(props) {
     const formSchema = Yup.object().shape({
         ConfirmCode: Yup.string()
         .required('وارد کردن کد تایید الزامی است')
-        .min(5, 'کد تایید 5 رقمی را به شکل صحیح وارد کنید')
-        .max(5, 'کد تایید 5 رقمی را به شکل صحیح وارد کنید'),
+        .min(4, 'کد تایید 4 رقمی را به شکل صحیح وارد کنید')
+        .max(4, 'کد تایید 4 رقمی را به شکل صحیح وارد کنید'),
     });
     const formOptions = { resolver: yupResolver(formSchema) }
     const { register, handleSubmit, formState } = useForm(formOptions)
     const { errors } = formState
 
+    const [res, SetResponce] = useState();
     async function onLogin(data, event) {
         event.preventDefault();
         try{
-            window.location = '/';
-            await axios.post('', {
-                PhoneNumber: props.PhoneNumber,
-                Step: 2,
-                ConfirmCode: data.verify_code,
+            let number = '' + data.phonenumber;
+            console.log(data.ConfirmCode)
+            console.log(props.PhoneNumber,)
+            await axios.post('http://localhost:5056/api/Account/login',
+            {
+                phoneNumber: props.PhoneNumber,
+                step: 2,
+                confirmNumber: data.ConfirmCode,
             },
             {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-            },).then((response) =>(localStorage.setItem('token' , response.data.access), console.log(response.data.access)));
-            ShowToast("success", "با موفقیت وارد شدید.");
-            window.location = '/';
+                headers: {
+                    'accept': 'text/plain' ,
+                    'Content-Type': 'application/json' ,
+                }
+            },).then((response) =>(
+                localStorage.setItem('token' , response.data.access),
+                console.log(response.data.access),
+                SetResponce({ res: response.data }),
+                console.log(res)
+            ));
+            console.log(res.res.isSuccess)
+            if (res.res.isSuccess === false)
+            {
+                ShowToast("error", `${res.res.message}!`);
+            }
+            else
+            {
+                ShowToast("success", "با موفقیت وارد شدید.");
+                setTimeout(function(){
+                    // window.location = '/';
+                }, 2000);
+            }
         }
         catch (error)
         {
-            if (error.response.data.phonenumber === undefined)
-            {
-                ShowToast("error", `${error.response.data.detail}!`);
-            }
-            if (error.response.data.phonenumber !== undefined)
-            {
-                ShowToast("error", "کد تایید اشتباه است !");
-            }
-            else {
-                ShowToast("error", "مشکلی پیش آمده است !");
-            }
+            ShowToast("error", "مشکلی پیش آمده است !");
+            // console.log(error)
+
+            // if (error.response.data.phonenumber === undefined)
+            // {
+            //     ShowToast("error", `${error.response.data.detail}!`);
+            // }
+            // if (error.response.data.phonenumber !== undefined)
+            // {
+            //     ShowToast("error", "شماره تلفن شما اشتباه است.");
+            // }
+            // else {
+            //     ShowToast("error", "مشکلی پیش آمده است !");
+            // }
         }
         return false
     }
+    // async function onLogin(data, event) {
+    //     event.preventDefault();
+    //     try{
+    //         // window.location = '/';
+    //         await axios.post('http://localhost:5056/api/Account/login', {
+    //             PhoneNumber: props.PhoneNumber,
+    //             Step: 2,
+    //             ConfirmCode: data.verify_code,
+    //         },
+    //         {
+    //             'Access-Control-Allow-Origin': '*',
+    //             'Content-Type': 'application/json',
+    //         },).then((response) =>(localStorage.setItem('token' , response.data.access), console.log(response.data.access)));
+    //         ShowToast("success", "با موفقیت وارد شدید.");
+    //         window.location = '/';
+    //     }
+    //     catch (error)
+    //     {
+    //         if (error.response.data.phonenumber === undefined)
+    //         {
+    //             ShowToast("error", `${error.response.data.detail}!`);
+    //         }
+    //         if (error.response.data.phonenumber !== undefined)
+    //         {
+    //             ShowToast("error", "کد تایید اشتباه است !");
+    //         }
+    //         else {
+    //             ShowToast("error", "مشکلی پیش آمده است !");
+    //         }
+    //     }
+    //     return false
+    // }
 
     const openForm = (event) => {
         document.getElementById("myForm").style.display = "block";

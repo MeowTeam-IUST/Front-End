@@ -17,6 +17,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Button } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close';
 import { inputLabelClasses } from "@mui/material/InputLabel";
+import axios from 'axios';
+import { ShowToast } from "./Toastify";
 
 function Login(props) {
     const [phone_number, SetUsernameOrEmail] = useState('');
@@ -35,36 +37,53 @@ function Login(props) {
     const { register, handleSubmit, formState } = useForm(formOptions)
     const { errors } = formState
 
+    const [res, SetResponce] = useState();
     async function onLogin(data, event) {
         event.preventDefault();
         try{
-            props.onFormSwitch('Verify' , data.phonenumber);
-            await axios.post('', {
-                phone_number: data.phonenumber,
+            let number = '' + data.phonenumber;
+            await axios.post('http://localhost:5056/api/Account/login',
+            {
+                phoneNumber: number,
                 step: 1,
-                verify_code: 0,
+                confirmNumber: 0,
             },
             {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-            },)
-            ShowToast("success", "کد تایید برای شما ارسال شد.");
-            props.onFormSwitch('Verify' , data.phonenumber);
+                headers: {
+                    'accept': 'text/plain' ,
+                    'Content-Type': 'application/json' ,
+                }
+            },).then((response) =>(
+                SetResponce({ res: response.data })
+            ));
+            if (res.res.isSuccess === false)
+            {
+                ShowToast("error", `${res.res.message}!`);
+            }
+            else
+            {
+                ShowToast("success", "کد تایید برای شما ارسال شد.");
+                setTimeout(function(){
+                    props.onFormSwitch('Verify' , number);
+                }, 2000);
+            }
         }
         catch (error)
         {
-            console.log(error.response)
-            if (error.response.data.phonenumber === undefined)
-            {
-                ShowToast("error", `${error.response.data.detail}!`);
-            }
-            if (error.response.data.phonenumber !== undefined)
-            {
-                ShowToast("error", "شماره تلفن شما اشتباه است.");
-            }
-            else {
-                ShowToast("error", "مشکلی پیش آمده است !");
-            }
+            ShowToast("error", "مشکلی پیش آمده است !");
+            // console.log(error)
+
+            // if (error.response.data.phonenumber === undefined)
+            // {
+            //     ShowToast("error", `${error.response.data.detail}!`);
+            // }
+            // if (error.response.data.phonenumber !== undefined)
+            // {
+            //     ShowToast("error", "شماره تلفن شما اشتباه است.");
+            // }
+            // else {
+            //     ShowToast("error", "مشکلی پیش آمده است !");
+            // }
         }
         return false
     }
