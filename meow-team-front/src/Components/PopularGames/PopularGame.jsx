@@ -10,10 +10,12 @@ export default function PopularGame({ name }) {
     backgroundSize: 'cover',
     background: 'lightgray',
   };
-
+  const HandleClick = () => {
+    window.location.href = '/Product'
+  }
 
   return (
-    <div className={styles.PopularGame}  >
+    <div className={styles.PopularGame} onClick={()=> HandleClick()}  >
       <div className={styles.PopularGameTitle}>
         <div className={styles.PopularGameTitleText}>{name}</div>
         <BuyButton/>
