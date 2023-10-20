@@ -7,6 +7,9 @@ export default function ProfileHeader({name, image}) {
     console.log(localStorage.getItem('token'))
 
     }, [])  
+  const HandleClick = () => {
+    window.location.href = '/login'
+  }
   return (
     <div className={styles.profile}>
       {
@@ -15,7 +18,7 @@ export default function ProfileHeader({name, image}) {
             <img className={styles.image} src={image} alt="" />
             <div className={styles.name}>{name}</div>
         </>
-        : <div className={styles.name}>ورود یا ثبت‌نام</div>
+        : <div className={styles.name} onClick={()=> HandleClick()}>ورود یا ثبت‌نام</div>
       }
 
     </div>
