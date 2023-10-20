@@ -65,7 +65,7 @@ function ConfirmCode(props) {
                     (
                         ShowToast("success", ". با موفقیت وارد شدید"),
                         setTimeout(function(){
-                            // window.location = '/';
+                            window.location = '/';
                         }, 3000)
                     )
                 )
