@@ -19,31 +19,33 @@ import CloseIcon from '@mui/icons-material/Close';
 import { inputLabelClasses } from "@mui/material/InputLabel";
 import axios from "axios";
 import { ShowToast } from "./Toastify";
+import LoadingButton from '@mui/lab/LoadingButton';
 
 function ConfirmCode(props) {
     const [verify_code, SetConfirmCode] = useState('');
-
+    
     const ConfirmCodeHandler = (inp) => {
         SetConfirmCode({ verify_code: inp.target.value })
     }
-
+    
     const formSchema = Yup.object().shape({
         ConfirmCode: Yup.string()
         .required('وارد کردن کد تایید الزامی است')
-        .min(4, 'کد تایید 4 رقمی را به شکل صحیح وارد کنید')
-        .max(4, 'کد تایید 4 رقمی را به شکل صحیح وارد کنید'),
+        // .min(4, 'کد تایید 4 رقمی را به شکل صحیح وارد کنید')
+        // .max(4, 'کد تایید 4 رقمی را به شکل صحیح وارد کنید'),
     });
     const formOptions = { resolver: yupResolver(formSchema) }
     const { register, handleSubmit, formState } = useForm(formOptions)
     const { errors } = formState
 
-    const [res, SetResponce] = useState();
+    const [load, SetIsLoading] = React.useState({
+        is_loading: false,
+    });
     async function onLogin(data, event) {
         event.preventDefault();
         try{
             let number = '' + data.phonenumber;
-            // console.log(data.ConfirmCode)
-            // console.log(props.PhoneNumber,)
+            SetIsLoading({ is_loading: true })
             await axios.post('http://localhost:5056/api/Account/login',
             {
                 phoneNumber: props.PhoneNumber,
@@ -56,76 +58,32 @@ function ConfirmCode(props) {
                     'Content-Type': 'application/json' ,
                 }
             },).then((response) =>(
-                localStorage.setItem('token' , response.data.access),
-                // console.log(response),
-                // console.log(response.data.access),
-                SetResponce({ res: response.data })
-                // console.log(res)
+                localStorage.setItem('token' , response.data.data.token),
+                (
+                    response.data.isSuccess === false ?
+                    ShowToast("error", `! ${response.data.message}`) :
+                    (
+                        ShowToast("success", ". با موفقیت وارد شدید"),
+                        setTimeout(function(){
+                            // window.location = '/';
+                        }, 3000)
+                    )
+                )
             ));
-            // console.log(res.res.isSuccess)
-            if (res.res.isSuccess === false)
-            {
-                ShowToast("error", `${res.res.message}!`);
-            }
-            else
-            {
-                ShowToast("success", "با موفقیت وارد شدید.");
-                setTimeout(function(){
-                    window.location = '/';
-                }, 4000);
-            }
         }
         catch (error)
         {
-            ShowToast("error", "مشکلی پیش آمده است !");
+            ShowToast("error", "! مشکلی پیش آمده است");
             // console.log(error)
-
-            // if (error.response.data.phonenumber === undefined)
-            // {
-            //     ShowToast("error", `${error.response.data.detail}!`);
-            // }
-            // if (error.response.data.phonenumber !== undefined)
-            // {
-            //     ShowToast("error", "شماره تلفن شما اشتباه است.");
-            // }
-            // else {
-            //     ShowToast("error", "مشکلی پیش آمده است !");
-            // }
+        }
+        finally
+        {
+            setTimeout(function(){
+                SetIsLoading({ is_loading: false })
+            }, 3000)
         }
         return false
     }
-    // async function onLogin(data, event) {
-    //     event.preventDefault();
-    //     try{
-    //         // window.location = '/';
-    //         await axios.post('http://localhost:5056/api/Account/login', {
-    //             PhoneNumber: props.PhoneNumber,
-    //             Step: 2,
-    //             ConfirmCode: data.verify_code,
-    //         },
-    //         {
-    //             'Access-Control-Allow-Origin': '*',
-    //             'Content-Type': 'application/json',
-    //         },).then((response) =>(localStorage.setItem('token' , response.data.access), console.log(response.data.access)));
-    //         ShowToast("success", "با موفقیت وارد شدید.");
-    //         window.location = '/';
-    //     }
-    //     catch (error)
-    //     {
-    //         if (error.response.data.phonenumber === undefined)
-    //         {
-    //             ShowToast("error", `${error.response.data.detail}!`);
-    //         }
-    //         if (error.response.data.phonenumber !== undefined)
-    //         {
-    //             ShowToast("error", "کد تایید اشتباه است !");
-    //         }
-    //         else {
-    //             ShowToast("error", "مشکلی پیش آمده است !");
-    //         }
-    //     }
-    //     return false
-    // }
 
     const openForm = (event) => {
         document.getElementById("myForm").style.display = "block";
@@ -185,10 +143,10 @@ function ConfirmCode(props) {
                     />
                     <div className={Styles.errormessage}>{errors.ConfirmCode?.message}</div>
                     <div className={Styles.divbutton}>
-                        <Button sx={{ fontWeight: "bold", width: '10rem' , marginRight: '0.5rem', marginTop: '0.8rem', backgroundColor: 'rgb(242, 27, 27)' }} variant="contained" type="submit">تایید و ورود</Button>
-                        <Button sx={{ fontWeight: "bold",width: '10rem' , marginLeft: '0.5rem' , marginTop: '0.8rem', backgroundColor: 'rgb(255, 255, 255)', color: 'black', border: 1 }} variant="contained" onClick={() => props.onFormSwitch('Login' , null)}>
+                        <LoadingButton loading={load.is_loading} sx={{ fontWeight: "bold", width: '10rem' , marginRight: '0.5rem', marginTop: '0.8rem', backgroundColor: 'rgb(242, 27, 27)' }} variant="contained" type="submit">تایید و ورود</LoadingButton>
+                        <LoadingButton disabled={load.is_loading} sx={{ fontWeight: "bold",width: '10rem' , marginLeft: '0.5rem' , marginTop: '0.8rem', backgroundColor: 'rgb(255, 255, 255)', color: 'black', border: 1 }} variant="contained" onClick={() => props.onFormSwitch('Login' , null)}>
                             تغییر شماره تلفن
-                        </Button>
+                        </LoadingButton>
                     </div>
                 </form>
                 <ToastContainer />

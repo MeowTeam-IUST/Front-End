@@ -19,14 +19,15 @@ import CloseIcon from '@mui/icons-material/Close';
 import { inputLabelClasses } from "@mui/material/InputLabel";
 import axios from 'axios';
 import { ShowToast } from "./Toastify";
+import LoadingButton from '@mui/lab/LoadingButton';
 
 function Login(props) {
     const [phone_number, SetUsernameOrEmail] = useState('');
-
+    
     const PhoneNumberHandler = (inp) => {
         SetUsernameOrEmail({ phone_number: inp.target.value })
     }
-
+    
     const formSchema = Yup.object().shape({
         phonenumber: Yup.string()
         .required('شماره مبایل الزامی است')
@@ -36,12 +37,16 @@ function Login(props) {
     const formOptions = { resolver: yupResolver(formSchema) }
     const { register, handleSubmit, formState } = useForm(formOptions)
     const { errors } = formState
+    
+    const [load, SetIsLoading] = React.useState({
+        is_loading: false,
+    });
 
-    const [res, SetResponce] = useState();
     async function onLogin(data, event) {
         event.preventDefault();
         try{
             let number = '' + data.phonenumber;
+            SetIsLoading({ is_loading: true })
             await axios.post('http://localhost:5056/api/Account/login',
             {
                 phoneNumber: number,
@@ -54,36 +59,29 @@ function Login(props) {
                     'Content-Type': 'application/json' ,
                 }
             },).then((response) =>(
-                SetResponce({ res: response.data })
+                (
+                    response.data.isSuccess === false ?
+                    (
+                        ShowToast("error", `! ${response.data.message}`)
+                    ) :
+                    (
+                        ShowToast("success", ". کد تایید برای شما ارسال شد"),
+                        setTimeout(function(){
+                            props.onFormSwitch('Verify' , number);
+                        }, 3000)
+                    )
+                )
             ));
-            if (res.res.isSuccess === false)
-            {
-                ShowToast("error", `${res.res.message}!`);
-            }
-            else
-            {
-                ShowToast("success", "کد تایید برای شما ارسال شد.");
-                setTimeout(function(){
-                    props.onFormSwitch('Verify' , number);
-                }, 4000);
-            }
         }
         catch (error)
         {
-            ShowToast("error", "مشکلی پیش آمده است !");
-            // console.log(error)
-
-            // if (error.response.data.phonenumber === undefined)
-            // {
-            //     ShowToast("error", `${error.response.data.detail}!`);
-            // }
-            // if (error.response.data.phonenumber !== undefined)
-            // {
-            //     ShowToast("error", "شماره تلفن شما اشتباه است.");
-            // }
-            // else {
-            //     ShowToast("error", "مشکلی پیش آمده است !");
-            // }
+            ShowToast("error", "! مشکلی پیش آمده است");
+        }
+        finally
+        {
+            setTimeout(function(){
+                SetIsLoading({ is_loading: false })
+            }, 3000)
         }
         return false
     }
@@ -145,7 +143,7 @@ function Login(props) {
                         className={`${errors.phonenumber ? 'is-invalid' : ''}`}
                     />
                     <div className={Styles.errormessage}>{errors.phonenumber?.message}</div>
-                    <Button sx={{ fontWeight: "bold", marginTop: '0.8rem', backgroundColor: 'rgb(242, 27, 27)' }} variant="contained" type="submit" >ارسال کد تائید</Button>
+                    <LoadingButton loading={load.is_loading} sx={{ fontWeight: "bold", marginTop: '0.8rem', backgroundColor: 'rgb(242, 27, 27)' }} variant="contained" type="submit">ارسال کد تائید</LoadingButton>
                 </form>
                 <ToastContainer />
             </div>
