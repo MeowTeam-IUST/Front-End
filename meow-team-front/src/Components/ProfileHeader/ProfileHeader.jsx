@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './ProfileHeader.module.scss'
-
 export default function ProfileHeader({name, image}) {
+  const [isAuth, setIsAuth] = React.useState(false)
+  useEffect(() => {
+    localStorage.getItem('token') ? setIsAuth(true) : setIsAuth(false);
+    console.log(localStorage.getItem('token'))
+
+    }, [])  
   return (
     <div className={styles.profile}>
-      <img className={styles.image} src={image} alt="" />
-      <div className={styles.name}>{name}</div>
+      {
+        isAuth ? 
+        <>
+            <img className={styles.image} src={image} alt="" />
+            <div className={styles.name}>{name}</div>
+        </>
+        : <div className={styles.name}>ورود یا ثبت‌نام</div>
+      }
+
     </div>
   )
 }
