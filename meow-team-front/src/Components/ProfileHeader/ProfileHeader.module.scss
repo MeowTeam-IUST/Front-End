@@ -1,6 +1,5 @@
 @import "../../App.scss";
 
-
 /* Media Query for Mobile Devices */ 
 @media (max-width: 480px) { 
     .profile{
@@ -9,7 +8,7 @@
         justify-content: space-around;
         align-items: center;
         border-radius: 37.5px;
-        background: var(--Opex---gray, #E8E8E8);
+        background: var(--Opex-4--gray, #E8E8E8);
         height: 48px;
         flex-shrink: 0;
         padding-right: 7px;
