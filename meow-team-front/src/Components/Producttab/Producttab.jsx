@@ -3,6 +3,7 @@ import styles  from '../../Pages/ProductPage/ProductPage.module.scss'
 export default function Producttab({safety,obs,speed}) {
 
     return(
+        <div className={styles.capcap}>
         <div className={styles.pccap3}>
                     <div className={styles.pccap4}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
@@ -27,6 +28,7 @@ export default function Producttab({safety,obs,speed}) {
                                     <text className={styles.lcap}> {speed}</text>
                                 </div>
                     </div>
+                </div>
                    
         
                
