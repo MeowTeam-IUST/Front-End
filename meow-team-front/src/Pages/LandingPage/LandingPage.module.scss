@@ -44,6 +44,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        display: none;
     
         .item{
             flex: 50%
@@ -74,6 +75,8 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        display: none;
+
     
         .item{
             flex: 50%
@@ -82,7 +85,7 @@
     .AllGames{
         display: flex;
         flex-direction: column;
-        gap: 32px;
+        gap: 12px;
     }
     
 } 
@@ -105,12 +108,14 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        display: none;
+
     
     }
     .AllGames{
         display: flex;
         flex-direction: column;
-        gap: 32px;
+        gap: 12px;
     }
     
 } 

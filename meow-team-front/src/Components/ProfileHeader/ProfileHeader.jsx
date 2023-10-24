@@ -4,7 +4,6 @@ export default function ProfileHeader({name, image}) {
   const [isAuth, setIsAuth] = React.useState(false)
   useEffect(() => {
     localStorage.getItem('token') ? setIsAuth(true) : setIsAuth(false);
-    console.log(localStorage.getItem('token'))
 
     }, [])  
   const HandleClick = () => {

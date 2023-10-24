@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './PopularGame.module.scss';
 import BuyButton from '../BuyButton/BuyButton';
 import image from '../../assets/5.jfif'
+
 export default function PopularGame({ name }) {
   const backgroundImageStyle = {
     backgroundImage: 'url(../../assets/5.jfif)',

@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useRef} from 'react'
 import styles from './LandingPage.module.scss'
 
 import logo from '../../assets/logo.png'
@@ -15,6 +15,8 @@ import apps from '../../assets/apps.svg'
 import Footer from '../../Components/Footer/Footer'
 import PageLayout from '../../Layout/PageLayout'
 import { Slide } from 'react-slideshow-image';
+import BigSlider from '../../Components/BigSlider/BigSlider'
+
 import 'react-slideshow-image/dist/styles.css'
 export default function LandingPage() {
   const Categorys = ["کالاف دیوتی موبایل" ,"گنشین ایمپکت" , "کلش آف کلنز", "محصولات فیزیکی", "ایپکس لجندز"]
@@ -62,6 +64,7 @@ export default function LandingPage() {
       image: "https://s3-alpha-sig.figma.com/img/8c7c/87a3/25c58819ee8190f10c766ffe4356bbaf?Expires=1698019200&Signature=ZRwACI2xkLBK-yVaKgp0~OZmxT5pV4FaeeB3HIqNq1VY6xuvBoT85QCiq3pQInNKnxMFEJaU98EB6w8pFUNULQb1SNVE46dOWKZOgO2PoMvC349G-rsMf0PODU-CTU5U0CAJzfdZiJigpN8pnrKOxcbw7Zvug--lccK0EyO3DvvdvYYwO4M0uDeqJS--yNR00HtaLY-aQvb6SOCyWCfN7uLQrzLPDEb-XqRD17E4DJNLru7g9-9ZDSPv23QeCWhbOzdGcEIMaSshRCJm9DdaxO-lhGfynfa0~bfUob-pXawkTwrdwJgBxAF5VoTWR~1TxM~uwn2KQefZtpQlAN~7PQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
     }
   ]
+  const mainbody = useRef(null);
   return (
 
     <PageLayout>
@@ -77,7 +80,8 @@ export default function LandingPage() {
         </div>
         <div className={styles.popular}>
           <CategoryHeader icon={popular} title={"بازی‌های پرطرفدار"}/>
-          <div className={styles.PopularGames}>
+          <BigSlider components={Populares}/>
+          <div ref={mainbody} className={styles.PopularGames}>
             {Populares.map((item,index) => {
               return (
                 <div className={styles.item}>
