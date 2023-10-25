@@ -9,16 +9,16 @@ const initialState = {
 };
 
 const UserSlice = createSlice({
-  name: "todo",
+  name: "User",
   initialState,
   reducers: {
-    Login: (state, action) => {
+    SetUser: (state, action) => {
       state.Name = action.payload.Name;
       state.Phone = action.payload.Phone;
       state.Image = action.payload.Image;
       state.Token = action.payload.Token;
     },
-    LogOut: (state, action) => {
+    DeleteUser: (state, action) => {
       state.Name = null;
       state.Phone = null;
       state.Image = null;
@@ -27,6 +27,6 @@ const UserSlice = createSlice({
   },
 });
 
-export const { LogOut, Login } = UserSlice.actions;
+export const { SetUser, DeleteUser } = UserSlice.actions;
 
 export default UserSlice.reducer;

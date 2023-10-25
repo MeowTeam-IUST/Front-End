@@ -9,6 +9,7 @@ const persistedState = localStorage.getItem("reduxState")
 const store = configureStore({
   reducer: {
     User: UserSlice,
+    
   },
   preloadedState: persistedState, // Set the preloadedState with the persistedState
 });
