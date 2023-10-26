@@ -1,0 +1,12 @@
+@import "../../App.scss";
+.MainContent{
+    display: flex;
+    min-height: 666px;
+    padding: 25px 32px;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    flex: 1 0 0;
+    border-radius: 38px;
+    background: var(--Opex--gray, #E8E8E8);
+}

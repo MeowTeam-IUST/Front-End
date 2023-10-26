@@ -7,7 +7,7 @@ import logo from '../../assets/logo.png';
 import azhini from "../../assets/azhini.jfif";
 
 import { useSelector, useDispatch } from "react-redux";
-import { Login } from '../../Slices/UserSlice.js';
+import { SetUser } from '../../Slices/UserSlice.js';
 
 export default function Header({ Profile }) {
   const state = useSelector((state) => state.User); // Access the "User" slice of the state
@@ -18,7 +18,7 @@ export default function Header({ Profile }) {
   }, [state]);
 
   const handleClick = () => {
-    dispatch(Login({
+    dispatch(SetUser({
       Name: "MohammadAli",
       Number: "09123456789",
       Profile: "azhini",

@@ -1,1 +1,11 @@
-@import '../../App.scss'
+@import '../../App.scss';
+
+.DashboardLayout{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 32px;
+    margin-top: 25px;
+    
+}
