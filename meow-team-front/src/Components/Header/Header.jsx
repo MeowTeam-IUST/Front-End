@@ -12,7 +12,7 @@ export default function Header({Profile}) {
         <ProfileHeader name={"محمدعلی آژینی"} image={azhini}/>
         <CartHeader/>
         <SearchHeader/>
-        <img className={styles.logo} width={150} src={logo}/>
+        <img className={styles.logo} src={logo}/>
         
     </div>
   )

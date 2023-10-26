@@ -1,18 +1,18 @@
 @import "../../App.scss";
 
 .Button{
-    width: 100px;
-    height: 40px;
+    height: 45%;
+    aspect-ratio: 5/2;
     flex-shrink: 0;
-    border-radius: 20px;
+    border-radius: 200px;
     background: $Buttons;
     color: #000;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-family: IRAN Sans;
-    font-size: 19px;
+    font-family: $second_font;
+    font-size: 1.2vw;
     font-style: normal;
     font-weight: 700;
     line-height: 22px; /* 137.5% */
