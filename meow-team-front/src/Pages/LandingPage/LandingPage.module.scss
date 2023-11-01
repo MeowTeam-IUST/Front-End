@@ -41,8 +41,16 @@
     }
     
     .PopularGames{
-        flex-wrap: nowrap;
-        flex-direction: column;
+        overflow-x: scroll;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        .item {
+            flex: none;
+            width: 100%;
+        }
+    }
+    .PopularGames::-webkit-scrollbar {
+        display: none;
     }
 
     .AllGames{
@@ -65,13 +73,18 @@
         }
     }
     .PopularGames{
-        flex-wrap: nowrap;
-        flex-direction: column;
-
-        .item{
-             flex: calc(100% - 20px);
+        overflow-x: scroll;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        .item {
+            flex: none;
+            width: 100%;
         }
     }
+    .PopularGames::-webkit-scrollbar {
+        display: none;
+    }
+
     .AllGames{
         display: flex;
         flex-direction: column;
@@ -136,8 +149,12 @@
     .AllGames{
         display: flex;
         flex-direction: column;
-        gap: 32px;
+        
+        
+    
     }
+    
+
 }
 
 .popular {

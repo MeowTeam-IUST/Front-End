@@ -3,4 +3,11 @@
 .GameList{
     display: flex;
     flex-direction: row;
+    overflow-x: scroll;
+
+    gap: 20px;
 }
+
+.GameList::-webkit-scrollbar {
+        display: none;
+    }
