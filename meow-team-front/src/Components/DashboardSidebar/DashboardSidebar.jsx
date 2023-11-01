@@ -2,11 +2,16 @@ import React from 'react'
 import styles from './DashboardSidebar.module.scss'
 import { items } from './Items'
 import Exit from '../../assets/Exit.svg'
+import azhini from '../../assets/azhini.jfif'
 export default function DashboardSidebar() {
   return (
     <div className={styles.DashboardSidebar}>
         <div className={styles.Profile}>
-
+          <img src={azhini} alt="" className={styles.image}/>
+          <div className={styles.detail}>
+              <div className={styles.name}>محمدعلی آژینی</div>
+              <div className={styles.phone}>09123456789</div>
+          </div>
         </div>
         <div className={styles.line}/>
         {items.map((item, index) => {
@@ -18,7 +23,6 @@ export default function DashboardSidebar() {
                 {item.name}
               </div>
             </div>
-            <div className={styles.line}/>
             </>
           )
         }

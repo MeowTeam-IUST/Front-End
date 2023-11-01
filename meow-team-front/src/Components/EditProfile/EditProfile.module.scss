@@ -1,0 +1,79 @@
+@import "../../App.scss";
+
+.EditProfile{
+    display: flex;
+    height: fit-content;
+    width: 100%;
+    padding: 25px 32px 64px 32px;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    flex: 1 0 0;
+    .up{
+        display: flex;
+        width: 323px;
+        height: 106px;
+        justify-content: center;
+        align-items: center;
+        gap: 19px;
+        flex-shrink: 0;
+        .image{
+            border-radius: 91px;
+            background:  lightgray 50% / cover no-repeat;
+            width: 91px;
+            height: 91px;
+            flex-shrink: 0;
+        }
+        .button{
+            border-radius: 14px;
+            background: #FFF;
+
+            /* User Shadow */
+            box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.15);
+            display: flex;
+            width: 138px;
+            height: 48px;
+            padding: 10px 15px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            color: #000;
+            text-align: center;
+            font-family: Anjoman;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: 22px; /* 146.667% */
+            letter-spacing: -0.3px;
+        }
+    }
+    .line{
+        background: var(--Opex---gray, #E8E8E8);
+        width: 100%;
+        height: 1px;
+    }
+    .down{
+        display: flex;
+        height: 317px;
+        justify-content: flex-end;
+        align-items: flex-start;
+        align-content: flex-start;
+        gap: 32px;
+        flex-shrink: 0;
+        align-self: stretch;
+        flex-wrap: wrap;
+        .inputs{
+            display: flex;
+            width: 100%;
+            height: 317px;
+            justify-content: center;
+            align-items: flex-start;
+            align-content: flex-start;
+            gap: 32px;
+            flex-shrink: 0;
+            align-self: stretch;
+            flex-wrap: wrap;
+        }
+    }
+}
