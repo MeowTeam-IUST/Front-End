@@ -1,0 +1,93 @@
+@import "../../App.scss";
+
+.DefaultDashboard{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    align-self: stretch;
+    .card{
+        border-radius: 38px;
+        background: var(--Opex---font-on-gray, #8E888C);
+        display: flex;
+        height: 255px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 31px;
+        flex: 1 0 0;
+        .detail{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            .Text1{
+                color: #FFF;
+                text-align: center;
+                font-family: Anjoman;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 800;
+                line-height: 22px; /* 91.667% */
+                letter-spacing: -0.48px;
+            }
+            .Text2{
+                color: #FFF;
+                text-align: center;
+                font-family: Anjoman;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 800;
+                line-height: 22px; /* 137.5% */
+                letter-spacing: -0.32px;
+            }
+        }
+        .button{
+            border-radius: 14px;
+            background: #FFF;
+            display: flex;
+            width: 172px;
+            height: 41px;
+            padding: 10px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            color: var(--Opex---font-on-gray, var(--Opex---font-on-gray, #8E888C));
+            text-align: center;
+            font-family: Anjoman;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: 22px; /* 146.667% */
+            letter-spacing: -0.3px;
+        }
+    }
+    .LastOrder{
+        display: flex;
+        height: 255px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 31px;
+        flex: 1 0 0;
+        border-radius: 38px;
+        background: var(--Opex---red, #E52A49);
+        .button{
+            color: var(--Opex---red, var(--Opex---red, #E52A49));
+
+        }
+    }
+
+}
+.Repeated{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 31px;
+    align-self: stretch;
+}

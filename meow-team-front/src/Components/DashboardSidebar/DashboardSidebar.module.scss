@@ -97,5 +97,13 @@
             font-weight: 800;
             line-height: normal;
         } 
+        .icon{
+            filter: invert(1); /* Change the color of the SVG to white */
+
+        }
+    }
+    .ActiveItem :hover{
+        background: var(--Opex---red, #E52A49);
+
     }
 }

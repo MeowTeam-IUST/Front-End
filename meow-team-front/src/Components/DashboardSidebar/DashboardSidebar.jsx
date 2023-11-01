@@ -1,10 +1,12 @@
 import React from 'react'
 import styles from './DashboardSidebar.module.scss'
-import { items } from './Items'
 import Exit from '../../assets/Exit.svg'
 import azhini from '../../assets/azhini.jfif'
-export default function DashboardSidebar() {
-  return (
+export default function DashboardSidebar({ setChoosenItem, items, choosenItem }) {
+  const handleItemClick = (itemIndex) => {
+    setChoosenItem(itemIndex);
+  };
+    return (
     <div className={styles.DashboardSidebar}>
         <div className={styles.Profile}>
           <img src={azhini} alt="" className={styles.image}/>
@@ -15,18 +17,21 @@ export default function DashboardSidebar() {
         </div>
         <div className={styles.line}/>
         {items.map((item, index) => {
-          return (
-            <>
+        return (
+          <div
+            key={index}
+            className={`${index === choosenItem ? styles.ActiveItem : styles.Item }`}
+            onClick={() => handleItemClick(index)}
+          >
             <div key={index} className={styles.Item} >
-              <img src={item.icon} alt="" className={styles.icon} />
-              <div className={styles.Text}>
-                {item.name}
-              </div>
+            <img src={item.icon} alt="" className={styles.icon} />
+            <div className={styles.Text}>
+            {item.name}
             </div>
-            </>
-          )
-        }
-        )}
+            </div>
+          </div>
+        );
+      })}
         <div className={styles.Item} >
           <img src={Exit} alt="" className={styles.icon} />
           <div className={styles.Text}>خروج</div>
