@@ -56,7 +56,7 @@ export function UserBox({userlogo, usertext, onCommentSubmit}) {
             />
             <div className={styles.sendbox}>
                 
-            <button className={styles.btsend} onClick={handleSubmit}> ارسال</button>
+            <button className={styles.btsend} onClick={handleSubmit}> ار سال</button>
             <div>
                 {[1, 2, 3, 4, 5].map((star) => (
                     <span key={star}  className={styles.st} onClick={() => handleRating(star)}>

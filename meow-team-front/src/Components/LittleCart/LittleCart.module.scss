@@ -11,7 +11,7 @@
     flex-direction: row;
     align-items: flex-end; /* Changed 'end' to 'flex-end' */
     background-size: cover;
-    background-image: url(../../assets/4.jfif); /* Removed single quotes and fixed the URL */
+    // background-image: url(../../assets/4.jfif); /* Removed single quotes and fixed the URL */
     background-position: center center; /* Center the background image horizontally and vertically */
     background-repeat: no-repeat; /* Removed single quotes */
 
@@ -19,12 +19,14 @@
         width: 198px;
         height: 80px;
         background: var(--Blur---back, rgba(0, 0, 0, 0.20));
-        backdrop-filter: blur(15px);
+        // backdrop-filter: blur(15px);
         border-radius: 0px 0px 30px 30px;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
+        
+        color: #FFF;
         .GameTitleText{
           color: #FFF;
           // text-align: center;
@@ -36,4 +38,17 @@
           letter-spacing: -0.48px;
         }
       }
+  .GameTitlePopupOpen{
+        width: 198px;
+        height: 80px;
+        background: var(--Blur---back, rgba(0, 0, 0, 0.20));
+        // backdrop-filter: blur(15px);
+        border-radius: 0px 0px 30px 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        color: #FFF;
+      }
+      
 }
