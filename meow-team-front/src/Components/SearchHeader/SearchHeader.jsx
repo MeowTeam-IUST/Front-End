@@ -6,6 +6,7 @@ import { InputOutlined } from '@mui/icons-material';
 function SearchHeader() {
     const [input, setInput] = useState("");
     const [result, setResult] = useState("");
+    const [searchShow, setSearchShow] = useState(false);
 
     // const OnSearch = async(value) => {
     //     try
@@ -31,13 +32,19 @@ function SearchHeader() {
     //         // setIsLoading(false)
     //     }
     // };
-
+    
     const HandelChange = (value) => {
         setInput(value);
         const results = products.filter((prod) => {
             return prod.label.includes(value)
         })
         setResult(results);
+        if(value==="" || value===" "){
+            setSearchShow(false);
+        }
+        else {
+            setSearchShow(true);
+        }
     }
 
     const HandelResultClick = (urlprop) => {
@@ -47,13 +54,13 @@ function SearchHeader() {
     return(
         <div className={styles.search}>
             <div className={styles.SearchHeader}>
-                <input className={styles.input} placeholder='جستجو در اپکس شاپ' value={input} onChange={(e) => HandelChange(e.target.value)}></input>
+                <input className={styles.input} placeholder='جستجو در اپکس شاپ' onChange={(e) => HandelChange(e.target.value)}></input>
                 <img className={styles.icon} src={search}  alt="" />
             </div>
             <div className={styles.res}>
-                {result ? (result.map((res, id) => (
+                {searchShow ? (result.map((res, id) => (
                     <div className={styles.searchresult} onClick={res.id === '3' ? (() => HandelResultClick(res.url)) : (console.log())} key={id} >{res.label}</div>
-                ))) : (console.log())}
+                ))) : (<></>)}
             </div>
         </div>
     )
