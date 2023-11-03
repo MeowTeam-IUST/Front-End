@@ -2,6 +2,7 @@
 import User from '../../assets/User.svg'
 import EditProfile from '../../Components/EditProfile/EditProfile'
 import DefaultDashboard from '../../Components/DefaultDashboard/DefaultDashboard'
+import ShoppingCart from '../../Components/ShoppingCart/ShoppingCart'
 export const items = [
     {
         name: 'داشبورد',
@@ -18,7 +19,7 @@ export const items = [
     },
     {
         name: 'سبد خرید',
-        component: '',
+        component: ShoppingCart,
         icon: User,
         item : 2
     },

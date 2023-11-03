@@ -6,7 +6,7 @@ import DashboardMain from '../../Components/DashboardMain/DashboardMain';
 import { items } from './Items';
 
 export default function Dashboard() {
-  const [choosenItem, setChoosenItem] = React.useState(0);
+  const [choosenItem, setChoosenItem] = React.useState(2);
   const [selectedComponent, setSelectedComponent] = React.useState(null);
 
   useEffect(() => {
