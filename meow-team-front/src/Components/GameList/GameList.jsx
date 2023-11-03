@@ -1,17 +1,25 @@
 import React from 'react'
 import styles from './GameList.module.scss'
 import LittleCart from '../LittleCart/LittleCart'
+import Add from "../Add/Add"
+import { useState,useEffect } from 'react';
 
 export default function GameList({Products}) {
+  const [showPopup, setShowPopup] = useState(false);
+
   return (
     <div className={styles.GameList}>
-        {Products.map((item,index) => {
-            return (
-              <div className={styles.item}>
-                <LittleCart key={index} name={item.name}  />
-              </div>
-            )
-          })}
+      {/* <div className={styles.item}>
+        <Add showPopup={showPopup} setShowPopup={setShowPopup} />
+      </div> */}
+      {Products.map((item,index) => {
+        return (
+          <div className={styles.item} key={index}>
+            <LittleCart name={item.name} image={item.image} showPopup={showPopup} />
+          </div>
+        )
+      })}
     </div>
   )
 }
+
