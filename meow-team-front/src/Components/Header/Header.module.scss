@@ -13,14 +13,7 @@
             display: none;
             
         }
-        .icon {
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-            color: --opex--red;
-            display: none;
-
-        }
+        
     }
 } 
     
@@ -36,14 +29,6 @@
         .logo{
             display: none;
             
-        }
-        .icon {
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-            color: --opex--red;
-            display: none;
-
         }
     }
 } 
@@ -61,14 +46,7 @@
             display: none;
             
         }
-        .icon {
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-            color: --opex--red;
-            display: none;
-
-        }
+        
     }
 } 
     
@@ -82,30 +60,23 @@
         justify-content: space-between;
         gap: 8px;
 
-        .icon {
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-            color: --opex--red;
-        }
+        
     }
 } 
     
 /* Media Query for Large screens */ 
 @media (min-width: 1281px) { 
     .Header{
-        height: 48px;
-        width: 100%;
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 8px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 10px;
         
-        .icon {
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-            color: --opex--red;
-        }
+        
+       
     }
 }
+
+ .logo {
+            width: 174px;
+        }

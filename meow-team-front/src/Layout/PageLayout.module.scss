@@ -1,61 +1,12 @@
 @import '../App.scss';
 
 
-/* Media Query for Mobile Devices */ 
-@media (max-width: 480px) { 
-    .PageLayout{
+.PageLayout{
         display: flex;
         flex-direction: column;
         margin: -8px;
         padding: 0;
-        justify-content: center; /* Reset vertical centering */
-        // align-items: flex-start; /* Reset horizontal centering */
-        // min-width: 1281; /* Reset width to fill the screen */
-    
-        .container{
-            background-color: $Buttons ;
-            display: flex;
-            flex-direction: column;
-            padding-top: 45px;
-            padding-bottom: 75px;
-            padding-left: 15% ;
-            padding-right: 10% ;
-            gap: 32px;
-        }
-    }
-} 
-    
-/* Media Query for low resolution  Tablets, Ipads */ 
-@media (min-width: 481px) and (max-width: 767px) { 
-    .PageLayout{
-        display: flex;
-        flex-direction: column;
-        margin: -8px;
-        padding: 0;
-        justify-content: center; /* Reset vertical centering */
-        // align-items: flex-start; /* Reset horizontal centering */
-        // min-width: 1281; /* Reset width to fill the screen */
-    
-        .container{
-            background-color: $Buttons ;
-            display: flex;
-            flex-direction: column;
-            padding-top: 45px;
-            padding-bottom: 75px;
-            padding-left: 10% ;
-            padding-right: 10% ;
-            gap: 32px;
-        }
-    }
-} 
-    
-/* Media Query for Tablets Ipads portrait mode */ 
-@media (min-width: 768px) and (max-width: 1024px){ 
-    .PageLayout{
-        display: flex;
-        flex-direction: column;
-        margin: -8px;
-        padding: 0;
+        align-items: center;
         justify-content: center; /* Reset vertical centering */
         // align-items: flex-start; /* Reset horizontal centering */
         // min-width: 1281; /* Reset width to fill the screen */
@@ -66,57 +17,39 @@
             flex-direction: column;
             padding-top: 75px;
             padding-bottom: 75px;
-            padding-left: 13% ;
-            padding-right: 10% ;
+            width: 1240px;
             gap: 32px;
+            
         }
+    }
+
+
+/* Media Query for Mobile Devices */ 
+@media (max-width: 480px) { 
+    .container {
+        width: 95% !important
+    };
+} 
+    
+/* Media Query for low resolution  Tablets, Ipads */ 
+@media (min-width: 481px) and (max-width: 767px) { 
+    .container {
+        padding-top : 20px !important;
+        width: 440px !important;
+    };
+} 
+    
+/* Media Query for Tablets Ipads portrait mode */ 
+@media (min-width: 768px) and (max-width: 1024px){ 
+    .container {
+        width: 720px !important;
     }
 } 
     
 /* Media Query for Laptops and Desktops */ 
 @media (min-width: 1025px) and (max-width: 1280px){ 
-    .PageLayout{
-        display: flex;
-        flex-direction: column;
-        margin: -8px;
-        padding: 0;
-        justify-content: center; /* Reset vertical centering */
-        // align-items: flex-start; /* Reset horizontal centering */
-        // min-width: 1281; /* Reset width to fill the screen */
-    
-        .container{
-            background-color: $Buttons ;
-            display: flex;
-            flex-direction: column;
-            padding-top: 75px;
-            padding-bottom: 75px;
-            padding-left: 18% ;
-            padding-right: 10% ;
-            gap: 32px;
-        }
+    .container {
+        max-width: 1000px !important;
     }
 } 
     
-/* Media Query for Large screens */ 
-@media (min-width: 1281px) { 
-    .PageLayout{
-        display: flex;
-        flex-direction: column;
-        margin: -8px;
-        padding: 0;
-        justify-content: center; /* Reset vertical centering */
-        // align-items: flex-start; /* Reset horizontal centering */
-        // min-width: 1281; /* Reset width to fill the screen */
-    
-        .container{
-            background-color: $Buttons ;
-            display: flex;
-            flex-direction: column;
-            padding-top: 75px;
-            padding-bottom: 75px;
-            padding-left: 13% ;
-            padding-right: 10% ;
-            gap: 32px;
-        }
-    }
-}

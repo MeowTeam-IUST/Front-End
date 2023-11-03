@@ -1,15 +1,11 @@
 @import '../../App.scss';
 
-/* Media Query for Mobile Devices */ 
-    
-/* Media Query for low resolution  Tablets, Ipads */ 
-@media (max-width: 767px) { 
-  .LittleCart{
-    width: 113px;
-    height: 150px;
+.LittleCart{
+    width: 200px;
+    aspect-ratio: 3/4;
     flex-shrink: 0;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin: 5px;
+    overflow: hidden;
     border-radius: 30px;
     display: flex;
     flex-direction: row;
@@ -21,28 +17,25 @@
 
     .GameTitle{
         width: 100%;
-        height: 20%;
+        height: 60px;
         background: var(--Blur---back, rgba(0, 0, 0, 0.20));
         backdrop-filter: blur(15px);
-        border-radius: 0px 0px 30px 30px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        padding: 10px 0 10px 0;
+        gap: 5px;
+        padding: 15px;
+        padding-top: 10px;
         .GameTitleText{
           display: flex;
-          text-align: center;
-          width: 80%;
-          height: 31px;
-          flex-direction: column;
-          justify-content: center;
+          
+          
+          
           flex-shrink: 0;
           color: #FFF;
           /* H3 */
-          font-size: 9px;
+          font-size: 15px;
           font-style: normal;
-          font-weight: 400;
+          font-weight: 600;
           line-height: 30px; /* 230.769% */
           letter-spacing: -0.26px;
         }
@@ -50,229 +43,72 @@
       .under{
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         .underText{
           color: #FFF;
           text-align: right;
-          font-family: B Yekan;
-          font-size: 10px;
+          font-family:$second_font;
+          font-size: 13px;
           font-style: normal;
           font-weight: 400;
-          line-height: 30px; /* 300% */
+          
           letter-spacing: -0.2px;
           display: flex;
-          // width: 91px;
-          // height: 32px;
+          
           flex-direction: column;
           justify-content: center;
           flex-shrink: 0;
-          display: none;
         }
       }
 }
 
     
+/* Media Query for low resolution  Tablets, Ipads */ 
+@media  (max-width: 767px) { 
+    .LittleCart {
+        width: 150px !important;
+        border-radius: 20px;
+        .GameTitle {
+          font-size: 13px;
+          padding: 8px;
+        }
+
+        .underText {
+          font-size: 10px !important;
+        }
+      }
 } 
     
 /* Media Query for Tablets Ipads portrait mode */ 
 @media (min-width: 768px) and (max-width: 1024px){ 
-  .LittleCart{
-    width: 213px;
-    height: 270px;
-    flex-shrink: 0;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin: 15px;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end; /* Changed 'end' to 'flex-end' */
-    background-size: cover;
-    background-image: url(../../assets/4.jfif); /* Removed single quotes and fixed the URL */
-    background-position: center center; /* Center the background image horizontally and vertically */
-    background-repeat: no-repeat; /* Removed single quotes */
-
-    .GameTitle{
-        width: 213px;
-        height: 60px;
-        background: var(--Blur---back, rgba(0, 0, 0, 0.20));
-        backdrop-filter: blur(15px);
-        border-radius: 0px 0px 30px 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        padding: 10px 0 10px 0;
-        .GameTitleText{
-          display: flex;
-          width: 166px;
-          height: 31px;
-          flex-direction: column;
-          justify-content: center;
-          flex-shrink: 0;
-          color: #FFF;
-          /* H3 */
+    .LittleCart {
+        width: 150px !important;
+        border-radius: 20px;
+        .GameTitle {
           font-size: 13px;
-          font-style: normal;
-          font-weight: 600;
-          line-height: 30px; /* 230.769% */
-          letter-spacing: -0.26px;
+          padding: 8px;
         }
-      }
-      .under{
-        display: flex;
-        flex-direction: row;
-        .underText{
-          color: #FFF;
-          text-align: right;
-          font-family: B Yekan;
-          font-size: 10px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 30px; /* 300% */
-          letter-spacing: -0.2px;
-          display: flex;
-          width: 91px;
-          height: 32px;
-          flex-direction: column;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-      }
-}
 
+        .underText {
+          font-size: 10px !important;
+        }
+      }
 } 
     
 /* Media Query for Laptops and Desktops */ 
 @media (min-width: 1025px) and (max-width: 1280px){ 
-  .LittleCart{
-    width: 213px;
-    height: 270px;
-    flex-shrink: 0;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin: 15px;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end; /* Changed 'end' to 'flex-end' */
-    background-size: cover;
-    background-image: url(../../assets/4.jfif); /* Removed single quotes and fixed the URL */
-    background-position: center center; /* Center the background image horizontally and vertically */
-    background-repeat: no-repeat; /* Removed single quotes */
-
-    .GameTitle{
-        width: 213px;
-        height: 60px;
-        background: var(--Blur---back, rgba(0, 0, 0, 0.20));
-        backdrop-filter: blur(15px);
-        border-radius: 0px 0px 30px 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        padding: 10px 0 10px 0;
-        .GameTitleText{
-          display: flex;
-          width: 166px;
-          height: 31px;
-          flex-direction: column;
-          justify-content: center;
-          flex-shrink: 0;
-          color: #FFF;
-          /* H3 */
+    .LittleCart {
+        width: 180px !important;
+        border-radius: 20px;
+        .GameTitle {
           font-size: 13px;
-          font-style: normal;
-          font-weight: 600;
-          line-height: 30px; /* 230.769% */
-          letter-spacing: -0.26px;
+          padding: 12px;
         }
-      }
-      .under{
-        display: flex;
-        flex-direction: row;
-        .underText{
-          color: #FFF;
-          text-align: right;
-          font-family: B Yekan;
-          font-size: 10px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 30px; /* 300% */
-          letter-spacing: -0.2px;
-          display: flex;
-          width: 91px;
-          height: 32px;
-          flex-direction: column;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-      }
-}
 
+        .underText {
+          font-size: 10px !important;
+        }
+      }
+    
 } 
     
-/* Media Query for Large screens */ 
-@media (min-width: 1281px) { 
-  .LittleCart{
-    width: 213px;
-    height: 270px;
-    flex-shrink: 0;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin: 15px;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end; /* Changed 'end' to 'flex-end' */
-    background-size: cover;
-    background-image: url(../../assets/4.jfif); /* Removed single quotes and fixed the URL */
-    background-position: center center; /* Center the background image horizontally and vertically */
-    background-repeat: no-repeat; /* Removed single quotes */
-
-    .GameTitle{
-        width: 213px;
-        height: 60px;
-        background: var(--Blur---back, rgba(0, 0, 0, 0.20));
-        backdrop-filter: blur(15px);
-        border-radius: 0px 0px 30px 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        padding: 10px 0 10px 0;
-        .GameTitleText{
-          display: flex;
-          width: 166px;
-          height: 31px;
-          flex-direction: column;
-          justify-content: center;
-          flex-shrink: 0;
-          color: #FFF;
-          /* H3 */
-          font-size: 13px;
-          font-style: normal;
-          font-weight: 600;
-          line-height: 30px; /* 230.769% */
-          letter-spacing: -0.26px;
-        }
-      }
-      .under{
-        display: flex;
-        flex-direction: row;
-        .underText{
-          color: #FFF;
-          text-align: right;
-          font-family: B Yekan;
-          font-size: 10px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 30px; /* 300% */
-          letter-spacing: -0.2px;
-          display: flex;
-          width: 91px;
-          height: 32px;
-          flex-direction: column;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-      }
-}
-
-}
