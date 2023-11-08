@@ -47,12 +47,17 @@
 
 .FooterMobile{
   width: 100%;
-  height: 64px;
   background: var(--Opex---gray, #E8E8E8);
   display: flex;
   flex-direction: row;
-  justify-content: left;
+  justify-content: space-between;
   position: relative;
+}
+.FooterItems{
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Media Query for Mobile Devices */ 
@@ -61,27 +66,74 @@
     display: none;
   }
   .FooterMobile{
-    gap: 8%;
-    .circlepersonselect{
+    padding-left: 60px;
+    padding-right: 20px;
+    height: 55px;
+    .CircleSelect{
       position: relative;
-      .circleicon{
-        margin-top: -19px;
+      .PersonCircleIcon{
+        margin-top: -23px;
+        margin-left: 20px;
         position: relative;
         z-index: 1;
       }
-      .celectedpersonicon{
+      .SelectedPersonIcon{
         position: absolute;
-        bottom: 40px;
+        bottom: 28px;
+        left: 71.5px;
+        z-index: 2
+      }
+      .ShopCircleIcon{
+        margin-top: -23px;
+        position: relative;
+        z-index: 1;
+      }
+      .SelectedShopIcon{
+        position: absolute;
+        bottom: 26.5px;
+        left: 52.5px;
+        z-index: 2
+      }
+      .HomeCircleIcon{
+        margin-top: -23px;
+        position: relative;
+        z-index: 1;
+      }
+      .SelectedHomeIcon{
+        position: absolute;
+        bottom: 28px;
+        left: 52.5px;
+        z-index: 2
+      }
+      .CommentCircleIcon{
+        margin-top: -23px;
+        position: relative;
+        z-index: 1;
+      }
+      .SelectedCommentIcon{
+        position: absolute;
+        bottom: 25px;
+        left: 51px;
+        z-index: 2
+      }
+      .SearchCircleIcon{
+        margin-top: -23px;
+        // margin-left: -1px;
+        position: relative;
+        z-index: 1;
+      }
+      .SelectedSearchIcon{
+        position: absolute;
+        bottom: 27px;
         left: 51px;
         z-index: 2
       }
     }
     .personicon{
-      color: black;
+      width: 25px;
     }
     .shopicon{
       width: 25px;
-      margin-left: -1.5rem;
     }
     .homeicon{
       width: 25px;
@@ -100,36 +152,83 @@
     display: none;
   }
   .FooterMobile{
-    gap: 9%;
-    .circlepersonselect{
+    padding-left: 50px;
+    padding-right: 18px;
+    height: 60px;
+    .CircleSelect{
       position: relative;
-      .circleicon{
-        margin-top: -19px;
+      .PersonCircleIcon{
+        margin-top: -28px;
+        margin-left: 26px;
         position: relative;
         z-index: 1;
       }
-      .celectedpersonicon{
+      .SelectedPersonIcon{
         position: absolute;
-        bottom: 40px;
+        bottom: 27px;
+        left: 78px;
+        z-index: 2
+      }
+      .ShopCircleIcon{
+        margin-top: -28px;
+        position: relative;
+        z-index: 1;
+      }
+      .SelectedShopIcon{
+        position: absolute;
+        bottom: 26px;
+        left: 53px;
+        z-index: 2
+      }
+      .HomeCircleIcon{
+        margin-top: -28px;
+        position: relative;
+        z-index: 1;
+      }
+      .SelectedHomeIcon{
+        position: absolute;
+        bottom: 28px;
+        left: 53px;
+        z-index: 2
+      }
+      .CommentCircleIcon{
+        margin-top: -28px;
+        position: relative;
+        z-index: 1;
+      }
+      .SelectedCommentIcon{
+        position: absolute;
+        bottom: 25px;
         left: 51px;
+        z-index: 2
+      }
+      .SearchCircleIcon{
+        margin-top: -28px;
+        margin-left: -15px;
+        position: relative;
+        z-index: 1;
+      }
+      .SelectedSearchIcon{
+        position: absolute;
+        bottom: 27px;
+        left: 36px;
         z-index: 2
       }
     }
     .personicon{
-      color: black;
+      width: 30px;
     }
     .shopicon{
-      width: 25px;
-      margin-left: -1.5rem;
+      width: 30px;
     }
     .homeicon{
-      width: 25px;
+      width: 30px;
     }
     .commenticon{
-      width: 25px;
+      width: 30px;
     }
     .searchicon{
-      width: 25px;
+      width: 30px;
     }
   }
 }
@@ -139,36 +238,83 @@
     display: none;
   }
   .FooterMobile{
-    gap: 10%;
-    .circlepersonselect{
+    height: 64px;
+    padding-left: 40px;
+    padding-right: 15.5px;
+    .CircleSelect{
       position: relative;
-      .circleicon{
-        margin-top: -19px;
+      .PersonCircleIcon{
+        margin-top: -32px;
+        margin-left: 26px;
         position: relative;
         z-index: 1;
       }
-      .celectedpersonicon{
+      .SelectedPersonIcon{
         position: absolute;
-        bottom: 40px;
+        bottom: 27px;
+        left: 78px;
+        z-index: 2
+      }
+      .ShopCircleIcon{
+        margin-top: -32px;
+        position: relative;
+        z-index: 1;
+      }
+      .SelectedShopIcon{
+        position: absolute;
+        bottom: 26px;
+        left: 53px;
+        z-index: 2
+      }
+      .HomeCircleIcon{
+        margin-top: -32px;
+        position: relative;
+        z-index: 1;
+      }
+      .SelectedHomeIcon{
+        position: absolute;
+        bottom: 28px;
+        left: 53px;
+        z-index: 2
+      }
+      .CommentCircleIcon{
+        margin-top: -32px;
+        position: relative;
+        z-index: 1;
+      }
+      .SelectedCommentIcon{
+        position: absolute;
+        bottom: 25px;
         left: 51px;
+        z-index: 2
+      }
+      .SearchCircleIcon{
+        margin-top: -32px;
+        margin-left: -15px;
+        position: relative;
+        z-index: 1;
+      }
+      .SelectedSearchIcon{
+        position: absolute;
+        bottom: 27px;
+        left: 36px;
         z-index: 2
       }
     }
     .personicon{
-      color: black;
+      width: 35px;
     }
     .shopicon{
-      width: 30px;
-      margin-left: -2rem;
+      width: 35px;
     }
     .homeicon{
-      width: 30px;
+      width: 35px;
     }
     .commenticon{
-      width: 30px;
+      width: 35px;
     }
     .searchicon{
-      width: 30px;
+      width: 35px;
     }
   }
 } 
