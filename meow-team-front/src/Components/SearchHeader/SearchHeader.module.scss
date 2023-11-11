@@ -47,27 +47,23 @@
     background: #FFFFFF;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 0px 15px 0px;
-    border-radius: 0 0 22px 22px;
+    align-self: center;
+    padding-bottom: 15px;
+    border-radius: 0 0 25px 25px;
     overflow-y: hidden;
-    border-top: 1px solid black;
-    box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.15);
+    // border-top: 1px solid black;
+    box-shadow: 10px 20px 40px 0px rgba(0, 0, 0, 0.15);
     z-index: 1;
 }
 
 .searchresult{
-    width: 95%;
-    display: flex;
-    justify-content: start;
-    padding: 1rem 1rem 1rem 0rem;
-    border-radius: 35px;
+    padding: 20px 20px 20px 0px;
     cursor: pointer;
 }
 
 .searchresult:hover{
-    background-color: #cdcdcd;
+    background-color: var(--Opex---gray, #E8E8E8);;
+    border-right: 3px solid #ff2d55;
 }
 
 .input{
@@ -107,7 +103,6 @@
 @media (min-width: 340px) and (max-width: 480px) {
     .search ,.searchwhenresult{
         .SearchHeader{
-            border-radius: 37.5px;
             gap: 0px;
             .input{
                 width: 70%;
@@ -123,7 +118,6 @@
 @media (min-width: 481px) and (max-width: 768px) { 
     .search ,.searchwhenresult{
         .SearchHeader{
-            border-radius: 37.5px;
             gap: 0px;
             .input{
                 width: 75%;
@@ -139,7 +133,6 @@
 @media (min-width: 768px) and (max-width: 1024px){ 
     .search ,.searchwhenresult{
         .SearchHeader{
-            border-radius: 37.5px;
             gap: 20px;
             .input{
                 width: 80%;
@@ -155,7 +148,6 @@
 @media (min-width: 1025px) and (max-width: 1280px){ 
     .search ,.searchwhenresult{
         .SearchHeader{
-            border-radius: 37.5px;
             gap: 50px;
             .input{
                 width: 80%;
@@ -170,8 +162,12 @@
 /* Media Query for Large screens */ 
 @media (min-width: 1281px) { 
     .search ,.searchwhenresult{
+        .res{
+            .searchresult{
+                width: 784px;
+            }
+        }
         .SearchHeader{
-            border-radius: 37.5px;
             gap: 50px;
             .input{
                 width: 80%;
@@ -187,7 +183,6 @@
 @media (min-width: 1850px) { 
     .search ,.searchwhenresult{
         .SearchHeader{
-            border-radius: 37.5px;
             gap: 50px;
             .input{
                 width: 80%;
