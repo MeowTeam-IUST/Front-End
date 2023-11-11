@@ -1,5 +1,5 @@
 
-function App() {
+export function App() {
   return (
     <>
       hi
@@ -7,4 +7,4 @@ function App() {
   )
 }
 
-export default App
+
