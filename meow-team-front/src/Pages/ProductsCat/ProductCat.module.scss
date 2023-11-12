@@ -1,0 +1,290 @@
+@import "../../App.scss";
+.whole{
+    display: flex;
+    width: 1630px;
+    padding: 50px 30px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 50px;
+    flex-shrink: 0;
+    opacity: 0.9;
+    background: var(--Admin---Back, #F4F7FE);
+}
+.cat{
+    display: flex;
+    padding: 10px;
+    align-items: flex-end;
+    gap: 10px;
+    color: var(--Admin---Title, #2B3674);
+    font-family: Anjoman;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px; /* 75% */
+    letter-spacing: -0.64px;
+}
+.upcat{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+}
+.upcatleft{
+    display: flex;
+    height: 420px;
+    padding: 30px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 40px;
+    flex: 1 0 0;
+    border-radius: 20px;
+    background: #FFF;
+}
+.upcatleft1{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+.upcatleft2{
+    color: var(--Admin---Title, #2B3674);
+    font-family: Anjoman;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px; /* 100% */
+    letter-spacing: -0.48px;
+}
+.upcatleft3{
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid var(--Admin---Stroke, rgba(163, 174, 208, 0.20));
+    background: #FAFCFE;
+}
+.upcatleftt1{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    align-self: stretch;
+}
+.upcatleftt11{
+    display: flex;
+    height: 28px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 122px;
+}
+.upcatleftt12{
+    display: flex;
+    width: 269px;
+    height: 24px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+.upcatleftt121{
+    color: var(--Admin---Title, #2B3674);
+font-family: Anjoman;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 32px; /* 200% */
+letter-spacing: -0.32px;
+}
+.upcatleftt13{
+    color: var(--Admin---Title, #2B3674);
+font-family: Anjoman;
+font-size: 24px;
+font-style: normal;
+font-weight: 800;
+line-height: 24px; /* 100% */
+letter-spacing: -0.48px;
+}
+.upcatleftt14{
+    height: 50px;
+align-self: stretch;
+border-radius: 10px;
+border: 1px solid var(--Admin---Stroke, rgba(163, 174, 208, 0.20));
+background: #FAFCFE;
+}
+.upcatright{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+}
+.upcatright1{
+    display: flex;
+    width: 617px;
+    height: 79px;
+    padding: 15px 20px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    border-radius: 20px;
+    background: #FFF;
+}
+.upcatright11{
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid var(--Admin---Stroke, rgba(163, 174, 208, 0.20));
+    background: var(--Admin---Back, #F4F7FE);
+}
+.upcatright12{
+    color: var(--Admin---Title, #2B3674);
+    font-family: Anjoman;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px; /* 100% */
+    letter-spacing: -0.48px;
+}
+.cardinp{
+    width: 617px;
+    height: 321px;
+    border-radius: 20px;
+    background: #FFF;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+
+}
+.cardinp1{
+    width: 268px;
+    height: 268px;
+    flex-shrink: 0;
+    border-radius: 13px;
+    border: 1px dashed var(--secondary-grey-500, #E0E5F2);
+    background: var(--secondary-grey-100, #FAFCFE);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.cardinp2{
+    color: var(--Admin---Button, #4318FF);
+    text-align: center;
+
+    /* Body Text/ Extra-Large/ Bold */
+    font-family: DM Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px; /* 160% */
+    letter-spacing: -0.4px;
+
+    
+}
+.cardinp3{
+    width: 215px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--secondary-dark-grey-500, #8F9BBA);
+    text-align: center;
+    /* Body Text/ Extra-Small/ Medium */
+    font-family: DM Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 166.667% */
+    letter-spacing: -0.24px;
+    
+}
+.cardinpp1{
+    display: inline-flex;
+    height: 221px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 50px;
+    flex-shrink: 0;
+    
+}
+.cardinpp2{
+        display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 7px;
+}
+.cardinpp21{
+    width: 161px;
+height: 32px;
+color: var(--Admin---Title, #2B3674);
+font-family: Anjoman;
+font-size: 24px;
+font-style: normal;
+font-weight: 800;
+line-height: 32px; /* 133.333% */
+letter-spacing: -0.48px;
+}
+.cardinpp22{
+    width: 244px;
+    height: 75px;
+    flex-shrink: 0;
+    color: var(--secondary-grey-600, var(--Admin---Stroke-2, #A3AED0));
+    text-align: right;
+    font-family: Shabnam;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; /* 162.5% */
+    letter-spacing: -0.32px;
+}
+.cardinpp3{
+    width: 140.5px;
+    height:  46px;
+    flex-shrink: 0;
+    background-color:#4318FF ;
+    color: #FFF;
+    text-align: center;
+    font-family: Anjoman;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 150% */
+    letter-spacing: -0.32px;
+    border-radius: 16px;
+}
+.cardp{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    align-self: stretch;
+}
+.cardp1{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+}
+.cardinp11{
+    color: var(--Admin---Title, #2B3674);
+    text-align: center;
+    font-family: Anjoman;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 22px; /* 110% */
+    letter-spacing: -0.4px;
+}
+.cardsofpro1{
+    display: flex;
+    padding: 10px 0px;
+    
+    
+    gap: 20px;
+    align-self: stretch;
+    flex-wrap: wrap;
+    direction: rtl;
+    }
+.buttonColorChange {
+        background-color: var(--Admin---Title, #2B3674);
+      }

@@ -66,7 +66,7 @@ export default function LandingPage() {
       </div>
       <div className={styles.AllGames}>
           <CategoryHeader icon={gameControlle} title={"همه بازی‌ها"}/>
-          <GameList Products={Populares}/>
+          <GameList Products={Populares} isAdmin={false}/>
 
       </div>
     </div>

@@ -192,7 +192,9 @@
   
       margin-top: -3%;
   }
-
+  .buttonColorChange {
+    background: var(--Admin---Title, #2B3674) ;
+  }
 
 
   .cardsofpro{
@@ -206,6 +208,7 @@
   direction: rtl;
   }
   .cardofpro {
+    position: relative;
       width: 236.666px;
       height: 343.165px;
       flex-shrink: 0;
@@ -301,6 +304,9 @@
     background: var(--Opex---red, #f07b8e);
     font-size: 20px;
     color:#000 ;
+}
+.buttonColorChange {
+  background: var(--Admin---Title,  #4318FF)  !important;
 }
 .cmbox{
  display: flex;
@@ -487,6 +493,33 @@ border: 1px solid rgba(142, 136, 140, 0.41);
   justify-content: space-between;
   align-items: flex-start;
   align-self: stretch;
+}
+.delete{
+  position: absolute;
+  top: 0;
+  margin-top: 0.2%;
+  border-top-left-radius: 30px;  // Add this line
+  border-top-right-radius: 30px; 
+  width: 236.666px;
+  height: 47px;
+  flex-shrink: 0;
+  background: var(--Opex---red, #E52A49);
+  backdrop-filter: blur(15px);
+
+}
+.delete1{
+  margin-right: 30%;
+  margin-top: 5%;
+  background: var(--Opex---red, #E52A49);
+  border: none;
+  color: #FFF;
+  text-align: center;
+  font-family: Shabnam FD-WOL;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px; /* 137.5% */
+  letter-spacing: -0.32px;
 }
 
 
