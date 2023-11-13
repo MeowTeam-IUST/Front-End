@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styles from './ProfileHeader.module.scss'
 import { Button } from '@mui/material'
 
-export default function ProfileHeader({name, image}) {
+export function ProfileHeader({name, image}) {
   const [isAuth, setIsAuth] = React.useState(false)
   useEffect(() => {
     localStorage.getItem('token') ? setIsAuth(true) : setIsAuth(false);

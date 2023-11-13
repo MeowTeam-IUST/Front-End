@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Footer.module.scss'
 import footer from '../../assets/footer.png'
 import support from  '../../assets/support.svg'
+
 export default function Footer() {
   return (
     <>

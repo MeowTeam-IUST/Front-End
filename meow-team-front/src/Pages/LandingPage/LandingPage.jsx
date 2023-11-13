@@ -75,6 +75,7 @@ export default function LandingPage() {
   const mainbody = useRef(null);
   return (
     <PageLayout>
+      سلاممممم
       <div className={styles.Category}>
         <CategoryHeader icon={bars} title={"دسته‌بندی محصولات"} />
         <div className={styles.CategoryItems}>

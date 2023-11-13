@@ -3,7 +3,7 @@ import styles from './SearchHeader.module.scss'
 import search from '../../assets/search.svg'
 import { InputOutlined } from '@mui/icons-material';
 
-function SearchHeader() {
+export function SearchHeader() {
     const [input, setInput] = useState("");
     const [result, setResult] = useState("");
     const [searchShow, setSearchShow] = useState(false);
@@ -65,7 +65,8 @@ function SearchHeader() {
         </div>
     )
 }
-export default SearchHeader ;
+
+
 const products = [
   { label: 'کالاف دیوتی موبایل', id: '0', url: ''},
   { label: 'کلش آف کلنز', id: '2', url: ''},
