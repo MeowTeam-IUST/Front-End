@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DashboardMain component renders children correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="_MainContent_01f425"
+  >
+    <div
+      class="child"
+    >
+      Child Component
+    </div>
+  </div>
+</DocumentFragment>
+`;
