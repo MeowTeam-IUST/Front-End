@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import routes from './Routes';
 
 
-const AppRouter = () => {
+export function AppRouter () {
     const [isAuth, setIsAuth] = useState(false);
     useEffect(() => {
       const token = localStorage.getItem("login");
@@ -33,4 +33,3 @@ const AppRouter = () => {
     );
 };
 
-export default AppRouter;
