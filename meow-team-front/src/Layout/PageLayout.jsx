@@ -3,7 +3,7 @@ import styles from './PageLayout.module.scss'
 import Footer from '../Components/Footer/Footer'
 import Header from '../Components/Header/Header';
 
-export function PageLayout ({ children }) {
+export default function PageLayout ({ children }) {
 
   return (
     <div className={styles.PageLayout} dir='rtl'>

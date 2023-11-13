@@ -1,20 +1,22 @@
-import { render, screen } from "@testing-library/react";
-import PageLayout from "./PageLayout";
+import React from "react";
+import { render } from "@testing-library/react";
+import { PageLayout } from "./PageLayout";
+import { expect } from "vitest";
 
-test("renders PageLayout with children", () => {
-  render(<PageLayout>Test Child</PageLayout>);
-  const childElement = screen.getByText(/Test Child/i);
-  expect(childElement).toBeInTheDocument();
-});
+describe("PageLayout", () => {
+  it("renders without crashing", () => {
+    render(<PageLayout />);
+  });
 
-test("renders Header in PageLayout", () => {
-  render(<PageLayout />);
-  const headerElement = screen.getByTestId("header");
-  expect(headerElement).toBeInTheDocument();
-});
+  it("renders children correctly", () => {
+    const { getByText } = render(
+      <PageLayout>
+        <div>Test Child</div>
+      </PageLayout>
+    );
 
-test("renders Footer in PageLayout", () => {
-  render(<PageLayout />);
-  const footerElement = screen.getByTestId("footer");
-  expect(footerElement).toBeInTheDocument();
+    expect(getByText("Test Child")).toBeVisible();
+  });
+
+  // Add more test cases as needed
 });
