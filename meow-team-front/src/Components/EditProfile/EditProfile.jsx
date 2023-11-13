@@ -2,7 +2,9 @@ import React from 'react'
 import styles from './EditProfile.module.scss'
 import azhini from '../../assets/azhini.jfif'
 import EditProfileInput from '../EditProfileInput/EditProfileInput'
-export default function EditProfile() {
+
+
+export function EditProfile() {
   return (
     <div className={styles.EditProfile}>
       <div className={styles.up}>
