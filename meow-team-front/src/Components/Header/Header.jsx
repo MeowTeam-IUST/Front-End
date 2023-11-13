@@ -9,7 +9,7 @@ import azhini from "../../assets/azhini.jfif";
 import { useSelector, useDispatch } from "react-redux";
 import { SetUser } from '../../Slices/UserSlice.js';
 
-export default function Header({ Profile }) {
+export function Header({ Profile }) {
   const state = useSelector((state) => state.User); // Access the "User" slice of the state
   const dispatch = useDispatch();
 
