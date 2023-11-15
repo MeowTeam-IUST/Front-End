@@ -1,0 +1,68 @@
+/* Popup.module.scss */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay color with transparency */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup {
+    position: fixed;
+    top: 25%;
+    left: 33.33%; /* One-third of the screen width */
+    width: 90%; /* One-third of the screen width */
+    max-width: 600px; /* Maximum width of the popup */
+    // height: 40%; /* Half of the screen height */
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    .header{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .Title{
+      display: flex;
+      padding: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--Admin---Title, #2B3674);
+      font-family: Anjoman;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 24px; /* 75% */
+      letter-spacing: -0.64px;
+    }
+    .popupContent{
+      border-radius: 20px;
+      background: #FFF;
+      box-shadow: 0px 18px 40px 0px rgba(163, 174, 208, 0.20);
+    }
+  }
+  
+  .closeButton {
+    align-items: center;
+    padding: 20px;
+
+    cursor: pointer;
+  }
+  
+  .popupContent {
+    /* Add your styles for the popup content here */
+  }
+  

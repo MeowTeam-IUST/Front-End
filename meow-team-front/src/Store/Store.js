@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import UserSlice from "../Slices/UserSlice.js";
+import CartSlice from "../Slices/CartSlice.js";
 
 // Load state from localStorage if available
 const persistedState = localStorage.getItem("reduxState")
@@ -9,6 +10,7 @@ const persistedState = localStorage.getItem("reduxState")
 const store = configureStore({
   reducer: {
     User: UserSlice,
+    Cart: CartSlice,
     
   },
   preloadedState: persistedState, // Set the preloadedState with the persistedState

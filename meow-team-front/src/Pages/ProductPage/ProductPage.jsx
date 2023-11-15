@@ -13,7 +13,7 @@ import bars from '../../assets/bars.svg'
 import CategoryItem from '../../Components/CategoryItem/CategoryItem'
 import azhini from "../../assets/azhini.jfif"
 import CategoryHeader from '../../Components/CategoryHeader/CategoryHeader'
-
+import Header from '../../Components/Header/Header'
 export default function ProductPage(){
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const Categorys = ["کالاف دیوتی موبایل" ,"گنشین ایمپکت" , "کلش آف کلنز", "محصولات فیزیکی", "ایپکس لجندز"]

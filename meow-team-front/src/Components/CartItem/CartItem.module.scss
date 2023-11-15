@@ -1,0 +1,90 @@
+@import '../../App.scss';
+
+.CartItem{
+    display: flex;
+    padding: 20px;
+    // height: 150px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+    border-radius: 20px;
+    background: #FFF;
+
+    /* User Shadow */
+    box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.15);
+    .CartItem__img{
+        aspect-ratio: 3/4;
+        flex-shrink: 0;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        border-radius: 30px;
+        height: 180px;
+        flex-shrink: 0;
+        background:lightgray -9.899px -18.2px / 136.98% 118.127% no-repeat;
+        background-size: cover;
+        background-position: center center; /* Center the background image horizontally and vertically */
+        background-repeat: no-repeat; /* Removed single quotes */
+    }
+    .CartItem__info{
+        display: flex;
+        padding: 10px 0px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex: 1 0 0;
+        align-self: stretch;
+        .info{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            color: #000;
+            text-align: right;
+            font-family: Anjoman;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            .text1{
+                color: #000;
+                text-align: right;
+                font-family: Anjoman;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 800;
+                line-height: normal;
+            }
+        }
+        .quantity{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            .count{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                width: 100px;
+                height: 40px;
+                flex-shrink: 0;
+                border-radius: 10px;
+                color: var(--Opex---red, var(--Opex---red, #E52A49));
+                text-align: center;
+                font-family: Rubik;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                background: var(--Very-Light-Gray, #F5F6FA);
+                .icon{
+                    width: 10.074px;
+                    height: 10px;
+                    flex-shrink: 0;
+                } 
+
+            }
+        }
+    }
+}

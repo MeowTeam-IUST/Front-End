@@ -4,8 +4,7 @@ const initialState = {
   Name : null,
   Phone : null,
   Image : null,
-  Token : null,
-
+  Token : null
 };
 
 const UserSlice = createSlice({

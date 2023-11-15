@@ -1,0 +1,101 @@
+@import "../../../App.scss";
+
+
+.line{
+    background: var(--Opex---gray, #E8E8E8);
+    width: 100%;
+    height: 1px;
+}
+.main{
+    display: flex;
+    // min-height: 666px;
+    padding: 25px 32px;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    flex: 1 0 0;
+
+    .box{
+        display: flex;
+        width: 760px;
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        border-radius: 20px;
+        background: #FFF;
+        /* User Shadow */
+        box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.15);
+        .item{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            align-self: stretch;
+            color: #000;
+            text-align: right;
+            font-family: Anjoman;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: normal;
+            .text1{
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    }
+    .title1{
+        color: #000;
+        text-align: right;
+        font-family: Anjoman;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+    .buttons{
+        display: flex;
+        height: 127px;
+        align-items: flex-start;
+        gap: 32px;
+        align-self: stretch;
+        /* User Shadow */
+        box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.15);
+        .button1{
+            border-radius: 30px;
+            background: #0065AE;
+            display: flex;
+            padding: 10px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex: 1 0 0;
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #FFF;
+            text-align: right;
+            font-family: Anjoman;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            .header{
+                color: #FFF;
+                text-align: right;
+                font-family: Anjoman;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 800;
+                line-height: normal;
+            }
+        }
+        .button2{
+            background: var(--Opex---red, #E52A49); 
+        }
+    }
+}
