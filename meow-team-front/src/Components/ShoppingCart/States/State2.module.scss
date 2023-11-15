@@ -55,6 +55,30 @@
         font-weight: 700;
         line-height: normal;
     }
+    .textarea {
+        width: 97%;
+        // height: 4em; /* Set the height to accommodate 4 lines */
+        overflow-y: auto; /* Enable vertical scroll when content exceeds the height */
+        overflow-x: hidden;
+        border: rgba(163, 174, 208, 0.20) solid 1px; /* Remove the border */
+        padding: 8px; /* Optional: Add padding for better visual appearance */
+        outline: none;
+        border-radius: 10px;
+        resize: vertical; /* Allow resizing only in the vertical direction */
+        /* Custom scrollbar styles */
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background-color: #7f8c8d; /* Change the color of the thumb */
+            border-radius: 5px; /* Optional: Add border-radius to the thumb */
+        }
+    
+        &::-webkit-scrollbar-track {
+            // background-color: #d5d8dc; /* Change the color of the track */
+        }
+      }
     .buttons{
         display: flex;
         height: 127px;

@@ -19,6 +19,7 @@ export default function State2({changeState}) {
       describthion: "هیچی",
     }
   ]
+  const [describthion, setDescribthion] = React.useState('');
 
   return (
     <>
@@ -45,6 +46,7 @@ export default function State2({changeState}) {
           <div className={styles.box}>
             <div>توضیحات سفارش</div>
             <div className={styles.line}/>
+            <textarea className={styles.textarea} rows={4} maxRows={4} placeholder="اطلاعات را اینجا وارد کنید ..." onChange={(e)=> setDescribthion(e.target.value)} />
           </div>
           <div className={styles.title1} onClick={()=>changeState(3)}>انتخاب روش پرداخت</div>
           <div className={styles.buttons}>
