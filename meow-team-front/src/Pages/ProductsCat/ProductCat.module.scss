@@ -59,6 +59,7 @@
     letter-spacing: -0.48px;
 }
 .upcatleft3{
+    direction: rtl;
     flex: 1 0 0;
     align-self: stretch;
     border-radius: 10px;
@@ -130,6 +131,7 @@ background: #FAFCFE;
     background: #FFF;
 }
 .upcatright11{
+    direction: rtl;
     flex: 1 0 0;
     align-self: stretch;
     border-radius: 10px;
@@ -147,6 +149,7 @@ background: #FAFCFE;
 }
 .cardinp{
     width: 617px;
+    padding: 15px 20px;
     height: 321px;
     border-radius: 20px;
     background: #FFF;

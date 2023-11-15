@@ -29,6 +29,11 @@ export default function ProductsCat(){
       newCards.splice(index, 1);
       setCards(newCards);
     };
+    const handleSave = (index, newName, newPrice) => {
+      const newCards = [...cards];
+      newCards[index] = { name: newName, price: newPrice };
+      setCards(newCards);
+    };
     const Populares = [
       {
         name: "کالاف دیوتی موبایل",
@@ -69,9 +74,8 @@ export default function ProductsCat(){
                 <div className={styles.upcatleft}>
                 <div className={styles.upcatleft1}>
                 <div className={styles.upcatleft2}>توضیحات دسته :</div>
-                <div className={styles.upcatleft3}></div>
-                    
-                    </div>
+                 <input  className={styles.upcatleft3} type="text" name="description"  /></div>
+                  
                     <div className={styles.upcatleftt1}>
                     <div className={styles.upcatleftt11}>
                     <div className={styles.upcatleftt12}>
@@ -89,7 +93,7 @@ export default function ProductsCat(){
                 </div>
                 <div className={styles.upcatright}>
                 <div className={styles.upcatright1}>
-                <div className={styles.upcatright11}></div>
+                <input className={styles.upcatright11}  type="text"></input>
                  <div className={styles.upcatright12}>نام دسته محصول</div>
                 </div>
                 <div className={styles.cardinp}> 
@@ -105,7 +109,7 @@ export default function ProductsCat(){
                       <div className={styles.cardinpp21}>آپلود عکس کارت</div>
                       <div className={styles.cardinpp22}>از این قسمت می‌توانید برای کارت محصول خود عکس بارگزاری نمایید</div>
                     </div>
-                    <input type="file" id="fileInput" style={{display: 'none'}} onChange={(event) => { handleFileChange(event); setImageUploaded(true); }} />
+                    <input type="file" accept="image/*" id="fileInput" style={{display: 'none'}} onChange={(event) => { handleFileChange(event); setImageUploaded(true); }} />
                     <button className={styles.cardinpp3} onClick={() => document.getElementById('fileInput').click()}>آپلود فایل</button>
                   </div>
                 </div>
@@ -129,6 +133,8 @@ export default function ProductsCat(){
                 showdiv={true}
                 changeButtonColor={true}
                 onDelete={() => handleDelete(index)}
+                applyLTR={true}
+                onSave={(newName, newPrice) => handleSave(index, newName, newPrice)}
               />
             ))}
                 <Add applyLTR={true} card={true}/>
