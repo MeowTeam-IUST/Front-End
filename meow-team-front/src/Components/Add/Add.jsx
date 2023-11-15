@@ -3,7 +3,7 @@ import { useState,useEffect } from 'react';
 import styles from '../../Pages/AdminProduct/AdminProduct.module.scss'
 export default function Add({applyLTR,card}) {
     const [showPopup, setShowPopup] = useState(false);
-    const [imageUploaded, setImageUploaded] = useState(false);
+    const [imageUploaded1, setImageUploaded1] = useState(false);
 
     const handleClick = () => {
         setShowPopup(true);
@@ -15,20 +15,20 @@ export default function Add({applyLTR,card}) {
     setShowPopup(false);
   }
   console.log(showPopup)
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage1, setSelectedImage1] = useState(null);
 
 const handleFileChange = (event) => {
   const file = event.target.files[0];
   const reader = new FileReader();
 
   reader.onloadend = () => {
-    setSelectedImage(reader.result);
+    setSelectedImage1(reader.result);
   }
 
   if (file) {
     reader.readAsDataURL(file);
   } else {
-    setSelectedImage(null);
+    setSelectedImage1(null);
   }
 }
 
@@ -54,9 +54,9 @@ const handleFileChange = (event) => {
                 </div>
                 <div className={styles.cardinp}> 
                   <div className={styles.cardinp1}>
-                  {!imageUploaded ? 
+                  {!imageUploaded1 ? 
                     <div className={styles.cardinp2}>UploadFiles</div> :
-                    <img src={selectedImage} alt="Selected" className={styles.cardinp1} />
+                    <img src={selectedImage1} alt="Selected" className={styles.cardinp1} />
                     }
                     <div className={styles.cardinp3}>PNG, JPG and GIF files are allowed</div>
                   </div>
@@ -65,7 +65,7 @@ const handleFileChange = (event) => {
                       <div className={styles.cardinpp21}>آپلود عکس کارت</div>
                       <div className={styles.cardinpp22}>از این قسمت می‌توانید برای کارت محصول خود عکس بارگزاری نمایید</div>
                     </div>
-                    <input type="file" id="fileInput" style={{display: 'none'}} onChange={(event) => { handleFileChange(event); setImageUploaded(true); }} />
+                    <input type="file" id="fileInput" style={{display: 'none'}} onChange={(event) => { handleFileChange(event); setImageUploaded1(true); }} />
                     <button className={styles.cardinpp3} onClick={() => document.getElementById('fileInput').click()}>آپلود فایل</button>
                   </div>
                 </div>

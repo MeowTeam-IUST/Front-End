@@ -6,52 +6,45 @@ import styles from './ProductCat.module.scss'
 import gameControlle from '../../assets/game-controlle.svg'
 import Productcard from '../../Components/Productcard/Productcard'
 import Add from '../../Components/Add/Add';
+import Requests from '../../API/Requests';
 export default function ProductsCat(){
     const [imageUploaded, setImageUploaded] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
-    const [cards, setCards] = useState([
-      {name: '۸۰کریستال گنشین', price: 'قیمت ۲۴ تومان'},
-      {name: '۸۰کریستال گنشین', price: 'قیمت ۲۰۰۰ تومان'},
-      {name: '۸۰کریستال گنشین', price: 'قیمت ۲۴۰۰۰ تومان'},
-      {name: '۸۰کریستال گنشین', price: 'قیمت ۲۴۰۰۰ تومان'},
-      {name: '۸۰کریستال گنشین', price: 'قیمت ۲۴۰۰۰ تومان'},
-      {name: '۸۰کریستال گنشین', price: 'قیمت ۲۴۰۰۰ تومان'},
-      {name: '۸۰کریستال گنشین', price: 'قیمت ۲۴۰۰۰ تومان'},
-      {name: '۸۰کریستال گنشین', price: 'قیمت ۲۴۰۰۰ تومان'},
-      {name: '۸۰کریستال گنشین', price: 'قیمت ۲۴۰۰۰ تومان'},
-      {name: '۸۰کریستال گنشین', price: 'قیمت ۲۴۰۰۰ تومان'},
-      {name: '۸۰کریستال گنشین', price: 'قیمت ۲۴۰۰۰ تومان'},
-      {name: '۸۰کریستال گنشین', price: 'قیمت ۲۴۰۰۰ تومان'},
-      // ...other cards
-    ]);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [cards, setCards] = useState([]);
+
+    useEffect(() => {
+      const fetchProducts = async () => {
+        const productsData = await Requests().getProducts(1);
+        setCards(productsData);
+      };
+    
+      fetchProducts();
+    }, []);
+
+
+    // useEffect(() => {
+    //   const fetchCategoryDetails = async () => {
+    //     const categoryDetails = await Requests().getCategoryDetails(112); // Replace '1' with the actual category ID
+    //     setTitle(categoryDetails.title);
+    //     setDescription(categoryDetails.description);
+    //   };
+
+    //   fetchCategoryDetails();
+    // }, []);
+    
     const handleDelete = (index) => {
       const newCards = [...cards];
       newCards.splice(index, 1);
       setCards(newCards);
     };
+    
     const handleSave = (index, newName, newPrice) => {
       const newCards = [...cards];
-      newCards[index] = { name: newName, price: newPrice };
+      newCards[index] = { title: newName, price: newPrice };
       setCards(newCards);
     };
-    const Populares = [
-      {
-        name: "کالاف دیوتی موبایل",
-        image: "https://www.uplooder.net/img/image/67/fe6e711a27d4daacee44991c75f39669/Rectangle-15.png"
-        },
-      {
-        name: "گنشین ایمپکت",
-        image: "https://www.uplooder.net/img/image/5/33f3f9c4f29317abe180f280f23bf643/Rectangle-15.png",
-      },
-      {
-        name: "کلش آف کلنز",
-        image: "https://www.uplooder.net/img/image/39/2eb40d11bff328e538eb1e44bcff5fc0/Rectangle-15.png",
-      },
-      {
-        name: "ایپکس لجندز",
-        image: "https://www.uplooder.net/img/image/25/288e04f40eb951dda7ce9db7979e2373/Rectangle-15.png",
-      }
-    ]
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -67,6 +60,43 @@ export default function ProductsCat(){
           setSelectedImage(null);
         }
       }
+      const handleSubmit = async () => {
+        const category = {
+          id:null,
+          title: title,
+          imageURL: "string",
+          description: description,
+          isActive: true,
+          parentID: null
+        };
+        const response = await Requests().addCategory(category);
+        const newCategoryId = response.data.result.data.id;
+        localStorage.setItem('newCategoryId', newCategoryId);
+        console.log('idd',newCategoryId) // Replace 'id' with the actual property name in the response
+        // Wait for 1 second before fetching the category details
+        setTimeout(async () => {
+          console.log('idd2',newCategoryId) 
+          const categoryDetails = await Requests().getCategoryDetails(newCategoryId);
+          setTitle(categoryDetails.title);
+          setDescription(categoryDetails.description);
+        }, 1000);
+      };
+      useEffect(() => {
+        const fetchCategoryDetails = async () => {
+          // Get the newCategoryId from localStorage
+          const newCategoryId = localStorage.getItem('newCategoryId');
+          if (newCategoryId) {
+            const categoryDetails = await Requests().getCategoryDetails(newCategoryId);
+            setTitle(categoryDetails.title);
+            setDescription(categoryDetails.description);
+          }
+        };
+      
+        fetchCategoryDetails();
+      }, []);
+      
+      
+      
     return(
         <div className={styles.whole}>
             <div className={styles.cat}> دسته های محصولات</div>
@@ -74,7 +104,9 @@ export default function ProductsCat(){
                 <div className={styles.upcatleft}>
                 <div className={styles.upcatleft1}>
                 <div className={styles.upcatleft2}>توضیحات دسته :</div>
-                 <input  className={styles.upcatleft3} type="text" name="description"  /></div>
+                 <input className={styles.upcatleft3} type="text" name="description" 
+                 value={description} onChange={(e) => setDescription(e.target.value)} />
+                    </div>
                   
                     <div className={styles.upcatleftt1}>
                     <div className={styles.upcatleftt11}>
@@ -93,9 +125,11 @@ export default function ProductsCat(){
                 </div>
                 <div className={styles.upcatright}>
                 <div className={styles.upcatright1}>
-                <input className={styles.upcatright11}  type="text"></input>
+                <input className={styles.upcatright11} type="text" value={title}
+                 onChange={(e) => setTitle(e.target.value)} />
                  <div className={styles.upcatright12}>نام دسته محصول</div>
                 </div>
+                <button onClick={handleSubmit} className={styles.cardinpp3} >اضافه کردن</button>
                 <div className={styles.cardinp}> 
                   <div className={styles.cardinp1}>
                   {!imageUploaded ? 
@@ -109,7 +143,7 @@ export default function ProductsCat(){
                       <div className={styles.cardinpp21}>آپلود عکس کارت</div>
                       <div className={styles.cardinpp22}>از این قسمت می‌توانید برای کارت محصول خود عکس بارگزاری نمایید</div>
                     </div>
-                    <input type="file" accept="image/*" id="fileInput" style={{display: 'none'}} onChange={(event) => { handleFileChange(event); setImageUploaded(true); }} />
+                    <input type="file" accept="image/*" id="fileInputProCat" style={{display: 'none'}} onChange={(event) => { handleFileChange(event); setImageUploaded(true); }} />
                     <button className={styles.cardinpp3} onClick={() => document.getElementById('fileInput').click()}>آپلود فایل</button>
                   </div>
                 </div>
@@ -126,21 +160,21 @@ export default function ProductsCat(){
             
             <div className={styles.cardsofpro1}>
             {cards.map((card, index) => (
-              <Productcard
-                key={index}
-                name={card.name}
-                price={card.price}
-                showdiv={true}
-                changeButtonColor={true}
-                onDelete={() => handleDelete(index)}
-                applyLTR={true}
-                onSave={(newName, newPrice) => handleSave(index, newName, newPrice)}
-              />
-            ))}
-                <Add applyLTR={true} card={true}/>
+            <Productcard
+              key={index}
+              name={card.title}
+              price={`قیمت ${card.price} تومان`}
+              showdiv={true}
+              changeButtonColor={true}
+              onDelete={() => handleDelete(index)}
+              applyLTR={true}
+              onSave={(newName, newPrice) => handleSave(index, newName, newPrice)}
+            />
+          ))}
+               
             </div>
               
             </div>
         </div>
     )
-}
+} <Add applyLTR={true} card={true}/>

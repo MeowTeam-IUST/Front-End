@@ -1,6 +1,7 @@
 import React from 'react'
 import styles  from '../../Pages/ProductPage/ProductPage.module.scss'
 import { useState,useEffect } from 'react';
+import Requests from '../../API/Requests';
 
 export function Comment({logo, name, date, text}) {
     return (

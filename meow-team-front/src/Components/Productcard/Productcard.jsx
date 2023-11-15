@@ -1,6 +1,7 @@
 import React from 'react'
 import styles  from '../../Pages/ProductPage/ProductPage.module.scss'
 import { useState,useEffect } from 'react';
+import Requests from '../../API/Requests';
 export default function Productcard({name, price, changeButtonColor,showdiv,onDelete,applyLTR, onSave}) {
             const [showPopup, setShowPopup] = useState(false);
             const [imageUploaded, setImageUploaded] = useState(false);
@@ -36,6 +37,7 @@ export default function Productcard({name, price, changeButtonColor,showdiv,onDe
             setSelectedImage(null);
         }
         }
+        
     return(
         <div className={styles.cardofpro}>
             {showdiv && <div className={styles.delete}>
