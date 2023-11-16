@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './Order.module.css'
 import expand_more from '../../assets/expand_more.svg'
 import arrow_right from '../../assets/keyboard_arrow_right.svg'
@@ -9,6 +9,60 @@ import Checkbox from '@mui/material/Checkbox';
 
 function AdminOrder() {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+    const [checktick, Setchecktick] = useState(false);
+    const [checktickone, Setchecktickone] = useState(false);
+    const [checkticktwo, Setcheckticktwo] = useState(false);
+    const [checktickthree, Setchecktickthree] = useState(false);
+    const [checktickfour, Setchecktickfour] = useState(false);
+    const HandelCheckClick = () => {
+        if (checktick == false) {
+            Setchecktick(true);
+            Setchecktick(true);
+            Setchecktickone(true);
+            Setcheckticktwo(true);
+            Setchecktickthree(true);
+            Setchecktickfour(true);
+        } 
+        else {
+            Setchecktick(false);
+            Setchecktickone(false);
+            Setcheckticktwo(false);
+            Setchecktickthree(false);
+            Setchecktickfour(false);
+        }
+    }
+    const HandelCheckClickone = () => {
+        if ((checktickone) == false) {
+            Setchecktickone(true);
+        } 
+        else {
+            Setchecktickone(false);
+        }
+    }
+    const HandelCheckClicktwo = () => {
+        if ((checkticktwo) == false) {
+            Setcheckticktwo(true);
+        } 
+        else {
+            Setcheckticktwo(false);
+        }
+    }
+    const HandelCheckClickthree = () => {
+        if ((checktickthree) == false) {
+            Setchecktickthree(true);
+        } 
+        else {
+            Setchecktickthree(false);
+        }
+    }
+    const HandelCheckClickfour = () => {
+        if ((checktickfour) == false) {
+            Setchecktickfour(true);
+        } 
+        else {
+            Setchecktickfour(false);
+        }
+    }
   return (
     <div className={styles.layout}>
         <div className={styles.container}>
@@ -40,7 +94,7 @@ function AdminOrder() {
                             </div>
                             <div className={styles.headerfirstitemtext}>شماره سفارش</div>
                         </div>
-                        <Checkbox {...label} size="small" sx={{padding:0}}/>
+                        <Checkbox {...label} size="small" sx={{padding:0}} onClick={() => HandelCheckClick()}/>
                     </div>
                     <div className={styles.separator}>
                     </div>
@@ -59,7 +113,7 @@ function AdminOrder() {
                         <div className={styles.carditem}>
                             <div className={styles.carditemtext}>12356</div>
                         </div>
-                        <Checkbox {...label} size="small" sx={{padding:0}}/>
+                        <Checkbox {...label} checked={checktickone} size="small" sx={{padding:0}} onClick={() => HandelCheckClickone()}/>
                     </div>
                     <div className={styles.card}>
                         <div className={styles.carditem}>
@@ -74,7 +128,7 @@ function AdminOrder() {
                         <div className={styles.carditem}>
                             <div className={styles.carditemtext}>12356</div>
                         </div>
-                        <Checkbox {...label} size="small" sx={{padding:0}}/>
+                        <Checkbox {...label} checked={checkticktwo} size="small" sx={{padding:0}} onClick={() => HandelCheckClicktwo()}/>
                     </div>
                     <div className={styles.card}>
                         <div className={styles.carditem}>
@@ -89,7 +143,7 @@ function AdminOrder() {
                         <div className={styles.carditem}>
                             <div className={styles.carditemtext}>12356</div>
                         </div>
-                        <Checkbox {...label} size="small" sx={{padding:0}}/>
+                        <Checkbox {...label} checked={checktickthree} size="small" sx={{padding:0}} onClick={() => HandelCheckClickthree()}/>
                     </div>
                     <div className={styles.card}>
                         <div className={styles.carditem}>
@@ -104,7 +158,7 @@ function AdminOrder() {
                         <div className={styles.carditem}>
                             <div className={styles.carditemtext}>12356</div>
                         </div>
-                        <Checkbox {...label} size="small" sx={{padding:0}}/>
+                        <Checkbox {...label} checked={checktickfour} size="small" sx={{padding:0}} onClick={() => HandelCheckClickfour()}/>
                     </div>
                 </div>
                 <div className={styles.actions}>
