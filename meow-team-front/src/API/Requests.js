@@ -56,9 +56,44 @@ export default function Requests() {
       .catch((err) => console.log(err));
   };
 
+  // payment
+  const payment = async (body) => {
+    try {
+      const res = await API().POST('api/OrderFlow/buy', body, AutorizeHeader);
+      console.error(res);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // callbakbuy
+  const callbackBuy = async (body) => {
+    try {
+      const res = await API().POST('api/OrderFlow/CallBackBuy', body, AutorizeHeader);
+      console.error(res);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
 
   // ---------------------------------------------------------------//
+  // ---------------------------------------------------------------//
+  // get profile
+  const getProfile = async () => {
+    try {
+      const res = await API().GET('api/Account/GetProfile', {}, AutorizeHeader);
+      console.log(res);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
+
+  // ---------------------------------------------------------------//
 
   // post comment
   const postComment = async (body) => {
@@ -82,6 +117,9 @@ export default function Requests() {
     addInvoiceItem,
     deleteInvoiceItem,
     getInvoice,
-    checkDiscount
+    checkDiscount,
+    getProfile,
+    payment,
+    callbackBuy
   };
 }

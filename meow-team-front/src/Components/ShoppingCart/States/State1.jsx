@@ -3,26 +3,26 @@ import styles from './State1.module.scss'
 import CartItem from '../../CartItem/CartItem'
 import image1 from '../../../assets/4.jfif'
 import Requests from '../../../API/Requests'
-export default function State1({changeState}) {
-  const [Cart , setCart] = React.useState([]);
-  useEffect(() => {
-    const res = Requests().getInvoice();
-    // console.log(res)
-  }
-  , [])
+import { set } from 'react-hook-form'
+export default function State1({changeState , Cart, TotalPrice}) {
   return (
     <>
     <div className={styles.line}/>
     <div className={styles.main}>
         <div className={styles.items}>
-            <CartItem title={"80 کریستال گنشین ایمپکت"} price={"49000 تومان"} img={image1} quantity= {1} describthion={"هیچی"}/>
-            <CartItem title={"80 کریستال گنشین ایمپکت"} price={"49000 تومان"} img={image1} quantity= {1} describthion={"هیچی"}/>
+          {
+            Cart.map((item , index) => {
+              return(
+                <CartItem title={item.productTitle} price={item.productPrice} img={item.imageUrl} quantity= {item.amount} describthion={""}/>
+              )
+            })
+          }
         </div>
         <div className={styles.summary}>
         <div className={styles.price}>
-            <div>قیمت کالاها:</div>
+            <div>قیمت کالاها: {TotalPrice}</div>
             <div className={styles.line}/>
-            <div>قیمت نهایی:</div>
+            <div>قیمت نهایی: {TotalPrice}</div>
         </div>
         <div className={styles.button} onClick={()=>changeState(2)}>ادامه خرید و ثبت سفارش</div>
         </div>

@@ -1,10 +1,7 @@
 import React , {useRef} from 'react'
 import styles from './LandingPage.module.scss'
-
-import logo from '../../assets/logo.png'
 import bars from '../../assets/bars.svg'
 import CategoryItem from '../../Components/CategoryItem/CategoryItem'
-import azhini from "../../assets/azhini.jfif"
 import popular from "../../assets/game-structure.svg"
 import PopularGame from '../../Components/PopularGames/PopularGame'
 import image1 from '../../assets/1.png'
@@ -12,13 +9,18 @@ import CategoryHeader from '../../Components/CategoryHeader/CategoryHeader'
 import GameList from '../../Components/GameList/GameList'
 import gameControlle from '../../assets/game-controlle.svg'
 import apps from '../../assets/apps.svg'
-import Footer from '../../Components/Footer/Footer'
 import PageLayout from '../../Layout/PageLayout'
-import { Slide } from 'react-slideshow-image';
-import BigSlider from '../../Components/BigSlider/BigSlider'
-
+import Requests from '../../API/Requests'
 import 'react-slideshow-image/dist/styles.css'
+import { useEffect } from 'react'
 export default function LandingPage() {
+  const [profileStatus , setProfileStatus] = React.useState(false);
+  useEffect(async () => {
+    if (profileStatus == false){
+      const res = await Requests().getProfile();
+      setProfileStatus(true);
+    }
+  }, [])
   const Categorys = ["کالاف دیوتی موبایل" ,"گنشین ایمپکت" , "کلش آف کلنز", "محصولات فیزیکی", "ایپکس لجندز"]
   const Populares = [
     {

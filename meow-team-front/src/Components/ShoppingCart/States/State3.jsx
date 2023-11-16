@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './State3.module.scss'
 import call from '../../../assets/call.svg'
 import telegram from '../../../assets/telegram.svg'
-export default function State3({changeState}) {
+export default function State3({changeState,  Cart , TotalPrice }) {
   return (
     <>
       <div className={styles.line}/>

@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './State2.module.scss'
-export default function State2({changeState}) {
+import Requests from '../../../API/Requests';
+export default function State2({changeState, Cart , TotalPrice }) {
   const items = [
     {
       id: 1,
@@ -20,19 +21,26 @@ export default function State2({changeState}) {
     }
   ]
   const [describthion, setDescribthion] = React.useState('');
+  // request to server
+  const submit = async () => {
+    const res = await Requests().payment({});
+    console.log(res.data);
+    window.location.href = res.data.data;
+    // changeState(3);
+  }
 
   return (
     <>
         <div className={styles.line}/>
         <div className={styles.main}>
           <div className={styles.box}>
-            {items.map((item) => (
+            {Cart.map((item) => (
               <div className={styles.item}>
                 <div className={styles.text1}>
-                  <div>x{item.quantity}</div>
-                  <div>{item.title}</div>
+                  <div>x{item.amount}</div>
+                  <div>{item.productTitle}</div>
                 </div>
-                <div>قیمت : {item.price}</div>
+                <div>قیمت : {item.productPrice} تومان</div>
               </div>
             ))
             }
@@ -40,7 +48,7 @@ export default function State2({changeState}) {
           <div className={styles.box}>
           <div className={styles.item}>
                 <div>قیمت نهایی:</div>
-                <div>168000 تومان</div>
+                <div>{TotalPrice} تومان</div>
               </div>
           </div>
           <div className={styles.box}>
@@ -48,14 +56,14 @@ export default function State2({changeState}) {
             <div className={styles.line}/>
             <textarea className={styles.textarea} rows={4} maxRows={4} placeholder="اطلاعات را اینجا وارد کنید ..." onChange={(e)=> setDescribthion(e.target.value)} />
           </div>
-          <div className={styles.title1} onClick={()=>changeState(3)}>انتخاب روش پرداخت</div>
+          <div className={styles.title1} >انتخاب روش پرداخت</div>
           <div className={styles.buttons}>
-            <div className={styles.button1}>
-              <div className={styles.header} onClick={()=>changeState(3)}>پرداخت مستقیم</div>
+            <div className={styles.button1} onClick={()=>submit()}>
+              <div className={styles.header}>پرداخت مستقیم</div>
               <div>خرید از درگاه بانکی</div>
             </div>
             <div className={`${styles.button1} ${styles.button2}`}>
-              <div className={styles.header}>برداشت از کیف پول</div>
+              <div className={styles.header} onClick={()=>changeState(3)}>برداشت از کیف پول</div>
               <div>موجودی 200 هزار تومان</div>
             </div>
           </div>
