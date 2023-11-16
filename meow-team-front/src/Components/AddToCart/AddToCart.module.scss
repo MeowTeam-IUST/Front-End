@@ -20,6 +20,19 @@
         height: 1px;
         background: var(--Admin---Stroke-2, #A3AED0);
     }
+    .RequestMessage{
+        color: #E52A49;
+        text-align: center;
+        font-family: Anjoman;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        
+    }
     .textarea {
         width: 97%;
         // height: 4em; /* Set the height to accommodate 4 lines */

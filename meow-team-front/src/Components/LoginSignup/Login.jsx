@@ -47,7 +47,7 @@ function Login(props) {
         try{
             let number = '' + data.phonenumber;
             SetIsLoading({ is_loading: true })
-            await axios.post('http://localhost:5056/api/Account/login',
+            await axios.post('https://b60b-5-112-202-241.ngrok-free.app/api/Account/login',
             {
                 phoneNumber: number,
                 step: 1,

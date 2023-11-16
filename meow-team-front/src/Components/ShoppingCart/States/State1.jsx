@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './State1.module.scss'
 import CartItem from '../../CartItem/CartItem'
 import image1 from '../../../assets/4.jfif'
+import Requests from '../../../API/Requests'
 export default function State1({changeState}) {
-
+  const [Cart , setCart] = React.useState([]);
+  useEffect(() => {
+    const res = Requests().getInvoice();
+    // console.log(res)
+  }
+  , [])
   return (
     <>
     <div className={styles.line}/>
