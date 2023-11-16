@@ -4,6 +4,8 @@ import LoginSignupPage from '../Pages/LoginSignupPage/LoginSignupPage';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import AdminProduct from '../Pages/AdminProduct/AdminProduct';
 import AdminOrder from '../Pages/AdminOrder/Orders';
+import AdminOrderDetails from '../Pages/AdminOrderDetails/AdminOrderDetails';
+
 const routes = [
     {
       path: '/',
@@ -36,6 +38,12 @@ const routes = [
     {
       path: '/AdminOrder',
       component: AdminOrder,
+      Private: false
+    }
+    ,
+    {
+      path: '/AdminOrderDetails',
+      component: AdminOrderDetails,
       Private: false
     }
   ];

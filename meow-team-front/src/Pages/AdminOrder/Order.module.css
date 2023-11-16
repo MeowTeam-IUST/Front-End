@@ -1,5 +1,9 @@
 .layout{
     background-color: #F4F7FE;
+    /* width: 1630px;
+    height: 1080px;
+    padding: 50px, 158px, 50px, 158px;
+    gap: 38px; */
 }
 .container {
     display: flex;
