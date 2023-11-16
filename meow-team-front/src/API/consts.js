@@ -1,4 +1,4 @@
-const BASE_URL = 'http://*/8-*.60.136.206:8080';
+const BASE_URL = 'https://b60b-5-112-202-241.ngrok-free.app';
 const HEADER = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': '*'

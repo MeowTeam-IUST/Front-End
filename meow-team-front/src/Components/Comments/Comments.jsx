@@ -1,7 +1,7 @@
 import React from 'react'
 import styles  from '../../Pages/ProductPage/ProductPage.module.scss'
 import { useState,useEffect } from 'react';
-
+import Requests from '../../API/Requests';
 export function Comment({logo, name, date, text}) {
     return (
         
@@ -75,6 +75,7 @@ export function CommentsSection({comments: initialComments, userbox}) {
 
     const handleCommentSubmit = (text) => {
         // Add the new comment to the beginning of the comments array
+        Requests().postComment()
         setComments([{text, name: 'User', date: 'Just now'}, ...comments]);
     };
 
