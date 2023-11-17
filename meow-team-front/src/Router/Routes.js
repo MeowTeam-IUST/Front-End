@@ -5,6 +5,9 @@ import Dashboard from '../Pages/Dashboard/Dashboard';
 import AdminProduct from '../Pages/AdminProduct/AdminProduct';
 import PaymentPage from '../Pages/PaymentPage/PaymentPage';
 import ProductsCat from '../Pages/ProductsCat/ProductsCat';
+import AdminOrder from '../Pages/AdminOrder/Orders';
+import AdminOrderDetails from '../Pages/AdminOrderDetails/AdminOrderDetails';
+
 const routes = [
     {
       path: '/',
@@ -42,6 +45,18 @@ const routes = [
     {
       path: '/ProCat',
       component: ProductsCat,
+      Private: false
+    }
+    ,
+    {
+      path: '/AdminOrder',
+      component: AdminOrder,
+      Private: false
+    }
+    ,
+    {
+      path: '/AdminOrderDetails',
+      component: AdminOrderDetails,
       Private: false
     }
   ];

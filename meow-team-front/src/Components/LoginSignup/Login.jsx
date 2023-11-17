@@ -100,7 +100,7 @@ function Login(props) {
                 <button className={Styles.openbtn} onClick={openForm} >باز کردن</button>
             </div> */}
             <div className={Styles.authformcontainer} id="myForm">
-                <CloseIcon sx={{ display: 'inline-block' , cursor: 'pointer', color: 'rgba(0, 0, 0, 0.7)', marginLeft: '0.8rem'}} onClick={closeForm} />
+                <CloseIcon sx={{ C , cursor: 'pointer', color: 'rgba(0, 0, 0, 0.7)', marginLeft: '0.8rem'}} onClick={closeForm} />
                 <p className={Styles.textstyle}>
                     ورود/ثبت نام
                 </p>
