@@ -30,7 +30,8 @@
         width: 100%;
         height: 60px;
         background: var(--Blur---back, rgba(0, 0, 0, 0.20));
-        // backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
+        border-radius: 0px 0px 30px 30px;
         display: flex;
         flex-direction: column;
         gap: 5px;

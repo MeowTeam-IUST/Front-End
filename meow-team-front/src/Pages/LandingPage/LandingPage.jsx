@@ -99,11 +99,11 @@ export default function LandingPage() {
       </div>
       <div className={styles.AllGames}>
         <CategoryHeader icon={gameControlle} title={"همه بازی‌ها"} />
-        <GameList Products={all} />
+        <GameList Products={all} isAdmin={false} />
       </div>
       <div className={styles.AllGames}>
         <CategoryHeader icon={apps} title={"محصولات دیگر"} />
-        <GameList Products={all} />
+        <GameList Products={all} isAdmin={false} />
       </div>
     </PageLayout>
   );

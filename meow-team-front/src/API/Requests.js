@@ -105,21 +105,57 @@ export default function Requests() {
       console.log(err);
     }
   };
-
-
-
-
-
-
+  // getProduct
+  const getCategoryDetails = async (id) => {
+      try {
+        const response = await API().GET(`api/Category/get_by_Id/${id}`,{},HEADER);
+        const productData = response.data.data;
+        console.log("jhhgddrr",response)
+        return {
+          title: productData.title,
+          description: productData.description,
+        };
+      } catch (err) {
+        console.error('Error fetching product details:', err);
+        return { title: '', description: '' };
+      }
+    
+    };
+    // getProducts
+  const getProducts = async (id) => {
+    try {
+      const response = await API().GET(`api/Product/get_all_categoryProducts/${id}`, {}, HEADER);
+      const productsData = response.data.data;
+      console.log("Products:", productsData)
+      return productsData;
+    } catch (err) {
+      console.error('Error fetching products:', err);
+      return [];
+    }
+  };
+  const addCategory = async (category) => {
+    try {
+      const response = await API().POST('api/Category/add', category, HEADER);
+      console.log("Category added:", response)
+      return response;
+    } catch (err) {
+      console.error('Error adding category:', err);
+    }
+  };
 
   return {
-    postComment,
-    addInvoiceItem,
-    deleteInvoiceItem,
-    getInvoice,
-    checkDiscount,
-    getProfile,
-    payment,
-    callbackBuy
+  postComment, 
+  getCategoryDetails , 
+  getProducts,
+  addCategory,
+  postComment,
+  addInvoiceItem,
+  deleteInvoiceItem,
+  getInvoice,
+  checkDiscount,
+  getProfile,
+  payment,
+  callbackBuy
   };
+
 }

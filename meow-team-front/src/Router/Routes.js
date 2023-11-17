@@ -4,6 +4,7 @@ import LoginSignupPage from '../Pages/LoginSignupPage/LoginSignupPage';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import AdminProduct from '../Pages/AdminProduct/AdminProduct';
 import PaymentPage from '../Pages/PaymentPage/PaymentPage';
+import ProductsCat from '../Pages/ProductsCat/ProductsCat';
 const routes = [
     {
       path: '/',
@@ -37,6 +38,12 @@ const routes = [
     {
       path: '/PaymentStatus',
       component: PaymentPage,
+      Private: false
+    }
+    ,
+    {
+      path: '/ProCat',
+      component: ProductsCat,
       Private: false
     }
   ];
