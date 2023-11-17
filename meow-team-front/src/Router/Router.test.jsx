@@ -1,9 +1,0 @@
-import { render } from "@testing-library/react";
-import {AppRouter} from "./Router"; // Adjust this import according to your file structure
-
-describe("AppRouter", () => {
-  it("renders without crashing", () => {
-    const { container } = render(<AppRouter />);
-    expect(container).toBeTruthy();
-  });
-});

@@ -1,0 +1,63 @@
+import { test } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import { Header } from "./Header.jsx";
+import { SetUser } from "../../Slices/UserSlice.js";
+
+// Mock the useDispatch and useSelector hooks
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: jest.fn(),
+  useSelector: jest.fn(),
+}));
+
+// Mock the UserSlice module
+jest.mock("../../Slices/UserSlice.js", () => ({
+  SetUser: jest.fn(),
+}));
+
+test("renders the header with default name", () => {
+  // Mock the useSelector hook to return initial state
+  useSelector.mockReturnValue({});
+
+  render(<Header />);
+
+  // Assert that the default name is rendered
+  expect(screen.getByText(/محمدعلی آژینی/i)).toBeInTheDocument();
+});
+
+test("renders the header with provided name", () => {
+  // Mock the useSelector hook to return a user with a name
+  useSelector.mockReturnValue({ Name: "John Doe" });
+
+  render(<Header />);
+
+  // Assert that the provided name is rendered
+  expect(screen.getByText(/John Doe/i)).toBeInTheDocument();
+});
+
+test("dispatches SetUser action on logo click", () => {
+  // Create a mock store
+  const store = createStore(() => ({}));
+
+  // Mock the useDispatch hook to return the mock store's dispatch function
+  useDispatch.mockReturnValue(store.dispatch);
+
+  render(
+    <Provider store={store}>
+      <Header />
+    </Provider>
+  );
+
+  // Simulate a click on the logo
+  fireEvent.click(screen.getByAltText("logo"));
+
+  // Assert that the SetUser action was dispatched with the correct payload
+  expect(SetUser).toHaveBeenCalledWith({
+    Name: "MohammadAli",
+    Number: "09123456789",
+    Profile: "azhini",
+    Token: "123456789",
+  });
+});

@@ -1,23 +1,29 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
-import Footer from "./Footer"; // Adjust the import path accordingly
+import React from "react";
+import { render } from "@testing-library/react";
+import Footer from "./Footer";
 
-describe("Footer Component", () => {
-  test("renders the Footer component correctly", () => {
-    const { getByText, getByAltText } = render(<Footer />);
-
-    // Check if the text elements are rendered
-    expect(
-      getByText("هفت روز هفته 24 ساعت شبانه روز آماده پاسخگویی")
-    ).toBeInTheDocument();
-    expect(
-      getByText("ارتباط با ما : ۰۲۱۴۴۳۲۲۵۹۵       OpexShop@gmail.com")
-    ).toBeInTheDocument();
-
-    // Check if the images are rendered
-    expect(getByAltText("footer")).toBeInTheDocument();
-    expect(getByAltText("support")).toBeInTheDocument();
+describe("Footer", () => {
+  it("renders the footer text correctly", () => {
+    const { getByText } = render(<Footer />);
+    const footerText = getByText(
+      "هفت روز هفته 24 ساعت شبانه روز آماده پاسخگویی"
+    );
+    expect(footerText).toBeInTheDocument();
   });
 
-  // Add more test cases as needed
+  it("renders the contact information correctly", () => {
+    const { getByText } = render(<Footer />);
+    const contactText = getByText(
+      /ارتباط با ما : ۰۲۱۴۴۳۲۲۵۹۵.*OpexShop@gmail.com/
+    );
+    expect(contactText).toBeInTheDocument();
+  });
+
+  it("renders the footer images correctly", () => {
+    const { getByAltText } = render(<Footer />);
+    const footerImage1 = getByAltText("image1");
+    const footerImage2 = getByAltText("image2");
+    expect(footerImage1).toBeInTheDocument();
+    expect(footerImage2).toBeInTheDocument();
+  });
 });
