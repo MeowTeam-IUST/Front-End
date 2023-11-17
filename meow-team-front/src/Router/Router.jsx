@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import routes from './Routes';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 
-const AppRouter = () => {
+export function AppRouter () {
     const [isAuth, setIsAuth] = useState(false);
 
     useEffect(() => {
@@ -51,4 +51,3 @@ const AppRouter = () => {
     );
 };
 
-export default AppRouter;

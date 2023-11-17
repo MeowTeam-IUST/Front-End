@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import ProfileHeader from '../../Components/ProfileHeader/ProfileHeader';
+import {ProfileHeader} from '../../Components/ProfileHeader/ProfileHeader';
 import CartHeader from '../../Components/CartHeader/CartHeader';
-import SearchHeader from '../../Components/SearchHeader/SearchHeader';
+import {SearchHeader} from '../../Components/SearchHeader/SearchHeader';
 import styles from './Header.module.scss';
 import logo from '../../assets/logo.png';
 import azhini from "../../assets/azhini.jfif";
@@ -9,7 +9,7 @@ import azhini from "../../assets/azhini.jfif";
 import { useSelector, useDispatch } from "react-redux";
 import { SetUser } from '../../Slices/UserSlice.js';
 
-export default function Header({ Profile }) {
+export function Header({ Profile }) {
   const state = useSelector((state) => state.User); // Access the "User" slice of the state
   const dispatch = useDispatch();
 

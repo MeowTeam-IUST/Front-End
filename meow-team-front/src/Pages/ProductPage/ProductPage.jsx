@@ -5,15 +5,15 @@ import Productcard from '../../Components/Productcard/Productcard'
 import {Comment, UserBox, CommentsSection} from '../../Components/Comments/Comments';
 import Rate from '../../Components/Rate/Rate';
 import Producttab from '../../Components/Producttab/Producttab'
-import ProfileHeader from '../../Components/ProfileHeader/ProfileHeader'
+import {ProfileHeader} from '../../Components/ProfileHeader/ProfileHeader'
 import CartHeader from '../../Components/CartHeader/CartHeader'
-import SearchHeader from '../../Components/SearchHeader/SearchHeader'
+import {SearchHeader} from '../../Components/SearchHeader/SearchHeader'
 import logo from '../../assets/logo.png'
 import bars from '../../assets/bars.svg'
 import CategoryItem from '../../Components/CategoryItem/CategoryItem'
 import azhini from "../../assets/azhini.jfif"
 import CategoryHeader from '../../Components/CategoryHeader/CategoryHeader'
-import Header from '../../Components/Header/Header'
+import {Header} from '../../Components/Header/Header'
 import Requests from '../../API/Requests';
 
 export default function ProductPage(){

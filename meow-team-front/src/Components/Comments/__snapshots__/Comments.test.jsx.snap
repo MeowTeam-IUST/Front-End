@@ -1,0 +1,291 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Comment component renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="_cm1_f5868a"
+  >
+    <div
+      class="_cmp1_f5868a"
+    >
+      <div
+        class="_nd_f5868a"
+      >
+        <div
+          class="_nl_f5868a"
+        >
+          <div
+            class="_logoo_f5868a"
+          >
+             logo
+          </div>
+          <div
+            class="_names_f5868a"
+          >
+            John
+          </div>
+        </div>
+        <div
+          class="_date_f5868a"
+        >
+          2023-01-01
+        </div>
+      </div>
+      <div
+        class="_rep_f5868a"
+      >
+        <text
+          class="_repicon_f5868a"
+        >
+          پاسخ
+        </text>
+        <svg
+          fill="none"
+          height="13"
+          viewBox="0 0 14 13"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0.227189 4.64639L5.0398 0.490549C5.46106 0.126745 6.125 0.422089 6.125 0.987213V3.17617C10.5172 3.22646 14 4.10675 14 8.26917C14 9.9492 12.9177 11.6136 11.7214 12.4837C11.348 12.7553 10.816 12.4145 10.9536 11.9743C12.1935 8.00914 10.3655 6.95645 6.125 6.89541V9.29935C6.125 9.86537 5.46056 10.1594 5.0398 9.79601L0.227189 5.63975C-0.0755195 5.37829 -0.0759395 4.90822 0.227189 4.64639Z"
+            fill="#E52A49"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      class="_cmtxt_f5868a"
+    >
+      Test comment
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CommentsSection component renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="_cm_f5868a"
+  >
+    <div
+      class="_cm1_f5868a"
+    >
+      <div
+        class="_cmp1_f5868a"
+      >
+        <div
+          class="_nd_f5868a"
+        >
+          <div
+            class="_nl_f5868a"
+          >
+            <div
+              class="_logoo_f5868a"
+            >
+               logo1
+            </div>
+            <div
+              class="_names_f5868a"
+            >
+              John
+            </div>
+          </div>
+          <div
+            class="_date_f5868a"
+          >
+            2023-01-01
+          </div>
+        </div>
+        <div
+          class="_rep_f5868a"
+        >
+          <text
+            class="_repicon_f5868a"
+          >
+            پاسخ
+          </text>
+          <svg
+            fill="none"
+            height="13"
+            viewBox="0 0 14 13"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.227189 4.64639L5.0398 0.490549C5.46106 0.126745 6.125 0.422089 6.125 0.987213V3.17617C10.5172 3.22646 14 4.10675 14 8.26917C14 9.9492 12.9177 11.6136 11.7214 12.4837C11.348 12.7553 10.816 12.4145 10.9536 11.9743C12.1935 8.00914 10.3655 6.95645 6.125 6.89541V9.29935C6.125 9.86537 5.46056 10.1594 5.0398 9.79601L0.227189 5.63975C-0.0755195 5.37829 -0.0759395 4.90822 0.227189 4.64639Z"
+              fill="#E52A49"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="_cmtxt_f5868a"
+      >
+        Comment 1
+      </div>
+    </div>
+    <div
+      class="_cm1_f5868a"
+    >
+      <div
+        class="_cmp1_f5868a"
+      >
+        <div
+          class="_nd_f5868a"
+        >
+          <div
+            class="_nl_f5868a"
+          >
+            <div
+              class="_logoo_f5868a"
+            >
+               logo2
+            </div>
+            <div
+              class="_names_f5868a"
+            >
+              Alice
+            </div>
+          </div>
+          <div
+            class="_date_f5868a"
+          >
+            2023-01-02
+          </div>
+        </div>
+        <div
+          class="_rep_f5868a"
+        >
+          <text
+            class="_repicon_f5868a"
+          >
+            پاسخ
+          </text>
+          <svg
+            fill="none"
+            height="13"
+            viewBox="0 0 14 13"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.227189 4.64639L5.0398 0.490549C5.46106 0.126745 6.125 0.422089 6.125 0.987213V3.17617C10.5172 3.22646 14 4.10675 14 8.26917C14 9.9492 12.9177 11.6136 11.7214 12.4837C11.348 12.7553 10.816 12.4145 10.9536 11.9743C12.1935 8.00914 10.3655 6.95645 6.125 6.89541V9.29935C6.125 9.86537 5.46056 10.1594 5.0398 9.79601L0.227189 5.63975C-0.0755195 5.37829 -0.0759395 4.90822 0.227189 4.64639Z"
+              fill="#E52A49"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="_cmtxt_f5868a"
+      >
+        Comment 2
+      </div>
+    </div>
+    <div
+      class="_userbox_f5868a"
+    >
+      <div
+        class="_userlogo_f5868a"
+      >
+        user-logo
+      </div>
+      <input
+        class="_usertext_f5868a"
+        placeholder="Enter your comment"
+        value=""
+      />
+      <div
+        class="_sendbox_f5868a"
+      >
+        <button
+          class="_btsend_f5868a"
+        >
+           ار سال
+        </button>
+        <div>
+          <span
+            class="_st_f5868a"
+          >
+            ☆
+          </span>
+          <span
+            class="_st_f5868a"
+          >
+            ☆
+          </span>
+          <span
+            class="_st_f5868a"
+          >
+            ☆
+          </span>
+          <span
+            class="_st_f5868a"
+          >
+            ☆
+          </span>
+          <span
+            class="_st_f5868a"
+          >
+            ☆
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`UserBox component renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="_userbox_f5868a"
+  >
+    <div
+      class="_userlogo_f5868a"
+    >
+      user-logo
+    </div>
+    <input
+      class="_usertext_f5868a"
+      placeholder="Enter your comment"
+      value=""
+    />
+    <div
+      class="_sendbox_f5868a"
+    >
+      <button
+        class="_btsend_f5868a"
+      >
+         ار سال
+      </button>
+      <div>
+        <span
+          class="_st_f5868a"
+        >
+          ☆
+        </span>
+        <span
+          class="_st_f5868a"
+        >
+          ☆
+        </span>
+        <span
+          class="_st_f5868a"
+        >
+          ☆
+        </span>
+        <span
+          class="_st_f5868a"
+        >
+          ☆
+        </span>
+        <span
+          class="_st_f5868a"
+        >
+          ☆
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

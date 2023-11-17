@@ -4,7 +4,7 @@ import shopping from '../../assets/shopping-cart.svg'
 export default function CartHeader() {
   return (
     <div className={styles.part}>
-        <img className={styles.icon} src={shopping} alt="" />
+      <img className={styles.icon} src={shopping} alt="Shopping Cart" />
     </div>
-  )
+  );
 }

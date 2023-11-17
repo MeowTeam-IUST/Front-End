@@ -7,7 +7,7 @@ import Route from '../../assets/Route.svg'
 import history from '../../assets/history.svg'
 import heart from '../../assets/heart.svg'
 import Dashboard from '../../assets/Dashboard.svg'
-import EditProfile from '../../Components/EditProfile/EditProfile'
+import {EditProfile} from '../../Components/EditProfile/EditProfile'
 import DefaultDashboard from '../../Components/DefaultDashboard/DefaultDashboard'
 import ShoppingCart from '../../Components/ShoppingCart/ShoppingCart'
 export const items = [
