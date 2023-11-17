@@ -1,0 +1,13 @@
+<svg width="134" height="65" viewBox="0 0 134 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 28">
+<g id="Mask group">
+<mask id="mask0_75_207" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="18" width="134" height="47">
+<rect id="Rectangle 37" y="18" width="134" height="47" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_75_207)">
+<path id="Ellipse 3" d="M125.796 18.0739C101.184 18.0739 99.1661 64.5398 66.3164 64.5398C33.4667 64.5398 31.4491 18.0739 6.83677 18.0739C-17.7756 18.0739 33.4667 -28.392 66.3164 -28.392C99.1661 -28.392 150.408 18.0739 125.796 18.0739Z" fill="white"/>
+</g>
+</g>
+<path id="Ellipse 4" d="M94 27.5C94 42.6878 81.6878 55 66.5 55C51.3122 55 39 42.6878 39 27.5C39 12.3122 51.3122 0 66.5 0C81.6878 0 94 12.3122 94 27.5Z" fill="#E52A49"/>
+</g>
+</svg>
