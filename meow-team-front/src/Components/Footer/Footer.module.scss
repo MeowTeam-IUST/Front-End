@@ -50,8 +50,10 @@
   background: var(--Opex---gray, #E8E8E8);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 0px;
+  box-shadow: 0px 25px 0px 20px (var(--Opex---gray, #E8E8E8));
 }
 .FooterItems{
   width: 20%;
@@ -67,65 +69,75 @@
   }
   .FooterMobile{
     padding-left: 60px;
-    padding-right: 20px;
+    padding-right: 60px;
     height: 55px;
     .CircleSelect{
       position: relative;
       .PersonCircleIcon{
+        height: 55px;
         margin-top: -23px;
-        margin-left: 20px;
+        margin-left: 25px;
         position: relative;
         z-index: 1;
       }
       .SelectedPersonIcon{
+        height: 26px;
         position: absolute;
-        bottom: 31px;
-        left: 71.5px;
+        bottom: 29px;
+        left: 69px;
         z-index: 2
       }
       .ShopCircleIcon{
+        height: 55px;
         margin-top: -23px;
         position: relative;
         z-index: 1;
       }
       .SelectedShopIcon{
+        height: 27px;
         position: absolute;
-        bottom: 29.5px;
-        left: 52.5px;
+        bottom: 26.5px;
+        left: 44px;
         z-index: 2
       }
       .HomeCircleIcon{
-        margin-top: -23px;
+        height: 55px;
+        margin-top: -22px;
         position: relative;
         z-index: 1;
       }
       .SelectedHomeIcon{
         position: absolute;
-        bottom: 31px;
-        left: 52.5px;
+        height: 30px;
+        bottom: 27px;
+        left: 43px;
         z-index: 2
       }
       .CommentCircleIcon{
+        height: 55px;
         margin-top: -23px;
         position: relative;
         z-index: 1;
       }
       .SelectedCommentIcon{
+        height: 26px;
         position: absolute;
-        bottom: 28px;
-        left: 51px;
+        bottom: 26px;
+        left: 43px;
         z-index: 2
       }
       .SearchCircleIcon{
-        margin-top: -23px;
-        // margin-left: -1px;
+        height: 55px;
+        margin-top: -21px;
+        margin-left: -25px;
         position: relative;
         z-index: 1;
       }
       .SelectedSearchIcon{
+        height: 27px;
         position: absolute;
-        bottom: 30px;
-        left: 51px;
+        bottom: 27px;
+        left: 17px;
         z-index: 2
       }
     }
@@ -153,65 +165,75 @@
   }
   .FooterMobile{
     padding-left: 50px;
-    padding-right: 18px;
+    padding-right: 40px;
     height: 60px;
     .CircleSelect{
       position: relative;
       .PersonCircleIcon{
-        margin-top: -28px;
+        height: 60px;
+        margin-top: -26px;
         margin-left: 26px;
         position: relative;
         z-index: 1;
       }
       .SelectedPersonIcon{
+        height: 30px;
         position: absolute;
-        bottom: 30px;
-        left: 78px;
+        bottom: 29px;
+        left: 73px;
         z-index: 2
       }
       .ShopCircleIcon{
-        margin-top: -28px;
+        height: 60px;
+        margin-top: -26px;
         position: relative;
         z-index: 1;
       }
       .SelectedShopIcon{
+        height: 31px;
         position: absolute;
-        bottom: 29px;
-        left: 53px;
+        bottom: 27px;
+        left: 48px;
         z-index: 2
       }
       .HomeCircleIcon{
-        margin-top: -28px;
+        height: 60px;
+        margin-top: -24px;
         position: relative;
         z-index: 1;
       }
       .SelectedHomeIcon{
+        height: 32px;
         position: absolute;
-        bottom: 31px;
-        left: 53px;
+        bottom: 29px;
+        left: 48px;
         z-index: 2
       }
       .CommentCircleIcon{
-        margin-top: -28px;
+        height: 60px;
+        margin-top: -26px;
         position: relative;
         z-index: 1;
       }
       .SelectedCommentIcon{
+        height: 29px;
         position: absolute;
-        bottom: 28px;
-        left: 51px;
+        bottom: 27px;
+        left: 47px;
         z-index: 2
       }
       .SearchCircleIcon{
-        margin-top: -28px;
-        margin-left: -15px;
+        height: 60px;
+        margin-top: -25px;
+        margin-left: -25px;
         position: relative;
         z-index: 1;
       }
       .SelectedSearchIcon{
+        height: 29px;
         position: absolute;
         bottom: 30px;
-        left: 36px;
+        left: 22px;
         z-index: 2
       }
     }
@@ -240,7 +262,7 @@
   .FooterMobile{
     height: 64px;
     padding-left: 40px;
-    padding-right: 15.5px;
+    padding-right: 35.5px;
     .CircleSelect{
       position: relative;
       .PersonCircleIcon{
@@ -267,7 +289,7 @@
         z-index: 2
       }
       .HomeCircleIcon{
-        margin-top: -32px;
+        margin-top: -28px;
         position: relative;
         z-index: 1;
       }
@@ -289,7 +311,7 @@
         z-index: 2
       }
       .SearchCircleIcon{
-        margin-top: -32px;
+        margin-top: -29px;
         margin-left: -15px;
         position: relative;
         z-index: 1;
