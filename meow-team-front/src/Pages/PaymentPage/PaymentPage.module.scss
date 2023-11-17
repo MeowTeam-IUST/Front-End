@@ -1,0 +1,29 @@
+/* PaymentPage.module.scss */
+
+.wait {
+    text-align: center;
+    margin-top: 20vh; /* Adjust the value as needed to center the text vertically */
+    transform: translateY(-50%);
+    color: #E52A49;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: IRAN Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 137.5% */
+    // letter-spacing: -0.32px;
+    cursor: default;
+  }
+  
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Add the styles to the existing styles object in your component */
+  
