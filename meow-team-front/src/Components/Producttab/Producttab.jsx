@@ -1,5 +1,7 @@
 import React from 'react'
 import styles  from '../../Pages/ProductPage/ProductPage.module.scss'
+
+
 export default function Producttab({safety,obs,speed}) {
 
     return(
