@@ -12,8 +12,6 @@ function AdminOrderDetails() {
     const xRef = useRef(null);
 
     const handleCloseClick = (e) => {
-        console.log(e.target)
-        console.log(xRef.current)
         if (e.target == xRef.current) {
             SetOrderDetailShow(false);
             SetUserDetailShow(false);
