@@ -1,0 +1,69 @@
+@import '../../App.scss';
+
+.productCard {
+    display: flex;
+    width: 220px;
+    aspect-ratio: 2/3;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .productCardInfo {
+        display: flex;
+        flex-direction: column;
+        background: var(--Blur---back, rgba(0, 0, 0, 0.20));
+        backdrop-filter: blur(15px);
+        flex-grow: 1;
+        height: 120px;
+        padding: 15px 16px;
+        gap: 6px;
+        
+
+        .nameButton {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.20);
+            backdrop-filter: blur(5px);
+            color: $color1;
+            font-family: $second_font;
+            font-weight: bold;
+        }
+
+        .priceButton {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: white;
+            color: black;
+            font-family: $second_font;
+            font-weight: bold;
+        }
+
+        .buyButton {
+            border: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            height: 40px;
+            border-radius: 10px;
+            font-family: $second_font;
+            background-color: $--Opex--red;
+            color: $color1;
+            font-weight: bold;
+        }
+    }
+}
