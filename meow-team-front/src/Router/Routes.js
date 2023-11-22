@@ -24,12 +24,12 @@ const routes = [
       path: '/login',
       component: LoginSignupPage,
       Private: false
+    },
+    {
+      path : '/dashboard/*',
+      component: Dashboard,
+      Private: false
     }
-    // {
-    //   path : '/dashboard/*',
-    //   component: Dashboard,
-    //   Private: false
-    // }
     ,
     {
       path: '/Adminp',

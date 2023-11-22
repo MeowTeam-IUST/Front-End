@@ -59,7 +59,7 @@ export default function Productcard({name, price, changeButtonColor,showdiv,onDe
             <div className={styles.cardofpro1}>
                 <div className={styles.t1}>{name}</div>
                 <div className={styles.t2}>{price}</div>
-                <button className={`${styles.t3} ${changeButtonColor ? styles.buttonColorChange : ''}`} onClick={handleClick}>
+                <button className={`${styles.t3} ${changeButtonColor ? styles.buttonColorChange : ''}`} onClick={openPopup}>
                     {changeButtonColor ? 'ویرایش' : 'خرید'}
                 </button>
             </div>
@@ -71,7 +71,7 @@ export default function Productcard({name, price, changeButtonColor,showdiv,onDe
               title={"جزئیات سفارش"}
               content={<AddToCart />}
             />
-            {showPopup && <div className={styles.Backdrop} onClick={handleClose}>
+            {/* {showPopup && <div className={styles.Backdrop} onClick={handleClose}>
             <div className={styles.Popup} onClick={(event) => event.stopPropagation()}>
               <div className={`${styles.Popup1} ${applyLTR ? styles.ltrDirection : ''}`}>
                 <div className={styles.cardinfo}>اطلاعات کارت</div>
@@ -109,7 +109,7 @@ export default function Productcard({name, price, changeButtonColor,showdiv,onDe
               </div>
             
             </div>
-            </div>}
+            </div>} */}
         </div>
     )
 }

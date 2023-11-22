@@ -35,21 +35,21 @@ export const items = [
     },
     {
         name: 'سفارشات من',
-        component: '',
+        component: EditProfile,
         icon: history,
         path: 'history',
         item : 3
     },
     {
         name: ' کیف پول من ',
-        component: '',
+        component: EditProfile,
         icon: Wallet,
         path: 'wallet',
         item : 4
     },
     {
         name: 'علاقه‌مندی‌های من',
-        component: '',
+        component: EditProfile,
         icon: heart,
         path: 'heart',
         item : 5
@@ -62,7 +62,7 @@ export const items = [
     // },
     {
         name: 'کامنت های من',
-        component: '',
+        component: EditProfile,
         icon: Comment,
         path: 'comment',
         item : 7

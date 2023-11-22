@@ -18,8 +18,13 @@ export function AppRouter() {
     let componentToRender;
 
     if (route.Private) {
-      componentToRender = isAuth ? <route.component /> : <></>;
+      componentToRender = isAuth ? 
+        route.path == '/dashboard/:*' ?         
+        <Dashboard itemPath ={window.location.pathname.split('/dashboard/')[1]}/> :
+        <route.component /> : <></>;
     } else {
+      route.path == '/dashboard/:*' ?         
+      <Dashboard itemPath ={window.location.pathname.split('/dashboard/')[1]}/> :
       componentToRender = <route.component />;
     }
 
@@ -37,21 +42,6 @@ export function AppRouter() {
 
     return <Dashboard />;
   };
-
-  // Integrate Dashboard directly into the route configuration
-  const dashboardComponent = () => {
-    const { itemPath } = useParams();
-  
-    return (
-      <div>
-        {console.log("hi")}
-        <Dashboard
-          itemPath={itemPath}
-          // Add other props as needed
-        />
-      </div>
-    );
-  };
   
   
 
@@ -64,7 +54,7 @@ export function AppRouter() {
         {/* Add a route for paymentStatus with the desired component */}
         <Route path="/paymentStatus" element={paymentStatusComponent} />
         {/* Integrate Dashboard directly into the route configuration */}
-        <Route path="/dashboard/*" element={dashboardComponent} />
+        {/* <Route path="/dashboard/*" element={dashboardComponent} /> */}
       </Routes>
     </BrowserRouter>
   );
