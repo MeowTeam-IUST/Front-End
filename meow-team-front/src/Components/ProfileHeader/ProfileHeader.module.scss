@@ -9,9 +9,10 @@
     background: $color1;
     box-shadow: $header_shadow;
     height: 48px;
-    gap: 7px;
-    padding: 0px 8px 0px 8px;
+    gap: 10px;
+    padding: 0px 12px 0px 12px;
     flex-shrink: 0;
+    transition-duration: 0.4s;
     .image{
         width: 33.3px;
         height: 33.3px;
@@ -21,6 +22,10 @@
         color: #000;
         text-align: center;
         cursor: pointer;
+        font-family: $main_font;
+        font-weight: bold !important;
+        font-size: small;
+        transition-duration: 0.4s;
     }
     }
 .exitButton {
@@ -34,7 +39,22 @@
         justify-content: center;
         align-items: center;
         font-style: $main_font;
-        :hover {
-            cursor: pointer;
+        .exitButtonImg {
+            color: white;
         }
     }
+
+    .exitButton:hover {
+        cursor: pointer;
+    }
+
+.profile:hover {
+    cursor: pointer;
+    background-color: $--Opex--red;
+    
+    transition-duration: 0.4s;
+    .name {
+        color: $color1;
+        transition-duration: 0.4s;
+    }
+}

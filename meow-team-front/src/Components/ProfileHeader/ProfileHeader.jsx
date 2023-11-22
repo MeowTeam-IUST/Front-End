@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import styles from './ProfileHeader.module.scss'
 
+
 export function ProfileHeader({name, image}) {
   const [isAuth, setIsAuth] = React.useState(false)
   useEffect(() => {
@@ -16,15 +17,19 @@ export function ProfileHeader({name, image}) {
   }
   return (
     <div className={styles.profile}>
-      {
-        isAuth ? 
+      {isAuth ? (
         <>
-            <img className={styles.image} src={image} alt="" />
-            <div className={styles.name}>{name}</div>
-            <button className={styles.exitButton} onClick={LogOut}>خروج</button>
+          <img className={styles.image} src={image} alt="" />
+          <div className={styles.name}>{name}</div>
+          <button className={styles.exitButton} onClick={LogOut}>
+            خروج
+          </button>
         </>
-        : <div className={styles.name} onClick={()=> HandleClick()}>ورود یا ثبت‌نام</div>
-      }
+      ) : (
+        <div className={styles.name} onClick={() => HandleClick()}>
+          ورود یا ثبت‌نام
+        </div>
+      )}
     </div>
-  )
+  );
 }
