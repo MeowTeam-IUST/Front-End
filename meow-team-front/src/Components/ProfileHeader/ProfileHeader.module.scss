@@ -1,211 +1,40 @@
 @import "../../App.scss";
 
-/* Media Query for Mobile Devices */ 
-@media (max-width: 480px) { 
-    .profile{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        border-radius: 37.5px;
-        background: var(--Opex-4--gray, #E8E8E8);
-        height: 48px;
-        flex-shrink: 0;
-        padding-right: 7px;
-        display: none;
-        .image{
-            width: 30px;
-            height: 30px;
-            border-radius: 33.358px;
-            width: 33.358px;
-            height: 33.28px;
-            flex-shrink: 0;
-            display: none;
-
-    
-        }
-        .name{
-            color: #000;
-            display: none;
-
-            text-align: center;
-            margin-left: 10px;
-            width: fit-content;
-            padding-right: 10px;
-            cursor: pointer;
-            /* Opex - font */
-            font-family: IRAN Sans;
-            font-size: 15px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-        }
+.profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 100px;
+    background: $color1;
+    box-shadow: $header_shadow;
+    height: 48px;
+    gap: 7px;
+    padding: 0px 8px 0px 8px;
+    flex-shrink: 0;
+    .image{
+        width: 33.3px;
+        height: 33.3px;
+        border-radius: 33.358px;
     }
-} 
-    
-/* Media Query for low resolution  Tablets, Ipads */ 
-@media (min-width: 481px) and (max-width: 768px) { 
-    .profile{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        border-radius: 37.5px;
-        background: var(--Opex---gray, #E8E8E8);
-        height: 48px;
-        flex-shrink: 0;
-        padding-right: 7px;
-        display: none;
-        .image{
-            width: 30px;
-            height: 30px;
-            border-radius: 33.358px;
-            width: 33.358px;
-            height: 33.28px;
-            flex-shrink: 0;
-            display: none;
-
-    
-        }
-        .name{
-            color: #000;
-            display: none;
-
-            text-align: center;
-            margin-left: 10px;
-            width: fit-content;
-            padding-right: 10px;
-            cursor: pointer;
-            /* Opex - font */
-            font-family: IRAN Sans;
-            font-size: 15px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-        }
+    .name{
+        color: #000;
+        text-align: center;
+        cursor: pointer;
     }
-} 
-    
-/* Media Query for Tablets Ipads portrait mode */ 
-@media (min-width: 768px) and (max-width: 1024px){ 
-    .profile{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        border-radius: 37.5px;
-        background: var(--Opex---gray, #E8E8E8);
-        height: 48px;
-        flex-shrink: 0;
-        padding-right: 7px;
-        .image{
-            width: 30px;
-            height: 30px;
-            border-radius: 33.358px;
-            width: 33.358px;
-            height: 33.28px;
-            flex-shrink: 0;
-
-    
-        }
-        .name{
-            color: #000;
-
-            text-align: center;
-            margin-left: 10px;
-            width: fit-content;
-            padding-right: 10px;
-            cursor: pointer;
-            /* Opex - font */
-            font-family: IRAN Sans;
-            font-size: 15px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-        }
-    } 
-} 
-    
-/* Media Query for Laptops and Desktops */ 
-@media (min-width: 1025px) and (max-width: 1280px){ 
-    .profile{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        border-radius: 37.5px;
-        background: var(--Opex---gray, #E8E8E8);
-        height: 48px;
-        flex-shrink: 0;
-        padding-right: 7px;
-        .image{
-            width: 30px;
-            height: 30px;
-            border-radius: 33.358px;
-            width: 33.358px;
-            height: 33.28px;
-            flex-shrink: 0;
-
-    
-        }
-        .name{
-            color: #000;
-            text-align: center;
-            margin-left: 10px;
-            width: fit-content;
-            padding-right: 10px;
-            cursor: pointer;
-            /* Opex - font */
-            font-family: IRAN Sans;
-            font-size: 15px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-        }
     }
-} 
-    
-/* Media Query for Large screens */ 
-@media (min-width: 1281px) { 
-    .profile{
+.exitButton {
+        border: none;
+        background-color: $--Opex--red;
+        color: $color1;
+        width: 60px;
+        height: 30px;
+        border-radius: 100px;
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
-        border-radius: 37.5px;
-        background: var(--Opex---gray, #E8E8E8);
-        height: 48px;
-        
-        flex-shrink: 0;
-        padding-right: 7px;
-        .image{
-            width: 33.3px;
-            height: 33.3px;
-            border-radius: 33.358px;
-
-            flex-shrink: 0;
-    
-        }
-        .name{
-            color: #000;
-            text-align: center;
-            margin-left: 15px;
-            width: fit-content;
-            padding-right: 7px;
+        font-style: $main_font;
+        :hover {
             cursor: pointer;
-            /* Opex - font */
-            font-family: IRAN Sans;
-            font-size: 15px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-        }
-    } 
-}
-
-
-    @media  (max-width: 767px) {
-        .profile {
-            display: none;
         }
     }

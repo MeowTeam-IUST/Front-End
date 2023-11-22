@@ -1,7 +1,7 @@
 @import "../../App.scss";
 
 .search{
-    width: 65%;
+    flex-grow: 1;
     height: 48px;
     flex-shrink: 0;
     background: #FFFFFF;
@@ -14,18 +14,16 @@
     z-index: 1;
 }
 .searchwhenresult{
-    width: 65%;
+    flex-grow: 1;
     height: 66px;
-    flex-shrink: 0;
+    margin-bottom: -21px;
     background: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 22px;
-    margin: 0px 100px;
     box-shadow: 0px 0px 500px 10000px #00000066;
-    margin: 0px;
-    z-index: 1;
+    z-index: 2;
 }
 .SearchHeader{
     width: 100%;
@@ -37,8 +35,6 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 37.5px;
-    margin: 0px;
-    padding: 0px;
     z-index: 1;
 }
 .res{
@@ -82,112 +78,119 @@
     outline: none;
 }
 
+.search ,.searchwhenresult{
+        .SearchHeader{
+            gap: 50px;
+            .input{
+                width: 80%;
+            }
+            .icon {
+                height: 30px;
+            }
+        }
+    }
+
 /* Media Query for Mobile Devices */ 
-@media (max-width: 340px) {
-    .search ,.searchwhenresult{
-        .SearchHeader{
-            border-radius: 37.5px;
-            gap: 0px;
-            .input{
-                width: 60%;
-            }
-            .icon {
-                height: 20px;
-            }
-        }
-    }
-}
+// @media (max-width: 340px) {
+//     .search ,.searchwhenresult{
+//         .SearchHeader{
+//             border-radius: 37.5px;
+//             gap: 0px;
+//             .input{
+//                 width: 60%;
+//             }
+//             .icon {
+//                 height: 20px;
+//             }
+//         }
+//     }
+// }
 
-@media (min-width: 340px) and (max-width: 480px) {
-    .search ,.searchwhenresult{
-        .SearchHeader{
-            gap: 0px;
-            .input{
-                width: 70%;
-            }
-            .icon {
-                height: 23px;
-            }
-        }
-    }
-} 
+// @media (min-width: 340px) and (max-width: 480px) {
+//     .search ,.searchwhenresult{
+//         .SearchHeader{
+//             gap: 0px;
+//             .input{
+//                 width: 70%;
+//             }
+//             .icon {
+//                 height: 23px;
+//             }
+//         }
+//     }
+// } 
     
-/* Media Query for low resolution  Tablets, Ipads */ 
-@media (min-width: 481px) and (max-width: 768px) { 
-    .search ,.searchwhenresult{
-        .SearchHeader{
-            gap: 0px;
-            .input{
-                width: 75%;
-            }
-            .icon {
-                height: 26px;
-            }
-        }
-    }
-} 
+// /* Media Query for low resolution  Tablets, Ipads */ 
+// @media (min-width: 481px) and (max-width: 768px) { 
+//     .search ,.searchwhenresult{
+//         .SearchHeader{
+//             gap: 0px;
+//             .input{
+//                 width: 75%;
+//             }
+//             .icon {
+//                 height: 26px;
+//             }
+//         }
+//     }
+// } 
     
-/* Media Query for Tablets Ipads portrait mode */ 
-@media (min-width: 768px) and (max-width: 1024px){ 
-    .search ,.searchwhenresult{
-        .SearchHeader{
-            gap: 20px;
-            .input{
-                width: 80%;
-            }
-            .icon {
-                height: 30px;
-            }
-        }
-    }
-} 
+// /* Media Query for Tablets Ipads portrait mode */ 
+// @media (min-width: 768px) and (max-width: 1024px){ 
+//     .search ,.searchwhenresult{
+//         .SearchHeader{
+//             gap: 20px;
+//             .input{
+//                 width: 80%;
+//             }
+//             .icon {
+//                 height: 30px;
+//             }
+//         }
+//     }
+// } 
     
-/* Media Query for Laptops and Desktops */ 
-@media (min-width: 1025px) and (max-width: 1280px){ 
-    .search ,.searchwhenresult{
-        .SearchHeader{
-            gap: 50px;
-            .input{
-                width: 80%;
-            }
-            .icon {
-                height: 30px;
-            }
-        }
-    }
-} 
+// /* Media Query for Laptops and Desktops */ 
+// @media (min-width: 1025px) and (max-width: 1280px){ 
+//     .search ,.searchwhenresult{
+//         .SearchHeader{
+//             gap: 50px;
+//             .input{
+//                 width: 80%;
+//             }
+//             .icon {
+//                 height: 30px;
+//             }
+//         }
+//     }
+// } 
   
-/* Media Query for Large screens */ 
-@media (min-width: 1281px) { 
-    .search ,.searchwhenresult{
-        .res{
-            .searchresult{
-                width: 784px;
-            }
-        }
-        .SearchHeader{
-            gap: 50px;
-            .input{
-                width: 80%;
-            }
-            .icon {
-                height: 30px;
-            }
-        }
-    }
-}
+// /* Media Query for Large screens */ 
+// @media (min-width: 1281px) { 
+//     .search ,.searchwhenresult{
+//         .SearchHeader{
+//             gap: 50px;
+//             .input{
+//                 width: 80%;
+//             }
+//             .icon {
+//                 height: 30px;
+//             }
+//         }
+//     }
+// }
 
-/* Media Query for Large screens */ 
-@media (min-width: 1850px) { 
-    .search ,.searchwhenresult{
-        .SearchHeader{
-            gap: 50px;
-            .input{
-                width: 80%;
-            }
-            .icon {
-                height: 30px;
-            }
-        }
-    }
-}
+// /* Media Query for Large screens */ 
+// @media (min-width: 1850px) { 
+//     .search ,.searchwhenresult{
+//         .SearchHeader{
+//             gap: 50px;
+//             .input{
+//                 width: 80%;
+//             }
+//             .icon {
+//                 height: 30px;
+//             }
+//         }
+//     }
+// }
