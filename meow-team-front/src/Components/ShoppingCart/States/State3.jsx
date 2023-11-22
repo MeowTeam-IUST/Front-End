@@ -1,11 +1,12 @@
-import React from 'react'
-import styles from './State3.module.scss'
-import call from '../../../assets/call.svg'
-import telegram from '../../../assets/telegram.svg'
-export default function State3({changeState,  Cart , TotalPrice }) {
+import React from 'react';
+import styles from './State3.module.scss';
+import call from '../../../assets/call.svg';
+import telegram from '../../../assets/telegram.svg';
+
+export default function State3({ changeState, Cart, TotalPrice }) {
   return (
-    <>
-      <div className={styles.line}/>
+    <React.Fragment>
+      <div className={styles.line} />
       <div className={styles.main}>
         <div className={styles.box}>
           <div>سفارش شما با شماره پیگیری</div>
@@ -32,9 +33,6 @@ export default function State3({changeState,  Cart , TotalPrice }) {
           </div>
         </div>
       </div>
-
-
-    </>
-
-  )
+    </React.Fragment>
+  );
 }

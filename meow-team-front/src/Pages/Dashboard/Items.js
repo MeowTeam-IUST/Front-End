@@ -15,12 +15,14 @@ export const items = [
         name: 'داشبورد',
         component: DefaultDashboard,
         icon: Dashboard,
+        path: 'default',
         item : 0
     },
     {
         name: 'اطلاعات حساب کاربری',
         component: EditProfile,
         icon: User,
+        path: 'editprofile',
         item : 1
 
     },
@@ -28,24 +30,28 @@ export const items = [
         name: 'سبد خرید',
         component: ShoppingCart,
         icon: Basket,
+        path: 'shoppingcart',
         item : 2
     },
     {
         name: 'سفارشات من',
         component: '',
         icon: history,
+        path: 'history',
         item : 3
     },
     {
         name: ' کیف پول من ',
         component: '',
         icon: Wallet,
+        path: 'wallet',
         item : 4
     },
     {
         name: 'علاقه‌مندی‌های من',
         component: '',
         icon: heart,
+        path: 'heart',
         item : 5
     },
     // {
@@ -58,5 +64,6 @@ export const items = [
         name: 'کامنت های من',
         component: '',
         icon: Comment,
+        path: 'comment',
         item : 7
     }]

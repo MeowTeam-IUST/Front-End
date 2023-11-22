@@ -45,8 +45,8 @@ export function SearchHeader() {
     };
 
     const handleCloseClick = (e) => {
-        console.log(e.target)
-        console.log(xRef.current)
+        // console.log(e.target)
+        // console.log(xRef.current)
         if (e.target !== xRef.current) {
             setSearchShow(false);
         }

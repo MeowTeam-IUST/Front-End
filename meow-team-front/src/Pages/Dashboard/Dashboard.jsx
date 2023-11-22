@@ -1,12 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PageLayout from '../../Layout/PageLayout';
 import styles from './Dashboard.module.scss';
 import DashboardSidebar from '../../Components/DashboardSidebar/DashboardSidebar';
 import DashboardMain from '../../Components/DashboardMain/DashboardMain';
 import { items } from './Items';
+import { Routes, Route, useParams, useNavigate } from 'react-router-dom';
 
-export default function Dashboard() {
-  const [choosenItem, setChoosenItem] = React.useState(2);
+export default function Dashboard({ itemPath }) {
+  const navigate = useNavigate();
+
+  // Find the index of the selected item based on the URL
+  const choosenItemIndex = items.findIndex((item) => item.path === itemPath);
+
+  // If the item is found, set it as the chosen item; otherwise, default to the first item
+  const [choosenItem, setChoosenItem] = useState(() => {
+    const choosenItemIndex = items.findIndex((item) => item.path === itemPath);
+    return choosenItemIndex !== -1 ? choosenItemIndex : 0;
+  });
+
+  // Use useEffect to navigate to the selected item's URL when choosenItem changes
+  useEffect(() => {
+    const selectedPath = items[choosenItem].path;
+    navigate(`/dashboard/${selectedPath}`);
+  }, [choosenItem, navigate]);
 
   const SelectedComponent = items[choosenItem].component;
 
@@ -15,10 +31,14 @@ export default function Dashboard() {
       <div className={styles.DashboardLayout}>
         <DashboardSidebar setChoosenItem={setChoosenItem} items={items} choosenItem={choosenItem} />
         <DashboardMain>
-          <SelectedComponent />
+          {/* Use a new nested `Routes` component for Dashboard */}
+          <Routes>
+            {items.map((item, index) => (
+              <Route key={index} path={`/${item.path}`} element={<item.component />} />
+            ))}
+          </Routes>
         </DashboardMain>
       </div>
     </PageLayout>
   );
 }
-

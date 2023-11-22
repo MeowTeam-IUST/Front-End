@@ -1,38 +1,32 @@
-import React, { useEffect } from 'react'
-import styles from './State1.module.scss'
-import CartItem from '../../CartItem/CartItem'
-import image1 from '../../../assets/4.jfif'
-import Requests from '../../../API/Requests'
-import { set } from 'react-hook-form'
-export default function State1({changeState , Cart, TotalPrice}) {
+import React from 'react';
+import styles from './State1.module.scss';
+import CartItem from '../../CartItem/CartItem';
+import Requests from '../../../API/Requests';
+
+export default function State1({ changeState, Cart, TotalPrice }) {
   return (
-    <>
-    <div className={styles.line}/>
-    <div className={styles.main}>
+    <React.Fragment>
+      <div className={styles.line} />
+      <div className={styles.main}>
         <div className={styles.items}>
-          {
-            Cart.map((item , index) => {
-              return(
-                <CartItem title={item.productTitle} price={item.productPrice} img={item.imageUrl} quantity= {item.amount} describthion={""}/>
-              )
-            })
-          }
+          {Cart.map((item, index) => (
+            <CartItem key={index} title={item.productTitle} price={item.productPrice} img={item.imageUrl} quantity={item.amount} describthion={""} />
+          ))}
         </div>
         <div className={styles.summary}>
-        <div className={styles.price}>
+          <div className={styles.price}>
             <div>قیمت کالاها: {TotalPrice}</div>
-            <div className={styles.line}/>
+            <div className={styles.line} />
             <div>قیمت نهایی: {TotalPrice}</div>
+          </div>
+          <div className={styles.button} onClick={() => changeState(2)}>ادامه خرید و ثبت سفارش</div>
         </div>
-        <div className={styles.button} onClick={()=>changeState(2)}>ادامه خرید و ثبت سفارش</div>
-        </div>
-    </div>
-    <div className={styles.line}/>
-    <div className={styles.down}>
-        <div className={styles.discount} dir='rtl' >کد تخفیف خود را وارد کنید ...</div>
+      </div>
+      <div className={styles.line} />
+      <div className={styles.down}>
+        <div className={styles.discount} dir='rtl'>کد تخفیف خود را وارد کنید ...</div>
         <div className={styles.button}>اعمال کد</div>
-    </div>
-
-    </>
-  )
+      </div>
+    </React.Fragment>
+  );
 }

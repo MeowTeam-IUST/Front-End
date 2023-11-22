@@ -1,46 +1,48 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react';
 import styles from './ShoppingCart.module.scss';
-import ProgressBar from '../progressBar/progressBar';
+import ProgressBar from '../progressBar/ProgressBar';
 import State1 from './States/State1';
 import State2 from './States/State2';
 import State3 from './States/State3';
 import { useSelector, useDispatch } from 'react-redux';
-import { ChangeState } from '../../Slices/CartSlice';
-import Requests from '../../API/Requests'
-
+import Requests from '../../API/Requests';
 
 export default function ShoppingCart() {
-  const [Cart , setCart] = React.useState([]);
-  const [TotalPrice , setTotalPrice] = React.useState(0);
-  useEffect( async () => {
-    const res = await Requests().getInvoice();
-    setCart(res.data.data.invoiceItems);
-    setTotalPrice(res.data.data.totalPrice);
-  }
-  , [])
-  const dispatch = useDispatch();
+  const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
-  // Use useSelector to access the relevant piece of state
-  const [activeStateId, setActiveStateId] = React.useState(1);
+  const fetchInvoice = async () => {
+    try {
+      const res = await Requests().getInvoice();
+      setCart((prevCart) => [...prevCart, ...res.data.data.invoiceItems]);
+      setTotalPrice(res.data.data.totalPrice);
+    } catch (error) {
+      console.error('Error fetching invoice:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchInvoice();
+  }, []);
+
+  const dispatch = useDispatch();
+  const [activeStateId, setActiveStateId] = useState(1);
   const states = [
     { id: 1, title: 'سبد خرید', active: true, component: State1 },
     { id: 2, title: 'تایید و پرداخت ', active: false, component: State2 },
     { id: 3, title: 'ثبت نهایی ', active: false, component: State3 },
   ];
 
-  // Find the active state using the activeStateId
   const activeState = states.find((state) => state.id === activeStateId);
 
   const handleChangeState = (id) => {
-    // Dispatch the action to change the state
-    // dispatch(ChangeState(id));
     setActiveStateId(id);
   };
 
   return (
-    <>
+    <React.Fragment>
       <ProgressBar />
-      {activeState && <activeState.component changeState={handleChangeState} Cart={Cart} TotalPrice={TotalPrice} />}
-    </>
+      {activeState && React.createElement(activeState.component, { changeState: handleChangeState, Cart: cart, TotalPrice: totalPrice })}
+    </React.Fragment>
   );
 }

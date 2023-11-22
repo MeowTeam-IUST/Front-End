@@ -3,7 +3,7 @@ import styles  from '../../Pages/ProductPage/ProductPage.module.scss'
 import { useState,useEffect } from 'react';
 import Requests from '../../API/Requests';
 import Popup from '../Popup/Popup.jsx'; // Adjust the path based on your file structure
-
+import AddToCart from '../AddToCart/AddToCart'
 export default function Productcard({name, price, changeButtonColor,showdiv,onDelete,applyLTR, onSave}) {
   const [isPopupOpen, setPopupOpen] = useState(false);
 
