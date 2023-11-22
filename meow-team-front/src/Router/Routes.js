@@ -7,7 +7,7 @@ import PaymentPage from '../Pages/PaymentPage/PaymentPage';
 import ProductsCat from '../Pages/ProductsCat/ProductsCat';
 import AdminOrder from '../Pages/AdminOrder/Orders';
 import AdminOrderDetails from '../Pages/AdminOrderDetails/AdminOrderDetails';
-
+import AdminPanel from '../Pages/AdminPanel/AdminPanel';
 const routes = [
     {
       path: '/',
@@ -28,6 +28,11 @@ const routes = [
     {
       path : '/dashboard/*',
       component: Dashboard,
+      Private: false
+    },
+    {
+      path : '/adminpanel/*',
+      component: AdminPanel,
       Private: false
     }
     ,

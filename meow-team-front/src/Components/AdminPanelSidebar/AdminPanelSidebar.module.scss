@@ -1,0 +1,58 @@
+
+.SideBar{
+    display: flex;
+    height: 90%;
+    width: 300px;
+    padding: 0px;
+    flex-direction: column;
+    align-items: center;
+    gap: 43px;
+    padding-top: 3%;
+    .Header{
+        color: var(--Admin---Title, #2B3674);
+        font-family: Anjoman;
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 100%; /* 26px */
+    }
+    .Line{
+        width: 290px;
+        height: 1px;
+        background: #F4F7FE;
+    }
+    .Items{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        align-self: stretch;
+        .Item{
+            display: flex;
+            padding-right: 0px;
+            justify-content: space-between;
+            align-items: center;
+            align-self: stretch;
+            padding-right: 20%;
+            .inner{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 20px;
+                .icon{
+                    width: 24px;
+                    height: 24px;
+                }
+                .Text{
+                    color: var(--Admin---Title, #2B3674);
+                    font-family: Anjoman;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 30px; /* 187.5% */
+                    letter-spacing: -0.32px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+.AdminPanelMain{
+    display: flex;
+    padding: 50px 158px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 38px;
+    flex: 1 0 0;
+    align-self: stretch;
+    background: var(--Admin---Back, #F4F7FE);
+}
