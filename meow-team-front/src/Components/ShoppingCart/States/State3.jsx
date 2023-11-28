@@ -6,7 +6,7 @@ import telegram from '../../../assets/telegram.svg';
 export default function State3({ changeState, Cart, TotalPrice }) {
   return (
     <React.Fragment>
-      <div className={styles.line} />
+      {/* <div className={styles.line} /> */}
       <div className={styles.main}>
         <div className={styles.box}>
           <div>سفارش شما با شماره پیگیری</div>

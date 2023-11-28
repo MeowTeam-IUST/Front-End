@@ -64,7 +64,7 @@ function AdminOrder() {
         }
     }
   return (
-    <div className={styles.layout}>
+    <div className={styles.layout} dir='ltr'>
         <div className={styles.container}>
             <div className={styles.subjecttext}>سفارشات</div>
             <div className={styles.content}>

@@ -4,10 +4,18 @@ import CartItem from '../../CartItem/CartItem';
 import Requests from '../../../API/Requests';
 
 export default function State1({ changeState, Cart, TotalPrice }) {
+  const [cart, setCart] = React.useState();
+  if (cart == undefined || cart.length == 0) {
+    setCart("null")
+  }
   return (
     <React.Fragment>
-      <div className={styles.line} />
-      <div className={styles.main}>
+      {/* <div className={styles.line} /> */}
+      {
+      cart == "null" ? 
+        <div>سبد خرید فعالی موجود نیست</div> :
+        <>
+              <div className={styles.main}>
         <div className={styles.items}>
           {Cart.map((item, index) => (
             <CartItem key={index} title={item.productTitle} price={item.productPrice} img={item.imageUrl} quantity={item.amount} describthion={""} />
@@ -27,6 +35,8 @@ export default function State1({ changeState, Cart, TotalPrice }) {
         <div className={styles.discount} dir='rtl'>کد تخفیف خود را وارد کنید ...</div>
         <div className={styles.button}>اعمال کد</div>
       </div>
+        </>
+      }
     </React.Fragment>
   );
 }

@@ -14,10 +14,12 @@ export default function ShoppingCart() {
   const fetchInvoice = async () => {
     try {
       const res = await Requests().getInvoice();
-      setCart((prevCart) => [...prevCart, ...res.data.data.invoiceItems]);
-      setTotalPrice(res.data.data.totalPrice);
+
     } catch (error) {
       console.error('Error fetching invoice:', error);
+    } finally {
+      setCart(res.data.data.cart);
+      setTotalPrice(res.data.data.totalPrice);
     }
   };
 
@@ -41,7 +43,7 @@ export default function ShoppingCart() {
 
   return (
     <React.Fragment>
-      <ProgressBar />
+      {/* <ProgressBar /> */}
       {activeState && React.createElement(activeState.component, { changeState: handleChangeState, Cart: cart, TotalPrice: totalPrice })}
     </React.Fragment>
   );

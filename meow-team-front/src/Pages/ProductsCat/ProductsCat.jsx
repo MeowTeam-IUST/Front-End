@@ -98,7 +98,7 @@ export default function ProductsCat(){
       
       
     return(
-        <div className={styles.whole}>
+        <div className={styles.whole} dir='ltr'>
             <div className={styles.cat}> دسته های محصولات</div>
             <div className={styles.upcat}>
                 <div className={styles.upcatleft}>

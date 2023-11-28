@@ -9,10 +9,10 @@ import { Routes, Route, useNavigate , useParams } from 'react-router-dom';
 export default function Dashboard() {
   const navigate = useNavigate();
   const { itemPath1 } = useParams();
-  console.log(window.location.pathname.split('/dashboard/:')[1])
+
   // Find the index of the selected item based on the URL
   const choosenItemIndex = items.findIndex((item) => item.path === window.location.pathname.split('/dashboard/:')[1]);
-  console.log(choosenItemIndex);
+
   // If the item is found, set it as the chosen item; otherwise, default to the first item
   const [choosenItem, setChoosenItem] = useState(() => {
     return choosenItemIndex !== -1 ? choosenItemIndex : 0;

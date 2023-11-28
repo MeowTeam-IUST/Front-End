@@ -15,12 +15,15 @@ export function ProfileHeader({name, image}) {
     localStorage.removeItem('token');
     window.location.href = '/'
   }
+  const navigatDashboard = () => {
+    window.location.href = '/dashboard'
+  }
   return (
     <div className={styles.profile}>
       {isAuth ? (
         <>
           <img className={styles.image} src={image} alt="" />
-          <div className={styles.name}>{name}</div>
+          <div className={styles.name} onClick={() => navigatDashboard()}>{name}</div>
           <button className={styles.exitButton} onClick={LogOut}>
             خروج
           </button>

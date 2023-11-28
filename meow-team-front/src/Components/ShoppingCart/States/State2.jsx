@@ -17,7 +17,7 @@ export default function State2({ changeState, Cart, TotalPrice }) {
 
   return (
     <React.Fragment>
-      <div className={styles.line} />
+      {/* <div className={styles.line} /> */}
       <div className={styles.main}>
           <div className={styles.box}>
             {Cart.map((item) => (

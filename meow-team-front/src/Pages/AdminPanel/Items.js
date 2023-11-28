@@ -7,20 +7,20 @@ import Route from '../../assets/Route.svg'
 import history from '../../assets/history.svg'
 import heart from '../../assets/heart.svg'
 import Dashboard from '../../assets/Dashboard.svg'
-import {EditProfile} from '../../Components/EditProfile/EditProfile'
-import DefaultDashboard from '../../Components/DefaultDashboard/DefaultDashboard'
-import ShoppingCart from '../../Components/ShoppingCart/ShoppingCart'
+import AdminProduct from '../AdminProduct/AdminProduct'
+import Orders from '../AdminOrder/Orders'
+import ProductsCat from '../ProductsCat/ProductsCat'
 export const items = [
     {
         name: 'داشبورد',
-        component: '',
+        component: AdminProduct,
         icon: Dashboard,
         path: 'default',
         item : 0
     },
     {
         name: 'سفارشات',
-        component: '',
+        component: Orders,
         icon: Basket,
         path: 'Orders',
         item : 1
@@ -28,14 +28,14 @@ export const items = [
     },
     {
         name: 'محصولات',
-        component: "",
+        component: ProductsCat,
         icon: Basket,
         path: 'Products',
         item : 2
     },
     {
-        name: 'وضعیت فروش',
-        component: "",
+        name: 'کد تخفیف',
+        component: AdminProduct,
         icon: history,
         path: 'SalesStatus',
         item : 3

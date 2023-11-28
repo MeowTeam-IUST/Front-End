@@ -4,13 +4,12 @@ import { items } from './Items';
 import { Routes, Route, useNavigate , useParams } from 'react-router-dom';
 import AdminPanelMain from '../../Components/AdminPanelMain/AdminPanelMain';
 import AdminPanelSidebar from '../../Components/AdminPanelSidebar/AdminPanelSidebar';
+
 export default function AdminPanel() {
   const navigate = useNavigate();
   const { itemPath1 } = useParams();
-  console.log(window.location.pathname.split('/adminpanel/:')[1])
 
   const choosenItemIndex = items.findIndex((item) => item.path === window.location.pathname.split('/adminpanel/:')[1]);
-  console.log(choosenItemIndex);
 
   const [choosenItem, setChoosenItem] = useState(() => {
     return choosenItemIndex !== -1 ? choosenItemIndex : 0;
@@ -26,9 +25,11 @@ export default function AdminPanel() {
 
   return (
     <div className={styles.Full} dir="rtl">
-      <AdminPanelSidebar items={items}/>
+      <AdminPanelSidebar setChoosenItem={setChoosenItem} items={items} choosenItem={choosenItem}/>
       <AdminPanelMain>
-
+        <Routes>
+            <Route path={`/:${itemPath1}`} element={<SelectedComponent />} />
+        </Routes>
       </AdminPanelMain>
     </div>
   );

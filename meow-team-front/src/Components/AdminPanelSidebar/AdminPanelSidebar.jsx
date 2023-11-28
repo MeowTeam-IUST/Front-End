@@ -1,6 +1,9 @@
 import React from 'react'
 import Styles from './AdminPanelSidebar.module.scss'
-export default function AdminPanelSidebar({items}) {
+export default function AdminPanelSidebar({setChoosenItem, items, choosenItem }) {
+const handleItemClick = (itemIndex) => {
+    setChoosenItem(itemIndex);
+    };
   return (
     <div className={Styles.SideBar}>
         <div className={Styles.Header}>ادمین اپکس شاپ</div>
@@ -9,7 +12,8 @@ export default function AdminPanelSidebar({items}) {
         {
             items.map((item, index) => {
                 return (
-                    <div key={index} className={Styles.Item} >
+                    <div key={index} className={Styles.Item} onClick={() => handleItemClick(index)}
+                    >
                         <div className={Styles.inner}>
                             <img src={item.icon} alt="" className={Styles.icon} />
                             <div className={Styles.Text}>

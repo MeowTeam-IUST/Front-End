@@ -1,5 +1,8 @@
 @import "../../App.scss";
 
+.part{
+    cursor: pointer;
+}
 /* Media Query for Mobile Devices */ 
 @media (max-width: 480px) { 
     .part{
