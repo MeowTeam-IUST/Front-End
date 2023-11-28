@@ -46,30 +46,32 @@ function ConfirmCode(props) {
         try{
             let number = '' + data.phonenumber;
             SetIsLoading({ is_loading: true })
-            await axios.post('https://c860-5-113-151-24.ngrok-free.app/api/Account/login',
-            {
-                phoneNumber: props.PhoneNumber,
-                step: 2,
-                confirmNumber: data.ConfirmCode,
-            },
-            {
-                headers: {
-                    'accept': 'text/plain' ,
-                    'Content-Type': 'application/json' ,
+            await axios
+              .post(
+                "https://b40c-5-112-57-20.ngrok-free.app/api/Account/login",
+                {
+                  phoneNumber: props.PhoneNumber,
+                  step: 2,
+                  confirmNumber: data.ConfirmCode,
+                },
+                {
+                  headers: {
+                    accept: "text/plain",
+                    "Content-Type": "application/json",
+                  },
                 }
-            },).then((response) =>(
-                localStorage.setItem('token' , response.data.data.token),
-                (
-                    response.data.isSuccess === false ?
-                    ShowToast("error", `! ${response.data.message}`) :
-                    (
-                        ShowToast("success", ". با موفقیت وارد شدید"),
-                        setTimeout(function(){
-                            window.location = '/';
-                        }, 3000)
-                    )
+              )
+              .then(
+                (response) => (
+                  localStorage.setItem("token", response.data.data.token),
+                  response.data.isSuccess === false
+                    ? ShowToast("error", `! ${response.data.message}`)
+                    : (ShowToast("success", ". با موفقیت وارد شدید"),
+                      setTimeout(function () {
+                        window.location = "/";
+                      }, 3000))
                 )
-            ));
+              );
         }
         catch (error)
         {

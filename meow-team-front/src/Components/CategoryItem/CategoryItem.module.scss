@@ -3,7 +3,8 @@
 .CategoryItem{
     height: 48px;
     border-radius: 24px;
-    background: var(--Opex---gray, #E8E8E8);
+    background: white;
+    box-shadow : $header_shadow;
     color: #000;
     text-align: center;
     display: flex;
@@ -11,15 +12,23 @@
     align-items: center;
     padding: 0 15px 0 15px;
     margin-bottom: 10px;
-    margin-left: 20px;
     /* Opex - font */
-    font-family: IRAN Sans;
     font-size: 15px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     cursor: pointer;
+    transition-duration: 0.4s;
 }
+
+.CategoryItem:hover {
+    cursor: pointer;
+    background-color: $--Opex--red;
+    color: $color1;
+    transition-duration: 0.4s;
+}
+
+
 /* Media Query for Tablets Ipads portrait mode */ 
 @media (min-width: 768px) and (max-width: 1024px){ 
     .CategoryItem{

@@ -5,16 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
 import Styles from "./LoginStyles.module.css"
 import TextField from '@mui/material/TextField';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import Input from '@mui/material/Input';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Button } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close';
 import { inputLabelClasses } from "@mui/material/InputLabel";
 import axios from 'axios';
@@ -47,31 +39,29 @@ function Login(props) {
         try{
             let number = '' + data.phonenumber;
             SetIsLoading({ is_loading: true })
-            await axios.post('https://c860-5-113-151-24.ngrok-free.app/api/Account/login',
-            {
-                phoneNumber: number,
-                step: 1,
-                confirmNumber: 0,
-            },
-            {
-                headers: {
-                    'accept': 'text/plain' ,
-                    'Content-Type': 'application/json' ,
+            await axios
+              .post(
+                "https://b40c-5-112-57-20.ngrok-free.app/api/Account/login",
+                {
+                  phoneNumber: number,
+                  step: 1,
+                  confirmNumber: 0,
+                },
+                {
+                  headers: {
+                    accept: "text/plain",
+                    "Content-Type": "application/json",
+                  },
                 }
-            },).then((response) =>(
-                (
-                    response.data.isSuccess === false ?
-                    (
-                        ShowToast("error", `! ${response.data.message}`)
-                    ) :
-                    (
-                        ShowToast("success", ". کد تایید برای شما ارسال شد"),
-                        setTimeout(function(){
-                            props.onFormSwitch('Verify' , number);
-                        }, 3000)
-                    )
-                )
-            ));
+              )
+              .then((response) =>
+                response.data.isSuccess === false
+                  ? ShowToast("error", `! ${response.data.message}`)
+                  : (ShowToast("success", ". کد تایید برای شما ارسال شد"),
+                    setTimeout(function () {
+                      props.onFormSwitch("Verify", number);
+                    }, 3000))
+              );
         }
         catch (error)
         {
@@ -100,7 +90,7 @@ function Login(props) {
                 <button className={Styles.openbtn} onClick={openForm} >باز کردن</button>
             </div> */}
             <div className={Styles.authformcontainer} id="myForm">
-                <CloseIcon sx={{ C , cursor: 'pointer', color: 'rgba(0, 0, 0, 0.7)', marginLeft: '0.8rem'}} onClick={closeForm} />
+                <CloseIcon sx={{cursor: 'pointer', color: 'rgba(0, 0, 0, 0.7)', marginLeft: '0.8rem'}} onClick={closeForm} />
                 <p className={Styles.textstyle}>
                     ورود/ثبت نام
                 </p>

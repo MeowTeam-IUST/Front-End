@@ -1,6 +1,5 @@
 import React , {useRef} from 'react'
 import styles from './LandingPage.module.scss'
-import bars from '../../assets/bars.svg'
 import CategoryItem from '../../Components/CategoryItem/CategoryItem'
 import popular from "../../assets/game-structure.svg"
 import PopularGame from '../../Components/PopularGames/PopularGame'
@@ -21,7 +20,6 @@ export default function LandingPage() {
       setProfileStatus(true);
     }
   }, [])
-  const Categorys = ["کالاف دیوتی موبایل" ,"گنشین ایمپکت" , "کلش آف کلنز", "محصولات فیزیکی", "ایپکس لجندز"]
   const Populares = [
     {
       name: "کالاف دیوتی موبایل",
@@ -77,15 +75,6 @@ export default function LandingPage() {
   const mainbody = useRef(null);
   return (
     <PageLayout>
-      سلاممممم
-      <div className={styles.Category}>
-        <CategoryHeader icon={bars} title={"دسته‌بندی محصولات"} />
-        <div className={styles.CategoryItems}>
-          {Categorys.map((item, index) => {
-            return <CategoryItem key={index} title={item} />;
-          })}
-        </div>
-      </div>
       <div className={styles.popular}>
         <CategoryHeader icon={popular} title={"بازی‌های پرطرفدار"} />
         <div className={styles.PopularGames}>

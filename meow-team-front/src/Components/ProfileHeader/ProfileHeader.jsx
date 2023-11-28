@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import styles from './ProfileHeader.module.scss'
-import { Button } from '@mui/material'
+
 
 export function ProfileHeader({name, image}) {
   const [isAuth, setIsAuth] = React.useState(false)
@@ -17,15 +17,19 @@ export function ProfileHeader({name, image}) {
   }
   return (
     <div className={styles.profile}>
-      {
-        isAuth ? 
+      {isAuth ? (
         <>
-            <img className={styles.image} src={image} alt="" />
-            <div className={styles.name}>{name}</div>
-            <Button onClick={LogOut}>خروج</Button>
+          <img className={styles.image} src={image} alt="" />
+          <div className={styles.name}>{name}</div>
+          <button className={styles.exitButton} onClick={LogOut}>
+            خروج
+          </button>
         </>
-        : <div className={styles.name} onClick={()=> HandleClick()}>ورود یا ثبت‌نام</div>
-      }
+      ) : (
+        <div className={styles.name} onClick={() => HandleClick()}>
+          ورود یا ثبت‌نام
+        </div>
+      )}
     </div>
-  )
+  );
 }

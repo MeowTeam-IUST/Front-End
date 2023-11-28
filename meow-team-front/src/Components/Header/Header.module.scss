@@ -1,95 +1,107 @@
 @import '../../App.scss';
 
 /* Media Query for Mobile Devices */ 
-@media (max-width: 480px) { 
-    .Header{
-        height: 48px;
-        width: 150%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 8px;
-        .logo{
-            display: none;
+// @media (max-width: 480px) { 
+//     .Header{
+//         height: 48px;
+//         width: 150%;
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: space-between;
+//         gap: 8px;
+//         .logo{
+//             display: none;
             
-        }
+//         }
         
-    }
-} 
+//     }
+// } 
     
-/* Media Query for low resolution  Tablets, Ipads */ 
-@media (min-width: 481px) and (max-width: 767px) { 
-    .Header{
-        height: 48px;
-        width: 150%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 8px;
-        .logo{
-            display: none;
-        }
-    }
-} 
+// /* Media Query for low resolution  Tablets, Ipads */ 
+// @media (min-width: 481px) and (max-width: 767px) { 
+//     .Header{
+//         height: 48px;
+//         width: 150%;
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: space-between;
+//         gap: 8px;
+//         .logo{
+//             display: none;
+//         }
+//     }
+// } 
 
-@media (width: 767px) {
-    .Header{
-        height: 48px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 8px;
-        .logo{
-            display: none;
-        }
-    }
-}
+// @media (width: 767px) {
+//     .Header{
+//         height: 48px;
+//         width: 100%;
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: space-between;
+//         gap: 8px;
+//         .logo{
+//             display: none;
+//         }
+//     }
+// }
     
-/* Media Query for Tablets Ipads portrait mode */ 
-@media (min-width: 768px) and (max-width: 1024px){ 
-    .Header{
-        height: 48px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 8px;
-        .logo{
-            display: none;
+// /* Media Query for Tablets Ipads portrait mode */ 
+// @media (min-width: 768px) and (max-width: 1024px){ 
+//     .Header{
+//         height: 48px;
+//         width: 100%;
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: space-between;
+//         gap: 8px;
+//         .logo{
+//             display: none;
             
-        }
+//         }
         
-    }
-} 
+//     }
+// } 
     
-/* Media Query for Laptops and Desktops */ 
-@media (min-width: 1025px) and (max-width: 1280px){ 
-    .Header{
-        height: 48px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 8px;
+// /* Media Query for Laptops and Desktops */ 
+// @media (min-width: 1025px) and (max-width: 1280px){ 
+//     .Header{
+//         height: 48px;
+//         width: 100%;
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: space-between;
+//         gap: 8px;
 
         
-    }
-} 
+//     }
+// } 
     
-/* Media Query for Large screens */ 
-@media (min-width: 1281px) { 
-    .Header{
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        gap: 10px;
+// /* Media Query for Large screens */ 
+// @media (min-width: 1281px) { 
+//     .Header{
+//         display: flex;
+//         justify-content: flex-start;
+//         align-items: flex-start;
+//         gap: 10px;
         
         
        
+//     }
+// }
+
+//  .logo {
+//             width: 174px;
+//         }
+
+
+.Header {
+    display: flex;
+    flex-grow: 1;
+    gap: 16px;
+
+    .logo {
+        width: 174px;
+        height: 47px;
     }
 }
-
- .logo {
-            width: 174px;
-        }

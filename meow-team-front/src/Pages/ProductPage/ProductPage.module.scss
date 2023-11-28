@@ -8,6 +8,7 @@
     direction: ltr;
     display: flex;
   }
+
   
   .fullPage{
     margin: -8px;
@@ -88,7 +89,6 @@
     max-height: 543px;
     padding: 10px 0px;
     flex-direction: column;
-    align-items: flex-end;
     gap: 32px;
     flex: 1 0 0;
   }
@@ -126,7 +126,7 @@
     align-items: center;
     gap: 100px;
     flex-shrink: 0;
-    align-self: stretch;
+    flex-grow: 1;
     border-radius: 100px;
     background: var(--Opex---gray, #E8E8E8);
   }
@@ -160,22 +160,16 @@
     color: #000;
     text-align: center;
     /* Body • Heavy */
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
+    font-family: $main_font;
+    font-size: large;
+    font-weight: bold;
     line-height: 22px; /* 137.5% */
-    letter-spacing: -0.32px;
+
   }
   .appinfo3{
     color: #000;
     text-align: justify;
-    font-family: Inter;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 200;
-    line-height: 22px; /* 169.231% */
-    letter-spacing: -0.26px;
+    font-family: $second_font;
     direction: rtl;
   }
   
@@ -212,9 +206,9 @@
       width: 236.666px;
       height: 343.165px;
       flex-shrink: 0;
-      background: 
-        linear-gradient(180deg, rgba(0, 0, 0, 0.00) 47.92%, #000 100%),
-        url("https://www.uplooder.net/img/image/85/1ddd4b3d1b4cd880b4de3fe2c8a8fac2/peakpx-(2).jpg");
+      // background: 
+      //   linear-gradient(180deg, rgba(0, 0, 0, 0.00) 47.92%, #000 100%),
+      //   url("https://www.uplooder.net/img/image/85/1ddd4b3d1b4cd880b4de3fe2c8a8fac2/peakpx-(2).jpg");
         background-repeat: no-repeat;
         background-size: cover;
         display: flex;
@@ -835,14 +829,15 @@ letter-spacing: -0.48px;
     margin-top: -14%;
    }
    .capcap{
-    
+    display: flex;
+    flex-grow: 1;
     padding-top: 20px;
     position: relative;
     z-index: 6;
     margin-top: -10%;
     background-color: white;
     border-radius: 48px;
-    width: 100%;
+    
    }
    .pccap1{
     margin-right: 3%;
