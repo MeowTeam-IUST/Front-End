@@ -48,7 +48,7 @@ function ConfirmCode(props) {
             SetIsLoading({ is_loading: true })
             await axios
               .post(
-                "https://b40c-5-112-57-20.ngrok-free.app/api/Account/login",
+                "http://45.147.99.177:9000/api/Account/login",
                 {
                   phoneNumber: props.PhoneNumber,
                   step: 2,

@@ -9,6 +9,7 @@ export default function Requests() {
     ...HEADER,
     Authorization: `Bearer ${localStorage.getItem('token')}`
   };
+
   // OrderFlow
   // ---------------------------------------------------------------//
 
@@ -94,6 +95,20 @@ export default function Requests() {
 
 
   // ---------------------------------------------------------------//
+  // ---------------------------------------------------------------//
+  // Wallet
+  // get wallet
+  const getWallet = async () => {
+    try {
+      const res = await API().GET('/api/Wallet/GetWalle', {}, AutorizeHeader);
+      console.log(res);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // ---------------------------------------------------------------//
 
   // post comment
   const postComment = async (body) => {
@@ -155,7 +170,8 @@ export default function Requests() {
   checkDiscount,
   getProfile,
   payment,
-  callbackBuy
+  callbackBuy,
+  getWallet
   };
 
 }

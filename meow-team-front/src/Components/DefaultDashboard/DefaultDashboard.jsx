@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect , useState } from 'react'
 import styles from './DefaultDashboard.module.scss'
 import CategoryHeader from '../CategoryHeader/CategoryHeader'
 import analytics from '../../assets/analytics.svg'
 import plus from '../../assets/plus.svg'
 import GameList from '../GameList/GameList'
+import Requests from '../../API/Requests'
 export default function DefaultDashboard() {
   const Populares = [
     {
@@ -23,13 +24,28 @@ export default function DefaultDashboard() {
       image: "https://www.uplooder.net/img/image/25/288e04f40eb951dda7ce9db7979e2373/Rectangle-15.png",
     }
   ]
+  const [wallet, setWallet] = useState(0);
+  const getwallet = async () => {
+    try {
+      const res = await Requests().getWallet();
+
+    } catch (error) {
+      console.error('Error fetching invoice:', error);
+    } finally {
+      setWallet(res.data.data.amount);
+    }
+  }
+  useEffect(() => {
+    getwallet();
+  }, [])
+
   return (
     <>
       <div className={styles.DefaultDashboard}>
         <div className={styles.card}>
           <div className={styles.detail}>
             <div className={styles.Text1}>موجودی کیف پول</div>
-            <div className={styles.Text2}>42000 تومان</div>
+            <div className={styles.Text2}>{wallet} تومان</div>
           </div>
           <div className={styles.button}>
             افزایش موجودی

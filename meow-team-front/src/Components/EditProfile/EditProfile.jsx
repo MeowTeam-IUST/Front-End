@@ -3,8 +3,8 @@ import styles from './EditProfile.module.scss'
 import azhini from '../../assets/azhini.jfif'
 import EditProfileInput from '../EditProfileInput/EditProfileInput'
 
-
 export function EditProfile() {
+
   return (
     <div className={styles.EditProfile}>
       <div className={styles.up}>

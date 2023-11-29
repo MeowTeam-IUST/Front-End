@@ -12,12 +12,19 @@ import PageLayout from '../../Layout/PageLayout'
 import Requests from '../../API/Requests'
 import 'react-slideshow-image/dist/styles.css'
 import { useEffect } from 'react'
+import { useSelector, useDispatch } from "react-redux";
+import { SetUser } from '../../Slices/UserSlice.js';
+
 export default function LandingPage() {
+  const state = useSelector((state) => state.User); // Access the "User" slice of the state
+  const dispatch = useDispatch();
   const [profileStatus , setProfileStatus] = React.useState(false);
   useEffect(async () => {
     if (profileStatus == false){
       const res = await Requests().getProfile();
+      console.log(res)
       setProfileStatus(true);
+      dispatch(SetUser(firstName=res.data.data.firstName , lastName = res.data.data.lastName , email = res.data.data.email , image = res.data.data.urlImage , birthDate = res.data.data.birthDate));
     }
   }, [])
   const Populares = [
