@@ -5,6 +5,7 @@ import confirm from '../../assets/Accept.svg'
 import cancel from '../../assets/Cross.svg'
 export default function EditProfileInput({title, value, setter}) {
   const [openEdit , setOpenEdit] = React.useState(false);
+  if (value == "Null" || value == null) value = "نامشخص"
   return (
     <>
       {openEdit ? (

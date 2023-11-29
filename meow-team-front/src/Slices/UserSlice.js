@@ -7,6 +7,7 @@ const initialState = {
   email : null,
   image : null,
   birthDate : null,
+  phoneNumber : null,
   Token : null
 };
 
@@ -15,12 +16,14 @@ const UserSlice = createSlice({
   initialState,
   reducers: {
     SetUser: (state, action) => {
+      console.log(action.payload)
       state.set = 1;
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;
       state.email = action.payload.email;
       state.birthDate = action.payload.birthDate;
       state.image = action.payload.Image;
+      state.phoneNumber = action.payload.phoneNumber;
       state.Token = action.payload.Token;
     },
     DeleteUser: (state, action) => {
@@ -30,6 +33,7 @@ const UserSlice = createSlice({
       state.email = null;
       state.birthDate = null;
       state.image = null;
+      state.phoneNumber = null;
       state.Token = null;
     },
   },
