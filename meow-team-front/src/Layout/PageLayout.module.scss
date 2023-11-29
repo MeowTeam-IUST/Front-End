@@ -15,8 +15,8 @@
             background-color: $Buttons ;
             display: flex;
             flex-direction: column;
-            padding-top: 75px;
-            padding-bottom: 75px;
+            padding-top: 60px;
+            padding-bottom: 80px;
             width: 1240px;
             gap: 32px;
             
@@ -57,6 +57,7 @@
 .Category{
         display: flex;
         flex-direction: column;
+        padding-bottom: 20px;
         .CategoryItems{
             display: flex;
             flex-direction: row;
