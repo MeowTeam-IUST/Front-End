@@ -1,13 +1,4 @@
 @import "../../App.scss";
-  .store{
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    gap: 8px;
-    align-self: stretch;
-    direction: ltr;
-    display: flex;
-  }
 
   
   .fullPage{
@@ -56,8 +47,14 @@
   
   
   
-  
-  .wholepc{
+  .GameAndProductsSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+  }
+  .GameHeaderSection{
     display: flex;
     height: 533px;
     justify-content: flex-end;
@@ -65,17 +62,9 @@
     gap: 32px !important;
     align-self: stretch;
     direction: ltr;
+  }
   
-    
-  }
-  .w{
-    display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 80px;
-  }
-  .pcpic{
+  .GamePicture{
     width: 533px ;
     height: 535px;
     border-radius: 64px;
@@ -83,7 +72,7 @@
    background-repeat: no-repeat;
    background-size: cover;
   }
-  .pccap{
+  .GameDetails{
     display: flex;
     height: 533px;
     max-height: 543px;
@@ -91,33 +80,71 @@
     flex-direction: column;
     gap: 32px;
     flex: 1 0 0;
+
+    .GameTitle{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      color: #000;
+      text-align: right;
+      font-family: Anjoman;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: normal;
+    }
+
+    .GameRoute{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      color: var(--Opex---font-on-gray, #8E888C);
+      text-align: right;
+      font-family: Shabnam FD-WOL;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    .AboutGameSection{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      align-self: stretch;
+
+      .AboutGameTitleSection{
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+
+        .AboutGameTitle{
+          color: #000;
+          text-align: center;
+          /* Body • Heavy */
+          font-family: $main_font;
+          font-size: large;
+          font-weight: bold;
+          line-height: 22px; /* 137.5% */
+        }
+      }
+
+      
+      .AboutGameDetails{
+        color: #000;
+        text-align: justify;
+        font-family: $second_font;
+        direction: rtl;
+      }
+    }
+
+
   }
-  .pccap1{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-  color: #000;
-  text-align: right;
-  font-family: Anjoman;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: normal;
-  }
-  .pccap2{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    color: var(--Opex---font-on-gray, #8E888C);
-    text-align: right;
-    font-family: Shabnam FD-WOL;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
+  
+  
   .pccap3{
     display: flex;
     height: 50px;
@@ -144,34 +171,9 @@
     font-weight: 600;
     line-height: normal;
   }
-  .appinfo{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    align-self: stretch;
-  }
-  .appinfo1{
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    }
-  .appinfo2{
-    color: #000;
-    text-align: center;
-    /* Body • Heavy */
-    font-family: $main_font;
-    font-size: large;
-    font-weight: bold;
-    line-height: 22px; /* 137.5% */
-
-  }
-  .appinfo3{
-    color: #000;
-    text-align: justify;
-    font-family: $second_font;
-    direction: rtl;
-  }
+  
+  
+  
   
   
   
@@ -191,49 +193,36 @@
   }
 
 
-  .cardsofpro{
-  display: flex;
-  padding: 10px 0px;
-  align-items: flex-end;
-  align-content: flex-end;
-  gap: 20px;
-  align-self: stretch;
-  flex-wrap: wrap;
-  direction: rtl;
-  }
-  .cardofpro {
-    position: relative;
-      width: 236.666px;
-      height: 343.165px;
-      flex-shrink: 0;
-      // background: 
-      //   linear-gradient(180deg, rgba(0, 0, 0, 0.00) 47.92%, #000 100%),
-      //   url("https://www.uplooder.net/img/image/85/1ddd4b3d1b4cd880b4de3fe2c8a8fac2/peakpx-(2).jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
+  .MenuSection {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+
+      .MenuTitle{
         display: flex;
-        flex-direction: column;
         justify-content: flex-end;
-        border-radius: 30px;
-        box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.905);
+        align-items: flex-end;
+        gap: 8px;
+        align-self: stretch;
+        direction: ltr;
+        display: flex;
+
+        text {
+          font-size: medium;
+          font-weight: bold;
+        }
+      }
+      .MenuProducts{
+        display: flex;
+        align-items: flex-end;
+        align-content: flex-end;
+        gap: 14px;
+        align-self: stretch;
+        flex-wrap: wrap;
+        direction: rtl;
+        }
   }
-  .cardofpro1 {
-      display: flex;
-      width: 192.99px;
-      height: 147.365px;
-      padding: 15px 22px;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 7px;
-      border-radius: 0 0 30px 30px;
-      flex-shrink: 0;
-      background: rgba(0, 0, 0, 0.20);
-      backdrop-filter: blur(15px);
-     
-      
-  
-  }
+
   .t1{
       display: flex;
       flex-direction: column;
@@ -302,12 +291,28 @@
 .buttonColorChange {
   background: var(--Admin---Title,  #4318FF)  !important;
 }
-.cmbox{
+.CommentsSecion{
  display: flex;
   flex-direction: column;
-  align-items: center;
+  
   gap: 30px;
-  align-self: stretch;
+  flex-grow: 1;
+
+  .CommentsTitleSection {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    text {
+      font-weight: bold;
+    }
+  }
+
+  .CommentsSectionBody{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+  }
 }
 .cm{
   display: flex;
@@ -482,12 +487,7 @@ border: 1px solid rgba(142, 136, 140, 0.41);
   color: yellow;
   cursor: pointer;
 }
-.cmrt{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  align-self: stretch;
-}
+
 .delete{
   position: absolute;
   top: 0;

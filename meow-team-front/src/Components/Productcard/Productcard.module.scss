@@ -2,9 +2,9 @@
 
 .productCard {
     display: flex;
-    width: 220px;
+    width: 195px;
     aspect-ratio: 2/3;
-    border-radius: 30px;
+    border-radius: 25px;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -65,6 +65,13 @@
             background-color: $--Opex--red;
             color: $color1;
             font-weight: bold;
+            transition-duration: 0.4s;
+        }
+
+        .buyButton:hover {
+            cursor: pointer;
+            transform: scale(1.03);
+            transition-duration: 0.4s;
         }
     }
 }
