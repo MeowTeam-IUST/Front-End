@@ -66,10 +66,7 @@ export default function Productcard({name, price, changeButtonColor,showdiv,onDe
         <div className={styles.productCardInfo}>
           <div className={styles.nameButton}>{name}</div>
           <div className={styles.priceButton}>{price}</div>
-          <button
-            className={styles.buyButton}
-            onClick={handleClick}
-          >
+          <button className={styles.buyButton} onClick={openPopup}>
             {changeButtonColor ? "ویرایش" : "خرید"}
           </button>
         </div>
@@ -81,7 +78,7 @@ export default function Productcard({name, price, changeButtonColor,showdiv,onDe
           title={"جزئیات سفارش"}
           content={<AddToCart />}
         />
-        {showPopup && (
+        {/* {showPopup && (
           <div className={styles.Backdrop} onClick={handleClose}>
             <div
               className={styles.Popup}
@@ -155,7 +152,7 @@ export default function Productcard({name, price, changeButtonColor,showdiv,onDe
               </div>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     );
 }
