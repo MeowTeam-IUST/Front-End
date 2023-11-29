@@ -46,7 +46,7 @@ export default function ProductPage(){
 
         useEffect(() => {
         const fetchProducts = async () => {
-            const productsData = await Requests().getProducts(1);
+            const productsData = await Requests().getProducts(5);
             setProducts(productsData);
         };
 
