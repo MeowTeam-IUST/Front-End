@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './EditProfileInput.module.scss'
 import edit from '../../assets/Edit.svg'
 import confirm from '../../assets/Accept.svg'
-import cancel from '../../assets/Cross.svg'
+import cancel from '../../assets/cross.svg'
 export default function EditProfileInput({title, value, setter}) {
   const [openEdit , setOpenEdit] = React.useState(false);
   return (
