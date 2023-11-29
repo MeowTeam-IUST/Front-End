@@ -56,7 +56,7 @@
   }
   .GameHeaderSection{
     display: flex;
-    height: 533px;
+    height: 460px;
     justify-content: flex-end;
     align-items: center;
     gap: 32px !important;
@@ -65,16 +65,16 @@
   }
   
   .GamePicture{
-    width: 533px ;
-    height: 535px;
-    border-radius: 64px;
+    width: 460px ;
+    aspect-ratio: 1/1;
+    border-radius: 50px;
     background: url("https://www.uplooder.net/img/image/85/1ddd4b3d1b4cd880b4de3fe2c8a8fac2/peakpx-(2).jpg");
    background-repeat: no-repeat;
    background-size: cover;
   }
   .GameDetails{
     display: flex;
-    height: 533px;
+    height: 460px;
     max-height: 543px;
     padding: 10px 0px;
     flex-direction: column;
@@ -294,9 +294,8 @@
 .CommentsSecion{
  display: flex;
   flex-direction: column;
-  
   gap: 30px;
-  flex-grow: 1;
+  width: 100%;
 
   .CommentsTitleSection {
     display: flex;
@@ -309,150 +308,10 @@
 
   .CommentsSectionBody{
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
-    align-self: stretch;
+    gap: 32px;
+    width: 100%;
   }
-}
-.cm{
-  display: flex;
-  width: 1116px;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-}
-.cm1{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 15px;
-  flex: 1 0 0;;
-  width: 100%;
-}
-.cmp1{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
-  
-}
-.logoo{
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  border-radius: 32px;
-  background: url("https://www.uplooder.net/img/image/85/1ddd4b3d1b4cd880b4de3fe2c8a8fac2/peakpx-(2).jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.names{
-  margin-left: 5%;
-  color: var(--Dark-Blue, #334253);
-  font-feature-settings: 'clig' off, 'liga' off;
-
-  /* Heading (M) */
-  font-family: Rubik;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
-.nl{
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
-}
-.nd{
-  display: flex;
-  width: 455px;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-}
-.date{
-  margin-left: 5%;
-  color: var(--Opex---font-on-gray, #8E888C);
-  font-feature-settings: 'clig' off, 'liga' off;
-  /* Body (M) */
-  font-family: Rubik;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-}
-.rep{
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  }
-.repicon{
-  color: var(--Opex---red, #E52A49);
-  font-feature-settings: 'clig' off, 'liga' off;
-  /* Body (M Bold) */
-  font-family: Rubik;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px; /* 150% */
-}
-.cmtxt{
-  color: var(--Opex---font-on-gray, #8E888C);
-text-align: right;
-font-feature-settings: 'clig' off, 'liga' off;
-font-family: Rubik;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px; /* 171.429% */
-  
-  direction: rtl;
-}
-.userbox{
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-  align-self: stretch;
-}
-.userlogo{
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: 42px;
-  background: url("https://www.uplooder.net/img/image/85/1ddd4b3d1b4cd880b4de3fe2c8a8fac2/peakpx-(2).jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.usertext{
-  display: flex;
-  height: 99px;
-  padding: 10px 15px;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-  flex: 1 0 0;
-  border-radius: 10px;
-border: 1px solid rgba(142, 136, 140, 0.41);
-  }
-  .sendbox{
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    gap: 24px;
-  }
-.btsend{
-  width: 104px;
-  height: 48px;
-  flex-shrink: 0;
-  border-radius: 15px;
-  background: var(--Opex---red, #E52A49);
-  color: var(--White, #FFF);
-  font-feature-settings: 'clig' off, 'liga' off;
-  /* Body (M Bold) */
-  font-family: Rubik;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
 }
 .rate{
   display: flex;
@@ -481,7 +340,7 @@ border: 1px solid rgba(142, 136, 140, 0.41);
     line-height: 20px; /* 100% */
   
 }
-.st{
+.star{
   font-size: 25px;
   font-weight: 800;
   color: yellow;
