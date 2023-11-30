@@ -17,18 +17,20 @@ export default function PageLayout ({ children }) {
 
   return (
     <div className={styles.PageLayout} dir="rtl">
-      <div className={styles.container}>
-        <Header />
-        <div className={styles.Category}>
-          <CategoryHeader icon={bars} title={"دسته‌بندی محصولات"} />
-          <div className={styles.CategoryItems}>
-            {Categorys.map((item, index) => {
-              return <CategoryItem key={index} title={item} />;
-            })}
+      <div className={styles.HeadContainer}>
+        <div className={styles.Head}>
+          <Header />
+          <div className={styles.Category}>
+            <CategoryHeader icon={bars} title={"دسته‌بندی محصولات"} />
+            <div className={styles.CategoryItems}>
+              {Categorys.map((item, index) => {
+                return <CategoryItem key={index} title={item} />;
+              })}
+            </div>
           </div>
         </div>
-        {children}
       </div>
+      <div className={styles.container}>{children}</div>
       <Footer />
     </div>
   );

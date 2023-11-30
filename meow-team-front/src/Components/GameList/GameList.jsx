@@ -3,6 +3,7 @@ import styles from './GameList.module.scss'
 import LittleCart from '../LittleCart/LittleCart'
 import Add from "../Add/Add"
 import { useState,useEffect } from 'react';
+import { ScrollMenu } from "react-horizontal-scrolling-menu";
 
 export default function GameList({Products , isAdmin}) {
   const [showPopup, setShowPopup] = useState(false);
