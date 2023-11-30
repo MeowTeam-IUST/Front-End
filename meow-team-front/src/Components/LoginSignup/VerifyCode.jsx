@@ -95,65 +95,110 @@ function ConfirmCode(props) {
         window.location = '/';
     };
 
-    return(
-        <div className={Styles.index}>
-            {/* <div>
+    return (
+      <div className={Styles.index}>
+        {/* <div>
                 <button className={Styles.openbtn} onClick={openForm} >باز کردن</button>
             </div> */}
-            <div className={Styles.authformcontainer} id="myForm">
-                <CloseIcon sx={{ display: 'inline-block' , cursor: 'pointer', color: 'rgba(0, 0, 0, 0.7)', marginLeft: '0.8rem'}} onClick={closeForm} />
-                <p className={Styles.textstyle}>
-                    ورود/ثبت نام
-                </p>
-                <form className={Styles.loginform} onSubmit={handleSubmit(onLogin)}>
-                    <div className={Styles.line}><hr/></div>
-                    <TextField 
-                        dir="rtl"
-                        sx={{
-                            '& .MuiInput-underline:before': { borderBottomColor: 'rgba(72, 72, 72, 0.7)' },
-                            '& .MuiInput-underline:after': { borderBottomColor: 'black' },
-                            input: { color: 'black', fontSize: '0.9rem', marginRight: '0.1rem'},
-                            "& .MuiInputLabel-root": {
-                                right: 0,
-                                textAlign: "right",
-                                color: 'rgba(72, 72, 72, 0.7)',
-                                paddingRight: '3%'
-                            },
-                            "& .MuiInputLabel-shrink":{
-                                color: 'black',
-                                transformOrigin: "top right",
-                                paddingRight: '3%',
-                                fontSize: 'mediom',
-                            },
-                        }}
-                        onChange={ConfirmCodeHandler} 
-                        type="number" 
-                        Step="1"
-                        ConfirmCode
-                        InputLabelProps={{
-                            sx: {
-                                [`&.${inputLabelClasses.shrink}`]: {
-                                  color: "black"
-                                }
-                              }
-                        }}
-                        id="ConfirmCode"
-                        label = "کد تایید را وارد کنید"
-                        variant="standard" 
-                        {...register('ConfirmCode')}
-                        className={`${errors.ConfirmCode ? 'is-invalid' : ''}`}
-                    />
-                    <div className={Styles.errormessage}>{errors.ConfirmCode?.message}</div>
-                    <div className={Styles.divbutton}>
-                        <LoadingButton loading={load.is_loading} sx={{ fontWeight: "bold", width: '10rem' , marginRight: '0.5rem', marginTop: '0.8rem', backgroundColor: 'rgb(242, 27, 27)' }} variant="contained" type="submit">تایید و ورود</LoadingButton>
-                        <LoadingButton disabled={load.is_loading} sx={{ fontWeight: "bold",width: '10rem' , marginLeft: '0.5rem' , marginTop: '0.8rem', backgroundColor: 'rgb(255, 255, 255)', color: 'black', border: 1 }} variant="contained" onClick={() => props.onFormSwitch('Login' , null)}>
-                            تغییر شماره تلفن
-                        </LoadingButton>
-                    </div>
-                </form>
-                <ToastContainer />
+        <div className={Styles.authformcontainer} id="myForm">
+          <CloseIcon
+            sx={{
+              display: "inline-block",
+              cursor: "pointer",
+              color: "rgba(0, 0, 0, 0.7)",
+              marginLeft: "0.8rem",
+            }}
+            onClick={closeForm}
+          />
+          <p className={Styles.textstyle}>ورود/ثبت نام</p>
+          <form className={Styles.loginform} onSubmit={handleSubmit(onLogin)}>
+            <div className={Styles.line}>
+              <hr />
             </div>
+            <TextField
+              dir="rtl"
+              sx={{
+                "& .MuiInput-underline:before": {
+                  borderBottomColor: "rgba(72, 72, 72, 0.7)",
+                  fontFamily: "Shabnam",
+                },
+                "& .MuiInput-underline:after": { borderBottomColor: "black" },
+                input: {
+                  color: "black",
+                  fontSize: "0.9rem",
+                  marginRight: "0.1rem",
+                },
+                "& .MuiInputLabel-root": {
+                  right: 0,
+                  textAlign: "right",
+                  color: "rgba(72, 72, 72, 0.7)",
+                  paddingRight: "3%",
+                  fontFamily: "Shabnam",
+                },
+                "& .MuiInputLabel-shrink": {
+                  color: "black",
+                  transformOrigin: "top right",
+                  paddingRight: "3%",
+                  fontSize: "mediom",
+                },
+              }}
+              onChange={ConfirmCodeHandler}
+              type="number"
+              Step="1"
+              ConfirmCode
+              InputLabelProps={{
+                sx: {
+                  [`&.${inputLabelClasses.shrink}`]: {
+                    color: "black",
+                    fontFamily: "Shabnam",
+                  },
+                },
+              }}
+              id="ConfirmCode"
+              label="کد تایید را وارد کنید"
+              variant="standard"
+              {...register("ConfirmCode")}
+              className={`${errors.ConfirmCode ? "is-invalid" : ""}`}
+            />
+            <div className={Styles.errormessage}>
+              {errors.ConfirmCode?.message}
+            </div>
+            <div className={Styles.divbutton}>
+              <LoadingButton
+                loading={load.is_loading}
+                sx={{
+                  fontFamily: "Shabnam",
+                  width: "10rem",
+                  marginRight: "0.5rem",
+                  marginTop: "0.8rem",
+                  backgroundColor: "rgb(242, 27, 27)",
+                }}
+                variant="contained"
+                type="submit"
+              >
+                تایید و ورود
+              </LoadingButton>
+              <LoadingButton
+                disabled={load.is_loading}
+                sx={{
+                  fontFamily: "Shabnam",
+                  width: "10rem",
+                  marginLeft: "0.5rem",
+                  marginTop: "0.8rem",
+                  backgroundColor: "rgb(255, 255, 255)",
+                  color: "black",
+                  border: 1,
+                }}
+                variant="contained"
+                onClick={() => props.onFormSwitch("Login", null)}
+              >
+                تغییر شماره تلفن
+              </LoadingButton>
+            </div>
+          </form>
+          <ToastContainer />
         </div>
+      </div>
     );
 }
 
