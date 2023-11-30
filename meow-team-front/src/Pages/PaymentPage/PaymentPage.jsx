@@ -10,10 +10,34 @@ export default function PaymentPage() {
   console.log(query.get("Authority"));
   console.log(query.get("Status"));
   const [isSucces, setIsSucces] = useState('');
+  const waiting = () => {
+    return(
+      <>
+        <p className={styles.wait}>لطفا منتظر بمانید</p>
+        <WaveTopBottomLoading size="large" color="#E52A49" />
+      </>
+    )
+  }
+  const succes = () => {
+    return(
+      <>
+        <p className={styles.wait}>پرداخت با موفقیت انجام شد</p>
+        {/* <WaveTopBottomLoading size="large" color="#E52A49" /> */}
+      </>
+    )
+  }
+  const fail = () => {
+    return(
+      <>
+        <p className={styles.wait}>پرداخت با خطا مواجه شد</p>
+        {/* <WaveTopBottomLoading size="large" color="#E52A49" /> */}
+      </>
+    )
+  }
   const payment = async () => {
     console.log({authority: query.get("Authority"), status: query.get("Status")})
     const res = await Requests().callbackBuy({"Authority": query.get("Authority"), "Status": query.get("Status")});
-    if (res.data.isSucces)
+    if (res.data.isSuccess == true)
       setIsSucces(true);
     else
       setIsSucces(false);
@@ -27,23 +51,7 @@ export default function PaymentPage() {
 
   return (
     <div className={styles.loading}>
-      {
-        isSucces == '' ? 
-        <>
-          <p className={styles.wait}>لطفا منتظر بمانید</p>
-          <WaveTopBottomLoading size="large" color="#E52A49" />
-        </> :
-        isSucces == true ?
-        <>
-          <p className={styles.wait}>پرداخت با موفقیت انجام شد</p>
-          {/* <WaveTopBottomLoading size="large" color="#E52A49" /> */}
-        </> :
-        <>
-          <p className={styles.wait}>پرداخت با خطا مواجه شد</p>
-          {/* <WaveTopBottomLoading size="large" color="#E52A49" /> */}
-        </>
-
-      }
+      {isSucces === '' ? waiting() : isSucces==true ? succes() : fail()}
     </div>
   );
 }

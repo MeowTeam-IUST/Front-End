@@ -4,16 +4,9 @@ import CartItem from '../../CartItem/CartItem';
 import Requests from '../../../API/Requests';
 
 export default function State1({ changeState, Cart, TotalPrice }) {
-  const [cart, setCart] = React.useState();
-  if (cart == undefined || cart.length == 0) {
-    setCart("null")
-  }
+  console.log(Cart)
   return (
     <React.Fragment>
-      {
-        cart == "null" ? 
-        <div className={styles.off}>سبد خرید فعالی موجود نیست</div> :
-        <>
           <div className={styles.main}>
             <div className={styles.items}>
               {Cart.map((item, index) => (
@@ -34,8 +27,6 @@ export default function State1({ changeState, Cart, TotalPrice }) {
             <div className={styles.discount} dir='rtl'>کد تخفیف خود را وارد کنید ...</div>
             <div className={styles.button}>اعمال کد</div>
           </div>
-        </>
-      }
     </React.Fragment>
   );
 }

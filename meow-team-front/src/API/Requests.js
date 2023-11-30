@@ -93,6 +93,17 @@ export default function Requests() {
     }
   };
 
+  // edit profile
+  const editProfile = async (body) => {
+    try {
+      const res = await API().POST('api/Account/editprofile', body, AutorizeHeader);
+      console.error(res);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
 
   // ---------------------------------------------------------------//
   // ---------------------------------------------------------------//
@@ -171,7 +182,8 @@ export default function Requests() {
   getProfile,
   payment,
   callbackBuy,
-  getWallet
+  getWallet,
+  editProfile
   };
 
 }

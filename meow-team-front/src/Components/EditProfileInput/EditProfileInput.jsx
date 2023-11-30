@@ -1,24 +1,68 @@
-import React from 'react'
-import styles from './EditProfileInput.module.scss'
-import edit from '../../assets/Edit.svg'
-import confirm from '../../assets/Accept.svg'
-import cancel from '../../assets/Cross.svg'
-export default function EditProfileInput({title, value, setter}) {
-  const [openEdit , setOpenEdit] = React.useState(false);
-  if (value == "Null" || value == null) value = "نامشخص"
+import React from 'react';
+import styles from './EditProfileInput.module.scss';
+import edit from '../../assets/Edit.svg';
+import confirm from '../../assets/Accept.svg';
+import cancel from '../../assets/Cross.svg';
+import { useSelector, useDispatch } from 'react-redux';
+import { SetUser } from '../../Slices/UserSlice.js';
+import Requests from '../../API/Requests';
+
+export default function EditProfileInput({ title, value , type }) {
+  const [openEdit, setOpenEdit] = React.useState(false);
+  const [inputValue, setInputValue] = React.useState(value == null || value =="Null" ? " " : value); // Store the input value
+  
+  if (value === 'Null' || value === null) {
+    value = 'نامشخص';
+  }
+  
+  const state = useSelector((state) => state.User); // Access the "User" slice of the state
+  const dispatch = useDispatch();
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value); // Update the input value as the user types
+  };
+  const [data , setData] = React.useState({
+    firstName : state.firstName,
+    lastName : state.lastName,
+    phoneNumber : null,
+    email : state.email,
+    birthDate : state.birthDate,
+  });
+  const handleConfirm = () => {
+    // just change the value of type in data
+    data[type] = inputValue;
+    try{
+      const res = Requests().editProfile(data);
+      setOpenEdit(false); // Close the edit mode
+      
+    }
+    catch(err){
+      console.log(err);
+    }
+    finally{
+      // dispatch(SetUser(data)); // Update the user in the state
+    }
+      
+  };
+
   return (
     <>
       {openEdit ? (
         <div className={styles.EditProfileInputEdit}>
           <div className={styles.title}>{title}</div>
-          <input className={styles.input} type="text" />
+          <input
+            className={styles.input}
+            type="text"
+            value={inputValue} // Set the input value
+            onChange={handleInputChange} // Handle input changes
+          />
 
           <div>
             <img
               className={styles.button1}
               src={confirm}
               alt="Confirm"
-              onClick={() => setOpenEdit(false)}
+              onClick={handleConfirm} // Call handleConfirm on Confirm button click
             />
             <img
               className={styles.button1}

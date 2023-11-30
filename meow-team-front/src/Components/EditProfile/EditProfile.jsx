@@ -18,12 +18,12 @@ export function EditProfile() {
       <div className={styles.down}>
         <div className={styles.inputs}>
 
-          <EditProfileInput title="نام" value={state.firstName}/>
-          <EditProfileInput title="نام خانوادگی" value={state.lastName}/>
-          <EditProfileInput title="شماره تلفن" value={state.phoneNumber}/>
-          <EditProfileInput title="ایمیل" value={state.email}/>
-          <EditProfileInput title="رمز عبور" value="******"/>
-          <EditProfileInput title="تاریخ تولد" value={state.birthDate}/>
+          <EditProfileInput title="نام" value={state.firstName} type={"firstName"}/>
+          <EditProfileInput title="نام خانوادگی" value={state.lastName} type={"lastName"}/>
+          <EditProfileInput title="شماره تلفن" value={state.phoneNumber} type={"phoneNumber"}/>
+          <EditProfileInput title="ایمیل" value={state.email} type={"email"}/>
+          <EditProfileInput title="رمز عبور" value="******" type={"password"}/>
+          <EditProfileInput title="تاریخ تولد" value={state.birthDate} type={"birthDate"}/>
         </div>
       </div>
     </div>

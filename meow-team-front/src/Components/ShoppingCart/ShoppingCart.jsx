@@ -6,6 +6,7 @@ import State2 from './States/State2';
 import State3 from './States/State3';
 import { useSelector, useDispatch } from 'react-redux';
 import Requests from '../../API/Requests';
+import Empty from './States/Empty';
 
 export default function ShoppingCart() {
   const [cart, setCart] = useState([]);
@@ -14,12 +15,12 @@ export default function ShoppingCart() {
   const fetchInvoice = async () => {
     try {
       const res = await Requests().getInvoice();
+      setCart(res.data.data.invoiceItems);
+      setTotalPrice(res.data.data.totalPrice);
 
     } catch (error) {
       console.error('Error fetching invoice:', error);
     } finally {
-      setCart(res.data.data.cart);
-      setTotalPrice(res.data.data.totalPrice);
     }
   };
 
@@ -43,8 +44,10 @@ export default function ShoppingCart() {
 
   return (
     <React.Fragment>
-      {/* <ProgressBar /> */}
-      {activeState && React.createElement(activeState.component, { changeState: handleChangeState, Cart: cart, TotalPrice: totalPrice })}
+      {
+        cart?.length == 0 ? <Empty/> : 
+        activeState && React.createElement(activeState.component, { changeState: handleChangeState, Cart: cart, TotalPrice: totalPrice })
+      }
     </React.Fragment>
   );
 }
