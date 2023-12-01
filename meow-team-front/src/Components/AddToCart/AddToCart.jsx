@@ -20,7 +20,7 @@ export default function AddToCart() {
       }
       */
       let data = {
-        productId: 1,
+        productId: 8,
         description: describthion
       }
       const res = await Requests().addInvoiceItem(data);
