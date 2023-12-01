@@ -1,17 +1,20 @@
 .layout{
     background-color: #F4F7FE;
-    width: 1630px;
+    width: 85%;
     height: 1383px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    /* align-items: flex-start; */
+    /* overflow: auto; */
+    /* padding-bottom: 50px; */
     /* gap: 38px; */
 }
 .orderdetailpopupback{
-    width: 1630px;
-    height: 1383px;
-    position: absolute;
+    width: 85%;
+    height: 100%;
+    position: fixed;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,9 +25,13 @@
 }
 
 .orderdetailpopup{
-    width: 781px;
+    width: 50%;
     height: 298px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
     gap: 10px;
     background: #F4F7FE;
 }
@@ -34,11 +41,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
     gap: 10px;
 }
 
 .orderdetailpopuptitlebox{
-    width: 741px;
+    width: 95%;
     height: 24px;
     display: flex;
     justify-content: flex-end;
@@ -59,8 +67,8 @@
 }
 
 .orderdetailpopupcontent{
-    width: 741px;
-    height: 200px;
+    width: 95%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -74,7 +82,7 @@
 .orderdetailpopupcontenttitle{
     /* display: flex;
     justify-self: flex-end; */
-    width: 701px;
+    width: 95%;
     height: 28px;
     margin-top: 20px;
     /* margin-right: 20px; */
@@ -89,13 +97,13 @@
 .popupseparator{
     display: flex;
     align-self: center;
-    width: 701px;
+    width: 95%;
     border: 1px solid #A3AED0;
     /* margin-top: 6px; */
 }
 
 .orderdetailpopupdetailbox{
-    width: 701px;
+    width: 95%;
     height: 125px;
     display: flex;
     flex-direction: column;
@@ -105,7 +113,7 @@
 }
 
 .orderdetailpopupdetail{
-    width: 701;
+    width: 95%;
     height: 25%;
     display: flex;
     flex-direction: row;
@@ -136,9 +144,10 @@
 }
 
 .userdetailpopupback{
-    width: 1630px;
-    height: 1383px;
-    position: absolute;
+    width: 85%;
+    height: 100%;
+    position: fixed;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,14 +158,19 @@
 }
 
 .userdetailpopup{
-    width: 781px;
+    width: 50%;
     height: 417px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
     gap: 10px;
     background: #F4F7FE;
 }
 
 .userdetailpopupcontainer{
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -165,7 +179,7 @@
 }
 
 .userdetailpopuptitlebox{
-    width: 741px;
+    width: 95%;
     height: 64px;
     display: flex;
     justify-content: flex-end;
@@ -186,7 +200,7 @@
 }
 
 .userdetailpopupcontent{
-    width: 741px;
+    width: 95%;
     height: 303px;
     display: flex;
     flex-direction: column;
@@ -218,7 +232,7 @@
 }
 
 .userdetailpopupdetails{
-    width: 701px;
+    width: 95%;
     height: 152px;
     gap: 10px;
     display: flex;
@@ -229,7 +243,7 @@
 }
 
 .userdetailpopupdetailrow{
-    width: 701px;
+    width: 100%;
     height: 71px;
     gap: 10px;
     display: flex;
@@ -313,13 +327,17 @@
 }
 
 .container {
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 5%;
+    /* margin-bottom: 50px; */
+    /* overflow: auto; */
 }
 .subjecttext{
-    width: 1314px;
+    width: 100%;
     height: 24px;
     display: flex;
     flex-direction: row;
@@ -341,8 +359,8 @@
     gap: 30px;
     align-items: center;
     background: #FFFFFF;
-    width: 1314px;
-    height: 1201px;
+    width: 100%;
+    height: 1231px;
     border-radius: 20px;
 }
 
@@ -350,7 +368,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 1274px;
+    width: 95%;
     height: 44px;
     margin-top: 30px;
     margin-left: 20px;
@@ -395,6 +413,7 @@
     align-items: center;
     width: 497px;
     height: 44px;
+    padding-right: 20px;
 }
 
 .headerrighttext{
@@ -418,6 +437,10 @@
     border-radius: 15px;
     border: 1px;
     border: 1px solid #A3AED0;
+}
+
+.headerrightselectaction :hover{
+    cursor: pointer;
 }
 
 .headerrightselectactiontext{
@@ -460,6 +483,10 @@
     background: #4318FF;
 }
 
+.headerrightdoaction :hover{
+    cursor: pointer;
+}
+
 .headerrightdoactiontext{
     width: 24px;
     height: 24px;
@@ -475,7 +502,7 @@
 .orders{
     display: flex;
     flex-direction: column;
-    width: 1274px;
+    width: 95%;
     height: 561px;
     gap: 30px;
 }
@@ -485,7 +512,7 @@
     justify-content: flex-end;
     flex-direction: row;
     align-items: center;
-    width: 1274px;
+    width: 100%;
     height: 167px;
     border-radius: 20px;
     gap: 10px;
@@ -514,7 +541,7 @@
 }
 
 .orderdetails{
-    width: 1123.21px;
+    width: 95%;
     height: 44px;
     /* padding: 10px, 0px, 10px, 0px; */
     display: flex;
@@ -526,9 +553,10 @@
     width: 206px;
     height: 44px;
     /* padding: 10px, 20px, 10px, 20px */
+    margin-left: 20px;
     border-radius: 15px;
     /* border: 1px; */
-    gap: 5px;
+    /* gap: 50px; */
     border: 1px solid #4318FF;
     display: flex;
     flex-direction: column;
@@ -559,7 +587,7 @@
     display: flex;
     flex-direction: column;
     align-items: end;
-    width: 403px;
+    width: 40%;
     height: 127px;
     gap: 10px;
 }
@@ -659,10 +687,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 1274px;
+    width: 95%;
     height: 164px;
     border-radius: 20px;
-    padding: 20px;
+    padding: 20px 0px 20px 0px;
     gap: 10px;
     background: #FFFFFF;
     box-shadow: 0px 18px 40px 0px #A3AED033;
@@ -671,13 +699,13 @@
 .separator{
     display: flex;
     align-self: center;
-    width: 1234px;
+    width: 95%;
     border: 1px solid #A3AED0;
     margin-top: 6px;
 }
 
 .costdetails{
-    width: 1234px;
+    width: 95%;
     height: 28px;
     display: flex;
     justify-content: space-between;
@@ -721,17 +749,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 1274px;
+    width: 95%;
     height: 116px;
     border-radius: 20px;
-    padding: 20px;
+    padding: 20px 0px 20px 0px;
     gap: 10px;
     background: #FFFFFF;
     box-shadow: 0px 18px 40px 0px #A3AED033;
 }
 
 .paydetails{
-    width: 1234px;
+    width: 95%;
     height: 28px;
     display: flex;
     flex-direction: row;
@@ -801,17 +829,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 1274px;
+    width: 95%;
     height: 136px;
     border-radius: 20px;
-    padding: 20px;
+    padding: 20px 0px 20px 0px;
+    margin-bottom: 30px;
     gap: 10px;
     background: #FFFFFF;
     box-shadow: 0px 18px 40px 0px #A3AED033;
 }
 
 .usernotetitle{
-    width: 1234px;
+    width: 95%;
     height: 28px;
     font-family: Anjoman;
     font-size: 18px;
@@ -823,14 +852,14 @@
 }
 
 .usernotetextbox{
-    width: 1234px;
-    height: 48px;
+    width: 95%;
+    height: 30%;
     gap: 10px;
 }
 
 .usernotetext{
-    width: 1234px;
-    height: 48px;        
+    /* width: 90%; */
+    height: 100%;        
     font-family: Rubik;
     font-size: 14px;
     font-weight: 400;

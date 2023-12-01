@@ -11,21 +11,19 @@ export function SearchHeader() {
     const HandelChange = async(value) => {
         try
         {
-            await axios
-              .post(
-                "https://b40c-5-112-57-20.ngrok-free.app/api/Category/search",
-                {
-                  searchWord: value,
+            await axios.post('http://45.147.99.177:9000/api/Category/search' ,
+            {
+                searchWord: value,
+            },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Accept': 'text/plain',
+                    'Connection': 'keep-alive',
+                    'ngrok-skip-browser-warning' : '235',
                 },
-                {
-                  headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                    Accept: "text/plain",
-                    Connection: "keep-alive",
-                    "ngrok-skip-browser-warning": "235",
-                  },
-                }
+            }
               )
               .then((responce) => {
                 setResult(responce.data.data);
