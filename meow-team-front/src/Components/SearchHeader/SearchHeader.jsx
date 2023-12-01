@@ -11,23 +11,26 @@ export function SearchHeader() {
     const HandelChange = async(value) => {
         try
         {
-            await axios.post('https://c860-5-113-151-24.ngrok-free.app/api/Category/search' ,
-            {
-                searchWord: value,
-            },
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                    'Accept': 'text/plain',
-                    'Connection': 'keep-alive',
-                    'ngrok-skip-browser-warning' : '235',
+            await axios
+              .post(
+                "https://b40c-5-112-57-20.ngrok-free.app/api/Category/search",
+                {
+                  searchWord: value,
                 },
-            }
-            ).then((responce) => {
+                {
+                  headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    Accept: "text/plain",
+                    Connection: "keep-alive",
+                    "ngrok-skip-browser-warning": "235",
+                  },
+                }
+              )
+              .then((responce) => {
                 setResult(responce.data.data);
-                console.log(result)
-            })
+                console.log(result);
+              });
             if(value==="" || value===" "){
                 setSearchShow(false);
             }
@@ -45,8 +48,8 @@ export function SearchHeader() {
     };
 
     const handleCloseClick = (e) => {
-        console.log(e.target)
-        console.log(xRef.current)
+        // console.log(e.target)
+        // console.log(xRef.current)
         if (e.target !== xRef.current) {
             setSearchShow(false);
         }

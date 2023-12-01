@@ -1,38 +1,24 @@
-import React from 'react'
-import styles from './State2.module.scss'
+import React, { useState } from 'react';
+import styles from './State2.module.scss';
 import Requests from '../../../API/Requests';
-export default function State2({changeState, Cart , TotalPrice }) {
-  const items = [
-    {
-      id: 1,
-      title: "80 کریستال گنشین ایمپکت",
-      price: "49000 تومان",
-      img: "image1",
-      quantity: 1,
-      describthion: "هیچی",
-    },
-    {
-      id: 2,
-      title: "80 کریستال گنشین ایمپکت",
-      price: "49000 تومان",
-      img: "image1",
-      quantity: 1,
-      describthion: "هیچی",
-    }
-  ]
-  const [describthion, setDescribthion] = React.useState('');
-  // request to server
+
+export default function State2({ changeState, Cart, TotalPrice }) {
+  const [describthion, setDescribthion] = useState('');
+
   const submit = async () => {
-    const res = await Requests().payment({});
-    console.log(res.data);
-    window.location.href = res.data.data;
-    // changeState(3);
-  }
+    try {
+      const res = await Requests().payment({});
+      console.log(res.data);
+      window.location.href = res.data.data;
+    } catch (error) {
+      console.error('Error submitting payment:', error);
+    }
+  };
 
   return (
-    <>
-        <div className={styles.line}/>
-        <div className={styles.main}>
+    <React.Fragment>
+      {/* <div className={styles.line} /> */}
+      <div className={styles.main}>
           <div className={styles.box}>
             {Cart.map((item) => (
               <div className={styles.item}>
@@ -68,7 +54,6 @@ export default function State2({changeState, Cart , TotalPrice }) {
             </div>
           </div>
         </div>
-
-    </>
-  )
+    </React.Fragment>
+  );
 }

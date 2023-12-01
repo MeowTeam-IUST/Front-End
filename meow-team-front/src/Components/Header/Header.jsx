@@ -18,12 +18,7 @@ export function Header({ Profile }) {
   }, [state]);
 
   const handleClick = () => {
-    dispatch(SetUser({
-      Name: "MohammadAli",
-      Number: "09123456789",
-      Profile: "azhini",
-      Token: "123456789"
-    }));
+    window.location.href = "/";
   };
 
   return (

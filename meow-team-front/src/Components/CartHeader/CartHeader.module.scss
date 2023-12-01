@@ -1,12 +1,15 @@
 @import "../../App.scss";
 
+.part{
+    cursor: pointer;
+}
 /* Media Query for Mobile Devices */ 
 @media (max-width: 480px) { 
     .part{
         width: 48px;
         height: 48px;
         flex-shrink: 0;
-        background: var(--Opex---gray, #E8E8E8);
+        background: white;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -96,7 +99,8 @@
         width: 48px;
         height: 48px;
         flex-shrink: 0;
-        background: var(--Opex---gray, #E8E8E8);
+        background: $color1;
+        box-shadow: $header_shadow;
         display: flex;
         flex-direction: row;
         justify-content: center;

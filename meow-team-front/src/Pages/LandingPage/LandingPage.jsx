@@ -1,6 +1,5 @@
 import React , {useRef} from 'react'
 import styles from './LandingPage.module.scss'
-import bars from '../../assets/bars.svg'
 import CategoryItem from '../../Components/CategoryItem/CategoryItem'
 import popular from "../../assets/game-structure.svg"
 import PopularGame from '../../Components/PopularGames/PopularGame'
@@ -13,15 +12,20 @@ import PageLayout from '../../Layout/PageLayout'
 import Requests from '../../API/Requests'
 import 'react-slideshow-image/dist/styles.css'
 import { useEffect } from 'react'
+import { useSelector, useDispatch } from "react-redux";
+import { SetUser } from '../../Slices/UserSlice.js';
+
 export default function LandingPage() {
+  const state = useSelector((state) => state.User); // Access the "User" slice of the state
+  const dispatch = useDispatch();
   const [profileStatus , setProfileStatus] = React.useState(false);
   useEffect(async () => {
-    if (profileStatus == false){
+    if (state.set == 0){
       const res = await Requests().getProfile();
       setProfileStatus(true);
+      dispatch(SetUser({firstName:res.data.data.firstName , lastName : res.data.data.lastName , email : res.data.data.email , image : res.data.data.urlImage , birthDate : res.data.data.birthDate, phoneNumber : res.data.data.phoneNumber}));
     }
   }, [])
-  const Categorys = ["کالاف دیوتی موبایل" ,"گنشین ایمپکت" , "کلش آف کلنز", "محصولات فیزیکی", "ایپکس لجندز"]
   const Populares = [
     {
       name: "کالاف دیوتی موبایل",
@@ -77,15 +81,6 @@ export default function LandingPage() {
   const mainbody = useRef(null);
   return (
     <PageLayout>
-      سلاممممم
-      <div className={styles.Category}>
-        <CategoryHeader icon={bars} title={"دسته‌بندی محصولات"} />
-        <div className={styles.CategoryItems}>
-          {Categorys.map((item, index) => {
-            return <CategoryItem key={index} title={item} />;
-          })}
-        </div>
-      </div>
       <div className={styles.popular}>
         <CategoryHeader icon={popular} title={"بازی‌های پرطرفدار"} />
         <div className={styles.PopularGames}>

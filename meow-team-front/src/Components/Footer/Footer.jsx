@@ -16,7 +16,7 @@ import shop from '../../assets/shop.svg'
 
 export default function Footer() {
   const [url, setUrl] = useState(window.location.href);
-  console.log(window.location.href)
+  // console.log(window.location.href)
 
   const HandelClick = (urlprop) => {
     window.location = `${urlprop}`;

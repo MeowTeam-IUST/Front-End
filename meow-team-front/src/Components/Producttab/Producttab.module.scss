@@ -1,0 +1,29 @@
+@import '../../App.scss';
+
+.producttab {
+    display: flex;
+    flex-grow: 1 0;
+    flex-direction: row;
+    // background-color: $--Opex--red;
+    // box-shadow: $header_shadow;
+    border: 2px solid $--Opex--red;
+    height: 60px;
+    align-items: center;
+    border-radius: 20px;
+    justify-content: space-between;
+    text {
+        color: $--Opex--red;
+    }
+
+    .subProductTab {
+        color: $color1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+        gap: 10px;
+        font-weight: bold;
+        font-size: large;
+    }
+}
+

@@ -1,13 +1,5 @@
 @import "../../App.scss";
-  .store{
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    gap: 8px;
-    align-self: stretch;
-    direction: ltr;
-    display: flex;
-  }
+
   
   .fullPage{
     margin: -8px;
@@ -55,69 +47,104 @@
   
   
   
-  
-  .wholepc{
+  .GameAndProductsSection{
     display: flex;
-    height: 533px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+  }
+  .GameHeaderSection{
+    display: flex;
+    height: 460px;
     justify-content: flex-end;
     align-items: center;
     gap: 32px !important;
     align-self: stretch;
     direction: ltr;
+  }
   
-    
-  }
-  .w{
-    display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 80px;
-  }
-  .pcpic{
-    width: 533px ;
-    height: 535px;
-    border-radius: 64px;
+  .GamePicture{
+    width: 460px ;
+    aspect-ratio: 1/1;
+    border-radius: 50px;
     background: url("https://www.uplooder.net/img/image/85/1ddd4b3d1b4cd880b4de3fe2c8a8fac2/peakpx-(2).jpg");
    background-repeat: no-repeat;
    background-size: cover;
   }
-  .pccap{
+  .GameDetails{
     display: flex;
-    height: 533px;
+    height: 460px;
     max-height: 543px;
     padding: 10px 0px;
     flex-direction: column;
-    align-items: flex-end;
     gap: 32px;
     flex: 1 0 0;
+
+    .GameTitle{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      color: #000;
+      text-align: right;
+      font-family: Anjoman;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: normal;
+    }
+
+    .GameRoute{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      color: var(--Opex---font-on-gray, #8E888C);
+      text-align: right;
+      font-family: Shabnam FD-WOL;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    .AboutGameSection{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      align-self: stretch;
+
+      .AboutGameTitleSection{
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+
+        .AboutGameTitle{
+          color: #000;
+          text-align: center;
+          /* Body • Heavy */
+          font-family: $main_font;
+          font-size: large;
+          font-weight: bold;
+          line-height: 22px; /* 137.5% */
+        }
+      }
+
+      
+      .AboutGameDetails{
+        color: #000;
+        text-align: justify;
+        font-family: $second_font;
+        direction: rtl;
+      }
+    }
+
+
   }
-  .pccap1{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-  color: #000;
-  text-align: right;
-  font-family: Anjoman;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: normal;
-  }
-  .pccap2{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    color: var(--Opex---font-on-gray, #8E888C);
-    text-align: right;
-    font-family: Shabnam FD-WOL;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
+  
+  
   .pccap3{
     display: flex;
     height: 50px;
@@ -126,7 +153,7 @@
     align-items: center;
     gap: 100px;
     flex-shrink: 0;
-    align-self: stretch;
+    flex-grow: 1;
     border-radius: 100px;
     background: var(--Opex---gray, #E8E8E8);
   }
@@ -144,40 +171,9 @@
     font-weight: 600;
     line-height: normal;
   }
-  .appinfo{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    align-self: stretch;
-  }
-  .appinfo1{
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    }
-  .appinfo2{
-    color: #000;
-    text-align: center;
-    /* Body • Heavy */
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 22px; /* 137.5% */
-    letter-spacing: -0.32px;
-  }
-  .appinfo3{
-    color: #000;
-    text-align: justify;
-    font-family: Inter;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 200;
-    line-height: 22px; /* 169.231% */
-    letter-spacing: -0.26px;
-    direction: rtl;
-  }
+  
+  
+  
   
   
   
@@ -197,49 +193,36 @@
   }
 
 
-  .cardsofpro{
-  display: flex;
-  padding: 10px 0px;
-  align-items: flex-end;
-  align-content: flex-end;
-  gap: 20px;
-  align-self: stretch;
-  flex-wrap: wrap;
-  direction: rtl;
-  }
-  .cardofpro {
-    position: relative;
-      width: 236.666px;
-      height: 343.165px;
-      flex-shrink: 0;
-      background: 
-        linear-gradient(180deg, rgba(0, 0, 0, 0.00) 47.92%, #000 100%),
-        url("https://www.uplooder.net/img/image/85/1ddd4b3d1b4cd880b4de3fe2c8a8fac2/peakpx-(2).jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
+  .MenuSection {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+
+      .MenuTitle{
         display: flex;
-        flex-direction: column;
         justify-content: flex-end;
-        border-radius: 30px;
-        box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.905);
+        align-items: flex-end;
+        gap: 8px;
+        align-self: stretch;
+        direction: ltr;
+        display: flex;
+
+        text {
+          font-size: medium;
+          font-weight: bold;
+        }
+      }
+      .MenuProducts{
+        display: flex;
+        align-items: flex-end;
+        align-content: flex-end;
+        gap: 11px;
+        align-self: stretch;
+        flex-wrap: wrap;
+        direction: rtl;
+        }
   }
-  .cardofpro1 {
-      display: flex;
-      width: 192.99px;
-      height: 147.365px;
-      padding: 15px 22px;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 7px;
-      border-radius: 0 0 30px 30px;
-      flex-shrink: 0;
-      background: rgba(0, 0, 0, 0.20);
-      backdrop-filter: blur(15px);
-     
-      
-  
-  }
+
   .t1{
       display: flex;
       flex-direction: column;
@@ -308,152 +291,27 @@
 .buttonColorChange {
   background: var(--Admin---Title,  #4318FF)  !important;
 }
-.cmbox{
+.CommentsSecion{
  display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 30px;
-  align-self: stretch;
-}
-.cm{
-  display: flex;
-  width: 1116px;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-}
-.cm1{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 15px;
-  flex: 1 0 0;;
   width: 100%;
-}
-.cmp1{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
-  
-}
-.logoo{
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  border-radius: 32px;
-  background: url("https://www.uplooder.net/img/image/85/1ddd4b3d1b4cd880b4de3fe2c8a8fac2/peakpx-(2).jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.names{
-  margin-left: 5%;
-  color: var(--Dark-Blue, #334253);
-  font-feature-settings: 'clig' off, 'liga' off;
 
-  /* Heading (M) */
-  font-family: Rubik;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
-.nl{
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
-}
-.nd{
-  display: flex;
-  width: 455px;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-}
-.date{
-  margin-left: 5%;
-  color: var(--Opex---font-on-gray, #8E888C);
-  font-feature-settings: 'clig' off, 'liga' off;
-  /* Body (M) */
-  font-family: Rubik;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-}
-.rep{
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  }
-.repicon{
-  color: var(--Opex---red, #E52A49);
-  font-feature-settings: 'clig' off, 'liga' off;
-  /* Body (M Bold) */
-  font-family: Rubik;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px; /* 150% */
-}
-.cmtxt{
-  color: var(--Opex---font-on-gray, #8E888C);
-text-align: right;
-font-feature-settings: 'clig' off, 'liga' off;
-font-family: Rubik;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px; /* 171.429% */
-  
-  direction: rtl;
-}
-.userbox{
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-  align-self: stretch;
-}
-.userlogo{
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: 42px;
-  background: url("https://www.uplooder.net/img/image/85/1ddd4b3d1b4cd880b4de3fe2c8a8fac2/peakpx-(2).jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.usertext{
-  display: flex;
-  height: 99px;
-  padding: 10px 15px;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-  flex: 1 0 0;
-  border-radius: 10px;
-border: 1px solid rgba(142, 136, 140, 0.41);
-  }
-  .sendbox{
+  .CommentsTitleSection {
     display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    gap: 24px;
+    align-items: flex-end;
+    gap: 8px;
+    text {
+      font-weight: bold;
+    }
   }
-.btsend{
-  width: 104px;
-  height: 48px;
-  flex-shrink: 0;
-  border-radius: 15px;
-  background: var(--Opex---red, #E52A49);
-  color: var(--White, #FFF);
-  font-feature-settings: 'clig' off, 'liga' off;
-  /* Body (M Bold) */
-  font-family: Rubik;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
+
+  .CommentsSectionBody{
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    width: 100%;
+  }
 }
 .rate{
   display: flex;
@@ -482,18 +340,13 @@ border: 1px solid rgba(142, 136, 140, 0.41);
     line-height: 20px; /* 100% */
   
 }
-.st{
+.star{
   font-size: 25px;
   font-weight: 800;
   color: yellow;
   cursor: pointer;
 }
-.cmrt{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  align-self: stretch;
-}
+
 .delete{
   position: absolute;
   top: 0;
@@ -835,14 +688,15 @@ letter-spacing: -0.48px;
     margin-top: -14%;
    }
    .capcap{
-    
+    display: flex;
+    flex-grow: 1;
     padding-top: 20px;
     position: relative;
     z-index: 6;
     margin-top: -10%;
     background-color: white;
     border-radius: 48px;
-    width: 100%;
+    
    }
    .pccap1{
     margin-right: 3%;

@@ -45,7 +45,7 @@ export default function AdminProduct(){
         }
       ]
     return(
-        <div  className={styles.whole}>
+        <div className={styles.whole} dir='ltr'>
      <div className={styles.allgames}>
           <CategoryHeader icon={gameControlle} title={"همه بازی‌ها"}/>
           <GameList Products={Populares} isAdmin={true}/>
