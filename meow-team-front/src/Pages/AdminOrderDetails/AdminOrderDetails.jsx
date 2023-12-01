@@ -81,8 +81,8 @@ function AdminOrderDetails() {
                                 <div className={styles.userdetailpopupdetailrow}>
                                     <div className={styles.userdetailpopupdetailrowitem}>
                                         <div className={styles.userdetailpopupdetailrowitemiconbox}>
-                                            <img className={styles.userdetailpopupdetailrowitemiconpen} src={penpic} alt="" />
-                                            <img className={styles.userdetailpopupdetailrowitemiconsquare} src={opensquarepic} alt="" />
+                                            {/* <img className={styles.userdetailpopupdetailrowitemiconpen} src={penpic} alt="" />
+                                            <img className={styles.userdetailpopupdetailrowitemiconsquare} src={opensquarepic} alt="" /> */}
                                         </div>
                                         <div className={styles.userdetailpopupdetailrowitemtext}>
                                             <div className={styles.useritemtitle}>نام خانوادگی</div>
@@ -91,8 +91,8 @@ function AdminOrderDetails() {
                                     </div>
                                     <div className={styles.userdetailpopupdetailrowitem}>
                                         <div className={styles.userdetailpopupdetailrowitemiconbox}>
-                                            <img className={styles.userdetailpopupdetailrowitemiconpen} src={penpic} alt="" />
-                                            <img className={styles.userdetailpopupdetailrowitemiconsquare} src={opensquarepic} alt="" />
+                                            {/* <img className={styles.userdetailpopupdetailrowitemiconpen} src={penpic} alt="" />
+                                            <img className={styles.userdetailpopupdetailrowitemiconsquare} src={opensquarepic} alt="" /> */}
                                         </div>
                                         <div className={styles.userdetailpopupdetailrowitemtext}>
                                             <div className={styles.useritemtitle}>نام</div>
@@ -103,8 +103,8 @@ function AdminOrderDetails() {
                                 <div className={styles.userdetailpopupdetailrow}>
                                     <div className={styles.userdetailpopupdetailrowitem}>
                                         <div className={styles.userdetailpopupdetailrowitemiconbox}>
-                                            <img className={styles.userdetailpopupdetailrowitemiconpen} src={penpic} alt="" />
-                                            <img className={styles.userdetailpopupdetailrowitemiconsquare} src={opensquarepic} alt="" />
+                                            {/* <img className={styles.userdetailpopupdetailrowitemiconpen} src={penpic} alt="" />
+                                            <img className={styles.userdetailpopupdetailrowitemiconsquare} src={opensquarepic} alt="" /> */}
                                         </div>
                                         <div className={styles.userdetailpopupdetailrowitemtext}>
                                             <div className={styles.useritemtitle}>ایمیل</div>
@@ -113,8 +113,8 @@ function AdminOrderDetails() {
                                     </div>
                                     <div className={styles.userdetailpopupdetailrowitem}>
                                         <div className={styles.userdetailpopupdetailrowitemiconbox}>
-                                            <img className={styles.userdetailpopupdetailrowitemiconpen} src={penpic} alt="" />
-                                            <img className={styles.userdetailpopupdetailrowitemiconsquare} src={opensquarepic} alt="" />
+                                            {/* <img className={styles.userdetailpopupdetailrowitemiconpen} src={penpic} alt="" />
+                                            <img className={styles.userdetailpopupdetailrowitemiconsquare} src={opensquarepic} alt="" /> */}
                                         </div>
                                         <div className={styles.userdetailpopupdetailrowitemtext}>
                                             <div className={styles.useritemtitle}>شماره مبایل</div>

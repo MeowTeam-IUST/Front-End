@@ -10,6 +10,7 @@ import Dashboard from '../../assets/Dashboard.svg'
 import {EditProfile} from '../../Components/EditProfile/EditProfile'
 import DefaultDashboard from '../../Components/DefaultDashboard/DefaultDashboard'
 import ShoppingCart from '../../Components/ShoppingCart/ShoppingCart'
+import { MyOrders } from '../../Components/MyOrders/MyOrders'
 export const items = [
     {
         name: 'داشبورد',
@@ -32,7 +33,7 @@ export const items = [
     },
     {
         name: 'سفارشات من',
-        component: '',
+        component: MyOrders,
         icon: history,
         item : 3
     },
