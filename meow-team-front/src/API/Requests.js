@@ -78,7 +78,16 @@ export default function Requests() {
       console.log(err);
     }
   };
-
+  // buy from wallet
+  const buyFromWallet = async (body) => {
+    try {
+      const res = await API().POST('api/OrderFlow/buyWithWallet', body, AutorizeHeader);
+      console.error(res);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   // ---------------------------------------------------------------//
   // ---------------------------------------------------------------//
@@ -111,7 +120,7 @@ export default function Requests() {
   // get wallet
   const getWallet = async () => {
     try {
-      const res = await API().GET('/api/Wallet/GetWalle', {}, AutorizeHeader);
+      const res = await API().GET('api/Wallet/GetWallet', {}, AutorizeHeader);
       console.log(res);
       return res;
     } catch (err) {
@@ -124,7 +133,7 @@ export default function Requests() {
   // post comment
   const postComment = async (body) => {
     try {
-      const res = await API().POST(`'/api/comment/add'`, body, AutorizeHeader);
+      const res = await API().POST(`'api/comment/add'`, body, AutorizeHeader);
       console.error(res);
       return res;
     } catch (err) {
@@ -182,6 +191,7 @@ export default function Requests() {
   getProfile,
   payment,
   callbackBuy,
+  buyFromWallet,
   getWallet,
   editProfile
   };

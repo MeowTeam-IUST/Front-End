@@ -14,6 +14,15 @@ export default function State2({ changeState, Cart, TotalPrice }) {
       console.error('Error submitting payment:', error);
     }
   };
+  const wallet = async () => {
+    try {
+      const res = await Requests().buyFromWallet({});
+      console.log(res.data);
+      
+    } catch (error) {
+      console.error('Error submitting payment:', error);
+    }
+  };
 
   return (
     <React.Fragment>
@@ -48,8 +57,8 @@ export default function State2({ changeState, Cart, TotalPrice }) {
               <div className={styles.header}>پرداخت مستقیم</div>
               <div>خرید از درگاه بانکی</div>
             </div>
-            <div className={`${styles.button1} ${styles.button2}`}>
-              <div className={styles.header} onClick={()=>changeState(3)}>برداشت از کیف پول</div>
+            <div className={`${styles.button1} ${styles.button2}`} onClick={()=>wallet()}>
+              <div className={styles.header} >برداشت از کیف پول</div>
               <div>موجودی 200 هزار تومان</div>
             </div>
           </div>
