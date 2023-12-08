@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './EditProfileInput.module.scss';
 import edit from '../../assets/Edit.svg';
 import confirm from '../../assets/Accept.svg';
-import cancel from '../../assets/Cross.svg';
+import cancel from '../../assets/cross.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { SetUser } from '../../Slices/UserSlice.js';
 import Requests from '../../API/Requests';

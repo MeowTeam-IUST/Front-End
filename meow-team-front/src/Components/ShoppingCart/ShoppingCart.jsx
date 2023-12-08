@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ShoppingCart.module.scss';
-import ProgressBar from '../progressBar/ProgressBar';
+import ProgressBar from '../progressBar/progressBar';
 import State1 from './States/State1';
 import State2 from './States/State2';
 import State3 from './States/State3';
