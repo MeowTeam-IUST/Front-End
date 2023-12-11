@@ -7,7 +7,8 @@ import double_arrow_right from '../../assets/keyboard_double_arrow_right.svg'
 import double_arrow_left from '../../assets/keyboard_double_arrow_left.svg'
 import Checkbox from '@mui/material/Checkbox';
 import axios from 'axios';
-import { bool } from 'yup';
+import { TextField } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
 
 function AdminOrder() {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -84,7 +85,6 @@ function AdminOrder() {
     const [pagenumber, SetPageNumber] = useState(1);
     const HandelOneArrowClick = (jumpnumber) => {
         SetPageNumber(pagenumber+jumpnumber)
-        // SetPageNumber(jumpnumber)
         Setchecktick(false);
         setBooleanArray([
             booleanArray[0]=false,
@@ -159,7 +159,23 @@ function AdminOrder() {
     const HandelActionClick = () =>{
         setDoActionId([...new Set(doactionid)]);
         deleteid(doactionid);
+        Setchecktick(false);
+        setBooleanArray([
+            booleanArray[0]=false,
+            booleanArray[1]=false,
+            booleanArray[2]=false,
+            booleanArray[3]=false,
+        ]);
+        doactionid.length = 0;
     }
+    var [Selectvalue , setSelectValue] = useState({
+        Selectin : "Show Song",
+    });
+    const handlesave = (prop) => (event) => {
+        setSelectValue({ ...Selectvalue, [prop]: event.target.value });
+    };
+    // const [value, setValue] = React.useState<string | null>(options[0]);
+    const [inputValue, setInputValue] = React.useState('');
   return (
     <div className={styles.layout} dir='ltr'>
         <div className={styles.container}>
@@ -202,8 +218,8 @@ function AdminOrder() {
                             <div className={styles.carditem}>
                                 <div className={styles.carditemtext}>{item.totalPeice} تومان</div>
                             </div>
-                            <div className={styles.cardonethirditem}>
-                                <div className={styles.carditemtext}>پرداخت شده</div>
+                            <div className={styles.cardonethirditem} style={{ border: item.state == 1 ? '1px solid rgba(229, 42, 73, 1)' : item.state == 2 ? '1px solid rgba(0, 190, 53, 1)' : item.state == 3 ? '1px solid rgba(67, 24, 255, 1)' : 'black' }}>
+                                <div className={styles.carditemtext}>{item.state == 1 ? 'پرداخت شده' : item.state == 2 ? 'در حال انجام' : item.state == 3 ? 'انجام شده' : 'نا مشخص'}</div>
                             </div>
                             <div className={styles.carditem}>
                                 <div className={styles.carditemtext}>ساعتی قبل</div>
@@ -247,12 +263,88 @@ function AdminOrder() {
                         <div className={styles.doaction} onClick={() => HandelActionClick()}>
                             <div className={styles.doactiontex}>اجرا</div>
                         </div>
-                        <div className={styles.selectaction}>
-                            <div className={styles.selectactionicon}>
-                                <img className={styles.expandmoreicon} src={expand_more}  alt=""/>
-                            </div>
-                            <div className={styles.selectactiontext}>حذف کردن</div>
-                        </div>
+                        <Autocomplete
+                            sx={{
+                                width: "70%",
+                                '& .MuiAutocomplete-input': {
+                                    padding: '0px',
+                                    height: '20px',
+                                    width: '50px',
+                                },
+                                "& .MuiAutocomplete-inputRoot[class*='MuiInputBase-root']": {
+                                    fontSize: '16px',
+                                    color: 'rgba(0, 0, 0, 1)',
+                                    fontFamily: 'Anjoman',
+                                    fontSize: '14px',
+                                    fontWeight: 800,
+                                    lineHeight: '24px',
+                                    letterSpacing: '-0.02em',
+                                    textAlign: 'right',
+                                },
+                                '& .MuiOutlinedInput-root': {
+                                    paddingRight: '0px',
+                                    paddingLeft: '0px',
+                                    paddingTop: '0px',
+                                    paddingBottom: '0px',
+                                    '& .MuiAutocomplete-input': {
+                                        paddingRight: '0px',
+                                        paddingLeft: '0px',
+                                        paddingTop: '0px',
+                                        paddingBottom: '0px',
+                                        // marginLeft: '0px',
+                                        position: 'absolute',
+                                        top: '30%',
+                                        left: '25%',
+                                        width:'70%',
+                                        textAlign: 'right',
+                                    },
+                                },
+                                '& .MuiAutocomplete-endAdornment': {
+                                    marginRight: '80px',
+                                    marginLeft: '0px',
+                                    marginTop: '0px',
+                                    marginBottom: '0px',
+                                    position: 'reletive',
+                                    top: '10px',
+                                    left: '50px',
+                                },
+                                '& .MuiAutocomplete-inputRoot': {
+                                    height: '45px',
+                                },
+                                '& .MuiOutlinedInput-notchedOutline': {
+                                    borderRadius: '15px',
+                                    border: '1px solid rgba(163, 174, 208, 1)',
+                                },
+                                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                    borderRadius: '15px',
+                                    border: '1px solid rgba(163, 174, 208, 1)',
+                                },
+                                '&:hover .MuiOutlinedInput-notchedOutline': {
+                                    borderRadius: '15px',
+                                    border: '1px solid rgba(163, 174, 208, 1)',
+                                },
+                            }}
+                            autoHighlight
+                            autoSelect
+                            disableClearable
+                            disablePortal
+                            id="country-select-demo"
+                            options={parti}
+                            getOptionLabel={(option) => option.label}
+                            value={parti[0]}
+                            onChange={(event, newValue) => {
+                                setInputValue(newValue);
+                            }}
+                            popupIcon={<img className={styles.expandmoreicon} style={{ padding: 0, margin: 0 }} src={expand_more}  alt=""/>}
+                            renderInput={(params) => 
+                                <TextField
+                                    sx={{
+                                        minWidth: '100px',
+                                    }}
+                                    {...params} 
+                                />
+                            }
+                        />
                     </div>
                 </div>
             </div>
@@ -263,3 +355,6 @@ function AdminOrder() {
 }
 
 export default AdminOrder;
+const parti = [
+    { label: 'حذف کردن'},
+];
