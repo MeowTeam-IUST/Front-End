@@ -23,7 +23,7 @@ export function Header({ Profile }) {
 
   return (
     <div className={styles.Header}>
-      <ProfileHeader name={state.Name || "محمدعلی آژینی"} image={azhini} />
+      <ProfileHeader name={state.Name || "محمدعلی آژینsی"} image={azhini} />
       <CartHeader />
       <SearchHeader />
       <img className={styles.logo} src={logo} onClick={handleClick} />
