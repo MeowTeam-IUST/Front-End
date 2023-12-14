@@ -1,10 +1,28 @@
 import React from "react";
 import styles from "./Wallet.module.scss";
 import { useState, useEffect } from "react";
+import Requests from "../../API/Requests";
+
 
 export function Wallet () {
 
     const [walletAmount, setWalletAmount] = useState(0)
+    
+    const getWalletOnLoad = async (event) => {
+      try {
+        const res = await Requests().getWallet();
+        // console.log(res.data.data.amount);
+        setWalletAmount(res.data.data.amount)
+      } catch (error) {
+        console.error("Error getting wallet:", error);
+      }
+
+    }
+
+     useEffect(() => {
+      getWalletOnLoad()
+     } ,[] )
+    
 
     return (
       <div className={styles.WalletAll}>
