@@ -1,5 +1,7 @@
 @import "../../App.scss";
-
+.full{
+    width: 100%;
+}
 .DefaultDashboard{
     display: flex;
     height: fit-content;
@@ -93,3 +95,46 @@
     gap: 31px;
     align-self: stretch;
 }
+
+/* Media Query for Mobile Devices */ 
+@media (max-width: 480px) { 
+    .DefaultDashboard{
+        gap: 21px;
+        padding: 0px 0px 24px 32px;
+        .card{
+            width: 45%;
+            height: 200px;
+            // border-radius: 36px;
+            padding-top: 20px;
+            .detail{
+                gap: 11px;
+                .Text1{
+                    font-size: 16px;
+                    font-weight: 1000;
+                }
+                .Text2{
+                    padding-top: 20px;
+                    font-size: 16px;
+                    font-weight: 900;
+                }
+            }
+            .button{
+                width: 60%;
+                height: 41px;
+                border-radius: 25px;
+
+            }
+        }
+
+    
+    }
+    .Repeated{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 21px;
+        align-self: stretch;
+    }
+} 

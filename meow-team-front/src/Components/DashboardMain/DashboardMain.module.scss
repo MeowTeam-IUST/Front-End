@@ -9,7 +9,22 @@
     flex: 1 0 0;
     border-radius: 38px;
     background: #FFF;
-
+    width: 80%;
     /* User Shadow */
     box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.15);
+    .back{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: #E52A49;
+        font-weight: 800;
+    }
 }
+/* Media Query for Mobile Devices */ 
+@media (max-width: 480px) { 
+    .MainContent{
+        align-items: start;
+
+    }
+} 

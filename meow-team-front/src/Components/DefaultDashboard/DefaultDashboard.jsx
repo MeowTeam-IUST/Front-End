@@ -2,7 +2,7 @@ import React, { useEffect , useState } from 'react'
 import styles from './DefaultDashboard.module.scss'
 import CategoryHeader from '../CategoryHeader/CategoryHeader'
 import analytics from '../../assets/analytics.svg'
-import plus from '../../assets/plus.svg'
+import plus from '../../assets/+.svg'
 import GameList from '../GameList/GameList'
 import Requests from '../../API/Requests'
 export default function DefaultDashboard() {
@@ -32,7 +32,7 @@ export default function DefaultDashboard() {
     } catch (error) {
       console.error('Error fetching invoice:', error);
     } finally {
-      // setWallet(res.data.data.amount);
+      setWallet(res.data.data.amount);
     }
   }
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function DefaultDashboard() {
   }, [])
 
   return (
-    <>
+    <div className={styles.full}>
       <div className={styles.DefaultDashboard}>
         <div className={styles.card}>
           <div className={styles.detail}>
@@ -66,6 +66,6 @@ export default function DefaultDashboard() {
           <GameList Products={Populares} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
