@@ -9,8 +9,23 @@ import Checkbox from '@mui/material/Checkbox';
 import axios from 'axios';
 import { TextField } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
+import { makeStyles } from '@mui/styles';
+import Paper from "@mui/material/Paper";
 
-function AdminOrder() {
+const useStyles = makeStyles({
+    option: {
+        fontFamily: 'Anjoman',
+        fontSize: '13px',
+        fontWeight: '600',
+        lineHeight: '20px',
+        letterSpacing: '-1px',
+        direction: 'rtl',
+        color: 'rgba(0, 0, 0, 1)',
+    },
+});
+
+function AdminOrder(props) {
+    const classes = useStyles();
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const [checktick, Setchecktick] = useState(false);
     const [booleanArray, setBooleanArray] = useState([false, false, false, false]);
@@ -93,9 +108,6 @@ function AdminOrder() {
             booleanArray[3]=false,
         ]);
         doactionid.length = 0;
-        // fetchData().then((responsedata) => {
-        //     setData(responsedata);
-        // })
     };
     useEffect(() => {
         fetchData().then((responsedata) => {
@@ -104,6 +116,7 @@ function AdminOrder() {
     }, [pagenumber]);
 
     const [data, setData] = useState([]);
+    const [totalnumber, setTotalNumber] = useState(0);
     useEffect(() => {
         fetchData().then((responsedata) => {
             setData(responsedata);
@@ -112,16 +125,20 @@ function AdminOrder() {
     useEffect(() => {
         console.log(data)
     }, [data]);
+    useEffect(() => {
+        console.log(totalnumber)
+    }, [totalnumber]);
     const fetchData = async () => {
         try {
-            const response = await axios.get(`http://45.147.99.177:9000/api/Admin/GetInvoice/${pagenumber}`, {
+            const response = await axios.get(`http://45.147.99.177:9000/api/Admin/get_invoice/${pagenumber}`, {
                 headers: {
                     'accept': 'text/plain' ,
                     'Content-Type': 'application/json' ,
                 }
             });
-            const jsonData = response.data;
-            const responsedata = jsonData.data.map(item => item);
+            setTotalNumber(response.data.data.totalNumber);
+            const jsonData = response.data.data;
+            const responsedata = jsonData.invoices.map(item => item);
             return responsedata;
         } catch (error) {
           console.error(error);
@@ -133,7 +150,7 @@ function AdminOrder() {
     const deleteid = async (doactionid) => {
         try {
             console.log(doactionid)
-            const response = await axios.post('http://45.147.99.177:9000/api/Admin/DeleteInvoice',
+            const response = await axios.post('http://45.147.99.177:9000/api/Admin/delete_invoice',
             {
                 invoiceIds: doactionid
             },
@@ -168,13 +185,6 @@ function AdminOrder() {
         ]);
         doactionid.length = 0;
     }
-    var [Selectvalue , setSelectValue] = useState({
-        Selectin : "Show Song",
-    });
-    const handlesave = (prop) => (event) => {
-        setSelectValue({ ...Selectvalue, [prop]: event.target.value });
-    };
-    // const [value, setValue] = React.useState<string | null>(options[0]);
     const [inputValue, setInputValue] = React.useState('');
   return (
     <div className={styles.layout} dir='ltr'>
@@ -222,10 +232,10 @@ function AdminOrder() {
                                 <div className={styles.carditemtext}>{item.state == 1 ? 'پرداخت شده' : item.state == 2 ? 'در حال انجام' : item.state == 3 ? 'انجام شده' : 'نا مشخص'}</div>
                             </div>
                             <div className={styles.carditem}>
-                                <div className={styles.carditemtext}>ساعتی قبل</div>
+                                <div className={styles.carditemtext}>{item.strDate}</div>
                             </div>
                             <div className={styles.carditem}>
-                                <div className={styles.carditemtext}>{item.id}</div>
+                                <div className={styles.carditemidlinktext} onClick={() => props.onFormSwitch("Details", data[index])}>{item.id}</div>
                             </div>
                             <Checkbox {...label} checked={booleanArray[index]} size="small" sx={{padding:0}} onClick={() => HandelCheckClick(index)}/>
                         </div>
@@ -233,28 +243,28 @@ function AdminOrder() {
                 </div>
                 <div className={styles.actions}>
                     <div className={styles.actionleft}>
-                        <div className={styles.boxaction} >
+                        <div className={styles.boxaction} onClick={pagenumber-5>=1 ? (() => HandelOneArrowClick(5)) : (console.log(totalnumber))}>
                             <div className={styles.iconparent}>
                                 <img className={styles.boxicon} src={double_arrow_left}  alt=""/>
                             </div>
                         </div>
-                        <div className={styles.boxaction} onClick={pagenumber>1 ? (() => HandelOneArrowClick(-1)) : (<></>)}>
+                        <div className={styles.boxaction} onClick={pagenumber>1 ? (() => HandelOneArrowClick(-1)) : (console.log(totalnumber))}>
                             <div className={styles.iconparent}>
                                 <img className={styles.boxicon} src={arrow_left}  alt=""/>
                             </div>
                         </div>
                         <div className={styles.boxnumber}>
                             <div className={styles.iconparent}>
-                                <div className={styles.number}>۴</div>
+                                <div className={styles.number}>{pagenumber}</div>
                             </div>
                         </div>
-                        <div className={styles.boxaction} onClick={pagenumber<3 ? (() => HandelOneArrowClick(1)) : (<></>)}>
+                        <div className={styles.boxaction} onClick={pagenumber<totalnumber ? (() => HandelOneArrowClick(1)) : (console.log(totalnumber))}>
                             <div className={styles.iconparent}>
                                 <img className={styles.boxicon} src={arrow_right}  alt=""/>
                             </div>
                         </div>
-                        <div className={styles.boxaction} >
-                            <div className={styles.iconparent}>
+                        <div className={styles.boxaction} onClick={pagenumber+5<=totalnumber ? (() => HandelOneArrowClick(5)) : (console.log(totalnumber))}>
+                            <div className={styles.iconparent} >
                                 <img className={styles.boxicon} src={double_arrow_right}  alt=""/>
                             </div>
                         </div>
@@ -291,22 +301,20 @@ function AdminOrder() {
                                         paddingLeft: '0px',
                                         paddingTop: '0px',
                                         paddingBottom: '0px',
-                                        // marginLeft: '0px',
                                         position: 'absolute',
                                         top: '30%',
-                                        left: '25%',
+                                        left: '23%',
                                         width:'70%',
                                         textAlign: 'right',
                                     },
                                 },
                                 '& .MuiAutocomplete-endAdornment': {
-                                    marginRight: '80px',
+                                    marginRight: '80%',
                                     marginLeft: '0px',
                                     marginTop: '0px',
                                     marginBottom: '0px',
                                     position: 'reletive',
-                                    top: '10px',
-                                    left: '50px',
+                                    top: '17%',
                                 },
                                 '& .MuiAutocomplete-inputRoot': {
                                     height: '45px',
@@ -324,6 +332,9 @@ function AdminOrder() {
                                     border: '1px solid rgba(163, 174, 208, 1)',
                                 },
                             }}
+                            classes={{
+                                option: classes.option,
+                            }}
                             autoHighlight
                             autoSelect
                             disableClearable
@@ -335,6 +346,16 @@ function AdminOrder() {
                             onChange={(event, newValue) => {
                                 setInputValue(newValue);
                             }}
+                            PaperComponent={(props) => (
+                                <Paper
+                                    sx={{
+                                        marginTop: '5px',
+                                        borderRadius: '15px',
+                                        border: '1px solid rgba(163, 174, 208, 0.8)',
+                                    }}
+                                    {...props}
+                                />
+                            )}
                             popupIcon={<img className={styles.expandmoreicon} style={{ padding: 0, margin: 0 }} src={expand_more}  alt=""/>}
                             renderInput={(params) => 
                                 <TextField
@@ -349,8 +370,7 @@ function AdminOrder() {
                 </div>
             </div>
         </div>
-    </div>
-    
+    </div> 
   );
 }
 

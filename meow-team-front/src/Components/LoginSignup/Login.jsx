@@ -86,9 +86,6 @@ function Login(props) {
 
     return (
       <div className={Styles.index}>
-        {/* <div>
-                <button className={Styles.openbtn} onClick={openForm} >باز کردن</button>
-            </div> */}
         <div className={Styles.authformcontainer} id="myForm">
           <CloseIcon
             sx={{

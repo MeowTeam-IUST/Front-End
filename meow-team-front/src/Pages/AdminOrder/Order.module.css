@@ -172,19 +172,9 @@
     align-items: center;
     text-align: center;
     border-radius: 10px;
-    /* border: 1px solid rgba(229, 42, 73, 1) */
 }
-/* .cardtwothirditem{
-    border: 1px solid rgba(0, 190, 53, 1)
-}
-.cardthreethirditem{
-    border: 1px solid rgba(67, 24, 255, 1)
-}
-.cardfourthirditem{
-    border: 1px solid rgba(67, 24, 255, 1)
-} */
 
-.carditemtext{
+.carditemtext ,.carditemidlinktext{
     width: 100px;
     height: 20px;
     font-family: Anjoman;
@@ -192,7 +182,15 @@
     font-weight: 700;
     line-height: 20px;
     letter-spacing: -0.02em;
+    direction: rtl;
     color: rgba(0, 0, 0, 1);
+}
+
+.carditemidlinktext:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue;
+    font: bold;
 }
 
 .actions{
@@ -223,16 +221,14 @@
     align-items: center;
     gap: 5px;
     
-}
-
-
+}  
 
 .expandmoreicon{
     filter: invert(77%) sepia(29%) saturate(256%) hue-rotate(188deg) brightness(85%) contrast(92%);
     /* color: rgba(163, 174, 208, 1); */
-    width: 45%;
+    width: 17px;
     height: 30px;
-    left: 6.41px;
+    /* left: 6.41px; */
 }
 
 .doaction{
@@ -297,7 +293,7 @@
 .number{
     color: #FFFFFF;
     margin-top: 2px;
-    margin-left: 3px;
+    margin-left: 1px;
     position: relative;
     z-index: 1;
     font-family: Anjoman;

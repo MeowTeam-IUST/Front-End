@@ -97,9 +97,6 @@ function ConfirmCode(props) {
 
     return (
       <div className={Styles.index}>
-        {/* <div>
-                <button className={Styles.openbtn} onClick={openForm} >باز کردن</button>
-            </div> */}
         <div className={Styles.authformcontainer} id="myForm">
           <CloseIcon
             sx={{
@@ -190,7 +187,6 @@ function ConfirmCode(props) {
                   border: 1,
                 }}
                 variant="contained"
-                onClick={() => props.onFormSwitch("Login", null)}
               >
                 تغییر شماره تلفن
               </LoadingButton>
