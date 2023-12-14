@@ -113,6 +113,17 @@ export default function Requests() {
     }
   };
 
+  // edit profile image
+  const editProfileImage = async (body) => {
+    try {
+      const res = await API().POST('api/Account/PofileImageEdit', body, AutorizeHeader);
+      console.error(res);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
 
   // ---------------------------------------------------------------//
   // ---------------------------------------------------------------//
@@ -193,7 +204,8 @@ export default function Requests() {
   callbackBuy,
   buyFromWallet,
   getWallet,
-  editProfile
+  editProfile,
+  editProfileImage
   };
 
 }

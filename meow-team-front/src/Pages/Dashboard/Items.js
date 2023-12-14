@@ -11,7 +11,7 @@ import {EditProfile} from '../../Components/EditProfile/EditProfile'
 import DefaultDashboard from '../../Components/DefaultDashboard/DefaultDashboard'
 import ShoppingCart from '../../Components/ShoppingCart/ShoppingCart'
 import { MyOrders } from '../../Components/MyOrders/MyOrders'
-export const items = [
+export const items = [  
     {
         name: 'داشبورد',
         component: DefaultDashboard,
@@ -48,23 +48,24 @@ export const items = [
         path: 'wallet',
         item : 4
     },
-    {
-        name: 'علاقه‌مندی‌های من',
-        component: EditProfile,
-        icon: heart,
-        path: 'heart',
-        item : 5
-    },
+    // {
+    //     name: 'علاقه‌مندی‌های من',
+    //     component: EditProfile,
+    //     icon: heart,
+    //     path: 'heart',
+    //     item : 5
+    // },
     // {
     //     name: 'آدرس های من',
     //     component: '',
     //     icon: Route,
     //     item : 6
     // },
-    {
-        name: 'کامنت های من',
-        component: EditProfile,
-        icon: Comment,
-        path: 'comment',
-        item : 7
-    }]
+    // {
+    //     name: 'کامنت های من',
+    //     component: EditProfile,
+    //     icon: Comment,
+    //     path: 'comment',
+    //     item : 7
+    // }
+]

@@ -32,7 +32,7 @@ export default function DefaultDashboard() {
     } catch (error) {
       console.error('Error fetching invoice:', error);
     } finally {
-      setWallet(res.data.data.amount);
+      // setWallet(res.data.data.amount);
     }
   }
   useEffect(() => {

@@ -95,13 +95,13 @@ export default function Footer() {
         )}
       </div>
       <div className={styles.FooterItems}>
-        {url.includes('/Adminp') ? (
+        {url.includes('/dashboard') ? (
           <div className={styles.CircleSelect}>
             <img className={styles.SelectedPersonIcon} src={person_white}  alt=""/>
             <img className={styles.PersonCircleIcon} src={circle}  alt=""/>
           </div>
         ) : (
-          <img className={styles.personicon} src={person} onClick={() => HandelClick('/Adminp')} alt=""/>
+          <img className={styles.personicon} src={person} onClick={() => HandelClick('/dashboard')} alt=""/>
         )}
       </div>
     </div>

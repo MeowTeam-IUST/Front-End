@@ -89,7 +89,19 @@
             }
         }
     }
+/* Media Query for Mobile Devices */ 
+@media (max-width: 480px) { 
+    .search{
+        width: 100%;
 
+    }
+    .search ,.searchwhenresult{
+        .SearchHeader{
+            gap: 0px;
+        }
+    }
+    
+} 
 /* Media Query for Mobile Devices */ 
 // @media (max-width: 340px) {
 //     .search ,.searchwhenresult{

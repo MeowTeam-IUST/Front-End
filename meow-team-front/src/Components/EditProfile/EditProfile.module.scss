@@ -23,6 +23,8 @@
             width: 91px;
             height: 91px;
             flex-shrink: 0;
+            object-fit: cover; // Makes the image cover the entire container while maintaining its aspect ratio
+            object-position: center;
         }
         .button{
             border-radius: 14px;

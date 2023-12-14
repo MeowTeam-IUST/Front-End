@@ -6,6 +6,7 @@ import cancel from '../../assets/Cross.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { SetUser } from '../../Slices/UserSlice.js';
 import Requests from '../../API/Requests';
+import { BASE_URL, HEADER } from '../../API/consts';
 
 export default function EditProfileInput({ title, value , type }) {
   const [openEdit, setOpenEdit] = React.useState(false);
@@ -22,26 +23,34 @@ export default function EditProfileInput({ title, value , type }) {
     setInputValue(event.target.value); // Update the input value as the user types
   };
   const [data , setData] = React.useState({
-    firstName : state.firstName,
-    lastName : state.lastName,
-    phoneNumber : null,
-    email : state.email,
-    birthDate : state.birthDate,
+    firstName : null,
+    lastName : null,
+    phone : state.phoneNumber,
+    email : null,
+    birthDate : null,
   });
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     // just change the value of type in data
     data[type] = inputValue;
     try{
-      const res = Requests().editProfile(data);
+      const res = await Requests().editProfile(data);
       setOpenEdit(false); // Close the edit mode
-      
+      const data1 = {
+        firstName : res.data.data.firstName,
+        lastName : res.data.data.lastName,
+        email : res.data.data.email,
+        birthDate : res.data.data.birthDate,
+        Image : BASE_URL + "/" + res.data.data.urlImage ,
+        phoneNumber : res.data.data.phoneNumber,
+        Token : localStorage.getItem("token")
+      }
+      console.log(data1)
+      dispatch(SetUser(data1))
     }
     catch(err){
       console.log(err);
     }
-    finally{
-      // dispatch(SetUser(data)); // Update the user in the state
-    }
+    
       
   };
 

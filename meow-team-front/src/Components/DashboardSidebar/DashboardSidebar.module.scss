@@ -1,7 +1,15 @@
 @import "../../App.scss";
+/* Media Query for Mobile Devices */ 
+@media (max-width: 480px) { 
+    .DashboardSidebar{
+        width: 90% !important;
+        padding: 27px 20px;
+
+    }
+} 
 .DashboardSidebar{
     display: flex;
-    width: 272px;
+    width: 20%;
     padding: 27px 20px;
     flex-direction: column;
     align-items: flex-end;
@@ -29,6 +37,8 @@
         .image{
             border-radius: 64px;
             background:  lightgray 50% / cover no-repeat;
+            object-fit: cover; // Makes the image cover the entire container while maintaining its aspect ratio
+            object-position: center;
             width: 64px;
             height: 64px;
         }

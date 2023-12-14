@@ -17,6 +17,8 @@
         width: 33.3px;
         height: 33.3px;
         border-radius: 33.358px;
+        object-fit: cover; // Makes the image cover the entire container while maintaining its aspect ratio
+        object-position: center;
     }
     .name{
         color: #000;
@@ -58,3 +60,9 @@
         transition-duration: 0.4s;
     }
 }
+/* Media Query for Mobile Devices */ 
+@media (max-width: 480px) { 
+    .profile{
+        display: none;
+    }
+} 
