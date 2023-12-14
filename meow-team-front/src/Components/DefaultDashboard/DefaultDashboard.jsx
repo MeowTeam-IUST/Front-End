@@ -63,7 +63,7 @@ export default function DefaultDashboard() {
       <div className={styles.Repeated}>
         <CategoryHeader icon={analytics} title={"خریدهای پرتکرار شما"} />
         <div className={styles.RepeatedItem}>
-          <GameList Products={Populares} />
+            <GameList Products={Populares} isAdmin={false} />
         </div>
       </div>
     </div>

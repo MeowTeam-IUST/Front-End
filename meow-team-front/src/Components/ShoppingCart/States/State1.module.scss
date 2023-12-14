@@ -112,3 +112,19 @@
         line-height: normal;
     }
 }
+@media (max-width: 480px) { 
+    .main{
+        flex-direction: column;
+        .items{
+            width: 100%;
+        }
+        .summary{
+            width: 90%;
+            padding: 5%;
+        }
+    }
+    .down{
+        width: 97%;
+    }
+    
+} 

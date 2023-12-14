@@ -85,17 +85,17 @@ export default function Footer() {
         )}
       </div>
       <div className={styles.FooterItems}>
-        {url.includes('/Product') ? (
+        {url.includes('/dashboard/:shoppingcart') ? (
           <div className={styles.CircleSelect}>
             <img className={styles.SelectedShopIcon} src={shop_white} alt=""/>
             <img className={styles.ShopCircleIcon} src={circle} alt=""/>
           </div>
         ) : (
-          <img className={styles.shopicon} src={shop} onClick={() => HandelClick('/Product')} alt=""/>
+          <img className={styles.shopicon} src={shop} onClick={() => HandelClick('/dashboard/:shoppingcart')} alt=""/>
         )}
       </div>
       <div className={styles.FooterItems}>
-        {url.includes('/dashboard') ? (
+        {(url.includes('/dashboard') && !url.includes('/dashboard/:shoppingcart')) ? (
           <div className={styles.CircleSelect}>
             <img className={styles.SelectedPersonIcon} src={person_white}  alt=""/>
             <img className={styles.PersonCircleIcon} src={circle}  alt=""/>

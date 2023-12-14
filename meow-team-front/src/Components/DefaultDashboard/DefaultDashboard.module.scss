@@ -6,7 +6,7 @@
     display: flex;
     height: fit-content;
     width: 100%;
-    padding: 25px 32px 64px 32px;
+    padding: 0px 0px 24px 32px;
     // flex-direction: column;
     align-items: center;
     gap: 25px;
@@ -94,6 +94,9 @@
     align-items: flex-start;
     gap: 31px;
     align-self: stretch;
+    .x{
+        overflow-x: scroll;
+    }
 }
 
 /* Media Query for Mobile Devices */ 
@@ -136,5 +139,9 @@
         align-items: flex-start;
         gap: 21px;
         align-self: stretch;
+        overflow-x: scroll;
     }
 } 
+.GameList::-webkit-scrollbar {
+    display: none;
+}

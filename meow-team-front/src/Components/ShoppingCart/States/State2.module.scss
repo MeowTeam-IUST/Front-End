@@ -14,10 +14,10 @@
     align-items: center;
     gap: 25px;
     flex: 1 0 0;
-
+    width: 100%;
     .box{
         display: flex;
-        width: 760px;
+        width: 90%;
         padding: 20px;
         flex-direction: column;
         align-items: flex-start;
@@ -81,10 +81,14 @@
       }
     .buttons{
         display: flex;
+        width: 94%;
         height: 127px;
-        align-items: flex-start;
+        align-items: center;
+        margin: 25px 32px;
+        border-radius: 36px;
         gap: 32px;
         align-self: stretch;
+        background: transparent;
         /* User Shadow */
         box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.15);
         .button1{
@@ -123,3 +127,22 @@
         }
     }
 }
+@media (max-width: 480px) { 
+    .main{
+        padding: 0;
+        .buttons{
+            margin: 0;
+            width: 100%;
+            .button1{
+                text-align: center;
+                .header{
+                    font-size: 15px;
+                    font-weight: 800;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    
+    
+} 

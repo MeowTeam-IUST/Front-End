@@ -74,13 +74,17 @@
   
     /* User Shadow */
     box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.15);
+    .buttons{
+      display: flex;
+
+    }
     .button1{
         width: 36px;
         height: 35px;
     }
     .input{
         display: flex;
-        width: 204px;
+        
         height: 42px;
         padding: 0px 10px;
         justify-content: flex-end;
@@ -104,3 +108,25 @@
 .outlined-textfield:focus {
   border-color: red; /* Change border color to red on focus */
 }
+@media (max-width: 480px) { 
+  .EditProfileInput {
+    width: 85%;
+  }
+  .EditProfileInputEdit{
+    width: 85%;
+    gap: 8px;
+    .input{
+      display: flex;
+      width: 60%;
+      height: 42px;
+      padding: 0px 10px;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      border-radius: 5px;
+      border: 1px solid var(--Opex---black, #000);
+
+  }
+  }  
+} 

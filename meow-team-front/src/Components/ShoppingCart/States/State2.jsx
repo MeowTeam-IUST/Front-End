@@ -55,11 +55,11 @@ export default function State2({ changeState, Cart, TotalPrice }) {
           <div className={styles.buttons}>
             <div className={styles.button1} onClick={()=>submit()}>
               <div className={styles.header}>پرداخت مستقیم</div>
-              <div>خرید از درگاه بانکی</div>
+              {/* <div>خرید از درگاه بانکی</div> */}
             </div>
             <div className={`${styles.button1} ${styles.button2}`} onClick={()=>wallet()}>
               <div className={styles.header} >برداشت از کیف پول</div>
-              <div>موجودی 200 هزار تومان</div>
+              {/* <div>موجودی 200 هزار تومان</div> */}
             </div>
           </div>
         </div>

@@ -66,7 +66,7 @@ export default function EditProfileInput({ title, value , type }) {
             onChange={handleInputChange} // Handle input changes
           />
 
-          <div>
+          <div className={styles.buttons}>
             <img
               className={styles.button1}
               src={confirm}
