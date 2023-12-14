@@ -11,8 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+        with:
+          node-version: '18'
       - name: remove unneccessary config files
         run: find . -type f \( -name "docker-compose.yml" -o -name
         ".dockerignore" -o -name "Dockerfile" \)
