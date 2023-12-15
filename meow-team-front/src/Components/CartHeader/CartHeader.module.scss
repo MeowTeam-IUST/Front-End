@@ -31,3 +31,10 @@
         transform: scale(1.05);
         transition-duration: 0.4s;
     }
+
+/* Media Query for Mobile Devices */ 
+@media (max-width: 480px) { 
+    .part{
+        display: none;
+    }
+} 
