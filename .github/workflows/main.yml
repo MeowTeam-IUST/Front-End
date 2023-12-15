@@ -15,9 +15,11 @@ jobs:
           node-version: '18'
       - name: CHange directory
         run: cd meow-team-front
+      - name: ls
+        run: ls
       - name: remove unneccessary config files
         run: |
-          find . -type f \( -name "docker-compose.yml" -o -name ".dockerignore" -o -name "Dockerfile" \) -exec rm -f {} +
+          find /path/to/search -type f \( -name "docker-compose.yml" -o -name ".dockerignore" -o -name "Dockerfile" -o -name "default.conf" \) -print | xargs rm -f
       - name: update server & deliver last version
         env: 
           LIARA_TOKEN: ${{ secrets.LIARA_API_TOKEN }}
