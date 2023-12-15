@@ -40,7 +40,7 @@ export default function EditProfileInput({ title, value , type }) {
         lastName : res.data.data.lastName,
         email : res.data.data.email,
         birthDate : res.data.data.birthDate,
-        Image : BASE_URL + "/" + res.data.data.urlImage ,
+        Image : state.image ,
         phoneNumber : res.data.data.phoneNumber,
         Token : localStorage.getItem("token")
       }
