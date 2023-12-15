@@ -7,6 +7,7 @@ import Requests from "../../API/Requests";
 export function Wallet () {
 
     const [walletAmount, setWalletAmount] = useState(0)
+    const [chargeAmount , setChargeAmount] = useState(0) 
     
     const getWalletOnLoad = async (event) => {
       try {
@@ -16,8 +17,22 @@ export function Wallet () {
       } catch (error) {
         console.error("Error getting wallet:", error);
       }
-
     }
+    const submit = async () => {
+      try {
+        const res = await Requests().chargeWallet({
+          amount: chargeAmount,
+        });
+        console.log(res.data);
+        window.location.href = res.data.data;
+      } catch (error) {
+        console.error("Error submitting payment:", error);
+      }
+    };
+
+    const handleChargeAmountChange = (event) => {
+      setChargeAmount(event.target.value);
+    };
 
      useEffect(() => {
       getWalletOnLoad()
@@ -36,8 +51,18 @@ export function Wallet () {
             </div>
           </div>
           <div className={styles.AddToWalletSection}>
-            <input className={styles.AddToWalletInput} />
-            <button className={styles.AddToWalletButton}>افزایش موجودی</button>
+            <input
+              className={styles.AddToWalletInput}
+              type="number"
+              value={chargeAmount}
+              onChange={handleChargeAmountChange}
+            />
+            <button
+              className={styles.AddToWalletButton}
+              onClick={() => submit()}
+            >
+              افزایش موجودی
+            </button>
           </div>
         </div>
         <div className={styles.WalletBottom}>

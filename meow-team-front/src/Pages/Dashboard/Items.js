@@ -44,7 +44,7 @@ export const items = [
     },
     {
       name: ' کیف پول من ',
-      component: EditProfile,
+      component: Wallet,
       icon: Wallet1,
       path: 'wallet',
       item : 4

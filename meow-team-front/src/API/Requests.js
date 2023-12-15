@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function Requests() {
   const AutorizeHeader = {
     ...HEADER,
-    Authorization: `Bearer ${localStorage.getItem('token')}`
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
   };
 
   // OrderFlow
@@ -16,7 +16,11 @@ export default function Requests() {
   // add invoice item
   const addInvoiceItem = async (body) => {
     try {
-      const res = await API().POST('api/OrderFlow/AddInvoiceItem', body, AutorizeHeader);
+      const res = await API().POST(
+        "api/OrderFlow/add_invoiceItem",
+        body,
+        AutorizeHeader
+      );
       console.log(res);
       return res;
     } catch (err) {
@@ -27,7 +31,11 @@ export default function Requests() {
   // delete invoice item
   const deleteInvoiceItem = async (body) => {
     try {
-      const res = await API().POST('api/OrderFlow/DeleteInvoiceItem', body, AutorizeHeader);
+      const res = await API().POST(
+        "api/OrderFlow/delete_invoiceItem",
+        body,
+        AutorizeHeader
+      );
       console.error(res);
       return res;
     } catch (err) {
@@ -35,15 +43,18 @@ export default function Requests() {
     }
   };
 
-  // Get Invoice 
+  // Get Invoice
   const getInvoice = async () => {
-    try{
-      const res = await API().GET('api/OrderFlow/GetInvoice',{}, AutorizeHeader);
+    try {
+      const res = await API().GET(
+        "api/OrderFlow/get_invoice",
+        {},
+        AutorizeHeader
+      );
       // const res = await axios.get('https://1649-5-112-202-241.ngrok-free.app/api/OrderFlow/GetInvoice', {AutorizeHeader});
       console.log(res);
       return res;
-    }
-    catch(err){
+    } catch (err) {
       console.log(err);
     }
   };
@@ -51,7 +62,7 @@ export default function Requests() {
   // Check discount
   const checkDiscount = async (body) => {
     await API()
-      .GET('api/OrderFlow/CheckDiscount', {body}, AutorizeHeader)
+      .GET("api/OrderFlow/CheckDiscount", { body }, AutorizeHeader)
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
@@ -60,7 +71,7 @@ export default function Requests() {
   // payment
   const payment = async (body) => {
     try {
-      const res = await API().POST('api/OrderFlow/buy', body, AutorizeHeader);
+      const res = await API().POST("api/OrderFlow/buy", body, AutorizeHeader);
       console.error(res);
       return res;
     } catch (err) {
@@ -71,7 +82,11 @@ export default function Requests() {
   // callbakbuy
   const callbackBuy = async (body) => {
     try {
-      const res = await API().POST('api/OrderFlow/CallBackBuy', body, AutorizeHeader);
+      const res = await API().POST(
+        "api/OrderFlow/buy_callback",
+        body,
+        AutorizeHeader
+      );
       console.error(res);
       return res;
     } catch (err) {
@@ -81,7 +96,11 @@ export default function Requests() {
   // buy from wallet
   const buyFromWallet = async (body) => {
     try {
-      const res = await API().POST('api/OrderFlow/buyWithWallet', body, AutorizeHeader);
+      const res = await API().POST(
+        "api/OrderFlow/buy_with_wallet",
+        body,
+        AutorizeHeader
+      );
       console.error(res);
       return res;
     } catch (err) {
@@ -94,7 +113,11 @@ export default function Requests() {
   // get profile
   const getProfile = async () => {
     try {
-      const res = await API().GET('api/Account/GetProfile', {}, AutorizeHeader);
+      const res = await API().GET(
+        "api/Account/get_profile",
+        {},
+        AutorizeHeader
+      );
       console.log(res);
       return res;
     } catch (err) {
@@ -105,7 +128,11 @@ export default function Requests() {
   // edit profile
   const editProfile = async (body) => {
     try {
-      const res = await API().POST('api/Account/editprofile', body, AutorizeHeader);
+      const res = await API().POST(
+        "api/Account/edit_profile",
+        body,
+        AutorizeHeader
+      );
       console.error(res);
       return res;
     } catch (err) {
@@ -116,7 +143,11 @@ export default function Requests() {
   // edit profile image
   const editProfileImage = async (body) => {
     try {
-      const res = await API().POST('api/Account/PofileImageEdit', body, AutorizeHeader);
+      const res = await API().POST(
+        "api/Account/pofile_image_edit",
+        body,
+        AutorizeHeader
+      );
       console.error(res);
       return res;
     } catch (err) {
@@ -124,14 +155,13 @@ export default function Requests() {
     }
   };
 
-
   // ---------------------------------------------------------------//
   // ---------------------------------------------------------------//
   // Wallet
   // get wallet
   const getWallet = async () => {
     try {
-      const res = await API().GET('api/Wallet/GetWallet', {}, AutorizeHeader);
+      const res = await API().GET("api/Wallet/get_wallet", {}, AutorizeHeader);
       console.log(res);
       return res;
     } catch (err) {
@@ -151,61 +181,101 @@ export default function Requests() {
       console.log(err);
     }
   };
+
+  // getCategories
+  const getAllCategories = async () => {
+    try {
+      const response = await API().GET(
+        `api/Category/get_all_categories`,
+      );
+      // console.log("All categories : ",response);
+      return response.data.data
+    } catch (err) {
+      console.error("Error fetching product details:", err);
+      return { title: "", description: "" };
+    }
+  };
   // getProduct
   const getCategoryDetails = async (id) => {
-      try {
-        const response = await API().GET(`api/Category/get_by_Id/${id}`,{},HEADER);
-        const productData = response.data.data;
-        console.log("jhhgddrr",response)
-        return {
-          title: productData.title,
-          description: productData.description,
-        };
-      } catch (err) {
-        console.error('Error fetching product details:', err);
-        return { title: '', description: '' };
-      }
-    
-    };
-    // getProducts
+    try {
+      const response = await API().GET(
+        `api/Category/get_by_Id/${id}`,
+        {},
+        HEADER
+      );
+      const productData = response.data.data;
+      console.log("jhhgddrr", response);
+      return {
+        title: productData.title,
+        description: productData.description,
+      };
+    } catch (err) {
+      console.error("Error fetching product details:", err);
+      return { title: "", description: "" };
+    }
+  };
+  // getProducts
   const getProducts = async (id) => {
     try {
-      const response = await API().GET(`api/Product/get_all_categoryProducts/${id}`, {}, HEADER);
+      const response = await API().GET(`api/Product/get_all/${id}`, {}, HEADER);
       const productsData = response.data.data;
-      console.log("Products:", productsData)
+      console.log("Products:", productsData);
       return productsData;
     } catch (err) {
-      console.error('Error fetching products:', err);
+      console.error("Error fetching products:", err);
       return [];
     }
   };
   const addCategory = async (category) => {
     try {
-      const response = await API().POST('api/Category/add', category, HEADER);
-      console.log("Category added:", response)
+      const response = await API().POST("api/Category/add", category, HEADER);
+      console.log("Category added:", response);
       return response;
     } catch (err) {
-      console.error('Error adding category:', err);
+      console.error("Error adding category:", err);
     }
   };
 
-  return {
-  postComment, 
-  getCategoryDetails , 
-  getProducts,
-  addCategory,
-  postComment,
-  addInvoiceItem,
-  deleteInvoiceItem,
-  getInvoice,
-  checkDiscount,
-  getProfile,
-  payment,
-  callbackBuy,
-  buyFromWallet,
-  getWallet,
-  editProfile,
-  editProfileImage
+  // payment
+  const chargeWallet = async (body) => {
+    try {
+      const res = await API().POST("api/Wallet/charge", body, AutorizeHeader);
+      console.error(res);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
   };
 
+  // callbakbuy
+  // const callbackBuy = async (body) => {
+  //   try {
+  //     const res = await API().POST('api/OrderFlow/CallBackBuy', body, AutorizeHeader);
+  //     console.error(res);
+  //     return res;
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  return {
+    postComment,
+    getCategoryDetails,
+    getProducts,
+    addCategory,
+    postComment,
+    addInvoiceItem,
+    deleteInvoiceItem,
+    getInvoice,
+    checkDiscount,
+    getProfile,
+    payment,
+    callbackBuy,
+    buyFromWallet,
+    getWallet,
+    editProfile,
+    editProfileImage,
+    chargeWallet,
+    getAllCategories,
+  };
 }

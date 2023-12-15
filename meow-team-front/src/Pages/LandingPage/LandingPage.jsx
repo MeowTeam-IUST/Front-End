@@ -14,17 +14,34 @@ import 'react-slideshow-image/dist/styles.css'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { SetUser } from '../../Slices/UserSlice.js';
+import { useState } from 'react'
 
 export default function LandingPage() {
   const state = useSelector((state) => state.User); // Access the "User" slice of the state
   const dispatch = useDispatch();
   const [profileStatus , setProfileStatus] = React.useState(false);
+  const [allCategories , setAllCategories ] = useState([])
+
+
+  const fetchCategories = async () => {
+    try {
+      const res = await Requests().getAllCategories();
+      // console.log(res.data.data.amount);
+      console.log("All categories : ",res)
+      setAllCategories(res)
+    } catch (error) {
+      console.error("Error getting categories:", error);
+    }
+  }; 
+
+
   useEffect(async () => {
     if (state.set == 0){
       const res = await Requests().getProfile();
       setProfileStatus(true);
       dispatch(SetUser({firstName:res.data.data.firstName , lastName : res.data.data.lastName , email : res.data.data.email , image : res.data.data.urlImage , birthDate : res.data.data.birthDate, phoneNumber : res.data.data.phoneNumber}));
     }
+    fetchCategories()
   }, [])
   const Populares = [
     {
@@ -95,12 +112,12 @@ export default function LandingPage() {
       </div>
       <div className={styles.AllGames}>
         <CategoryHeader icon={gameControlle} title={"همه بازی‌ها"} />
-        <GameList Products={all} isAdmin={false} />
+        <GameList Products={allCategories} isAdmin={false} />
       </div>
-      <div className={styles.AllGames}>
+      {/* <div className={styles.AllGames}>
         <CategoryHeader icon={apps} title={"محصولات دیگر"} />
         <GameList Products={all} isAdmin={false} />
-      </div>
+      </div> */}
     </PageLayout>
   );
 }
