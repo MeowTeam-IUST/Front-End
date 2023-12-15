@@ -16,28 +16,33 @@ import CategoryHeader from '../../Components/CategoryHeader/CategoryHeader'
 import {Header} from '../../Components/Header/Header'
 import Requests from '../../API/Requests';
 import PageLayout from "../../Layout/PageLayout";
+import { useSearchParams } from "react-router-dom";
 
 export default function ProductPage(){
+
+    let id = window.location.pathname.split('/Product/')[1]
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const Categorys = ["کالاف دیوتی موبایل" ,"گنشین ایمپکت" , "کلش آف کلنز", "محصولات فیزیکی", "ایپکس لجندز"]
     useEffect(() => {
         const handleResize = () => setWindowWidth(window.innerWidth);
         window.addEventListener('resize', handleResize);
-    
+        
         // Cleanup
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-    const [productTitle, setProductTitle] = useState('');
+    const [categoryDetails, setCategorytDetails] = useState("");
     const [productDescription, setProductDescription] = useState(
       "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است"
     );
     useEffect(() => {
         const fetchProductDetails = async () => {
-          const productDetails = await Requests().getCategoryDetails(1); // Replace '1' with the actual product ID
-          const { title, description } = productDetails;
-          setProductTitle(title);
+          const productDetails = await Requests().getCategoryDetails(
+            id
+          ); 
+          console.log ("details" , productDetails)
+          setCategorytDetails(productDetails);
           // setProductDescription(description);
         };
       
@@ -48,7 +53,7 @@ export default function ProductPage(){
 
         useEffect(() => {
         const fetchProducts = async () => {
-            const productsData = await Requests().getProducts(5);
+            const productsData = await Requests().getProducts(id);
             setProducts(productsData);
         };
 
@@ -60,9 +65,9 @@ export default function ProductPage(){
         <div className={styles.GameAndProductsSection}>
           <div className={styles.GameHeaderSection}>
             <div className={styles.GameDetails}>
-              <text className={styles.GameTitle}>{productTitle}</text>
+              <text className={styles.GameTitle}>{categoryDetails.title}</text>
               <text className={styles.GameRoute}>
-                اپکس شاپ - بازی های آنلاین - گنشین ایمپکت
+                اپکس شاپ - بازی های آنلاین - {categoryDetails.title}
               </text>
               <Producttab safety={"امنیت"} obs={"دقت"} speed={"سرعت"} />
               <div className={styles.AboutGameSection}>
@@ -87,7 +92,10 @@ export default function ProductPage(){
               </div>
             </div>
 
-            <div className={styles.GamePicture}></div>
+            <div
+              className={styles.GamePicture}
+              style={{ backgroundImage: `url(${categoryDetails.imageURL})` }}
+            ></div>
           </div>
           <div className={styles.MenuSection}>
             <div className={styles.MenuTitle}>

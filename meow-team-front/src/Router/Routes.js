@@ -9,62 +9,57 @@ import AdminOrder from '../Pages/AdminOrder/Orders';
 import AdminOrderDetails from '../Pages/AdminOrderDetails/AdminOrderDetails';
 import AdminPanel from '../Pages/AdminPanel/AdminPanel';
 const routes = [
-    {
-      path: '/',
-      component: LandingPage,
-      Private: false
-    }
-    ,
-    {
-      path: '/Product',
-      component: ProductPage,
-      Private: false
-    },
-    {
-      path: '/login',
-      component: LoginSignupPage,
-      Private: false
-    },
-    {
-      path : '/dashboard/*',
-      component: Dashboard,
-      Private: false
-    },
-    {
-      path : '/adminpanel/*',
-      component: AdminPanel,
-      Private: false
-    }
-    ,
-    {
-      path: '/Adminp',
-      component: AdminProduct,
-      Private: false
-    },
-    {
-      path: '/PaymentStatus',
-      component: PaymentPage,
-      Private: false
-    }
-    ,
-    {
-      path: '/ProCat',
-      component: ProductsCat,
-      Private: false
-    }
-    ,
-    {
-      path: '/AdminOrder',
-      component: AdminOrder,
-      Private: false
-    }
-    ,
-    {
-      path: '/AdminOrderDetails',
-      component: AdminOrderDetails,
-      Private: false
-    }
-  ];
+  {
+    path: "/",
+    component: LandingPage,
+    Private: false,
+  },
+  {
+    path: "/Product/*",
+    component: ProductPage,
+    Private: false,
+  },
+  {
+    path: "/login",
+    component: LoginSignupPage,
+    Private: false,
+  },
+  {
+    path: "/dashboard/*",
+    component: Dashboard,
+    Private: false,
+  },
+  {
+    path: "/adminpanel/*",
+    component: AdminPanel,
+    Private: false,
+  },
+  {
+    path: "/Adminp",
+    component: AdminProduct,
+    Private: false,
+  },
+  {
+    path: "/PaymentStatus",
+    component: PaymentPage,
+    Private: false,
+  },
+  {
+    path: "/ProCat",
+    component: ProductsCat,
+    Private: false,
+  },
+  {
+    path: "/AdminOrder",
+    component: AdminOrder,
+    Private: false,
+  },
+  {
+    path: "/AdminOrderDetails",
+    component: AdminOrderDetails,
+    Private: false,
+  },
+];
   
   export default routes;
   

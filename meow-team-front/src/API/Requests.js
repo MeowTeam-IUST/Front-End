@@ -205,10 +205,7 @@ export default function Requests() {
       );
       const productData = response.data.data;
       console.log("jhhgddrr", response);
-      return {
-        title: productData.title,
-        description: productData.description,
-      };
+      return productData; 
     } catch (err) {
       console.error("Error fetching product details:", err);
       return { title: "", description: "" };

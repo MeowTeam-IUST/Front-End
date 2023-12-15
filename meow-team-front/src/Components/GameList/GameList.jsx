@@ -18,7 +18,7 @@ export default function GameList({Products , isAdmin}) {
       {Products.map((item,index) => {
         return (
           <div className={styles.item} key={index}>
-            <LittleCart name={item.title} image={item.imageURL} showPopup={showPopup} description={item.description} />
+            <LittleCart id={item.id} name={item.title} image={item.imageURL} showPopup={showPopup} description={item.description} />
           </div>
         )
       })}
