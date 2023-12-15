@@ -144,7 +144,7 @@ export default function Requests() {
   const editProfileImage = async (body) => {
     try {
       const res = await API().POST(
-        "api/Account/profile_image_edit",
+        "api/Account/pofile_image_edit",
         body,
         AutorizeHeader
       );
