@@ -17,7 +17,7 @@ jobs:
       - name: remove unneccessary config files
         working-directory: ./meow-team-front
         run: |
-          find /path/to/search -type f \( -name "docker-compose.yml" -o -name ".dockerignore" -o -name "Dockerfile" -o -name "default.conf" \) -print | xargs rm -f
+          find . -type f \( -name "docker-compose.yml" -o -name ".dockerignore" -o -name "Dockerfile" -o -name "default.conf" \) -print | xargs rm -f
       - name: update server & deliver last version
         working-directory: ./meow-team-front
         env: 
