@@ -9,6 +9,8 @@ import {
   useNavigate,
 } from "react-router-dom";
 
+import { BASE_URL } from '../../API/consts';
+
 
 export default function LittleCart({id , name, image, showPopup , description}) {
 
@@ -20,7 +22,7 @@ export default function LittleCart({id , name, image, showPopup , description}) 
   return (
     <div
       className={styles.LittleCart}
-      style={{ backgroundImage: `url(${image})` }}
+      style={{ backgroundImage: `url(${BASE_URL + "/" + image})` }}
       // onClick={() => navigate("/product?id=" + id)}
       onClick={() => HandleClick()}
     >

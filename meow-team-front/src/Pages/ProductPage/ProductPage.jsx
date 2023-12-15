@@ -17,6 +17,7 @@ import {Header} from '../../Components/Header/Header'
 import Requests from '../../API/Requests';
 import PageLayout from "../../Layout/PageLayout";
 import { useSearchParams } from "react-router-dom";
+import {BASE_URL} from "../../API/consts"
 
 export default function ProductPage(){
 
@@ -94,7 +95,7 @@ export default function ProductPage(){
 
             <div
               className={styles.GamePicture}
-              style={{ backgroundImage: `url(${categoryDetails.imageURL})` }}
+              style={{ backgroundImage: `url(${BASE_URL + "/" + categoryDetails.bannerURL})` }}
             ></div>
           </div>
           <div className={styles.MenuSection}>
