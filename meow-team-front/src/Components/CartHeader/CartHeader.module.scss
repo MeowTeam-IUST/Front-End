@@ -3,98 +3,7 @@
 .part{
     cursor: pointer;
 }
-/* Media Query for Mobile Devices */ 
-@media (max-width: 480px) { 
-    .part{
-        width: 48px;
-        height: 48px;
-        flex-shrink: 0;
-        background: white;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100%;
-        display: none;
-    
-        .icon{
-            width: 33px;
-            height: 33px;
-            flex-shrink: 0;
-            color: --opex--red;
-        }
-    }
-} 
-    
-/* Media Query for low resolution  Tablets, Ipads */ 
-@media (min-width: 481px) and (max-width: 768px) { 
-    .part{
-        width: 48px;
-        height: 48px;
-        flex-shrink: 0;
-        background: var(--Opex---gray, #E8E8E8);
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100%;
-        display: none;
-    
-        .icon{
-            width: 33px;
-            height: 33px;
-            flex-shrink: 0;
-            color: --opex--red;
-        }
-    }
-} 
-    
-/* Media Query for Tablets Ipads portrait mode */ 
-@media (min-width: 768px) and (max-width: 1024px){ 
-    .part{
-        width: 48px;
-        height: 48px;
-        flex-shrink: 0;
-        background: var(--Opex---gray, #E8E8E8);
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100%;
-    
-        .icon{
-            width: 33px;
-            height: 33px;
-            flex-shrink: 0;
-            color: --opex--red;
-        }
-    }
-} 
-    
-/* Media Query for Laptops and Desktops */ 
-@media (min-width: 1025px) and (max-width: 1280px){ 
-    .part{
-        width: 48px;
-        height: 48px;
-        flex-shrink: 0;
-        background: var(--Opex---gray, #E8E8E8);
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100%;
-    
-        .icon{
-            width: 33px;
-            height: 33px;
-            flex-shrink: 0;
-            color: --opex--red;
-        }
-    }
-} 
-    
-/* Media Query for Large screens */ 
-@media (min-width: 1281px) { 
+
     .part{
         width: 48px;
         height: 48px;
@@ -102,16 +11,23 @@
         background: $color1;
         box-shadow: $header_shadow;
         display: flex;
-        flex-direction: row;
+       
         justify-content: center;
         align-items: center;
         border-radius: 100%;
+        transition-duration: 0.4s;
     
         .icon{
-            width: 33px;
-            height: 33px;
-            flex-shrink: 0;
-            color: --opex--red;
+            width: 30px;
+            height: 30px;
+            
+            
         }
+
+        
     }
-}
+
+    .part:hover {
+        transform: scale(1.05);
+        transition-duration: 0.4s;
+    }

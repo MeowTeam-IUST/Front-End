@@ -13,6 +13,7 @@
     background-size: cover;
     background-position: center center; /* Center the background image horizontally and vertically */
     background-repeat: no-repeat; /* Removed single quotes */
+    transition-duration: 0.4s;
     .GameTitlePopupOpen{
       width: 198px;
       height: 80px;
@@ -71,6 +72,12 @@
           flex-shrink: 0;
         }
       }
+}
+
+.LittleCart:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  transition-duration: 0.4s;
 }
 
     
