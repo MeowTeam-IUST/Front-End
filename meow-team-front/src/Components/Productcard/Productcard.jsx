@@ -6,7 +6,7 @@ import Requests from '../../API/Requests';
 import Popup from '../Popup/Popup.jsx'; // Adjust the path based on your file structure
 import AddToCart from '../AddToCart/AddToCart'
 
-export default function Productcard({name, price, changeButtonColor,showdiv,onDelete,applyLTR, onSave , image}) {
+export default function Productcard({name, price, changeButtonColor,showdiv,onDelete,applyLTR, onSave , image , id}) {
   const [isPopupOpen, setPopupOpen] = useState(false);
 
   const openPopup = () => {
@@ -76,7 +76,7 @@ export default function Productcard({name, price, changeButtonColor,showdiv,onDe
           isOpen={isPopupOpen}
           onClose={closePopup}
           title={"جزئیات سفارش"}
-          content={<AddToCart />}
+          content={<AddToCart id={id} />}
         />
         {/* {showPopup && (
           <div className={styles.Backdrop} onClick={handleClose}>

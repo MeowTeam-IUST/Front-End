@@ -117,6 +117,7 @@ export default function ProductPage(){
             <div className={styles.MenuProducts}>
               {products.map((product) => (
                 <Productcard
+                  id = {product.id}
                   name={product.title}
                   price={`${product.price} تومان`}
                   image={

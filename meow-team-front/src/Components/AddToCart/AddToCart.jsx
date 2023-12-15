@@ -3,7 +3,7 @@ import styles from './AddToCart.module.scss'
 import plus from '../../assets/+.svg'
 import negetive from '../../assets/-.svg'
 import Requests from '../../API/Requests'
-export default function AddToCart() {
+export default function AddToCart({id}) {
     const [quantity, setQuantity] = React.useState(1);
     const [describthion, setDescribthion] = React.useState('');
     const HandleChange = (count) => {
@@ -20,7 +20,7 @@ export default function AddToCart() {
       }
       */
       let data = {
-        productId: 8,
+        productId: id,
         description: describthion
       }
       const res = await Requests().addInvoiceItem(data);
