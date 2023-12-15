@@ -12,7 +12,9 @@ import DefaultDashboard from '../../Components/DefaultDashboard/DefaultDashboard
 import ShoppingCart from '../../Components/ShoppingCart/ShoppingCart'
 import { Wallet } from "../Wallet/Wallet"
 import { MyOrders } from '../../Components/MyOrders/MyOrders'
-export const items = [  
+// import { MyOrders } from '../../Components/MyOrders/MyOrders'
+import MyOrderApp from '../../Components/MyOrders/App'
+export const items = [
     {
         name: 'داشبورد',
         component: DefaultDashboard,
@@ -37,7 +39,7 @@ export const items = [
     },
     {
         name: 'سفارشات من',
-        component: MyOrders,
+        component: MyOrderApp,
         icon: history,
         path: 'history',
         item : 3

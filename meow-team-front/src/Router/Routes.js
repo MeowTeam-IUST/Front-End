@@ -6,7 +6,7 @@ import AdminProduct from '../Pages/AdminProduct/AdminProduct';
 import PaymentPage from '../Pages/PaymentPage/PaymentPage';
 import ProductsCat from '../Pages/ProductsCat/ProductsCat';
 import AdminOrder from '../Pages/AdminOrder/Orders';
-import AdminOrderDetails from '../Pages/AdminOrderDetails/AdminOrderDetails';
+import OrderApp from '../Pages/AdminOrder/app';
 import AdminPanel from '../Pages/AdminPanel/AdminPanel';
 const routes = [
   {
@@ -59,6 +59,11 @@ const routes = [
     component: AdminOrderDetails,
     Private: false,
   },
+  {
+    path: '/AdminOrder',
+    component: OrderApp,
+    Private: false
+  }
 ];
   
   export default routes;
