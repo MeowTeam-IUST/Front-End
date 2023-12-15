@@ -21,7 +21,7 @@ export const items = [
     },
     {
         name: 'سفارشات',
-        component: Orders,
+        component: OrderApp,
         icon: Basket,
         path: 'Orders',
         item : 1

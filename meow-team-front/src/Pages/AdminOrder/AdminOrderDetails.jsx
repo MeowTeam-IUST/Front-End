@@ -121,7 +121,7 @@ function AdminOrderDetails(props) {
     const statetitlestr = props.data.state == 1 ? '{"label":"پرداخت شده"}' : props.data.state == 2 ? '{"label":"در حال انجام"}' : props.data.state == 3 ? '{"label":"انجام شده"}' : '{"label":"نا مشخص"}' ;
     const statetitle = JSON.parse(statetitlestr);
   return (
-      <div className={styles.layout}>
+      <div className={styles.layout} dir='ltr'>
         {booluserdetailshow ? (
             <div className={styles.userdetailpopupback} ref={xRef}>
                 <div className={styles.userdetailpopup}>

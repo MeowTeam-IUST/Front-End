@@ -8,6 +8,7 @@ import ProductsCat from '../Pages/ProductsCat/ProductsCat';
 import AdminOrder from '../Pages/AdminOrder/Orders';
 import OrderApp from '../Pages/AdminOrder/app';
 import AdminPanel from '../Pages/AdminPanel/AdminPanel';
+import AdminOrderDetails from '../Pages/AdminOrder/AdminOrderDetails'
 const routes = [
   {
     path: "/",
@@ -49,16 +50,12 @@ const routes = [
     component: ProductsCat,
     Private: false,
   },
-  {
-    path: "/AdminOrder",
-    component: AdminOrder,
-    Private: false,
-  },
-  {
-    path: "/AdminOrderDetails",
-    component: AdminOrderDetails,
-    Private: false,
-  },
+
+  // {
+  //   path: "/AdminOrderDetails",
+  //   component: AdminOrderDetails,
+  //   Private: false,
+  // },
   {
     path: '/AdminOrder',
     component: OrderApp,
