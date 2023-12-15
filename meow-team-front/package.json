@@ -32,6 +32,7 @@
     "react-avatar-edit": "^1.2.0",
     "react-avatar-editor": "^13.0.1",
     "react-dom": "^18.2.0",
+    "react-draggable": "^4.4.6",
     "react-hook-form": "^7.47.0",
     "react-horizontal-scrolling-menu": "^4.1.1",
     "react-loadingg": "^1.7.2",

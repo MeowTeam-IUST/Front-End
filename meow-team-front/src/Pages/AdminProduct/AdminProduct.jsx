@@ -6,10 +6,18 @@ import GameList from '../../Components/GameList/GameList'
 import gameControlle from '../../assets/game-controlle.svg'
 import image1 from '../../assets/1.png'
 import Requests from '../../API/Requests';
+import { AddCategoryPopUp } from '../../Components/AddCategoryPopUp/AddCategoryPopUp';
 
 export default function AdminProduct(){
     const [showPopup, setShowPopup] = useState(false);
     const [allCategories, setAllCategories] = useState([])
+    const [isPopupOpen, setPopupOpen] = useState(false);
+    const openPopup = () => {
+      setPopupOpen(true);
+    };
+     const closePopup = () => {
+       setPopupOpen(false);
+     };
 
      const fetchCategories = async () => {
        try {
@@ -72,12 +80,12 @@ export default function AdminProduct(){
           <CategoryHeader icon={gameControlle} title={"دیگر محصولات"} />
           <GameList Products={Theothers} isAdmin={true} />
         </div> */}
-        <div className={styles.addcat} onClick={() => setShowPopup(true)}>
+        <div className={styles.addcat} onClick={openPopup}>
           <div className={styles.addcat1}>اضافه کردن دسته اصلی</div>
           <div className={styles.addcatp}>+</div>
         </div>
 
-        {showPopup && (
+        {/* {showPopup && (
           <div className={styles.Backdrop} onClick={() => setShowPopup(false)}>
             <div
               className={styles.Popup}
@@ -100,7 +108,9 @@ export default function AdminProduct(){
               <button onClick={() => setShowPopup(false)}>Close</button>
             </div>
           </div>
-        )}
+        )} */}
+
+        <AddCategoryPopUp isOpen={isPopupOpen} onClose={closePopup} />
       </div>
     );
 }
