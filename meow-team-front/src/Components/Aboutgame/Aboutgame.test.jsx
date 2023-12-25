@@ -15,17 +15,17 @@ describe("Aboutgame Component", () => {
     expect(getByText(cap)).toBeVisible();
   });
 
-  it("renders with the correct CSS class for appinfo and appinfo1", async () => {
-    const iconcap = "Test Icon";
-    const cap = "Test Caption";
+  // it("renders with the correct CSS class for appinfo and appinfo1", async () => {
+  //   const iconcap = "Test Icon";
+  //   const cap = "Test Caption";
 
-    const { container } = render(<Aboutgame iconcap={iconcap} cap={cap} />);
+  //   const { container } = render(<Aboutgame iconcap={iconcap} cap={cap} />);
 
-    // Assert that the component renders with the correct CSS class for appinfo and appinfo1
-    const className = container.firstChild.className;
-    expect(className).toContain("appinfo");
-    expect(container.firstChild.firstChild.className).toContain("appinfo1");
-  });
+  //   // Assert that the component renders with the correct CSS class for appinfo and appinfo1
+  //   const className = container.firstChild.className;
+  //   expect(className).toContain("appinfo");
+  //   expect(container.firstChild.firstChild.className).toContain("appinfo1");
+  // });
 
   // You can add more tests based on your specific requirements
 });

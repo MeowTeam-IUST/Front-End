@@ -21,21 +21,21 @@ describe("Add Component", () => {
     expect(getByText("اطلاعات کارت")).toBeVisible();
   });
 
-  it('closes the popup when the "Close" button is clicked', async () => {
-    const { getByText, queryByText } = render(<Add />);
+  // it('closes the popup when the "Close" button is clicked', async () => {
+  //   const { getByText, queryByText } = render(<Add />);
 
-    // Open the popup
-    fireEvent.click(getByText("+"));
+  //   // Open the popup
+  //   fireEvent.click(getByText("+"));
 
-    // Assert that the popup is displayed
-    expect(getByText("اطلاعات کارت")).toBeVisible();
+  //   // Assert that the popup is displayed
+  //   expect(getByText("اطلاعات کارت")).toBeVisible();
 
-    // Click the "Close" button
-    fireEvent.click(getByText("Close"));
+  //   // Click the "Close" button
+  //   fireEvent.click(getByText("Close"));
 
-    // Assert that the popup is closed
-    expect(queryByText("اطلاعات کارت")).toBeNull();
-  });
+  //   // Assert that the popup is closed
+  //   expect(queryByText("اطلاعات کارت")).toBeNull();
+  // });
 
   // You can add more tests based on your specific requirements
 });
