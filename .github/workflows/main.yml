@@ -42,7 +42,7 @@ jobs:
           npm ci
       - name: Install dependencies
         working-directory: ./meow-team-front
-        run: npm install --force
+        run: npm install --force --legacy-peer-deps
       - name: Test project
         working-directory: ./meow-team-front
         run: npm run test --if-present
