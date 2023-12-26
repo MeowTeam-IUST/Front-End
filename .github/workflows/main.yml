@@ -20,7 +20,7 @@ jobs:
         run: npm ci
       - name: Install dependencies
         working-directory: ./meow-team-front
-        run: npm install
+        run: npm install --force
       - name: Build project
         env:
           CI: false
