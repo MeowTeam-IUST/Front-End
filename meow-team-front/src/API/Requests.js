@@ -197,7 +197,7 @@ export default function Requests() {
   const getAllCategories = async () => {
     try {
       const response = await API().GET(
-        `api/Category/get_all_categories`,
+        `api/Category/get_all_main_categories`,
       );
       // console.log("All categories : ",response);
       return response.data.data
@@ -234,9 +234,13 @@ export default function Requests() {
       return [];
     }
   };
-  const addCategory = async (category) => {
+  const addCategory = async (data) => {
     try {
-      const response = await API().POST("api/Category/add", category, HEADER);
+      const response = await API().POST(
+        "api/Category/add",
+        data,
+        AutorizeHeader
+      );
       console.log("Category added:", response);
       return response;
     } catch (err) {

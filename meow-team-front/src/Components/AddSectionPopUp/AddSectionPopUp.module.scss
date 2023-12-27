@@ -58,7 +58,6 @@
           border-radius: 10px;
           border: 1px solid var(--Admin---Stroke, rgba(163, 174, 208, 0.20));
           background: var(--Admin---Back, #F4F7FE);
-          padding-right: 10px;
         }
       }
 
@@ -79,87 +78,9 @@
           border-radius: 10px;
           border: 1px solid var(--Admin---Stroke, rgba(163, 174, 208, 0.20));
           background: var(--Admin---Back, #F4F7FE);
-          padding-right: 10px;
         }
       }
     }
-  }
-
-  .popUp_bottom {
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 24px;
-    border-radius: 25px;
-    height: 260px;
-    .bottom_right {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 30px;
-
-
-      .right_text_section {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .bottom_right_title {
-        font-size: 18px;
-        font-weight: 900;
-        color: $admin_title;
-      }
-      .bottom_right_subTitle {
-        font-size: 14px;
-        font-family: $second_font;
-      }
-
-      .uploadButton {
-        background-color: $admin_button;
-        width: 160px;
-        height: 44px;
-        border-radius: 16px;
-        border: none;
-        font-size: 16px;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        color: white;
-        cursor: pointer;
-      }
-    }
-
-    .bottom_left {
-      width: 100%;
-      
-
-      .imagePlaceHolder {
-        width: 100%;
-        aspect-ratio: 1/1;
-        background-color: $admin_background;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        border-radius: 24px;
-        border: 2px dashed var(--Admin---Button, #c8bdfc);
-        color: $admin_title;
-        font-weight: 600;
-      }
-      .selectedImage {
-         display: block;
-        width: 100%;
-        aspect-ratio: 1/1;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 24px;
-        object-fit: cover;
-       
-        
-      }
-    }
-
   }
 
   .ButtonSection {

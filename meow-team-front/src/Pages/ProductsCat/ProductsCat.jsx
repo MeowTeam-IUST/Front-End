@@ -103,7 +103,7 @@ export default function ProductsCat(){
             <div className={styles.upcat}>
                 <div className={styles.upcatleft}>
                 <div className={styles.upcatleft1}>
-                <div className={styles.upcatleft2}>توضیحات دسته :</div>
+                <div className={styles.upcatleft2}>:توضیحات دسته</div>
                  <input className={styles.upcatleft3} type="text" name="description" 
                  value={description} onChange={(e) => setDescription(e.target.value)} />
                     </div>
@@ -129,8 +129,8 @@ export default function ProductsCat(){
                  onChange={(e) => setTitle(e.target.value)} />
                  <div className={styles.upcatright12}>نام دسته محصول</div>
                 </div>
-                <button onClick={handleSubmit} className={styles.cardinpp3} >اضافه کردن</button>
-                <div className={styles.cardinp}> 
+                {/* <button onClick={handleSubmit} className={styles.cardinpp3} >اضافه کردن</button> */}
+                {/* <div className={styles.cardinp}> 
                   <div className={styles.cardinp1}>
                   {!imageUploaded ? 
                     <div className={styles.cardinp2}>UploadFiles</div> :
@@ -146,7 +146,46 @@ export default function ProductsCat(){
                     <input type="file" accept="image/*" id="fileInputProCat" style={{display: 'none'}} onChange={(event) => { handleFileChange(event); setImageUploaded(true); }} />
                     <button className={styles.cardinpp3} onClick={() => document.getElementById('fileInput').click()}>آپلود فایل</button>
                   </div>
+                </div> */}
+              <div className={styles.popUp_bottom} dir='rtl'>
+              <div className={styles.bottom_right}>
+                <div className={styles.right_text_section}>
+                  <div className={styles.bottom_right_title}>
+                    آپلود عکس محصول
+                  </div>
+                  <div className={styles.bottom_right_subTitle}>
+                    از این قسمت می‌توانید برای دسته بندی محصول خود عکس بارگزاری
+                    نمایید
+                  </div>
                 </div>
+
+                {/* <button className={styles.uploadButton}>آپلود عکس</button> */}
+
+                <label className={styles.uploadButton}>
+                  آپلود عکس
+                  <input
+                    type="file"
+                    accept="image/*"
+                    // onChange={handleImageChange}
+                    style={{ display: "none" }}
+                  />
+                </label>
+              </div>
+              <div className={styles.bottom_left}>
+                {/* <FileDrop fileInputRef={fileInputRef} /> */}
+                {imageUploaded ? (
+                  <img
+                    src={imageUploaded}
+                    alt="Selected"
+                    className={styles.selectedImage}
+                  />
+                ) : (
+                  <div className={styles.imagePlaceHolder}>
+                    محل قرارگیری تصویر
+                  </div>
+                )}
+              </div>
+            </div>
                         
                     </div>
             </div>
