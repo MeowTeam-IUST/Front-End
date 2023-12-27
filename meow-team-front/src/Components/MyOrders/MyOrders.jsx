@@ -1,10 +1,14 @@
-import React,{ useState } from "react"
+import React,{ useState ,useEffect } from "react"
 import repeat from '../../assets/repeat.svg'
 import info from '../../assets/info.svg'
 import styles from "./MyOrders.module.css";
+import axios from 'axios';
+
 export function MyOrders(props) {
     const [booleanArray, setBooleanArray] = useState([false, true, true, true]);
+    const [state, SetState] = useState(1);
     const HandelCheckClick = (index) => {
+        SetState(index+1);
         if (index === 0) {
             setBooleanArray([
                 booleanArray[0]=false,
@@ -12,9 +16,6 @@ export function MyOrders(props) {
                 booleanArray[2]=true,
                 booleanArray[3]=true,
             ]);
-            // if(booleanArray[0] === true){
-            //     setDoActionId([...doactionid, data[0].id]);
-            // }
         }
         else if (index === 1) {
             setBooleanArray([
@@ -23,9 +24,6 @@ export function MyOrders(props) {
                 booleanArray[2]=true,
                 booleanArray[3]=true,
             ]);
-            // if(booleanArray[1] === true){
-            //     setDoActionId([...doactionid, data[1].id]);
-            // }
         }
         else if (index === 2) {
             setBooleanArray([
@@ -34,9 +32,6 @@ export function MyOrders(props) {
                 booleanArray[2]=false,
                 booleanArray[3]=true,
             ]);
-            // if(booleanArray[2] == true){
-            //     setDoActionId([...doactionid, data[2].id]);
-            // }
         }
         else {
             setBooleanArray([
@@ -45,11 +40,36 @@ export function MyOrders(props) {
                 booleanArray[2]=true,
                 booleanArray[3]=false,
             ]);
-            // if(booleanArray[3] == true){
-            //     setDoActionId([...doactionid, data[3].id]);
-            // }
         }
     }
+
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        fetchData().then((responsedata) => {
+            setData(responsedata);
+        })
+    }, [state]);
+    useEffect(() => {
+        console.log(data)
+    }, [data]);
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`http://45.147.99.177:9000/api/Acount/get_all_user_invoice/${state}/${0}`, {
+                headers: {
+                    'accept': 'text/plain' ,
+                    'Content-Type': 'application/json' ,
+                }
+            });
+            console.log(response)
+            const jsonData = response.data.data;
+            const responsedata = jsonData.map(item => item);
+            return responsedata;
+        } catch (error) {
+          console.error(error);
+        }
+        finally{
+        }
+    };
     return(
         <div className={styles.main}>
             <div className={styles.content}>

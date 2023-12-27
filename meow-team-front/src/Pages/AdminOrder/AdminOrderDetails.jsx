@@ -63,6 +63,7 @@ function AdminOrderDetails(props) {
                     'Content-Type': 'application/json' ,
                 }
             });
+            console.log(response)
             const jsonData = response.data.data;
             return jsonData;
         } catch (error) {
@@ -140,7 +141,7 @@ function AdminOrderDetails(props) {
                                         </div>
                                         <div className={styles.userdetailpopupdetailrowitemtext}>
                                             <div className={styles.useritemtitle}>نام خانوادگی</div>
-                                            <div className={styles.useritemtext}>{userdata.lastName == 'Null' ? 'نامشخص' : userdata.lastName}</div>
+                                            <div className={styles.useritemtext}>{userdata.lastName == null ? 'نامشخص' : userdata.lastName}</div>
                                         </div>
                                     </div>
                                     <div className={styles.userdetailpopupdetailrowitem}>
@@ -148,7 +149,7 @@ function AdminOrderDetails(props) {
                                         </div>
                                         <div className={styles.userdetailpopupdetailrowitemtext}>
                                             <div className={styles.useritemtitle}>نام</div>
-                                            <div className={styles.useritemtext}>{userdata.firstName == 'Null' ? 'نامشخص' : userdata.firstName}</div>
+                                            <div className={styles.useritemtext}>{userdata.firstName == null ? 'نامشخص' : userdata.firstName}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +159,7 @@ function AdminOrderDetails(props) {
                                         </div>
                                         <div className={styles.userdetailpopupdetailrowitemtext}>
                                             <div className={styles.useritemtitle}>ایمیل</div>
-                                            <div className={styles.useritemtext}>{userdata.email == 'Null' ? 'نامشخص' : userdata.email}</div>
+                                            <div className={styles.useritemtext}>{userdata.email == null ? 'نامشخص' : userdata.email}</div>
                                         </div>
                                     </div>
                                     <div className={styles.userdetailpopupdetailrowitem}>
@@ -166,7 +167,7 @@ function AdminOrderDetails(props) {
                                         </div>
                                         <div className={styles.userdetailpopupdetailrowitemtext}>
                                             <div className={styles.useritemtitle}>شماره مبایل</div>
-                                            <div className={styles.useritemtext}>{userdata.phoneNumber == 'Null' ? 'نامشخص' : userdata.phoneNumber}</div>
+                                            <div className={styles.useritemtext}>{userdata.phoneNumber == null ? 'نامشخص' : userdata.phoneNumber}</div>
                                         </div>
                                     </div>
                                 </div>
