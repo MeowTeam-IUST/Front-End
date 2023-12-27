@@ -3,10 +3,12 @@ import axios from "axios";
 import styles from "./AddCategoryPopUp.module.scss";
 import Draggable from "react-draggable";
 import { FileDrop } from "../filedrop";
+import Requests from "../../API/Requests";
 
 export const AddCategoryPopUp = ({ isOpen, onClose }) => {
   const fileInputRef = React.createRef();
-  const [inputValue, setInputValue] = useState("");
+  const [TitleValue, setTitleValue] = useState("");
+  const [SubTitleValue, setSubTitleValue] = useState("");
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [selectedImage, setSelectedImage] = useState(null);
   const handleDrag = (e, ui) => {
@@ -27,14 +29,32 @@ export const AddCategoryPopUp = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+  const handleTitleChange = (e) => {
+    setTitleValue(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubTitleChange = (e) => {
+    setSubTitleValue(e.target.value);
+  };
+
+  const handleSubmit = async (event) => {
     // Add your submit logic here
-    console.log("Submitted value:", inputValue);
-    onSubmit(inputValue);
+    console.log(TitleValue,selectedImage,SubTitleValue)
+    try {
+      const res = await Requests().addCategory({
+        Title: TitleValue,
+        Picture: selectedImage,
+        Description: SubTitleValue,
+        Banner: "",
+        IsActive : true
+      });
+      console.log(res.data);
+    } catch (error) {
+      console.error("Error submitting category:", error);
+    }
+
+    console.log("Submitted value:", TitleValue);
+    
     onClose();
   };
 
@@ -50,11 +70,11 @@ export const AddCategoryPopUp = ({ isOpen, onClose }) => {
               <div className={styles.popUp_top_form}>
                 <div className={styles.titleSection}>
                   <p className={styles.title}>نام کارت</p>
-                  <input type="text" className={styles.TitleInput} />
+                  <input type="text" className={styles.TitleInput} value={TitleValue} onChange={handleTitleChange} />
                 </div>
                 <div className={styles.subTitleSection}>
                   <p className={styles.subTitle}>زیرنویس کارت</p>
-                  <input type="text" className={styles.SubtitleInput} />
+                  <input type="text" className={styles.SubtitleInput} value={SubTitleValue} onChange={handleSubTitleChange}/>
                 </div>
               </div>
             </div>

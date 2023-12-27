@@ -223,9 +223,13 @@ export default function Requests() {
       return [];
     }
   };
-  const addCategory = async (category) => {
+  const addCategory = async (data) => {
     try {
-      const response = await API().POST("api/Category/add", category, HEADER);
+      const response = await API().POST(
+        "api/Category/add",
+        data,
+        AutorizeHeader
+      );
       console.log("Category added:", response);
       return response;
     } catch (err) {
