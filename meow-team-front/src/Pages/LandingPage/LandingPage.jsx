@@ -39,7 +39,8 @@ export default function LandingPage() {
     if (state.set == 0){
       const res = await Requests().getProfile();
       setProfileStatus(true);
-      dispatch(SetUser({firstName:res.data.data.firstName , lastName : res.data.data.lastName , email : res.data.data.email , image : res.data.data.urlImage , birthDate : res.data.data.birthDate, phoneNumber : res.data.data.phoneNumber}));
+      console.log(res.data.data)
+      dispatch(SetUser({firstName:res.data.data.firstName , lastName : res.data.data.lastName , email : res.data.data.email , image : res.data.data.urlImage , birthDate : res.data.data.birthDate, phoneNumber : res.data.data.phoneNumber, isAdmin : res.data.data.isAdmin}));
     }
     fetchCategories()
   }, [])

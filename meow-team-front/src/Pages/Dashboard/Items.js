@@ -23,7 +23,7 @@ export const items = [
         item : 0
     },
     {
-        name: 'اطلاعات حساب کاربری',
+        name: ' حساب کاربری',
         component: EditProfile,
         icon: User,
         path: 'editprofile',

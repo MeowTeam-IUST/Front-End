@@ -5,8 +5,12 @@ import {Header} from '../Components/Header/Header';
 import CategoryItem from '../Components/CategoryItem/CategoryItem';
 import CategoryHeader from '../Components/CategoryHeader/CategoryHeader';
 import bars from "../assets/bars.svg";
+import { useSelector, useDispatch } from "react-redux";
+import { DeleteUser } from '../Slices/UserSlice.js';
 
 export default function PageLayout ({ children }) {
+  const state = useSelector((state) => state.User); // Access the "User" slice of the state
+
   const Categorys = [
     "کالاف دیوتی موبایل",
     "گنشین ایمپکت",
@@ -18,7 +22,14 @@ export default function PageLayout ({ children }) {
   return (
     <div className={styles.PageLayout} dir="rtl">
       <div className={styles.HeadContainer}>
-        <div className={styles.Head}>
+        <div className={state.isAdmin? styles.Head : styles.x}>
+          {
+            state.isAdmin && 
+            <div className={styles.admin}>
+              شما ادمین هستید، برای دسترسی به پنل ادمین کلیک کنید.
+              <div className={styles.adminButton} onClick={()=>window.location.href = '/AdminPanel'}>پنل ادمین</div>
+            </div>
+          }
           <Header />
           <div className={styles.Category}>
             <CategoryHeader icon={bars} title={"دسته‌بندی محصولات"} />

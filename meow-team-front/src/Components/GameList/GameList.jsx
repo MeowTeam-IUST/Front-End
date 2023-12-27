@@ -7,10 +7,11 @@ import { useState,useEffect } from 'react';
 
 export default function GameList({Products , isAdmin}) {
   const [showPopup, setShowPopup] = useState(false);
-
+  console.log(Products)
   return (
     <div className={styles.GameList}>
-      {Products.map((item, index) => {
+      
+      {Products != null ? Products?.map((item, index) => {
         return (
           <div className={styles.item} key={index}>
             <LittleCart
@@ -22,7 +23,8 @@ export default function GameList({Products , isAdmin}) {
             />
           </div>
         );
-      })}
+      }): "لیست خالی‌ست"
+    }
       {isAdmin && (
         <div className={styles.item}>
           <Add showPopup={showPopup} setShowPopup={setShowPopup} />

@@ -25,18 +25,31 @@ export default function DefaultDashboard() {
     }
   ]
   const [wallet, setWallet] = useState(0);
+  const [Frequency, setFrequency] = useState([]);
+  
   const getwallet = async () => {
     try {
       const res = await Requests().getWallet();
+      setWallet(res.data.data.amount);
 
     } catch (error) {
       console.error('Error fetching invoice:', error);
     } finally {
-      setWallet(res.data.data.amount);
     }
   }
+  const getFrequency = async () => {
+    try {
+      const res = await Requests().getFrequency();
+      // console.log(res.data.data)
+      setFrequency(res.data.data);
+    } catch (error) {
+      console.error('Error fetching Frequency:', error);
+    } finally {
+    }
+  }  
   useEffect(() => {
     getwallet();
+    getFrequency();
   }, [])
 
   return (
@@ -63,7 +76,7 @@ export default function DefaultDashboard() {
       <div className={styles.Repeated}>
         <CategoryHeader icon={analytics} title={"خریدهای پرتکرار شما"} />
         <div className={styles.RepeatedItem}>
-            <GameList Products={Populares} isAdmin={false} />
+            <GameList Products={Frequency} isAdmin={false} />
         </div>
       </div>
     </div>

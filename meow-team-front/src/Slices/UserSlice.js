@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { act } from "react-dom/test-utils";
+import { BASE_URL } from "../API/consts";
 const initialState = {
   set : 0,
   firstName : null,
@@ -8,7 +9,8 @@ const initialState = {
   image : null,
   birthDate : null,
   phoneNumber : null,
-  Token : null
+  Token : null,
+  isAdmin : null
 };
 
 const UserSlice = createSlice({
@@ -22,9 +24,10 @@ const UserSlice = createSlice({
       state.lastName = action.payload.lastName;
       state.email = action.payload.email;
       state.birthDate = action.payload.birthDate;
-      state.image = action.payload.Image;
+      state.image = BASE_URL + "/" + action.payload.image;
       state.phoneNumber = action.payload.phoneNumber;
       state.Token = action.payload.Token;
+      state.isAdmin = action.payload.isAdmin;
     },
     DeleteUser: (state, action) => {
       state.set = 0;
@@ -35,6 +38,7 @@ const UserSlice = createSlice({
       state.image = null;
       state.phoneNumber = null;
       state.Token = null;
+      state.isAdmin = null;
     },
   },
 });

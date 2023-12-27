@@ -155,6 +155,17 @@ export default function Requests() {
     }
   };
 
+  //get frequency
+  const getFrequency = async () => {
+    try {
+      const res = await API().GET("api/Account/get_Frequency", {}, AutorizeHeader);
+      console.log(res);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
+  }; 
+
   // ---------------------------------------------------------------//
   // ---------------------------------------------------------------//
   // Wallet
@@ -274,5 +285,6 @@ export default function Requests() {
     editProfileImage,
     chargeWallet,
     getAllCategories,
+    getFrequency
   };
 }
