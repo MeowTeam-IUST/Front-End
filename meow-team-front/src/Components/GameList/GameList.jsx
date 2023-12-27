@@ -7,7 +7,7 @@ import { AddCategoryPopUp } from '../AddCategoryPopUp/AddCategoryPopUp';
 
 // import { ScrollMenu } from "react-horizontal-scrolling-menu";
 
-export default function GameList({Products , isAdmin}) {
+export default function GameList({Products , isAdmin , id}) {
   const [showPopup, setShowPopup] = useState(false);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const openPopup = () => {
@@ -20,7 +20,7 @@ export default function GameList({Products , isAdmin}) {
 
   return (
     <div className={styles.GameList}>
-      {Products.map((item, index) => {
+      { Products != undefined && Products.map((item, index) => {
         return (
           <div className={styles.item} key={index}>
             <LittleCart
@@ -40,7 +40,7 @@ export default function GameList({Products , isAdmin}) {
             <div className={styles.Plus1}>اضافه کردن دسته</div>
           </div>
           {/* <Add showPopup={showPopup} setShowPopup={setShowPopup} /> */}
-          <AddCategoryPopUp isOpen={isPopupOpen} onClose={closePopup} />
+          <AddCategoryPopUp isOpen={isPopupOpen} onClose={closePopup} id={id} />
         </div>
       )}
     </div>

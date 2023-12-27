@@ -5,7 +5,7 @@ import Draggable from "react-draggable";
 import { FileDrop } from "../filedrop";
 import Requests from "../../API/Requests";
 
-export const AddCategoryPopUp = ({ isOpen, onClose }) => {
+export const AddCategoryPopUp = ({ isOpen, onClose , id }) => {
   const fileInputRef = React.createRef();
   const [TitleValue, setTitleValue] = useState("");
   const [SubTitleValue, setSubTitleValue] = useState("");
@@ -15,9 +15,11 @@ export const AddCategoryPopUp = ({ isOpen, onClose }) => {
     const { x, y } = ui;
     setPosition({ x, y });
   };
-
+  const [image, setImage] = useState(null);
   const handleImageChange = (event) => {
     const file = event.target.files[0];
+    setImage(file);
+
     // You can perform additional validation here if needed
 
     if (file) {
@@ -36,18 +38,19 @@ export const AddCategoryPopUp = ({ isOpen, onClose }) => {
   const handleSubTitleChange = (e) => {
     setSubTitleValue(e.target.value);
   };
+  const formData = new FormData();
 
   const handleSubmit = async (event) => {
     // Add your submit logic here
     console.log(TitleValue,selectedImage,SubTitleValue)
+    formData.append('Title', TitleValue);
+    formData.append('Picture', image);
+    formData.append('Banner', image);
+    formData.append('Description', SubTitleValue);
+    formData.append('IsActive', true);
+    formData.append('ParentID', id);
     try {
-      const res = await Requests().addCategory({
-        Title: TitleValue,
-        Picture: selectedImage,
-        Description: SubTitleValue,
-        Banner: "",
-        IsActive : true
-      });
+      const res = await Requests().addCategory(formData);
       console.log(res.data);
     } catch (error) {
       console.error("Error submitting category:", error);

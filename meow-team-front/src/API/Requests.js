@@ -186,7 +186,7 @@ export default function Requests() {
   const getAllCategories = async () => {
     try {
       const response = await API().GET(
-        `api/Category/get_all_categories`,
+        `api/Category/get_all_main_categories`,
       );
       // console.log("All categories : ",response);
       return response.data.data
