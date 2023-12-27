@@ -85,17 +85,17 @@ function Login(props) {
     };
 
     return (
-      <div className={Styles.index}>
-        <div className={Styles.authformcontainer} id="myForm">
-          <CloseIcon
+      <>
+        <>
+          {/* <CloseIcon
             sx={{
               cursor: "pointer",
               color: "rgba(0, 0, 0, 0.7)",
               marginLeft: "0.8rem",
             }}
             onClick={closeForm}
-          />
-          <p className={Styles.textstyle}>ورود/ثبت نام</p>
+          /> */}
+          {/* <p className={Styles.textstyle}>ورود/ثبت نام</p> */}
           <form className={Styles.loginform} onSubmit={handleSubmit(onLogin)}>
             <div className={Styles.line}>
               <hr />
@@ -162,8 +162,8 @@ function Login(props) {
             </LoadingButton>
           </form>
           <ToastContainer />
-        </div>
-      </div>
+        </>
+      </>
     );
 }
 
