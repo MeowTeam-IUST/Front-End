@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import RightVector from '../../assets/RightVector.svg'
 import bigcirclered from '../../assets/bigcirclered.svg'
 import checkicon from '../../assets/checkicon.svg'
@@ -10,7 +10,17 @@ import repeat from '../../assets/repeat.svg'
 import bigplus from '../../assets/bigplus.svg'
 import redline from '../../assets/redline.svg'
 import styles from "./MyOrdersDetails.module.css";
+import Popup from '../Popup/Popup.jsx';
+import AddToCart from '../AddToCart/AddToCart'
+
 export function MyOrdersdetails(props) {
+    const [isPopupOpen, setPopupOpen] = useState(false);
+    const openPopup = () => {
+        setPopupOpen(true);
+    };
+    const closePopup = () => {
+        setPopupOpen(false);
+    };
     return(
         <div className={styles.main}>
             <div className={styles.content}>
@@ -72,7 +82,13 @@ export function MyOrdersdetails(props) {
                                         </div>
                                     </div>
                                 </div>
-                                <div className={styles.lefttorderbox}>
+                                <Popup
+                                    isOpen={isPopupOpen}
+                                    onClose={closePopup}
+                                    title={"جزئیات سفارش"}
+                                    content={<AddToCart id={1} />}
+                                />
+                                <div className={styles.lefttorderbox} onClick={() => openPopup()}>
                                     <div className={styles.leftordertext}>اضافه کردن به سبد خرید</div>
                                     <img className={styles.bigplus} src={bigplus} alt="" />
                                 </div>

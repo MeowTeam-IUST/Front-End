@@ -10,6 +10,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { makeStyles } from '@mui/styles';
 import Paper from "@mui/material/Paper";
 import axios from 'axios';
+import RightVector from '../../assets/RightVector.svg'
+import { ShowToast } from '../../Components/LoginSignup/Toastify';
 
 const useStyles = makeStyles({
     option: {
@@ -82,7 +84,6 @@ function AdminOrderDetails(props) {
     const [inputValue, setInputValue] = React.useState('');
 
     async function ChangeState(){
-        console.log('mamad')
         try{
             await axios
               .post(
@@ -98,14 +99,10 @@ function AdminOrderDetails(props) {
                   },
                 }
             )
-            //   .then((response) =>
-            //     response.data.isSuccess === false
-            //       ? ShowToast("error", `! ${response.data.message}`)
-            //       : (ShowToast("success", ". کد تایید برای شما ارسال شد"),
-            //         setTimeout(function () {
-            //           props.onFormSwitch("Verify", number);
-            //         }, 3000))
-            //   );
+            // .then((response) =>
+            //     console.log(response),
+            //     ShowToast("success", ". انجام شد")
+            // );
         }
         catch (error)
         {
@@ -113,9 +110,6 @@ function AdminOrderDetails(props) {
         }
         finally
         {
-            // setTimeout(function(){
-            //     SetIsLoading({ is_loading: false })
-            // }, 3000)
         }
         // return false
     }
@@ -184,104 +178,110 @@ function AdminOrderDetails(props) {
                     <div className={styles.headerleft} onClick={() => HandelUserDetailClick()}>
                         <div className={styles.headerlefttext}>مشاهده جزئیات کاربر</div>
                     </div>
-                    <div className={styles.headerright}>
-                        <div className={styles.headerrightdoaction} onClick={inputValue ? ChangeState() : (console.log(inputValue))}>
-                            <div className={styles.headerrightdoactiontext}>اجرا</div>
-                        </div>
-                        <Autocomplete
-                            sx={{
-                                width: "65%",
-                                '& .MuiAutocomplete-input': {
-                                    padding: '0px',
-                                    height: '20px',
-                                    width: '50px',
-                                },
-                                "& .MuiAutocomplete-inputRoot[class*='MuiInputBase-root']": {
-                                    fontSize: '16px',
-                                    color: 'rgba(0, 0, 0, 1)',
-                                    fontFamily: 'Anjoman',
-                                    fontSize: '14px',
-                                    fontWeight: 800,
-                                    lineHeight: '24px',
-                                    letterSpacing: '-0.02em',
-                                    textAlign: 'right',
-                                },
-                                '& .MuiOutlinedInput-root': {
-                                    paddingRight: '0px',
-                                    paddingLeft: '0px',
-                                    paddingTop: '0px',
-                                    paddingBottom: '0px',
+                    <div className={styles.headerrightset}>
+                        <div className={styles.headerright}>
+                            <div className={styles.headerrightdoaction} onClick={inputValue ? ChangeState() : (console.log(inputValue))}>
+                                <div className={styles.headerrightdoactiontext}>اجرا</div>
+                            </div>
+                            <Autocomplete
+                                sx={{
+                                    width: "65%",
                                     '& .MuiAutocomplete-input': {
+                                        padding: '0px',
+                                        height: '20px',
+                                        width: '50px',
+                                    },
+                                    "& .MuiAutocomplete-inputRoot[class*='MuiInputBase-root']": {
+                                        fontSize: '16px',
+                                        color: 'rgba(0, 0, 0, 1)',
+                                        fontFamily: 'Anjoman',
+                                        fontSize: '14px',
+                                        fontWeight: 800,
+                                        lineHeight: '24px',
+                                        letterSpacing: '-0.02em',
+                                        textAlign: 'right',
+                                    },
+                                    '& .MuiOutlinedInput-root': {
                                         paddingRight: '0px',
                                         paddingLeft: '0px',
                                         paddingTop: '0px',
                                         paddingBottom: '0px',
-                                        position: 'absolute',
-                                        top: '30%',
-                                        left: '23%',
-                                        width:'70%',
-                                        textAlign: 'right',
+                                        '& .MuiAutocomplete-input': {
+                                            paddingRight: '0px',
+                                            paddingLeft: '0px',
+                                            paddingTop: '0px',
+                                            paddingBottom: '0px',
+                                            position: 'absolute',
+                                            top: '30%',
+                                            left: '23%',
+                                            width:'70%',
+                                            textAlign: 'right',
+                                        },
                                     },
-                                },
-                                '& .MuiAutocomplete-endAdornment': {
-                                    marginRight: '82%',
-                                    marginLeft: '0px',
-                                    marginTop: '0px',
-                                    marginBottom: '0px',
-                                    position: 'reletive',
-                                    top: '15%',
-                                },
-                                '& .MuiAutocomplete-inputRoot': {
-                                    height: '45px',
-                                },
-                                '& .MuiOutlinedInput-notchedOutline': {
-                                    borderRadius: '15px',
-                                    border: '1px solid rgba(163, 174, 208, 1)',
-                                },
-                                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                                    borderRadius: '15px',
-                                    border: '1px solid rgba(163, 174, 208, 1)',
-                                },
-                                '&:hover .MuiOutlinedInput-notchedOutline': {
-                                    borderRadius: '15px',
-                                    border: '1px solid rgba(163, 174, 208, 1)',
-                                },
-                            }}
-                            classes={{
-                                option: classes.option,
-                            }}
-                            autoHighlight
-                            autoSelect
-                            disableClearable
-                            disablePortal
-                            id="country-select-demo"
-                            options={parti}
-                            getOptionLabel={(option) => option.label}
-                            value={inputValue ? inputValue : statetitle}
-                            onChange={(event, newValue) => {
-                                setInputValue(newValue);
-                            }}
-                            PaperComponent={(props) => (
-                                <Paper
-                                    sx={{
-                                        marginTop: '5px',
+                                    '& .MuiAutocomplete-endAdornment': {
+                                        marginRight: '82%',
+                                        marginLeft: '0px',
+                                        marginTop: '0px',
+                                        marginBottom: '0px',
+                                        position: 'reletive',
+                                        top: '15%',
+                                    },
+                                    '& .MuiAutocomplete-inputRoot': {
+                                        height: '45px',
+                                    },
+                                    '& .MuiOutlinedInput-notchedOutline': {
                                         borderRadius: '15px',
-                                        border: '1px solid rgba(163, 174, 208, 0.8)',
-                                    }}
-                                    {...props}
-                                />
-                            )}
-                            popupIcon={<img className={styles.expandmoreicon} style={{ padding: 0, margin: 0 }} src={expand_more}  alt=""/>}
-                            renderInput={(params) => 
-                                <TextField
-                                    sx={{
-                                        minWidth: '100px',
-                                    }}
-                                    {...params} 
-                                />
-                            }
-                        />
-                        <div className={styles.headerrighttext}>:تغییر وضعیت سفارش</div>
+                                        border: '1px solid rgba(163, 174, 208, 1)',
+                                    },
+                                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                        borderRadius: '15px',
+                                        border: '1px solid rgba(163, 174, 208, 1)',
+                                    },
+                                    '&:hover .MuiOutlinedInput-notchedOutline': {
+                                        borderRadius: '15px',
+                                        border: '1px solid rgba(163, 174, 208, 1)',
+                                    },
+                                }}
+                                classes={{
+                                    option: classes.option,
+                                }}
+                                autoHighlight
+                                autoSelect
+                                disableClearable
+                                disablePortal
+                                id="country-select-demo"
+                                options={parti}
+                                getOptionLabel={(option) => option.label}
+                                value={inputValue ? inputValue : statetitle}
+                                onChange={(event, newValue) => {
+                                    setInputValue(newValue);
+                                }}
+                                PaperComponent={(props) => (
+                                    <Paper
+                                        sx={{
+                                            marginTop: '5px',
+                                            borderRadius: '15px',
+                                            border: '1px solid rgba(163, 174, 208, 0.8)',
+                                        }}
+                                        {...props}
+                                    />
+                                )}
+                                popupIcon={<img className={styles.expandmoreicon} style={{ padding: 0, margin: 0 }} src={expand_more}  alt=""/>}
+                                renderInput={(params) => 
+                                    <TextField
+                                        sx={{
+                                            minWidth: '100px',
+                                        }}
+                                        {...params} 
+                                    />
+                                }
+                            />
+                            <div className={styles.headerrighttext}>:تغییر وضعیت سفارش</div>
+                        </div>
+                        <div className={styles.headerbackbox}>
+                            <div className={styles.headerbackboxtext}>سفارشات</div>
+                            <img className={styles.headerbackboxicon} src={RightVector} onClick={() => props.onFormSwitch("Order", 'null')} alt=""/>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.orders}>
