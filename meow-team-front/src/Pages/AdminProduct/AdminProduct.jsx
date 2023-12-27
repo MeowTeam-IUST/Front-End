@@ -6,7 +6,7 @@ import GameList from '../../Components/GameList/GameList'
 import gameControlle from '../../assets/game-controlle.svg'
 import image1 from '../../assets/1.png'
 import Requests from '../../API/Requests';
-import { AddCategoryPopUp } from '../../Components/AddCategoryPopUp/AddCategoryPopUp';
+import { AddSectionPopUp } from "../../Components/AddSectionPopUp/AddSectionPopUp";
 
 export default function AdminProduct(){
     const [showPopup, setShowPopup] = useState(false);
@@ -110,7 +110,7 @@ export default function AdminProduct(){
           </div>
         )} */}
 
-        <AddCategoryPopUp isOpen={isPopupOpen} onClose={closePopup} />
+        <AddSectionPopUp isOpen={isPopupOpen} onClose={closePopup} />
       </div>
     );
 }

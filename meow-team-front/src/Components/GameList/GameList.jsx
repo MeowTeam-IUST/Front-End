@@ -3,10 +3,20 @@ import styles from './GameList.module.scss'
 import LittleCart from '../LittleCart/LittleCart'
 import Add from "../Add/Add"
 import { useState,useEffect } from 'react';
+import { AddCategoryPopUp } from '../AddCategoryPopUp/AddCategoryPopUp';
+
 // import { ScrollMenu } from "react-horizontal-scrolling-menu";
 
 export default function GameList({Products , isAdmin}) {
   const [showPopup, setShowPopup] = useState(false);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
+  const closePopup = () => {
+    setPopupOpen(false);
+  };
+  
 
   return (
     <div className={styles.GameList}>
@@ -25,7 +35,12 @@ export default function GameList({Products , isAdmin}) {
       })}
       {isAdmin && (
         <div className={styles.item}>
-          <Add showPopup={showPopup} setShowPopup={setShowPopup} />
+          <div className={styles.AddCard} onClick={openPopup}>
+            <div className={styles.Plus}>+</div>
+            <div className={styles.Plus1}>اضافه کردن دسته</div>
+          </div>
+          {/* <Add showPopup={showPopup} setShowPopup={setShowPopup} /> */}
+          <AddCategoryPopUp isOpen={isPopupOpen} onClose={closePopup} />
         </div>
       )}
     </div>

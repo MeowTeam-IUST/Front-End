@@ -32,53 +32,14 @@ gap: 20px;
     line-height: 22px; /* 137.5% */
     letter-spacing: -0.32px;
 }
-.AddCard{
-    width: 200px;
-    aspect-ratio: 3/4; 
-    flex-shrink: 0;
-    border-radius: 30px;
-    border: 2px dashed var(--Admin---Button, #4318FF);
-    background: #FFF;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
+
 .Cardnew{
     width: 200px;
     aspect-ratio: 3/4; 
     margin: 5px !important;
     border-radius: 30px !important;
 }
-.Plus{
-    width: 60.237px;
-    height: 54.795px;
-    flex-shrink: 0;
-    color: var(--Admin---Button, #4318FF);
-    display: flex;
-    justify-content: center;
-    font-size: 50px;
-    font-weight: 600;
 
-}
-.Plus1{
-    display: flex;
-    width: 139px;
-    height: 24px;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
-    color: var(--Admin---Button, #4318FF);
-    text-align: center;
-    font-family: Shabnam FD-WOL;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 22px; /* 146.667% */
-    letter-spacing: -0.3px;
-}
 .addcat{
     display: flex;
     width: 100%;
