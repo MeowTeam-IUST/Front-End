@@ -3,7 +3,7 @@ import styles from './AddToCart.module.scss'
 import plus from '../../assets/+.svg'
 import negetive from '../../assets/-.svg'
 import Requests from '../../API/Requests'
-export default function AddToCart({id}) {
+export default function AddToCart({id , CardDescription}) {
     const [quantity, setQuantity] = React.useState(1);
     const [describthion, setDescribthion] = React.useState('');
     const HandleChange = (count) => {
@@ -38,7 +38,7 @@ export default function AddToCart({id}) {
 
   return (
     <div className={styles.AddToCart}>
-        <div className={styles.question}>لطفا نحوه ورود و یوزرنیم و پسورد اکانت خود را وارد کنید:</div>
+        <div className={styles.question}>{CardDescription}</div>
         <div className={styles.line}/>
         <textarea className={styles.textarea} rows={4} maxRows={4} placeholder="اطلاعات را اینجا وارد کنید ..." onChange={(e)=> setDescribthion(e.target.value)} />
         {

@@ -3,6 +3,8 @@ import styles from './CartItem.module.scss'
 import plus from '../../assets/+.svg'
 import negetive from '../../assets/-.svg'
 import Requests from '../../API/Requests'
+import { BASE_URL } from "../../API/consts";
+
 export default function CartItem({title, price, img, quantity , describthion , id }) {
   const [RequestMessage, setRequestMessage] = React.useState('');
   const [quan , setQuan] = React.useState(quantity);
@@ -44,8 +46,10 @@ export default function CartItem({title, price, img, quantity , describthion , i
   }
   return (
     <div className={styles.CartItem}>
-      <div className={styles.CartItem__img} style={{backgroundImage: `url(${img})`}}>
-      </div>
+      <div
+        className={styles.CartItem__img}
+        style={{ backgroundImage: `url(${BASE_URL + "/" + img})` }}
+      ></div>
       <div className={styles.CartItem__info}>
         <div className={styles.info}>
           <div className={styles.text1}>{title}</div>
@@ -55,18 +59,25 @@ export default function CartItem({title, price, img, quantity , describthion , i
         <div className={styles.quantity}>
           <div>تعداد: </div>
           <div className={styles.count}>
-              <img src={plus} alt="" className={styles.icon} onClick={() => AddToCartReq()} />
-              <div>{quan}</div>
-              <img src={negetive} alt="" className={styles.icon} onClick={() => DelFromCart()} />
+            <img
+              src={plus}
+              alt=""
+              className={styles.icon}
+              onClick={() => AddToCartReq()}
+            />
+            <div>{quan}</div>
+            <img
+              src={negetive}
+              alt=""
+              className={styles.icon}
+              onClick={() => DelFromCart()}
+            />
           </div>
         </div>
-        {
-          RequestMessage !== '' ?
-          <div className={styles.RequestMessage}>{RequestMessage}</div> 
-          : null
-        }
+        {RequestMessage !== "" ? (
+          <div className={styles.RequestMessage}>{RequestMessage}</div>
+        ) : null}
       </div>
-
     </div>
-  )
+  );
 }

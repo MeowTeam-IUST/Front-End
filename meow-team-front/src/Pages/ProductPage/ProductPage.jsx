@@ -125,6 +125,7 @@ export default function ProductPage(){
                   name={product.title}
                   price={`${product.price} تومان`}
                   image={`${BASE_URL + "/" + product.imageURL}`}
+                  description={product.description}
                 />
               ))}
             </div>
