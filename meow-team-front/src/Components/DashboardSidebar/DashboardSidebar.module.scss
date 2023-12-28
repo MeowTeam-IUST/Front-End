@@ -1,6 +1,6 @@
 @import "../../App.scss";
 /* Media Query for Mobile Devices */ 
-@media (max-width: 480px) { 
+@media (max-width: 700px) { 
     .DashboardSidebar{
         width: 90% !important;
         padding: 27px 20px;
@@ -10,6 +10,7 @@
 .DashboardSidebar{
     display: flex;
     width: 20%;
+    min-width: 180px;
     padding: 27px 20px;
     flex-direction: column;
     align-items: flex-end;
