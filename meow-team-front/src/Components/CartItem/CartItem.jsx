@@ -3,13 +3,13 @@ import styles from './CartItem.module.scss'
 import plus from '../../assets/+.svg'
 import negetive from '../../assets/-.svg'
 import Requests from '../../API/Requests'
-export default function CartItem({title, price, img, quantity , describthion }) {
+export default function CartItem({title, price, img, quantity , describthion , id }) {
   const [RequestMessage, setRequestMessage] = React.useState('');
   const [quan , setQuan] = React.useState(quantity);
   const AddToCartReq = async () => {
 
     let data = {
-      productId: 1,
+      productId: id,
       description: describthion
     }
     const res = await Requests().addInvoiceItem(data);
@@ -27,7 +27,7 @@ export default function CartItem({title, price, img, quantity , describthion }) 
   const DelFromCart = async () => {
 
     let data = {
-      productId: 1,
+      productId: id,
       description: describthion
     }
     const res = await Requests().deleteInvoiceItem(data);

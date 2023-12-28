@@ -13,7 +13,7 @@ import { BASE_URL } from '../../API/consts';
 
 
 export default function LittleCart({id , name, image, showPopup , description}) {
-
+  // console.log(image)
   const navigate = useNavigate();
   const HandleClick = () => {
     window.location.href = "/Product/"+id;

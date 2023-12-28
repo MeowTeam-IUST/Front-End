@@ -6,6 +6,11 @@
     overflow-x: scroll;
     overflow-y:visible;
     gap: 20px;
+    color: $--Opex--red;
+    font-weight: 800;    
+    .txt{
+        padding: 15px;
+    }
 }
 
 .GameList::-webkit-scrollbar {

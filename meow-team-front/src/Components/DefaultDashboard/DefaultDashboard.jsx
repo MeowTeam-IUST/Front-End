@@ -60,7 +60,7 @@ export default function DefaultDashboard() {
             <div className={styles.Text1}>موجودی کیف پول</div>
             <div className={styles.Text2}>{wallet} تومان</div>
           </div>
-          <div className={styles.button}>
+          <div className={styles.button} onClick={()=> window.location.href = "/dashboard/:wallet"}>
             افزایش موجودی
             <img src={plus} alt="Shopping Cart" />
           </div>

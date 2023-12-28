@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import styles from './PageLayout.module.scss'
 import Footer from '../Components/Footer/Footer'
 import {Header} from '../Components/Header/Header';
@@ -7,7 +7,7 @@ import CategoryHeader from '../Components/CategoryHeader/CategoryHeader';
 import bars from "../assets/bars.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { DeleteUser } from '../Slices/UserSlice.js';
-
+import Requests from '../API/Requests';
 export default function PageLayout ({ children }) {
   const state = useSelector((state) => state.User); // Access the "User" slice of the state
 
@@ -18,6 +18,22 @@ export default function PageLayout ({ children }) {
     "محصولات فیزیکی",
     "ایپکس لجندز",
   ];
+  const [allCategories , setAllCategories ] = useState([])
+
+
+  const fetchCategories = async () => {
+    try {
+      const res = await Requests().getAllCategories();
+      // console.log(res.data.data.amount);
+      console.log("All categories : ",res)
+      setAllCategories(res)
+    } catch (error) {
+      console.error("Error getting categories:", error);
+    }
+  }; 
+  useEffect(() => {
+    fetchCategories()
+  }, []);
 
   return (
     <div className={styles.PageLayout} dir="rtl">
@@ -34,8 +50,8 @@ export default function PageLayout ({ children }) {
           <div className={styles.Category}>
             <CategoryHeader icon={bars} title={"دسته‌بندی محصولات"} />
             <div className={styles.CategoryItems}>
-              {Categorys.map((item, index) => {
-                return <CategoryItem key={index} title={item} />;
+              {allCategories.map((item, index) => {
+                return <CategoryItem key={index} title={item.title} />;
               })}
             </div>
           </div>

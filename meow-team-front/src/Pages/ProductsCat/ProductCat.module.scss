@@ -19,6 +19,7 @@
     border-radius: 25px;
     // height: 268px;
     width: 92.5%;
+    padding-bottom: 37px;
 
     .bottom_right {
       width: 100%;
@@ -26,6 +27,7 @@
       flex-direction: column;
       justify-content: center;
       gap: 30px;
+      padding-right: 20px;
 
 
       .right_text_section {
@@ -142,7 +144,7 @@
     align-self: stretch;
     border-radius: 10px;
     border: 1px solid var(--Admin---Stroke, rgba(163, 174, 208, 0.20));
-    background: #FAFCFE;
+    background: $admin_background;
 }
 .upcatleftt1{
     display: flex;
@@ -150,6 +152,7 @@
     align-items: flex-end;
     gap: 20px;
     align-self: stretch;
+    padding: 5px;
 }
 .upcatleftt11{
     display: flex;
@@ -177,19 +180,21 @@ letter-spacing: -0.32px;
 }
 .upcatleftt13{
     color: var(--Admin---Title, #2B3674);
-font-family: Anjoman;
-font-size: 24px;
-font-style: normal;
-font-weight: 800;
-line-height: 24px; /* 100% */
-letter-spacing: -0.48px;
+    font-family: Anjoman;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px; /* 100% */
+    letter-spacing: -0.48px;
+    width: 100%;
+    text-align: end;
 }
 .upcatleftt14{
     height: 50px;
 align-self: stretch;
 border-radius: 10px;
 border: 1px solid var(--Admin---Stroke, rgba(163, 174, 208, 0.20));
-background: #FAFCFE;
+background: $admin_background;
 }
 .upcatright{
     display: flex;
@@ -219,10 +224,10 @@ background: #FAFCFE;
 .upcatright12{
     color: var(--Admin---Title, #2B3674);
     font-family: Anjoman;
-    font-size: 24px;
+    font-size: 18px;
     font-style: normal;
-    font-weight: 800;
-    line-height: 24px; /* 100% */
+    font-weight: 900;
+    line-height: 12px; /* 100% */
     letter-spacing: -0.48px;
 }
 .cardinp{

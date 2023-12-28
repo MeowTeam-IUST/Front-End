@@ -3,15 +3,20 @@ import axios from "axios";
 import styles from "./AddSectionPopUp.module.scss";
 import Draggable from "react-draggable";
 import { FileDrop } from "../filedrop";
-
+import Requests from "../../API/Requests";
 export const AddSectionPopUp = ({ isOpen, onClose }) => {
   const fileInputRef = React.createRef();
   const [inputValue, setInputValue] = useState("");
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [selectedImage, setSelectedImage] = useState(null);
+  const [TitleValue, setTitleValue] = useState("");
+
   const handleDrag = (e, ui) => {
     const { x, y } = ui;
     setPosition({ x, y });
+  };
+  const handleTitleChange = (e) => {
+    setTitleValue(e.target.value);
   };
 
   const handleImageChange = (event) => {
@@ -30,11 +35,21 @@ export const AddSectionPopUp = ({ isOpen, onClose }) => {
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
-
-  const handleSubmit = () => {
+  const formData = new FormData()
+  const handleSubmit = async () => {
     // Add your submit logic here
-    console.log("Submitted value:", inputValue);
-    onSubmit(inputValue);
+    console.log("Submitted value:", TitleValue);
+    formData.append('Title', TitleValue);
+    formData.append('IsActive', true);
+
+
+    // onSubmit(inputValue);
+    try {
+      const res = await Requests().addCategory(formData);
+      console.log(res.data);
+    } catch (error) {
+      console.error("Error submitting category:", error);
+    }
     onClose();
   };
 
@@ -48,7 +63,7 @@ export const AddSectionPopUp = ({ isOpen, onClose }) => {
               <div className={styles.popUp_top_form}>
                 <div className={styles.titleSection}>
                   <p className={styles.title}>نام دسته</p>
-                  <input type="text" className={styles.TitleInput} />
+                  <input type="text" className={styles.TitleInput} onChange={handleTitleChange} />
                 </div>
                 
               </div>

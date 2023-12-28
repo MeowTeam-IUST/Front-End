@@ -62,40 +62,7 @@ export default function LandingPage() {
       image: "https://www.uplooder.net/img/image/25/288e04f40eb951dda7ce9db7979e2373/Rectangle-15.png",
     }
   ]
-  const all = [
-    {
-      name: "کالاف دیوتی موبایل",
-      image: "https://www.uplooder.net/img/image/67/fe6e711a27d4daacee44991c75f39669/Rectangle-15.png"
-      },
-    {
-      name: "گنشین ایمپکت",
-      image: "https://www.uplooder.net/img/image/5/33f3f9c4f29317abe180f280f23bf643/Rectangle-15.png",
-    },
-    {
-      name: "کلش آف کلنز",
-      image: "https://www.uplooder.net/img/image/39/2eb40d11bff328e538eb1e44bcff5fc0/Rectangle-15.png",
-    },
-    {
-      name: "ایپکس لجندز",
-      image: "https://www.uplooder.net/img/image/25/288e04f40eb951dda7ce9db7979e2373/Rectangle-15.png",
-    },
-    {
-      name: "کالاف دیوتی موبایل",
-      image: "https://www.uplooder.net/img/image/67/fe6e711a27d4daacee44991c75f39669/Rectangle-15.png"
-      },
-    {
-      name: "گنشین ایمپکت",
-      image: "https://www.uplooder.net/img/image/5/33f3f9c4f29317abe180f280f23bf643/Rectangle-15.png",
-    },
-    {
-      name: "کلش آف کلنز",
-      image: "https://www.uplooder.net/img/image/39/2eb40d11bff328e538eb1e44bcff5fc0/Rectangle-15.png",
-    },
-    {
-      name: "ایپکس لجندز",
-      image: "https://www.uplooder.net/img/image/25/288e04f40eb951dda7ce9db7979e2373/Rectangle-15.png",
-    }
-  ]
+
   const mainbody = useRef(null);
   return (
     <PageLayout>
@@ -111,10 +78,21 @@ export default function LandingPage() {
           })}
         </div>
       </div>
-      <div className={styles.AllGames}>
-        <CategoryHeader icon={gameControlle} title={"همه بازی‌ها"} />
-        <GameList Products={allCategories} isAdmin={false} />
-      </div>
+      {
+          allCategories.map((category) => {
+            return (
+              <div className={styles.AllGames}>
+                <CategoryHeader
+                  icon={gameControlle}
+                  title={category.title}
+                  id={category.id}
+                />
+                <GameList Products={category.categories} isAdmin={false} id={category.id} />
+              </div>
+            );
+          }
+          )
+        }
       {/* <div className={styles.AllGames}>
         <CategoryHeader icon={apps} title={"محصولات دیگر"} />
         <GameList Products={all} isAdmin={false} />

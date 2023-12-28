@@ -93,6 +93,19 @@ export default function Requests() {
       console.log(err);
     }
   };
+  const callbackWallet = async (body) => {
+    try {
+      const res = await API().POST(
+        "api/Wallet/charge_callback",
+        body,
+        AutorizeHeader
+      );
+      console.error(res);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
+  };
   // buy from wallet
   const buyFromWallet = async (body) => {
     try {
@@ -272,6 +285,7 @@ export default function Requests() {
 
   return {
     postComment,
+    callbackWallet,
     getCategoryDetails,
     getProducts,
     addCategory,

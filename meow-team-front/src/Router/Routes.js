@@ -4,6 +4,7 @@ import LoginSignupPage from '../Pages/LoginSignupPage/LoginSignupPage';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import AdminProduct from '../Pages/AdminProduct/AdminProduct';
 import PaymentPage from '../Pages/PaymentPage/PaymentPage';
+import WalletPaymentPage from '../Pages/PaymentPage/WalletPaymentPage';
 import ProductsCat from '../Pages/ProductsCat/ProductsCat';
 import AdminOrder from '../Pages/AdminOrder/Orders';
 import OrderApp from '../Pages/AdminOrder/app';
@@ -51,11 +52,11 @@ const routes = [
     Private: false,
   },
 
-  // {
-  //   path: "/AdminOrderDetails",
-  //   component: AdminOrderDetails,
-  //   Private: false,
-  // },
+  {
+    path: "/dashboard/:wallet/charge_callback",
+    component: WalletPaymentPage,
+    Private: false,
+  },
   {
     path: '/AdminOrder',
     component: OrderApp,

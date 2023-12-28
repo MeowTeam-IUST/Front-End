@@ -4,7 +4,7 @@ import LittleCart from '../LittleCart/LittleCart'
 import Add from "../Add/Add"
 import { useState,useEffect } from 'react';
 import { AddCategoryPopUp } from '../AddCategoryPopUp/AddCategoryPopUp';
-
+import { BASE_URL } from '../../API/consts';
 // import { ScrollMenu } from "react-horizontal-scrolling-menu";
 
 export default function GameList({Products , isAdmin , id}) {
@@ -20,7 +20,7 @@ export default function GameList({Products , isAdmin , id}) {
 
   return (
     <div className={styles.GameList}>
-      { Products != undefined && Products.map((item, index) => {
+      { ( Products!= null && Products.length != 0 ) ? Products.map((item, index) => {
         return (
           <div className={styles.item} key={index}>
             <LittleCart
@@ -32,8 +32,9 @@ export default function GameList({Products , isAdmin , id}) {
             />
           </div>
         );
-      })
+      }) : !isAdmin && <div className={styles.txt}>محصولی برای مشاهده نیست</div>
     }
+    
       {isAdmin && (
         <div className={styles.item}>
           <div className={styles.AddCard} onClick={openPopup}>

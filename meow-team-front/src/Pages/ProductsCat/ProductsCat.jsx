@@ -121,6 +121,7 @@ export default function ProductsCat(){
                     <div className={styles.upcatleftt13}>هشدار هنگام خرید</div>
                     </div>
                     <div className={styles.upcatleftt14}></div>
+                    
                     </div>
                 </div>
                 <div className={styles.upcatright}>

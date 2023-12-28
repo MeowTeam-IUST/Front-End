@@ -10,7 +10,7 @@ export default function State1({ changeState, Cart, TotalPrice }) {
           <div className={styles.main}>
             <div className={styles.items}>
               {Cart.map((item, index) => (
-                <CartItem key={index}  title={item.productTitle} price={item.productPrice} img={item.imageUrl} quantity={item.amount} describthion={""} />
+                <CartItem key={index}  title={item.productTitle} price={item.productPrice} img={item.imageUrl} quantity={item.amount} describthion={""} id={item.productId} />
               ))}
             </div>
             <div className={styles.summary}>
