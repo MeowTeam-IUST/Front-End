@@ -26,20 +26,20 @@ export default function Dashboard() {
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
-      setShouldRenderChildren(screenWidth >= 480);
-      setIsScreenLarge(screenWidth >= 480);
-      if (screenWidth > 480 && choosenItem == -1) {
+      setShouldRenderChildren(screenWidth >= 720);
+      setIsScreenLarge(screenWidth >= 720);
+      if (screenWidth > 720 && choosenItem == -1) {
         setChoosenItem(0);
         dispatch(SetDashboard({sidebar: true , main: false}))
       }
-      if (screenWidth < 480 && choosenItem == -1) {
+      if (screenWidth < 720 && choosenItem == -1) {
         setChoosenItem(-1);
         dispatch(SetDashboard({sidebar: true , main: false}))
       }
-      if (screenWidth < 480 && choosenItem != -1) {
+      if (screenWidth < 720 && choosenItem != -1) {
         dispatch(SetDashboard({sidebar: false , main: true}))
       }
-      if (screenWidth > 480 && choosenItem != -1)
+      if (screenWidth > 720 && choosenItem != -1)
       {
         dispatch(SetDashboard({sidebar: true , main: true}))
       }

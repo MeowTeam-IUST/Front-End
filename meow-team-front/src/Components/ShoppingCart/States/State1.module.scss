@@ -15,9 +15,10 @@
     align-self: stretch;
     .items{
         display: flex;
-        width: 514px;
+        width: 100%;
         flex-direction: column;
         align-items: flex-start;
+        justify-content: space-between;
         gap: 20px;
     }
     .summary{
@@ -27,7 +28,10 @@
         flex-direction: column;
         align-items: flex-end;
         gap: 20px;
-        flex: 1 0 0;
+        // flex: 1 0 0;
+        width: 100%;
+        max-width: 260px;
+        min-width: 180px;
         border-radius: 25px;
         background: #FFF;
 
@@ -48,7 +52,7 @@
             line-height: normal;
         }
         .button{
-            border-radius: 10px;
+            border-radius: 12px;
             background: var(--Opex---red, #E52A49);
             display: flex;
             // width: 100%;
@@ -112,6 +116,18 @@
         line-height: normal;
     }
 }
+
+@media (min-width : 481px) and (max-width : 1024px) {
+    .main {
+        flex-direction: column;
+        width: 100%;
+        .summary {
+            
+            max-width: 90%;
+        }
+    }
+}
+
 @media (max-width: 480px) { 
     .main{
         flex-direction: column;
@@ -119,8 +135,8 @@
             width: 100%;
         }
         .summary{
-            width: 90%;
-            padding: 5%;
+            max-width: 90%;
+            
         }
     }
     .down{
