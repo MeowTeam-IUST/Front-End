@@ -81,16 +81,16 @@
       }
     .buttons{
         display: flex;
-        width: 94%;
-        height: 127px;
+        width: 100%;
         align-items: center;
-        margin: 25px 32px;
+        // margin: 25px 32px;
         border-radius: 36px;
         gap: 32px;
         align-self: stretch;
-        background: transparent;
+        align-items: center;
+        
         /* User Shadow */
-        box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.15);
+        
         .button1{
             border-radius: 30px;
             background: #0065AE;
@@ -112,6 +112,9 @@
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+            box-shadow: $header_shadow;
+            min-height: 100px;
+            
             .header{
                 color: #FFF;
                 text-align: right;
@@ -124,24 +127,44 @@
         }
         .button2{
             background: var(--Opex---red, #E52A49); 
+            box-shadow: $header_shadow;
         }
     }
 }
+
+@media (max-width : 1100px) {
+    .buttons {
+        gap: 20px !important;
+
+        .button1 {
+            min-width: 150px !important;
+        }
+        
+        .header{
+                
+                font-size: 20px !important;
+               
+            }
+    }
+}
+
+@media (max-width : 540px) {
+    .item {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .buttons {
+        
+        flex-direction: column;
+        
+    }
+}
+
 @media (max-width: 480px) { 
     .main{
         padding: 0;
-        .buttons{
-            margin: 0;
-            width: 100%;
-            .button1{
-                text-align: center;
-                .header{
-                    font-size: 15px;
-                    font-weight: 800;
-                    text-align: center;
-                }
-            }
-        }
+        
     }
     
     
