@@ -2,7 +2,7 @@ import React, { useState , useEffect } from "react";
 import axios from "axios";
 import styles from "./AddSectionPopUp.module.scss";
 import Draggable from "react-draggable";
-import { FileDrop } from "../filedrop";
+
 import Requests from "../../API/Requests";
 import trash from '../../assets/trash.svg'
 

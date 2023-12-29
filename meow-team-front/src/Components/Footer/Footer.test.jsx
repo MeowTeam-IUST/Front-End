@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Footer from "./Footer";
 
 describe("Footer", () => {
@@ -26,4 +26,15 @@ describe("Footer", () => {
     expect(footerImage1).toBeInTheDocument();
     expect(footerImage2).toBeInTheDocument();
   });
+});
+
+
+
+
+test("renders correct text", () => {
+  render(<Footer />);
+  const textElement = screen.getByText(
+    /هفت روز هفته 24 ساعت شبانه روز آماده پاسخگویی/i
+  );
+  expect(textElement).toBeInTheDocument();
 });

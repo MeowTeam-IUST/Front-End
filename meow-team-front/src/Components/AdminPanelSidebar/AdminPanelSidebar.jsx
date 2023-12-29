@@ -12,7 +12,7 @@ const handleItemClick = (itemIndex) => {
         <div className={Styles.Items}>
         <div className={Styles.Item} onClick={() => window.location.href = "/"}>
             <div className={Styles.inner}>
-                <img src={eye} alt="" className={Styles.icon} />
+                <img src={eye} alt="eyeIcon" className={Styles.icon} />
                 <div className={Styles.Text}>
                 مشاهده سایت
                 </div>
@@ -25,7 +25,7 @@ const handleItemClick = (itemIndex) => {
                     <div key={index} className={Styles.Item} onClick={() => handleItemClick(index)}
                     >
                         <div className={Styles.inner}>
-                            <img src={item.icon} alt="" className={Styles.icon} />
+                            <img src={item.icon} alt="Icon" className={Styles.icon} />
                             <div className={Styles.Text}>
                             {item.name}
                             </div>

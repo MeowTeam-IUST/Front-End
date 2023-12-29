@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./AddCategoryPopUp.module.scss";
 import Draggable from "react-draggable";
-import { FileDrop } from "../filedrop";
 import Requests from "../../API/Requests";
 
 export const AddCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, refresh  }) => {
@@ -76,12 +75,26 @@ export const AddCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, refr
               <div className={styles.popUp_Title}>اطلاعات کارت</div>
               <div className={styles.popUp_top_form}>
                 <div className={styles.titleSection}>
-                  <p className={styles.title}>نام کارت</p>
-                  <input type="text" className={styles.TitleInput} value={TitleValue} onChange={handleTitleChange} />
+                  <p label={"نام کارت"} className={styles.title}>
+                    نام کارت
+                  </p>
+                  <input
+                    type="text"
+                    aria-label="نام کارت"
+                    className={styles.TitleInput}
+                    value={TitleValue}
+                    onChange={handleTitleChange}
+                  />
                 </div>
                 <div className={styles.subTitleSection}>
                   <p className={styles.subTitle}>زیرنویس کارت</p>
-                  <input type="text" className={styles.SubtitleInput} value={SubTitleValue} onChange={handleSubTitleChange}/>
+                  <input
+                    type="text"
+                    aria-label="زیرنویس کارت"
+                    className={styles.SubtitleInput}
+                    value={SubTitleValue}
+                    onChange={handleSubTitleChange}
+                  />
                 </div>
               </div>
             </div>

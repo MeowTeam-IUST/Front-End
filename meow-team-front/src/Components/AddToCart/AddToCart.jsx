@@ -48,9 +48,9 @@ export default function AddToCart({id , CardDescription}) {
           <div className={styles.down}>
               <div className={styles.button} onClick={()=>AddToCartReq()}>اضافه به سبد خرید</div>
               <div className={styles.count}>
-                <img src={plus} alt="" className={styles.icon} onClick={() => HandleChange(1)} />
+                <img src={plus} alt="plus" className={styles.icon} onClick={() => HandleChange(1)} />
                 <div>{quantity}</div>
-                <img src={negetive} alt="" className={styles.icon} onClick={() => HandleChange(-1)} />
+                <img src={negetive} alt="negetive" className={styles.icon} onClick={() => HandleChange(-1)} />
               </div>
           </div>
         }
