@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     },
 });
 
-function AdminOrderDetails(props) {    
+export function AdminOrderDetails(props) {    
     const classes = useStyles();
     console.log(props)
     const totaldate = props.data.date;
@@ -386,8 +386,6 @@ function AdminOrderDetails(props) {
     </div>
   );
 }
-
-export default AdminOrderDetails;
 const parti = [
     { label: 'پرداخت شده'},
     { label: 'در حال انجام'},

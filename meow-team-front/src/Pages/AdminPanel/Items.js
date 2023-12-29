@@ -8,9 +8,8 @@ import history from '../../assets/history.svg'
 import heart from '../../assets/heart.svg'
 import Dashboard from '../../assets/Dashboard.svg'
 import AdminProduct from '../AdminProduct/AdminProduct'
-import Orders from '../AdminOrder/Orders'
 import ProductsCat from '../ProductsCat/ProductsCat'
-import OrderApp from '../AdminOrder/app'
+import {OrderApp} from '../AdminOrder/app'
 export const items = [
     {
         name: 'داشبورد',

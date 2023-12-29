@@ -7,9 +7,9 @@ import axios from 'axios';
 export function MyOrders(props) {
     const [booleanArray, setBooleanArray] = useState([false, true, true, true]);
     const [state, SetState] = useState(1);
-    const HandelCheckClick = (index) => {
-        SetState(index+1);
-        if (index === 0) {
+    const HandelCheckClick = (localstateindex) => {
+        SetState(localstateindex+1);
+        if (localstateindex === 0) {
             setBooleanArray([
                 booleanArray[0]=false,
                 booleanArray[1]=true,
@@ -17,7 +17,7 @@ export function MyOrders(props) {
                 booleanArray[3]=true,
             ]);
         }
-        else if (index === 1) {
+        else if (localstateindex === 1) {
             setBooleanArray([
                 booleanArray[0]=true,
                 booleanArray[1]=false,
@@ -25,7 +25,7 @@ export function MyOrders(props) {
                 booleanArray[3]=true,
             ]);
         }
-        else if (index === 2) {
+        else if (localstateindex === 2) {
             setBooleanArray([
                 booleanArray[0]=true,
                 booleanArray[1]=true,
@@ -41,6 +41,37 @@ export function MyOrders(props) {
                 booleanArray[3]=false,
             ]);
         }
+        setdatastate(data ? (data.map((item, index) => ( 
+            item.state == localstateindex+1 ?(
+            <div className={styles.order} key={index} >
+                {item.invoiceItems ? (item.invoiceItems.map((initem, inindex) => (
+                <div className={styles.orderdetail} key={inindex}>
+                    <div className={styles.orderdetailtitle}>{initem.product.title}</div>
+                    <div className={styles.orderdetailvalue}>{initem.product.price} تومان</div>
+                </div>
+                ))) : (console.log("loading"))}
+                <div className={styles.orderseparator}></div>
+                <div className={styles.orderdetail}>
+                    <div className={styles.orderdetailtitle}>قیمت نهایی :</div>
+                    <div className={styles.orderdetailvalue}>{item.totalPeice} تومان</div>
+                </div>
+                <div className={styles.orderseparator}></div>
+                <div className={styles.orderdetail}>
+                    <div className={styles.orderdetailtitle}>تاریخ تحویل :</div>
+                    <div className={styles.orderdetailvalue}>{item.date.split("T")[0].replace(/-/g, "/")}</div>
+                </div>
+                <div className={styles.buttonbox}>
+                    <div className={styles.buttonright} onClick={() => props.onFormSwitch("MyOrdersDetails", data[index])}>
+                        <div className={styles.buttonrighttext}>جزئیات سفارش</div>
+                        <img className={styles.buttonrighticon} src={info} alt="" />
+                    </div>
+                    <div className={styles.buttonleft}>
+                        <div className={styles.buttonlefttext}>تکرار سفارش</div>
+                        <img className={styles.buttonlefticon} src={repeat} alt="" />
+                    </div>
+                </div>
+            </div>):(<></>)
+        ))) : (console.log("loading")))
     }
 
     const [data, setData] = useState([]);
@@ -48,21 +79,23 @@ export function MyOrders(props) {
         fetchData().then((responsedata) => {
             setData(responsedata);
         })
-    }, [state]);
+    },[]);
     useEffect(() => {
         console.log(data)
+        HandelCheckClick(0)
     }, [data]);
     const fetchData = async () => {
         try {
-            const response = await axios.get(`http://45.147.99.177:9000/api/Acount/get_all_user_invoice/${state}/${0}`, {
+            const response = await axios.get(`http://45.147.99.177:9000/api/Account/get_all_user_invoice/${1}`, {
                 headers: {
                     'accept': 'text/plain' ,
                     'Content-Type': 'application/json' ,
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
                 }
             });
             console.log(response)
             const jsonData = response.data.data;
-            const responsedata = jsonData.map(item => item);
+            const responsedata = jsonData.invoices.map(item => item);
             return responsedata;
         } catch (error) {
           console.error(error);
@@ -70,6 +103,7 @@ export function MyOrders(props) {
         finally{
         }
     };
+    const [datastate, setdatastate] = useState(<div></div>); 
     return(
         <div className={styles.main}>
             <div className={styles.content}>
@@ -83,36 +117,7 @@ export function MyOrders(props) {
                     <div className={styles.separator}></div>
                 </div>
                 <div className={styles.orders}>
-                    <div className={styles.order}>
-                        <div className={styles.orderdetail}>
-                            <div className={styles.orderdetailtitle}>۸۰ کریستال گنشین ایمپکت</div>
-                            <div className={styles.orderdetailvalue}>۴۸۰۰۰ تومان</div>
-                        </div>
-                        <div className={styles.orderdetail}>
-                            <div className={styles.orderdetailtitle}>۸۰ سی پی کالاف دیوتی موبایل</div>
-                            <div className={styles.orderdetailvalue}>۱۲۰۰۰۰ تومان</div>
-                        </div>
-                        <div className={styles.orderseparator}></div>
-                        <div className={styles.orderdetail}>
-                            <div className={styles.orderdetailtitle}>قیمت نهایی :</div>
-                            <div className={styles.orderdetailvalue}>۱۶۸۰۰۰ تومان</div>
-                        </div>
-                        <div className={styles.orderseparator}></div>
-                        <div className={styles.orderdetail}>
-                            <div className={styles.orderdetailtitle}>تاریخ تحویل :</div>
-                            <div className={styles.orderdetailvalue}>۱۴۰۲/۶/۲۵</div>
-                        </div>
-                        <div className={styles.buttonbox}>
-                            <div className={styles.buttonright} onClick={() => props.onFormSwitch("MyOrdersDetails", 'null')}>
-                                <div className={styles.buttonrighttext}>جزئیات سفارش</div>
-                                <img className={styles.buttonrighticon} src={info} alt="" />
-                            </div>
-                            <div className={styles.buttonleft}>
-                                <div className={styles.buttonlefttext}>تکرار سفارش</div>
-                                <img className={styles.buttonlefticon} src={repeat} alt="" />
-                            </div>
-                        </div>
-                    </div>
+                    {datastate}
                 </div>
             </div>
         </div>

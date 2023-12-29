@@ -5,10 +5,8 @@ import Dashboard from '../Pages/Dashboard/Dashboard';
 import AdminProduct from '../Pages/AdminProduct/AdminProduct';
 import PaymentPage from '../Pages/PaymentPage/PaymentPage';
 import ProductsCat from '../Pages/ProductsCat/ProductsCat';
-import AdminOrder from '../Pages/AdminOrder/Orders';
-import OrderApp from '../Pages/AdminOrder/app';
+import {OrderApp} from '../Pages/AdminOrder/app';
 import AdminPanel from '../Pages/AdminPanel/AdminPanel';
-import AdminOrderDetails from '../Pages/AdminOrder/AdminOrderDetails'
 const routes = [
   {
     path: "/",
