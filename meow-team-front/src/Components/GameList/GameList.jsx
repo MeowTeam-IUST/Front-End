@@ -7,7 +7,7 @@ import { AddCategoryPopUp } from '../AddCategoryPopUp/AddCategoryPopUp';
 import { BASE_URL } from '../../API/consts';
 // import { ScrollMenu } from "react-horizontal-scrolling-menu";
 
-export default function GameList({Products , isAdmin , id}) {
+export default function GameList({Products , id }) {
   const [showPopup, setShowPopup] = useState(false);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const openPopup = () => {
@@ -32,19 +32,8 @@ export default function GameList({Products , isAdmin , id}) {
             />
           </div>
         );
-      }) : !isAdmin && <div className={styles.txt}>محصولی برای مشاهده نیست</div>
+      }) : <div className={styles.txt}>محصولی برای مشاهده نیست</div>
     }
-    
-      {isAdmin && (
-        <div className={styles.item}>
-          <div className={styles.AddCard} onClick={openPopup}>
-            <div className={styles.Plus}>+</div>
-            <div className={styles.Plus1}>اضافه کردن دسته</div>
-          </div>
-          {/* <Add showPopup={showPopup} setShowPopup={setShowPopup} /> */}
-          <AddCategoryPopUp isOpen={isPopupOpen} onClose={closePopup} id={id} />
-        </div>
-      )}
     </div>
   );
 }

@@ -9,7 +9,7 @@ export default function State1({ changeState, Cart, TotalPrice }) {
     <React.Fragment>
           <div className={styles.main}>
             <div className={styles.items}>
-              {Cart.map((item, index) => (
+              {Cart?.map((item, index) => (
                 <CartItem key={index}  title={item.productTitle} price={item.productPrice} img={item.imageUrl} quantity={item.amount} describthion={""} id={item.productId} />
               ))}
             </div>

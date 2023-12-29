@@ -4,21 +4,60 @@ import styles from "./AddCategoryPopUp.module.scss";
 import Draggable from "react-draggable";
 import { FileDrop } from "../filedrop";
 import Requests from "../../API/Requests";
-
-export const AddCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, refresh  }) => {
+import { useDispatch,useSelector } from 'react-redux';
+import { setEditPopUp } from '../../Slices/StateSlice';
+import { BASE_URL } from "../../API/consts";
+import trash from '../../assets/trash.svg'
+export const EditCategoryPopUp = ({ isOpen, onClose , id , setRefresh, refresh  }) => {
   const fileInputRef = React.createRef();
   const [TitleValue, setTitleValue] = useState("");
   const [SubTitleValue, setSubTitleValue] = useState("");
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [selectedImage, setSelectedImage] = useState(null);
-  console.log("object")
-
-
-
+  const [parentId, setParentId] = useState();
   const handleDrag = (e, ui) => {
     const { x, y } = ui;
     setPosition({ x, y });
   };
+  const closee = () =>  {
+    // dispatch(setEditPopUp({editPopUp: false}));
+    onClose()
+  };
+  const DEL = async () =>  {
+      // Add your submit logic here
+      console.log(TitleValue,selectedImage,SubTitleValue)
+      formData.append('Title', TitleValue);
+      formData.append('Picture', image);
+      formData.append('Banner', image);
+      formData.append('Description', SubTitleValue);
+      formData.append('IsActive', false);
+      formData.append('ParentID', parentId);
+      formData.append('ID', id);
+      try {
+        const res = await Requests().EditCategory(formData);
+        console.log(res.data);
+      } catch (error) {
+        console.error("Error submitting category:", error);
+      }
+  
+      console.log("Submitted value:", TitleValue);
+      setRefresh(!refresh)
+      onClose();
+  }
+  const fetchProducts = async () => {
+    const productsData = await Requests().getCategoryDetails(id);
+    console.log(productsData);
+    setSelectedImage(BASE_URL+"/"+productsData.imageURL)
+    setImage(BASE_URL+"/"+productsData.imageURL)
+
+    setTitleValue(productsData.title)
+    setSubTitleValue(productsData.description)
+    setParentId(productsData.parentID)
+  };
+  useEffect(() => {
+  
+    fetchProducts();
+  }, []);
   const [image, setImage] = useState(null);
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -53,8 +92,9 @@ export const AddCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, refr
     formData.append('Description', SubTitleValue);
     formData.append('IsActive', true);
     formData.append('ParentID', parentId);
+    formData.append('ID', id);
     try {
-      const res = await Requests().addCategory(formData);
+      const res = await Requests().EditCategory(formData);
       console.log(res.data);
     } catch (error) {
       console.error("Error submitting category:", error);
@@ -65,15 +105,15 @@ export const AddCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, refr
     onClose();
   };
 
-  
 
   return (
     <div>
-      {isOpen && (
         <div className={styles.overlay}>
           <div className={styles.popup}>
             <div className={styles.popUp_top}>
-              <div className={styles.popUp_Title}>اطلاعات کارت</div>
+              <div className={styles.popUp_Title}>اطلاعات کارت
+              <img src={trash} width={40} alt="" onClick={()=> DEL()} />
+              </div>
               <div className={styles.popUp_top_form}>
                 <div className={styles.titleSection}>
                   <p className={styles.title}>نام کارت</p>
@@ -129,13 +169,13 @@ export const AddCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, refr
               <button onClick={handleSubmit} className={styles.SubmitButton}>
                 ذخیره
               </button>
-              <button onClick={onClose} className={styles.CancelButton}>
+              <button onClick={()=> closee()} className={styles.CancelButton}>
                 انصراف
               </button>
             </div>
           </div>
         </div>
-      )}
+      
     </div>
   );
 };

@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import axios from "axios";
 import styles from "./AddSectionPopUp.module.scss";
 import Draggable from "react-draggable";
 import { FileDrop } from "../filedrop";
 import Requests from "../../API/Requests";
-export const AddSectionPopUp = ({ isOpen, onClose, refresh , setRefresh }) => {
+import trash from '../../assets/trash.svg'
+
+export const EditSectionPopUp = ({ isOpen, onClose, refresh , setRefresh , id }) => {
   const fileInputRef = React.createRef();
   const [inputValue, setInputValue] = useState("");
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [selectedImage, setSelectedImage] = useState(null);
   const [TitleValue, setTitleValue] = useState("");
+  const fetchProducts = async () => {
+    const productsData = await Requests().getCategoryDetails(id);
+    console.log(productsData);
 
+    setTitleValue(productsData.title)
+  };
+  useEffect(() => {
+  
+    fetchProducts();
+  }, []);
   const handleDrag = (e, ui) => {
     const { x, y } = ui;
     setPosition({ x, y });
@@ -35,17 +46,36 @@ export const AddSectionPopUp = ({ isOpen, onClose, refresh , setRefresh }) => {
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
+
   const formData = new FormData()
+  const DEL = async () =>  {
+    // Add your submit logic here
+    formData.append('Title', TitleValue);
+    formData.append('IsActive', false);
+    formData.append('ID', id);
+    try {
+      const res = await Requests().EditCategory(formData);
+      console.log(res.data);
+    } catch (error) {
+      console.error("Error submitting category:", error);
+    }
+
+    console.log("Submitted value:", TitleValue);
+    setRefresh(!refresh)
+    onClose();
+}
   const handleSubmit = async () => {
     // Add your submit logic here
     console.log("Submitted value:", TitleValue);
     formData.append('Title', TitleValue);
     formData.append('IsActive', true);
+    formData.append('ID', id);
+
 
 
     // onSubmit(inputValue);
     try {
-      const res = await Requests().addCategory(formData);
+      const res = await Requests().EditCategory(formData);
       console.log(res.data);
     } catch (error) {
       console.error("Error submitting category:", error);
@@ -60,11 +90,13 @@ export const AddSectionPopUp = ({ isOpen, onClose, refresh , setRefresh }) => {
         <div className={styles.overlay}>
           <div className={styles.popup}>
             <div className={styles.popUp_top}>
-              <div className={styles.popUp_Title}>اطلاعات دسته</div>
+              <div className={styles.popUp_Title}>اطلاعات دسته
+              <img src={trash} width={40} alt="" onClick={()=> DEL()} />
+              </div>
               <div className={styles.popUp_top_form}>
                 <div className={styles.titleSection}>
                   <p className={styles.title}>نام دسته</p>
-                  <input type="text" className={styles.TitleInput} onChange={handleTitleChange} />
+                  <input type="text" className={styles.TitleInput} value={TitleValue} onChange={handleTitleChange} />
                 </div>
                 
               </div>
