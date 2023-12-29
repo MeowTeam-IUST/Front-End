@@ -196,13 +196,18 @@ export default function Requests() {
   // ---------------------------------------------------------------//
 
   // post comment
-  const postComment = async (body) => {
+  const postComment = async (comment) => {
     try {
-      const res = await API().POST(`'api/comment/add'`, body, AutorizeHeader);
-      console.error(res);
-      return res;
+      const response = await API().POST(
+        `api/Comment/add`,
+        comment,
+        AutorizeHeader // This is your authorization header
+      );
+      console.log('you did it');
+      return response.data;
+     
     } catch (err) {
-      console.log(err);
+      console.error("Error posting comment:", err);
     }
   };
 

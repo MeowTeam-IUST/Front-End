@@ -39,13 +39,14 @@ export function UserBox({userlogo, usertext, onCommentSubmit}) {
     const [text, setText] = useState('');
 
     const [rating, setRating] = useState(0);
+    const id = 1;
 
     const handleRating = (rate) => {
         setRating(rate);
     };
 
     const handleSubmit = () => {
-        onCommentSubmit(text, rating);
+        onCommentSubmit(text, rating, id);
         setText('');
         setRating(0);
     };
@@ -80,13 +81,23 @@ export function UserBox({userlogo, usertext, onCommentSubmit}) {
     );
 }
 
+
 export function CommentsSection({comments: initialComments, userbox}) {
     const [comments, setComments] = useState(initialComments);
 
-    const handleCommentSubmit = (text) => {
-        // Add the new comment to the beginning of the comments array
-        Requests().postComment()
-        setComments([{text, name: 'User', date: 'Just now'}, ...comments]);
+    const handleCommentSubmit = (text, rating) => {
+      const comment = {
+        id: 1, // You'll need to replace this with the actual ID
+        userID: null, // And this with the actual user ID
+        userName: null, // And this with the actual user name
+        categoryID: 5, // And this with the actual category ID
+        description: 'text'
+      };
+      console.log('ch',comment.userID)
+    
+      Requests().postComment(comment);
+      setComments([{text, name: 'User', date: 'Just now', rating}, ...comments]);
+    
     };
 
     return (
