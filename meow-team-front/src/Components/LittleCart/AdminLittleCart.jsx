@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './LittleCart.module.scss'
 import SmallBuyButton from '../SmallBuyButton/SmallBuyButton';
+import { useDispatch,useSelector } from 'react-redux';
+import { setEditPopUp } from '../../Slices/StateSlice';
 import { useState , useEffect } from 'react';
 import {
   BrowserRouter,
@@ -17,6 +19,8 @@ import { BASE_URL } from '../../API/consts';
 
 
 export default function AdminLittleCart({id , name, image, showPopup , description ,  open, setItemToEdit, itemToEdit}) {
+  const layout = useSelector((state) => state.State); // Access the "User" slice of the state
+  const dispatch = useDispatch();
   // console.log(image)
   const navigate = useNavigate();
   const HandleClick = () => {
@@ -28,15 +32,17 @@ export default function AdminLittleCart({id , name, image, showPopup , descripti
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => {
     setIsPopupOpen(true);
+    // console.log("hi")
+    // dispatch(setEditPopUp({editPopUp: true}))
   };
   const closePopup = () => {
-    console.log("hi");
+    // console.log("hi");
     setIsPopupOpen(false);
+    // dispatch(setEditPopUp({editPopUp: false}))
+
   };
 
-  useEffect(() => {
-    console.log(isPopupOpen);
-  }, [isPopupOpen]);
+
   
 
   return (
@@ -44,13 +50,13 @@ export default function AdminLittleCart({id , name, image, showPopup , descripti
       className={styles.LittleCart}
       style={{ backgroundImage: `url(${BASE_URL + "/" + image})` }}
       // onClick={() => navigate("/product?id=" + id)}
-      onClick={() => openPopup()}
+      // onClick={() => openPopup()}
     >
       <div className={showPopup ? styles.GameTitlePopupOpen : styles.GameTitle}>
         <div className={styles.GameTitleText}>{name}</div>
         <div className={styles.under}>
           <div className={styles.underText}>{description}</div>
-          <SmallBuyButton admin={true} />
+          <SmallBuyButton admin={true} open={openPopup} />
         </div>
       </div>
 

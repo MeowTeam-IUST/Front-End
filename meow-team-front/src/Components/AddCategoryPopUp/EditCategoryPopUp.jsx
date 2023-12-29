@@ -4,7 +4,8 @@ import styles from "./AddCategoryPopUp.module.scss";
 import Draggable from "react-draggable";
 import { FileDrop } from "../filedrop";
 import Requests from "../../API/Requests";
-
+import { useDispatch,useSelector } from 'react-redux';
+import { setEditPopUp } from '../../Slices/StateSlice';
 export const EditCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, refresh  }) => {
   const fileInputRef = React.createRef();
   const [TitleValue, setTitleValue] = useState("");
@@ -12,13 +13,18 @@ export const EditCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, ref
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [selectedImage, setSelectedImage] = useState(null);
   console.log("object")
-
+  const layout = useSelector((state) => state.State); // Access the "User" slice of the state
+  const dispatch = useDispatch();
 
 
   const handleDrag = (e, ui) => {
     const { x, y } = ui;
     setPosition({ x, y });
   };
+  const closee = () =>  {
+    // dispatch(setEditPopUp({editPopUp: false}));
+    onClose()
+  }
   const [image, setImage] = useState(null);
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -127,7 +133,7 @@ export const EditCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, ref
               <button onClick={handleSubmit} className={styles.SubmitButton}>
                 ذخیره
               </button>
-              <button onClick={onClose} className={styles.CancelButton}>
+              <button onClick={()=> closee()} className={styles.CancelButton}>
                 انصراف
               </button>
             </div>
