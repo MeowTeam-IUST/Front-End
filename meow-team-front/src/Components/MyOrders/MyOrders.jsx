@@ -109,10 +109,10 @@ export function MyOrders(props) {
             <div className={styles.content}>
                 <div className={styles.header}>
                     <div className={styles.selectitem}>
-                        <div className={booleanArray[0] ? styles.headerselecttext : styles.headerselected} onClick={() => HandelCheckClick(0)}>جاری</div>
-                        <div className={booleanArray[1] ? styles.headerselecttext : styles.headerselected} onClick={() => HandelCheckClick(1)}>انجام شده</div>
-                        <div className={booleanArray[2] ? styles.headerselecttext : styles.headerselected} onClick={() => HandelCheckClick(2)}>مرجوع شده</div>
-                        <div className={booleanArray[3] ? styles.headerselecttext : styles.headerselected} onClick={() => HandelCheckClick(3)}>لغو شده</div>
+                        <div className={booleanArray[0] ? styles.headerselecttext : styles.headerselected} onClick={() => HandelCheckClick(0)}>پرداخت شده</div>
+                        <div className={booleanArray[1] ? styles.headerselecttext : styles.headerselected} onClick={() => HandelCheckClick(1)}>در حال انجام</div>
+                        <div className={booleanArray[2] ? styles.headerselecttext : styles.headerselected} onClick={() => HandelCheckClick(2)}>انجام شده</div>
+                        {/* <div className={booleanArray[3] ? styles.headerselecttext : styles.headerselected} onClick={() => HandelCheckClick(3)}>لغو شده</div> */}
                     </div>
                     <div className={styles.separator}></div>
                 </div>
