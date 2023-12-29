@@ -154,6 +154,7 @@ export default function ProductPage(){
                   // Add more initial comments here
                 ]}
                 userbox={{ usertext: "افزودن نظر" }}
+                id={id}
               />
             </div>
           </div>

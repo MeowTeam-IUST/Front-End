@@ -210,6 +210,23 @@ export default function Requests() {
       console.error("Error posting comment:", err);
     }
   };
+  // getComments
+// getComments
+// getComments
+const getComments = async (categoryId) => {
+  try {
+    const response = await API().GET(
+      `api/Comment/get_all/${categoryId}`, // Use categoryId in your API endpoint
+      {}, // Replace this with any necessary parameters
+      AutorizeHeader // This is your authorization header
+    );
+    console.log("All comments : ",response);
+    return response.data.data || []; // Return an empty array if data is undefined
+  } catch (err) {
+    console.error("Error fetching comments:", err);
+    return []; // Return an empty array in case of an error
+  }
+};
 
   // getCategories
   const getAllCategories = async () => {
@@ -319,6 +336,7 @@ export default function Requests() {
     getProducts,
     addCategory,
     postComment,
+    getComments,
     addInvoiceItem,
     deleteInvoiceItem,
     getInvoice,
