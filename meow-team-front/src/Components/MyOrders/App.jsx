@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { MyOrders } from "./MyOrders";
 import { MyOrdersdetails } from "./MyOrdersDetails";
 
-function MyOrderApp() {
+export function MyOrderApp() {
     const [propvalues, setPropValues] = useState({
         item: null,
         currentForm: "MyOrders",
@@ -22,5 +22,3 @@ function MyOrderApp() {
     </div>
     );
 }
-
-export default MyOrderApp;

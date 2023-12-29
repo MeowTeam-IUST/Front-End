@@ -13,7 +13,7 @@ import ShoppingCart from '../../Components/ShoppingCart/ShoppingCart'
 import { Wallet } from "../Wallet/Wallet"
 import { MyOrders } from '../../Components/MyOrders/MyOrders'
 // import { MyOrders } from '../../Components/MyOrders/MyOrders'
-import MyOrderApp from '../../Components/MyOrders/App'
+import {MyOrderApp} from '../../Components/MyOrders/App'
 export const items = [
     {
         name: 'داشبورد',

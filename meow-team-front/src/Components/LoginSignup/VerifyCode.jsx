@@ -95,10 +95,14 @@ function ConfirmCode(props) {
         window.location = '/';
     };
 
+    const changestate = () => {
+      props.onFormSwitch("Login", null)
+    }
+
     return (
-      <div className={Styles.index}>
-        <div className={Styles.authformcontainer} id="myForm">
-          <CloseIcon
+      <>
+        <>
+          {/* <CloseIcon
             sx={{
               display: "inline-block",
               cursor: "pointer",
@@ -106,8 +110,8 @@ function ConfirmCode(props) {
               marginLeft: "0.8rem",
             }}
             onClick={closeForm}
-          />
-          <p className={Styles.textstyle}>ورود/ثبت نام</p>
+          /> */}
+          {/* <p className={Styles.textstyle}>ورود/ثبت نام</p> */}
           <form className={Styles.loginform} onSubmit={handleSubmit(onLogin)}>
             <div className={Styles.line}>
               <hr />
@@ -177,6 +181,7 @@ function ConfirmCode(props) {
               </LoadingButton>
               <LoadingButton
                 disabled={load.is_loading}
+                onClick={() => changestate()}
                 sx={{
                   fontFamily: "Shabnam",
                   width: "10rem",
@@ -193,8 +198,8 @@ function ConfirmCode(props) {
             </div>
           </form>
           <ToastContainer />
-        </div>
-      </div>
+        </>
+      </>
     );
 }
 
