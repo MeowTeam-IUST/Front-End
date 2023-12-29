@@ -4,7 +4,7 @@ import styles from "./AddSectionPopUp.module.scss";
 import Draggable from "react-draggable";
 import { FileDrop } from "../filedrop";
 import Requests from "../../API/Requests";
-export const AddSectionPopUp = ({ isOpen, onClose }) => {
+export const AddSectionPopUp = ({ isOpen, onClose, refresh , setRefresh }) => {
   const fileInputRef = React.createRef();
   const [inputValue, setInputValue] = useState("");
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -50,6 +50,7 @@ export const AddSectionPopUp = ({ isOpen, onClose }) => {
     } catch (error) {
       console.error("Error submitting category:", error);
     }
+    setRefresh(!refresh)
     onClose();
   };
 

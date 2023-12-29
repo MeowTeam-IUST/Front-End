@@ -2,7 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import styles from './AdminProduct.module.scss'
 import CategoryHeader from '../../Components/CategoryHeader/CategoryHeader'
-import GameList from '../../Components/GameList/GameList'
+import AdminGameList from '../../Components/GameList/AdminGameList'
 import gameControlle from '../../assets/game-controlle.svg'
 import image1 from '../../assets/1.png'
 import Requests from '../../API/Requests';
@@ -12,6 +12,7 @@ export default function AdminProduct(){
     const [showPopup, setShowPopup] = useState(false);
     const [allCategories, setAllCategories] = useState([])
     const [isPopupOpen, setPopupOpen] = useState(false);
+    const [refresh , setRefresh] = useState(false);
     const openPopup = () => {
       setPopupOpen(true);
     };
@@ -32,7 +33,7 @@ export default function AdminProduct(){
 
      useEffect(() => {
       fetchCategories()
-     }, []);
+     }, [refresh]);
 
     return (
       <div className={styles.whole} dir="rtl">
@@ -45,7 +46,7 @@ export default function AdminProduct(){
                   title={category.title}
                   id={category.id}
                 />
-                <GameList Products={category.categories} isAdmin={true} id={category.id} />
+                <AdminGameList Products={category.categories} isAdmin={true} id={category.id} refresh={refresh} setRefresh={setRefresh} />
               </div>
             );
           }
@@ -82,7 +83,7 @@ export default function AdminProduct(){
           </div>
         )} */}
 
-        <AddSectionPopUp isOpen={isPopupOpen} onClose={closePopup} />
+        <AddSectionPopUp isOpen={isPopupOpen} onClose={closePopup} refresh={refresh} setRefresh={setRefresh} />
       </div>
     );
 }

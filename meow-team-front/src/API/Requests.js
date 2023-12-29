@@ -247,6 +247,17 @@ export default function Requests() {
       return [];
     }
   };
+  const getProduct = async (id) => {
+    try {
+      const response = await API().GET(`api/Product/get_by_Id/${id}`, {}, AutorizeHeader);
+      const productsData = response.data.data;
+      console.log("Products:", productsData);
+      return productsData;
+    } catch (err) {
+      console.error("Error fetching products:", err);
+      return [];
+    }
+  };
   const addCategory = async (data) => {
     try {
       const response = await API().POST(
@@ -303,6 +314,7 @@ export default function Requests() {
     editProfileImage,
     chargeWallet,
     getAllCategories,
-    getFrequency
+    getFrequency,
+    getProduct
   };
 }

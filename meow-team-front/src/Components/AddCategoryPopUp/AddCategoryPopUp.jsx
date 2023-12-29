@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./AddCategoryPopUp.module.scss";
 import Draggable from "react-draggable";
 import { FileDrop } from "../filedrop";
 import Requests from "../../API/Requests";
 
-export const AddCategoryPopUp = ({ isOpen, onClose , id }) => {
+export const AddCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, refresh  }) => {
   const fileInputRef = React.createRef();
   const [TitleValue, setTitleValue] = useState("");
   const [SubTitleValue, setSubTitleValue] = useState("");
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [selectedImage, setSelectedImage] = useState(null);
+
+
+
   const handleDrag = (e, ui) => {
     const { x, y } = ui;
     setPosition({ x, y });
@@ -48,7 +51,7 @@ export const AddCategoryPopUp = ({ isOpen, onClose , id }) => {
     formData.append('Banner', image);
     formData.append('Description', SubTitleValue);
     formData.append('IsActive', true);
-    formData.append('ParentID', id);
+    formData.append('ParentID', parentId);
     try {
       const res = await Requests().addCategory(formData);
       console.log(res.data);
@@ -57,7 +60,7 @@ export const AddCategoryPopUp = ({ isOpen, onClose , id }) => {
     }
 
     console.log("Submitted value:", TitleValue);
-    
+    setRefresh(!refresh)
     onClose();
   };
 
