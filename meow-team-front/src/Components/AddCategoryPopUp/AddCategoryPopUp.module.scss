@@ -35,6 +35,8 @@
 
     .popUp_Title {
       font-weight: 900;
+      display: flex;
+      justify-content: space-between;
       font-size: 24px;
       color: $admin_title;
     }

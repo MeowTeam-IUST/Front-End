@@ -271,6 +271,19 @@ export default function Requests() {
       console.error("Error adding category:", err);
     }
   };
+  const EditCategory = async (data) => {
+    try {
+      const response = await API().POST(
+        "api/Category/edit",
+        data,
+        AutorizeHeader
+      );
+      console.log("Category added:", response);
+      return response;
+    } catch (err) {
+      console.error("Error adding category:", err);
+    }
+  };
 
   // payment
   const chargeWallet = async (body) => {
@@ -315,6 +328,7 @@ export default function Requests() {
     chargeWallet,
     getAllCategories,
     getFrequency,
-    getProduct
+    getProduct,
+    EditCategory
   };
 }

@@ -19,7 +19,7 @@ export default function AdminProduct(){
      const closePopup = () => {
        setPopupOpen(false);
      };
-
+     const [ edit, setEdit] = useState(false)
      const fetchCategories = async () => {
        try {
          const res = await Requests().getAllCategories();
@@ -34,7 +34,7 @@ export default function AdminProduct(){
      useEffect(() => {
       fetchCategories()
      }, [refresh]);
-
+     
     return (
       <div className={styles.whole} dir="rtl">
         {
@@ -45,6 +45,10 @@ export default function AdminProduct(){
                   icon={gameControlle}
                   title={category.title}
                   id={category.id}
+                  admin = {true}
+                  setEdit={setEdit}
+                  openPopup={openPopup}
+                  refresh={refresh} setRefresh={setRefresh}
                 />
                 <AdminGameList Products={category.categories} isAdmin={true} id={category.id} refresh={refresh} setRefresh={setRefresh} />
               </div>
@@ -83,7 +87,7 @@ export default function AdminProduct(){
           </div>
         )} */}
 
-        <AddSectionPopUp isOpen={isPopupOpen} onClose={closePopup} refresh={refresh} setRefresh={setRefresh} />
+        <AddSectionPopUp isOpen={isPopupOpen} onClose={closePopup} refresh={refresh} setRefresh={setRefresh} edit={edit}  />
       </div>
     );
 }

@@ -32,6 +32,7 @@ export default function AdminGameList({Products , isAdmin , id , refresh , setRe
               // open={openPopup}
               // setItemToEdit={setItemToEdit}
               // itemToEdit={itemToEdit}
+              refresh={refresh} setRefresh={setRefresh}
             />
           </div>
         );

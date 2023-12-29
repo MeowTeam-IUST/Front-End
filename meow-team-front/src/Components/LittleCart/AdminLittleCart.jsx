@@ -18,20 +18,19 @@ import { EditCategoryPopUp } from "../AddCategoryPopUp/EditCategoryPopUp";
 import { BASE_URL } from '../../API/consts';
 
 
-export default function AdminLittleCart({id , name, image, showPopup , description ,  open, setItemToEdit, itemToEdit}) {
+export default function AdminLittleCart({id , name, image, showPopup , description ,  open, setItemToEdit, itemToEdit, refresh,setRefresh }) {
   const layout = useSelector((state) => state.State); // Access the "User" slice of the state
   const dispatch = useDispatch();
   // console.log(image)
   const navigate = useNavigate();
-  const HandleClick = () => {
-    setItemToEdit(id)
-    console.log(itemToEdit)
-    open()
-  };
-
+  const [item , setItem] = useState();
+  
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => {
+    setItem(id);
+    console.log(id, item);
     setIsPopupOpen(true);
+
     // console.log("hi")
     // dispatch(setEditPopUp({editPopUp: true}))
   };
@@ -41,7 +40,6 @@ export default function AdminLittleCart({id , name, image, showPopup , descripti
     // dispatch(setEditPopUp({editPopUp: false}))
 
   };
-
 
   
 
@@ -63,10 +61,9 @@ export default function AdminLittleCart({id , name, image, showPopup , descripti
       {isPopupOpen && (<EditCategoryPopUp
         isOpen={isPopupOpen}
         onClose={closePopup}
-        
-        parentId={id}
-        // refresh={refresh}
-        // setRefresh={setRefresh}
+        id={item}
+        refresh={refresh}
+        setRefresh={setRefresh}
       />)}
     </div>
   );

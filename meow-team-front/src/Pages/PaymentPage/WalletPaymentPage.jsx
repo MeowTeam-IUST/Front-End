@@ -22,6 +22,7 @@ export default function WalletPaymentPage() {
     return(
       <>
         <p className={styles.wait}>پرداخت با موفقیت انجام شد</p>
+        <div onClick={()=> window.location.href = "/dashboard/:wallet"}>بازگشت به کیف پول من</div>
         {/* <WaveTopBottomLoading size="large" color="#E52A49" /> */}
       </>
     )
@@ -30,6 +31,7 @@ export default function WalletPaymentPage() {
     return(
       <>
         <p className={styles.wait}>پرداخت با خطا مواجه شد</p>
+        <div onClick={()=> window.location.href = "/dashboard/:wallet"}>بازگشت به کیف پول من</div>
         {/* <WaveTopBottomLoading size="large" color="#E52A49" /> */}
       </>
     )
