@@ -29,9 +29,9 @@ export default function AdminGameList({Products , isAdmin , id , refresh , setRe
               image={item.imageURL}
               showPopup={showPopup}
               description={item.description}
-              open={openPopup}
-              setItemToEdit={setItemToEdit}
-              itemToEdit={itemToEdit}
+              // open={openPopup}
+              // setItemToEdit={setItemToEdit}
+              // itemToEdit={itemToEdit}
             />
           </div>
         );

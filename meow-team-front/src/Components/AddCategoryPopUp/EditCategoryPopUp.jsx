@@ -5,7 +5,7 @@ import Draggable from "react-draggable";
 import { FileDrop } from "../filedrop";
 import Requests from "../../API/Requests";
 
-export const AddCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, refresh  }) => {
+export const EditCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, refresh  }) => {
   const fileInputRef = React.createRef();
   const [TitleValue, setTitleValue] = useState("");
   const [SubTitleValue, setSubTitleValue] = useState("");
@@ -65,11 +65,9 @@ export const AddCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, refr
     onClose();
   };
 
-  
 
   return (
     <div>
-      {isOpen && (
         <div className={styles.overlay}>
           <div className={styles.popup}>
             <div className={styles.popUp_top}>
@@ -135,7 +133,7 @@ export const AddCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, refr
             </div>
           </div>
         </div>
-      )}
+      
     </div>
   );
 };
