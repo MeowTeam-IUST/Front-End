@@ -50,7 +50,7 @@ export default function PageLayout ({ children }) {
           <div className={styles.Category}>
             <CategoryHeader icon={bars} title={"دسته‌بندی محصولات"} />
             <div className={styles.CategoryItems}>
-              {allCategories.map((item, index) => {
+              {allCategories?.map((item, index) => {
                 return <CategoryItem key={index} title={item.title} />;
               })}
             </div>
