@@ -17,7 +17,7 @@ jobs:
         run: npm cache clean --force
       - name: Setup Build (CI) env
         working-directory: ./meow-team-front
-        run: npm ci
+        run: npm ci --legacy-peer-deps
       - name: Install dependencies
         working-directory: ./meow-team-front
         run: npm install --force
@@ -39,15 +39,13 @@ jobs:
         working-directory: ./meow-team-front
         run: |
           npm cache clean --force
-          npm ci
+          npm ci --legacy-peer-deps
       - name: Install dependencies
         working-directory: ./meow-team-front
-
         run: npm install --force --legacy-peer-deps
       - name: Test project
         working-directory: ./meow-team-front
         run: npm run test --if-present
-
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -55,7 +53,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-
       - name: remove unneccessary config files
         working-directory: ./meow-team-front
         run: |
