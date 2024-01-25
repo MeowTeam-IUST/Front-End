@@ -31,7 +31,7 @@ export default function PaymentPage() {
   const fail = () => {
     return(
       <>
-        <p className={styles.wait}>پرداخت با خطا مواجه شد</p>
+        <p className={styles.wait}>!پرداخت با خطا مواجه شد</p>
         <div onClick={()=> window.location.href = "/dashboard/:shoppingcart"}>بازگشت به سبد خرید</div>
         {/* <WaveTopBottomLoading size="large" color="#E52A49" /> */}
       </>
