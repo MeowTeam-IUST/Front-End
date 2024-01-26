@@ -4,13 +4,14 @@ import { useParams } from 'react-router-dom';
 import styles from "./Comments.module.scss"
 import { useState,useEffect } from 'react';
 import Requests from '../../API/Requests';
-export function Comment({logo, name, date, text}) {
+export function Comment({logo, name, date, text, imageURL}) {
     return (
       <div className={styles.Comment}>
         <div className={styles.CommentHeaderSection}>
           <div className={styles.CommentHeaderProfileAndDate}>
             <div className={styles.CommentHeaderProfile}>
-              <div className={styles.CommentProfilePic}> {logo}</div>
+              <div className={styles.CommentProfilePic}>  
+                <img src={imageURL} alt="User" /></div>
               <div className={styles.CommentName}>{name}</div>
             </div>
             <div className={styles.CommentDate}>{date}</div>
@@ -111,7 +112,8 @@ export function CommentsSection({userbox, id}) {
         {comments.map((comment, index) => (
           <Comment 
             key={index} 
-            text={comment.description} 
+            text={comment.description}
+            imageURL={comment.imageURL} 
             // include other fields as needed
           />
         ))}

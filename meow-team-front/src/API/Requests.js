@@ -210,12 +210,15 @@ export default function Requests() {
         AutorizeHeader // This is your authorization header
       );
       console.log('you did it');
+      if (response.data && response.data.imageURL) {
+        response.data.imageURL = `https://45.147.99.177:9001/${response.data.imageURL}`;
+      }
       return response.data;
-     
     } catch (err) {
       console.error("Error posting comment:", err);
     }
   };
+  
   // getComments
 // getComments
 // getComments
