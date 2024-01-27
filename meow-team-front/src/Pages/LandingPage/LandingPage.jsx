@@ -21,6 +21,7 @@ export default function LandingPage() {
   const dispatch = useDispatch();
   const [profileStatus , setProfileStatus] = React.useState(false);
   const [allCategories , setAllCategories ] = useState([])
+  const [main4categories, setMain4categories] = useState([]);
 
 
   const fetchCategories = async () => {
@@ -34,15 +35,27 @@ export default function LandingPage() {
     }
   }; 
 
+  const fetchMain4Categories = async () => {
+    try {
+      const res = await Requests().get4mainCategory();
+      // console.log(res.data.data.amount);
+      console.log("main 4 categories : ", res);
+      setMain4categories(res);
+    } catch (error) {
+      console.error("Error getting categories:", error);
+    }
+  }; 
+
 
   useEffect(async () => {
     if (state.set == 0){
       const res = await Requests().getProfile();
-      setProfileStatus(true);
+      setProfileStatus(true); 
       console.log(res.data.data)
       dispatch(SetUser({firstName:res.data.data.firstName , lastName : res.data.data.lastName , email : res.data.data.email , image : res.data.data.urlImage , birthDate : res.data.data.birthDate, phoneNumber : res.data.data.phoneNumber, isAdmin : res.data.data.isAdmin}));
     }
     fetchCategories()
+    fetchMain4Categories();
   }, [])
   const Populares = [
     {
@@ -69,10 +82,15 @@ export default function LandingPage() {
       <div className={styles.popular}>
         <CategoryHeader icon={popular} title={"بازی‌های پرطرفدار"} />
         <div className={styles.PopularGames}>
-          {Populares.map((item, index) => {
+          {main4categories.map((item) => {
             return (
               <div className={styles.item}>
-                <PopularGame key={index} name={item.name} image={image1} />
+                <PopularGame
+                  id={item.id}
+                  name={item.title}
+                  image={item.imageURL}
+                  description={item.description}
+                />
               </div>
             );
           })}
