@@ -20,8 +20,10 @@ export default function CategoryHeader({icon, title , admin, id, refresh , setRe
             <img src={edit} alt="" onClick={()=>openPopup()} />
           }
         </div>
-        <EditSectionPopUp isOpen={isPopupOpen} onClose={closePopup} refresh={refresh} setRefresh={setRefresh} id={id}  />
-
+        {
+            admin== true &&
+            <EditSectionPopUp isOpen={isPopupOpen} onClose={closePopup} refresh={refresh} setRefresh={setRefresh} id={id}  />
+          }
     </div>
   )
 }

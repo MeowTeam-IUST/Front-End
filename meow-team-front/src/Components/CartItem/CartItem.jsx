@@ -45,6 +45,9 @@ export default function CartItem({title, price, img, quantity , describthion , i
 
   }
   return (
+    <>
+    {
+      quan > 0 && 
     <div className={styles.CartItem}>
       <div
         className={styles.CartItem__img}
@@ -79,5 +82,7 @@ export default function CartItem({title, price, img, quantity , describthion , i
         ) : null}
       </div>
     </div>
+    }
+    </>
   );
 }
