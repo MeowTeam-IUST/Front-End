@@ -10,6 +10,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
+    cursor:auto;
   }
   
   .popup {
@@ -28,11 +30,13 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 10px;
+    cursor: auto;
     .header{
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      cursor: auto;
     }
     .Title{
       display: flex;
@@ -47,11 +51,10 @@
       font-weight: 800;
       line-height: 24px; /* 75% */
       letter-spacing: -0.64px;
+      cursor: auto;
     }
     .popupContent{
       border-radius: 20px;
-      background: #FFF;
-      box-shadow: 0px 18px 40px 0px rgba(163, 174, 208, 0.20);
     }
   }
   
