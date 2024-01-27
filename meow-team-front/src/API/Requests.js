@@ -210,9 +210,16 @@ export default function Requests() {
         AutorizeHeader // This is your authorization header
       );
       console.log('you did it');
-      if (response.data && response.data.imageURL) {
-        response.data.imageURL = `https://45.147.99.177:9001/${response.data.imageURL}`;
+      console.log("imgur",response.data.imageUrl)
+       if (response.data) {
+      if (response.data.imageUrl) {
+        response.data.imageUrl = `https://45.147.99.177:9001/${response.data.imageUrl}`;
       }
+      // Assuming the userName is available as response.data.userName
+      if (response.data.userName) {
+        response.data.userName = response.data.userName;
+      }
+    }
       return response.data;
     } catch (err) {
       console.error("Error posting comment:", err);
@@ -230,10 +237,27 @@ const getComments = async (categoryId) => {
       AutorizeHeader // This is your authorization header
     );
     console.log("All comments : ",response);
-    return response.data.data || []; // Return an empty array if data is undefined
+    console.log("huop[",response.data.data[0].imageUrl)
+    return response.data.data || [];
+    // Return an empty array if data is undefined
   } catch (err) {
     console.error("Error fetching comments:", err);
+    console.log("rrttt", categoryId)
     return []; // Return an empty array in case of an error
+  }
+};
+// delete comment
+const deleteComment = async (commentId) => {
+  try {
+    const response = await API().DEL(
+      `api/Comment/delete_by_user/${commentId}`,
+      {}, // Replace this with any necessary parameters
+      AutorizeHeader // This is your authorization header
+    );
+    console.log('Comment deleted');
+    return response.data;
+  } catch (err) {
+    console.error("Error deleting comment:", err);
   }
 };
 
@@ -362,6 +386,7 @@ const getComments = async (categoryId) => {
 
   return {
     postComment,
+    deleteComment,
     callbackWallet,
     getCategoryDetails,
     getProducts,
