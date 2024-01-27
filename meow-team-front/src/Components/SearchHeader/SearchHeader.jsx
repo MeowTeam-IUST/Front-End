@@ -11,7 +11,7 @@ export function SearchHeader() {
     const HandelChange = async(value) => {
         try
         {
-            await axios.post('http://45.147.99.177:9000/api/Category/search' ,
+            await axios.post('https://45.147.99.177:9001/api/Category/search' ,
             {
                 searchWord: value,
             },

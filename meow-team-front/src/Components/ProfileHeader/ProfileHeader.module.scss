@@ -9,8 +9,8 @@
     background: $color1;
     box-shadow: $header_shadow;
     height: 48px;
-    gap: 12px;
-    padding: 0px 8px 0px 8px;
+    gap: 10px;
+    padding: 0px 12px 0px 12px;
     flex-shrink: 0;
     transition-duration: 0.4s;
     .image{
@@ -41,23 +41,32 @@
         justify-content: center;
         align-items: center;
         font-style: $main_font;
-        transition-duration: 0.4s;
         .exitButtonImg {
             color: white;
         }
         margin-left: -8px;
     }
 
-.exitButton:hover {
-    transform: scale(1.03);
-    cursor: pointer;
-}
+    .exitButton:hover {
+        cursor: pointer;
+        transform: scale(1.04);
+        transition-duration: 0.4s;
+    }
 
 .profile:hover {
     cursor: pointer;
+    background-color: $--Opex--red;
     
     transition-duration: 0.4s;
-
+    .name {
+        color: $color1;
+        transition-duration: 0.4s;
+    }
+    .exitButton {
+        background-color: white;
+        color: black;
+        transition-duration: 0.4s;
+    }
 }
 /* Media Query for Mobile Devices */ 
 @media (max-width: 720px) { 
