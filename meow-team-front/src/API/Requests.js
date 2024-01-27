@@ -61,11 +61,17 @@ export default function Requests() {
 
   // Check discount
   const checkDiscount = async (body) => {
-    await API()
-      .GET("api/OrderFlow/CheckDiscount", { body }, AutorizeHeader)
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+    try {
+      const res = await API().POST(
+        "api/OrderFlow/check_discount",
+        body,
+        AutorizeHeader
+      );
+      // console.error(res);
+      return res;
+    } catch (err) {
+      // console.log(err);
+    }
   };
 
   // payment

@@ -4,6 +4,7 @@ import Exit from '../../assets/Exit.svg'
 import azhini from '../../assets/azhini.jfif'
 import { useSelector, useDispatch } from 'react-redux';
 import { SetDashboard } from '../../Slices/StateSlice';
+import { DeleteUser } from '../../Slices/UserSlice.js';
 
 export default function DashboardSidebar({ setChoosenItem, items, choosenItem, isScreenLarge }) {
   const layout = useSelector((state) => state.State); // Access the "User" slice of the state
@@ -17,10 +18,15 @@ export default function DashboardSidebar({ setChoosenItem, items, choosenItem, i
       }    
     }
   };
+  const dispatch = useDispatch();
+  const logOut = () => {
+    localStorage.removeItem('token');
+    dispatch(DeleteUser())
+    window.location.href = '/'
+  };
   
   const state = useSelector((state) => state.User); // Access the "User" slice of the state
   const nameToShow = state.firstName != "Null" ? state.lastName != "Null"?  state.firstName + " " +  state.lastName : state.firstName : state.phoneNumber ;
-  const dispatch = useDispatch();
     return (
     <div className={styles.DashboardSidebar}>
         <div className={styles.Profile}>
@@ -47,7 +53,7 @@ export default function DashboardSidebar({ setChoosenItem, items, choosenItem, i
           </div>
         );
       })}
-        <div className={styles.Item} >
+        <div className={styles.Item} onClick={()=>logOut()}>
           <img src={Exit} alt="" className={styles.icon} />
           <div className={styles.Text}>خروج</div>
         </div>
