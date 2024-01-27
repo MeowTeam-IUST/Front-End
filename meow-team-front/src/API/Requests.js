@@ -239,6 +239,7 @@ const getComments = async (categoryId) => {
     try {
       const response = await API().GET(
         `api/Category/get_all_main_categories`,
+        HEADER
       );
       // console.log("All categories : ",response);
       return response.data.data
@@ -253,11 +254,12 @@ const getComments = async (categoryId) => {
     try {
       const response = await API().GET(
         `api/Home/get_home`,
+        HEADER
       );
       // console.log("All categories : ",response);
       return response.data.data
     } catch (err) {
-      console.error("Error fetching product details:", err);
+      console.error("Error fetching product4 details:", err);
       return { title: "", description: "" };
     }
   };
@@ -266,14 +268,18 @@ const getComments = async (categoryId) => {
   // getProduct
   const getCategoryDetails = async (id) => {
     try {
-      const response = await API().GET(
-        `api/Category/get_by_Id/${id}`,
-        {},
-        HEADER
-      );
-      const productData = response.data.data;
-      console.log("jhhgddrr", response);
-      return productData; 
+      if(id != undefined)
+      {
+        const response = await API().GET(
+          `api/Category/get_by_Id/${id}`,
+          {},
+          HEADER
+        );
+        const productData = response.data.data;
+        console.log("jhhgddrr", response);
+        return productData; 
+
+      }
     } catch (err) {
       console.error("Error fetching product details:", err);
       return { title: "", description: "" };

@@ -50,31 +50,17 @@ export default function LandingPage() {
   useEffect(async () => {
     if (state.set == 0){
       const res = await Requests().getProfile();
-      setProfileStatus(true); 
-      console.log(res.data.data)
-      dispatch(SetUser({firstName:res.data.data.firstName , lastName : res.data.data.lastName , email : res.data.data.email , image : res.data.data.urlImage , birthDate : res.data.data.birthDate, phoneNumber : res.data.data.phoneNumber, isAdmin : res.data.data.isAdmin}));
+      if(res != undefined)
+      {
+        setProfileStatus(true); 
+        console.log(res.data.data)
+        dispatch(SetUser({firstName:res.data.data.firstName , lastName : res.data.data.lastName , email : res.data.data.email , image : res.data.data.urlImage , birthDate : res.data.data.birthDate, phoneNumber : res.data.data.phoneNumber, isAdmin : res.data.data.isAdmin}));
+
+      }
     }
     fetchCategories()
     fetchMain4Categories();
   }, [])
-  const Populares = [
-    {
-      name: "کالاف دیوتی موبایل",
-      image: "https://www.uplooder.net/img/image/67/fe6e711a27d4daacee44991c75f39669/Rectangle-15.png"
-      },
-    {
-      name: "گنشین ایمپکت",
-      image: "https://www.uplooder.net/img/image/5/33f3f9c4f29317abe180f280f23bf643/Rectangle-15.png",
-    },
-    {
-      name: "کلش آف کلنز",
-      image: "https://www.uplooder.net/img/image/39/2eb40d11bff328e538eb1e44bcff5fc0/Rectangle-15.png",
-    },
-    {
-      name: "ایپکس لجندز",
-      image: "https://www.uplooder.net/img/image/25/288e04f40eb951dda7ce9db7979e2373/Rectangle-15.png",
-    }
-  ]
 
   const mainbody = useRef(null);
   return (
