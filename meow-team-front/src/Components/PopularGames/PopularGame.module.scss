@@ -28,6 +28,11 @@
     align-items: center;
     justify-content: space-between;
     padding: 0px 40px;
+    .PopularGameTitleSection {
+      gap: 8px;
+      display: flex;
+      flex-direction: column;
+    }
     .PopularGameTitleText{
       color: #FFF;
       // text-align: center;
@@ -36,6 +41,10 @@
       font-weight: bolder;
       line-height: 30px; /* 125% */
       letter-spacing: -0.48px;
+    }
+    .PopularGameSubTitleText{
+      color: white;
+      font-family: shabnam;
     }
   }
 }

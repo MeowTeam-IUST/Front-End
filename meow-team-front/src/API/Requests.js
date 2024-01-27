@@ -241,6 +241,22 @@ const getComments = async (categoryId) => {
       return { title: "", description: "" };
     }
   };
+
+  // getCategories
+  const get4mainCategory = async () => {
+    try {
+      const response = await API().GET(
+        `api/Home/get_home`,
+      );
+      // console.log("All categories : ",response);
+      return response.data.data
+    } catch (err) {
+      console.error("Error fetching product details:", err);
+      return { title: "", description: "" };
+    }
+  };
+
+
   // getProduct
   const getCategoryDetails = async (id) => {
     try {
@@ -352,6 +368,7 @@ const getComments = async (categoryId) => {
     getAllCategories,
     getFrequency,
     getProduct,
-    EditCategory
+    EditCategory,
+    get4mainCategory,
   };
 }
