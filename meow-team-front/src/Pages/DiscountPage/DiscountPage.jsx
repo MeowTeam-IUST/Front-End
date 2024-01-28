@@ -1,5 +1,5 @@
 import React, {useState , useEffect} from 'react';
-import styles from './Order.module.css'
+import styles from './DiscountPage.module.css'
 import expand_more from '../../assets/expand_more.svg'
 import arrow_right from '../../assets/keyboard_arrow_right.svg'
 import arrow_left from '../../assets/keyboard_arrow_left.svg'
@@ -11,6 +11,8 @@ import { TextField } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import { makeStyles } from '@mui/styles';
 import Paper from "@mui/material/Paper";
+import Popup from '../../Components/Popup/Popup';
+import EditDiscount from './EditDiscount';
 
 const useStyles = makeStyles({
     option: {
@@ -24,7 +26,7 @@ const useStyles = makeStyles({
     },
 });
 
-export function AdminOrder(props) {
+export function DiscountPage(props) {
     const classes = useStyles();
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const [checktick, Setchecktick] = useState(false);
@@ -186,36 +188,123 @@ export function AdminOrder(props) {
         doactionid.length = 0;
     }
     const [inputValue, setInputValue] = React.useState('');
+    const [isPopupOpen, setPopupOpen] = useState(false);
+    const openPopup = () => {
+        setPopupOpen(true);
+    };
+    const closePopup = () => {
+        setPopupOpen(false);
+    };
+
+    const [inend, setInEnd] = React.useState("");
+    const handleInputEnd = (event) => {
+        setInEnd(event.target.value);
+    };
+    const [instart, setInStart] = React.useState("");
+    const handleInputStart = (event) => {
+        setInStart(event.target.value);
+    };
+    const [indiscount, setInDiscount] = React.useState("");
+    const handleInputDiscount = (event) => {
+        setInDiscount(event.target.value);
+    };
+    const [innumber, setInNumber] = React.useState("");
+    const handleInputNumber = (event) => {
+        setInNumber(event.target.value);
+    };
+    const [incode, setInCode] = React.useState("");
+    const handleInCode = (event) => {
+        setInCode(event.target.value);
+    };
+
   return (
     <div className={styles.layout} dir='ltr'>
         <div className={styles.container}>
-            <div className={styles.subjecttext}>سفارشات</div>
+            <div className={styles.subjecttext}>کد های تخفیف</div>
+            <div className={styles.adddiscount}>
+                <div className={styles.addheaditem}>
+                    <div style={{ height : "100%" }}></div>
+                    <div className={styles.addbutton} >
+                        <div className={styles.addbuttontext}>افزودن</div>
+                    </div>
+                </div>
+                <div className={styles.addheaditem}>
+                    <div className={styles.additemtitle}>: تاریخ پایان</div>
+                    <input
+                        className={styles.inputadd}
+                        type="text"
+                        value={inend}
+                        onChange={handleInputEnd}
+                        dir="rtl"
+                    />
+                </div>
+                <div className={styles.addheaditem}>
+                    <div className={styles.additemtitle}>: تاریخ شروع</div>
+                    <input
+                        className={styles.inputadd}
+                        type="text"
+                        value={instart}
+                        onChange={handleInputStart}
+                        dir="rtl"
+                    />
+                </div>
+                <div className={styles.addheaditem}>
+                    <div className={styles.additemtitle}>: درصد تخفیف</div>
+                    <input
+                        className={styles.inputadd}
+                        type="text"
+                        value={indiscount}
+                        onChange={handleInputDiscount}
+                        dir="rtl"
+                    />
+                </div>
+                <div className={styles.addheaditem}>
+                    <div className={styles.additemtitle}>: تعداد</div>
+                    <input
+                        className={styles.inputadd}
+                        type="text"
+                        value={innumber}
+                        onChange={handleInputNumber}
+                        dir="rtl"
+                    />
+                </div>
+                <div className={styles.addheaditem}>
+                    <div className={styles.additemtitle}>: کد</div>
+                    <input
+                        className={styles.inputadd}
+                        type="text"
+                        value={incode}
+                        onChange={handleInCode}
+                        dir="rtl"
+                    />
+                </div>
+            </div>
             <div className={styles.content}>
                 <div className={styles.header}>
                     <div className={styles.headeritems}>
-                        <div className={styles.headeritem}>
+                        {/* <div className={styles.headeritem}>
                             <div className={styles.headerselectactionicon}>
-                                <img className={styles.headerexpandmoreicon} src={expand_more}  alt=""/>
+                            <img className={styles.headerexpandmoreicon} src={expand_more}  alt=""/>
                             </div>
                             <div className={styles.headerfourthitemtext}>مجموع قیمت</div>
+                        </div> */}
+                        <div className={styles.headeritem}>
+                            <div className={styles.headerselectactionicon}>
+                                <img className={styles.headerexpandmoreicon} src={expand_more}  alt=""/>
+                            </div>
+                            <div className={styles.headerthirditemtext}>تعداد استفاده</div>
                         </div>
                         <div className={styles.headeritem}>
                             <div className={styles.headerselectactionicon}>
                                 <img className={styles.headerexpandmoreicon} src={expand_more}  alt=""/>
                             </div>
-                            <div className={styles.headerthirditemtext}>وضعیت</div>
+                            <div className={styles.headerseconditemtext}>درصد تخفیف</div>
                         </div>
                         <div className={styles.headeritem}>
                             <div className={styles.headerselectactionicon}>
                                 <img className={styles.headerexpandmoreicon} src={expand_more}  alt=""/>
                             </div>
-                            <div className={styles.headerseconditemtext}>تاریخ</div>
-                        </div>
-                        <div className={styles.headeritem}>
-                            <div className={styles.headerselectactionicon}>
-                                <img className={styles.headerexpandmoreicon} src={expand_more}  alt=""/>
-                            </div>
-                            <div className={styles.headerfirstitemtext}>شماره سفارش</div>
+                            <div className={styles.headerfirstitemtext}>کد خفیف</div>
                         </div>
                         <Checkbox {...label} checked={checktick} size="small" sx={{padding:0}} onClick={() => HandelCheckClicktotal()}/>
                     </div>
@@ -225,17 +314,24 @@ export function AdminOrder(props) {
                 <div className={styles.cards}>
                     {data ? (data.map((item, index) => (
                         <div className={styles.card} key={index}>
+                            <Popup
+                                isOpen={isPopupOpen}
+                                onClose={closePopup}
+                                title={"ویرایش"}
+                                content={<EditDiscount id={1} />}
+                                // content={<EditDiscount id={item.product.id} />}
+                            />
+                            <div className={styles.cardonethirditem} style={{ border: '1px solid rgba(67, 24, 255, 1)' }} onClick={() => openPopup()}>
+                                <div className={styles.carditemtext}>ویرایش</div>
+                            </div>
                             <div className={styles.carditem}>
                                 <div className={styles.carditemtext}>{item.totalPeice} تومان</div>
-                            </div>
-                            <div className={styles.cardonethirditem} style={{ border: item.state == 1 ? '1px solid rgba(229, 42, 73, 1)' : item.state == 2 ? '1px solid rgba(0, 190, 53, 1)' : item.state == 3 ? '1px solid rgba(67, 24, 255, 1)' : 'black' }}>
-                                <div className={styles.carditemtext}>{item.state == 1 ? 'پرداخت شده' : item.state == 2 ? 'در حال انجام' : item.state == 3 ? 'انجام شده' : 'نا مشخص'}</div>
                             </div>
                             <div className={styles.carditem}>
                                 <div className={styles.carditemtext}>{item.strDate}</div>
                             </div>
                             <div className={styles.carditem}>
-                                <div className={styles.carditemidlinktext} onClick={() => props.onFormSwitch("Details", data[index])}>{item.id}</div>
+                                <div className={styles.carditemidlinktext} >{item.id}</div>
                             </div>
                             <Checkbox {...label} checked={booleanArray[index]} size="small" sx={{padding:0}} onClick={() => HandelCheckClick(index)}/>
                         </div>

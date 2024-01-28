@@ -155,7 +155,7 @@ export function MyOrdersdetails(props) {
                                             <div className={styles.orderdetailstextone}>
                                                 <div className={styles.orderdetailstextonetext}>{item.product.title}</div>
                                             </div>
-                                            <div className={styles.orderdetailstexttwo}>ریجن : ‌اروپا</div>
+                                            {/* <div className={styles.orderdetailstexttwo}>ریجن : ‌اروپا</div> */}
                                             <div className={styles.orderdetailstexthree}>
                                                 <div className={styles.orderdetailstexthreeleft}>
                                                     <div className={styles.orderdetailstexthreelefttext}>تومان</div>

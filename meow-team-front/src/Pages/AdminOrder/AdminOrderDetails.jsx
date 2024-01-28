@@ -59,7 +59,7 @@ export function AdminOrderDetails(props) {
     }, []);
     const fetchuserData = async () => {
         try {
-            const response = await axios.get(`http://45.147.99.177:9000/api/Admin/get_profile_by_invoice/${props.data.id}`, {
+            const response = await axios.get(`https://45.147.99.177:9001/api/Admin/get_profile_by_invoice/${props.data.id}`, {
                 headers: {
                     'accept': 'text/plain' ,
                     'Content-Type': 'application/json' ,
@@ -87,7 +87,7 @@ export function AdminOrderDetails(props) {
         try{
             await axios
               .post(
-                "http://45.147.99.177:9000/api/Admin/change_state",
+                "https://45.147.99.177:9001/api/Admin/change_state",
                 {
                   id: props.data.id,
                   state: inputValue.label == "پرداخت شده" ? 1 : inputValue.label == "در حال انجام" ? 2 : 3,
@@ -126,7 +126,7 @@ export function AdminOrderDetails(props) {
                         </div>
                         <div className={styles.userdetailpopupcontent}>
                             <div className={styles.userdetailpopuppicturebox}>
-                                <img className={styles.userdetailpopuppicture} src={`http://45.147.99.177:9000/${userdata.urlImage}`}  alt=""/>
+                                <img className={styles.userdetailpopuppicture} src={`https://45.147.99.177:9001/${userdata.urlImage}`}  alt=""/>
                             </div>
                             <div className={styles.userdetailpopupdetails}>
                                 <div className={styles.userdetailpopupdetailrow}>
@@ -316,7 +316,7 @@ export function AdminOrderDetails(props) {
                                     <div className={styles.orderdetailstextonetext}>{item.product.title}</div>
                                     {/* <div className={styles.orderdetailstextonenumber}>۸۰</div> */}
                                 </div>
-                                <div className={styles.orderdetailstexttwo}>ریجن :‌اروپا</div>
+                                {/* <div className={styles.orderdetailstexttwo}>ریجن :‌اروپا</div> */}
                                 <div className={styles.orderdetailstexthree}>
                                     <div className={styles.orderdetailstexthreeleft}>
                                         <div className={styles.orderdetailstexthreelefttext}>تومان</div>
