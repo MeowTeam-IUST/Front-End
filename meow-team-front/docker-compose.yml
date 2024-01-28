@@ -1,8 +1,8 @@
 version: '3.8'
 services:
   app:
-    container_name: docker-react-doc
-    image: docker-react-i
+    container_name: meow-team-docker
+    image: meow-team 
     build: 
       context: .
     ports:
