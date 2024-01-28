@@ -9,7 +9,7 @@ import smallcirclered from '../../assets/smallcirclered.svg'
 import repeat from '../../assets/repeat.svg'
 import bigplus from '../../assets/bigplus.svg'
 import redline from '../../assets/redline.svg'
-import styles from "./MyOrdersDetails.module.css";
+import styles from "./MyOrdersDetails.module.scss";
 import Popup from '../Popup/Popup.jsx';
 import AddToCart from '../AddToCart/AddToCart'
 
@@ -58,142 +58,283 @@ export function MyOrdersdetails(props) {
         finally{
         }
     };
-    return(
-        <div className={styles.main}>
-            <div className={styles.content}>
-                <div className={styles.header}>
-                    <div className={styles.headerbox}>
-                        <img className={styles.headericon} src={RightVector} onClick={() => props.onFormSwitch("MyOrders", 'null')} alt=""/>
-                        <div className={styles.headertext}>جزئیات سفارش</div>
-                    </div>
-                    <div className={styles.separator}></div>
-                </div>
-                <div className={styles.orders}>
-                    {props.data.state == 1 ?(
-                        <div className={styles.ordersstatus}>
-                            <div className={styles.ordersstatusiconbox}>
-                                <div className={styles.iconboxfirst}>
-                                    <img className={styles.insideiconfirst} src={checkicon} alt=""/>
-                                    <img className={styles.outsideiconfirst} src={bigcirclered} alt=""/>
-                                </div>
-                                <img className={styles.iconredlinefirst} src={redline} alt=""/>
-                                <div className={styles.iconboxsecond}>
-                                    <img className={styles.insideiconsecond} src={smallcirclered} alt=""/>
-                                    <img className={styles.outsideiconsecond} src={emptycirclered} alt=""/>
-                                </div>
-                                <img className={styles.iconredlinesecond} src={redline} alt=""/>
-                                <div className={styles.iconboxthird}>
-                                    <img className={styles.insideiconthird} src={smallcirclegray} alt=""/>
-                                    <img className={styles.outsideiconthird} src={emptycirclegray} alt=""/>
-                                </div>
-                            </div>
-                            <div className={styles.ordersstatustextbox}>
-                                <div className={styles.ordersstatustext}>پرداخت شده</div>
-                                <div className={styles.ordersstatustext}>در حال انجام</div>
-                                <div className={styles.ordersstatustext}>پایان یافته</div>
-                            </div>
-                        </div>
-                    ):props.data.state == 2?(
-                        <div className={styles.ordersstatus}>
-                            <div className={styles.ordersstatusiconbox}>
-                                <div className={styles.iconboxfirst}>
-                                    <img className={styles.insideiconfirst} src={checkicon} alt=""/>
-                                    <img className={styles.outsideiconfirst} src={bigcirclered} alt=""/>
-                                </div>
-                                <img className={styles.iconredlinefirst} src={redline} alt=""/>
-                                <div className={styles.iconboxsecond}>
-                                    <img className={styles.insideiconfirst} src={checkicon} alt=""/>
-                                    <img className={styles.outsideiconfirst} src={bigcirclered} alt=""/>
-                                </div>
-                                <img className={styles.iconredlinesecond} src={redline} alt=""/>
-                                <div className={styles.iconboxthird}>
-                                    <img className={styles.insideiconsecond} src={smallcirclered} alt=""/>
-                                    <img className={styles.outsideiconsecond} src={emptycirclered} alt=""/>
-                                </div>
-                            </div>
-                            <div className={styles.ordersstatustextbox}>
-                                <div className={styles.ordersstatustext}>پرداخت شده</div>
-                                <div className={styles.ordersstatustext}>در حال انجام</div>
-                                <div className={styles.ordersstatustext}>پایان یافته</div>
-                            </div>
-                        </div>
-                    ) : (
-                        <div className={styles.ordersstatus}>
-                            <div className={styles.ordersstatusiconbox}>
-                                <div className={styles.iconboxfirst}>
-                                    <img className={styles.insideiconfirst} src={checkicon} alt=""/>
-                                    <img className={styles.outsideiconfirst} src={bigcirclered} alt=""/>
-                                </div>
-                                <img className={styles.iconredlinefirst} src={redline} alt=""/>
-                                <div className={styles.iconboxsecond}>
-                                    <img className={styles.insideiconfirst} src={checkicon} alt=""/>
-                                    <img className={styles.outsideiconfirst} src={bigcirclered} alt=""/>
-                                </div>
-                                <img className={styles.iconredlinesecond} src={redline} alt=""/>
-                                <div className={styles.iconboxthird}>
-                                    <img className={styles.insideiconfirst} src={checkicon} alt=""/>
-                                    <img className={styles.outsideiconfirst} src={bigcirclered} alt=""/>
-                                </div>
-                            </div>
-                            <div className={styles.ordersstatustextbox}>
-                                <div className={styles.ordersstatustext}>پرداخت شده</div>
-                                <div className={styles.ordersstatustext}>در حال انجام</div>
-                                <div className={styles.ordersstatustext}>پایان یافته</div>
-                            </div>
-                        </div>
-                    )}
-                    <div className={styles.orderdetailbox}>
-                        <div className={styles.orderbox}>
-                            <div className={styles.orderseparator}></div>
-                            {props ? (props.data.invoiceItems.map((item, index) => (
-                                <div className={styles.order} key={index}>
-                                    <div className={styles.rightorderbox}>
-                                        <div className={styles.picbox}>
-                                            <img className={styles.pic} src={item.product.imageURL} alt=""/>
-                                        </div>
-                                        <div className={styles.ordertextbox}>
-                                            <div className={styles.orderdetailstextone}>
-                                                <div className={styles.orderdetailstextonetext}>{item.product.title}</div>
-                                            </div>
-                                            <div className={styles.orderdetailstexttwo}>ریجن : ‌اروپا</div>
-                                            <div className={styles.orderdetailstexthree}>
-                                                <div className={styles.orderdetailstexthreeleft}>
-                                                    <div className={styles.orderdetailstexthreelefttext}>تومان</div>
-                                                    <div className={styles.orderdetailstexthreeleftnumber}>{item.product.price}</div>
-                                                </div>
-                                                <div className={styles.orderdetailstexthreeright}>: قیمت</div>
-                                            </div>
-                                            <div className={styles.orderdetailstexfour}>
-                                                <div className={styles.orderdetailstexfournumber}>۲</div>
-                                                <div className={styles.orderdetailstexfourtext}>: تعداد</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <Popup
-                                        isOpen={isPopupOpen}
-                                        onClose={closePopup}
-                                        title={"جزئیات سفارش"}
-                                        content={<AddToCart id={item.product.id} />}
-                                    />
-                                    <div className={styles.lefttorderbox} onClick={() => openPopup()}>
-                                        <div className={styles.leftordertext}>اضافه کردن به سبد خرید</div>
-                                        <img className={styles.bigplus} src={bigplus} alt="" />
-                                    </div>
-                                </div>
-                            ))) : (console.log("loading"))}
-                        </div>
-                        <div className={styles.lastseparator}></div>
-                        <div className={styles.ordertotalprice}>
-                            <div className={styles.ordertotalpricetitle}>: قیمت نهایی</div>
-                            <div className={styles.ordertotalpriceval}>{props.data.totalPeice} تومان</div>
-                        </div>
-                        <div className={styles.lastbutton} onClick={() => handlerepeatorder()}>
-                            <div className={styles.lastbuttontext}>تکرار سفارش</div>
-                            <img className={styles.repeat} src={repeat} alt="" />
-                        </div>
-                    </div>
-                </div>
+    return (
+      <div className={styles.main}>
+        <div className={styles.content}>
+          <div className={styles.header}>
+            <div
+              className={styles.headerbox}
+              onClick={() => props.onFormSwitch("MyOrders", "null")}
+            >
+              <img className={styles.headericon} src={RightVector} alt="" />
+              <div className={styles.headertext}>جزئیات سفارش</div>
             </div>
+            <div className={styles.separator}></div>
+          </div>
+          <div className={styles.orders}>
+            {props.data.state == 1 ? (
+              <div className={styles.ordersstatus}>
+                <div className={styles.ordersstatusiconbox}>
+                  <div className={styles.iconboxfirst}>
+                    <img
+                      className={styles.insideiconfirst}
+                      src={checkicon}
+                      alt=""
+                    />
+                    <img
+                      className={styles.outsideiconfirst}
+                      src={bigcirclered}
+                      alt=""
+                    />
+                  </div>
+                  <img
+                    className={styles.iconredlinefirst}
+                    src={redline}
+                    alt=""
+                  />
+                  <div className={styles.iconboxsecond}>
+                    <img
+                      className={styles.insideiconsecond}
+                      src={smallcirclered}
+                      alt=""
+                    />
+                    <img
+                      className={styles.outsideiconsecond}
+                      src={emptycirclered}
+                      alt=""
+                    />
+                  </div>
+                  <img
+                    className={styles.iconredlinesecond}
+                    src={redline}
+                    alt=""
+                  />
+                  <div className={styles.iconboxthird}>
+                    <img
+                      className={styles.insideiconthird}
+                      src={smallcirclegray}
+                      alt=""
+                    />
+                    <img
+                      className={styles.outsideiconthird}
+                      src={emptycirclegray}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className={styles.ordersstatustextbox}>
+                  <div className={styles.ordersstatustext}>پرداخت شده</div>
+                  <div className={styles.ordersstatustext}>در حال انجام</div>
+                  <div className={styles.ordersstatustext}>پایان یافته</div>
+                </div>
+              </div>
+            ) : props.data.state == 2 ? (
+              <div className={styles.ordersstatus}>
+                <div className={styles.ordersstatusiconbox}>
+                  <div className={styles.iconboxfirst}>
+                    <img
+                      className={styles.insideiconfirst}
+                      src={checkicon}
+                      alt=""
+                    />
+                    <img
+                      className={styles.outsideiconfirst}
+                      src={bigcirclered}
+                      alt=""
+                    />
+                  </div>
+                  <img
+                    className={styles.iconredlinefirst}
+                    src={redline}
+                    alt=""
+                  />
+                  <div className={styles.iconboxsecond}>
+                    <img
+                      className={styles.insideiconfirst}
+                      src={checkicon}
+                      alt=""
+                    />
+                    <img
+                      className={styles.outsideiconfirst}
+                      src={bigcirclered}
+                      alt=""
+                    />
+                  </div>
+                  <img
+                    className={styles.iconredlinesecond}
+                    src={redline}
+                    alt=""
+                  />
+                  <div className={styles.iconboxthird}>
+                    <img
+                      className={styles.insideiconsecond}
+                      src={smallcirclered}
+                      alt=""
+                    />
+                    <img
+                      className={styles.outsideiconsecond}
+                      src={emptycirclered}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className={styles.ordersstatustextbox}>
+                  <div className={styles.ordersstatustext}>پرداخت شده</div>
+                  <div className={styles.ordersstatustext}>در حال انجام</div>
+                  <div className={styles.ordersstatustext}>پایان یافته</div>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.ordersstatus}>
+                <div className={styles.ordersstatusiconbox}>
+                  <div className={styles.iconboxfirst}>
+                    <img
+                      className={styles.insideiconfirst}
+                      src={checkicon}
+                      alt=""
+                    />
+                    <img
+                      className={styles.outsideiconfirst}
+                      src={bigcirclered}
+                      alt=""
+                    />
+                  </div>
+                  <img
+                    className={styles.iconredlinefirst}
+                    src={redline}
+                    alt=""
+                  />
+                  <div className={styles.iconboxsecond}>
+                    <img
+                      className={styles.insideiconfirst}
+                      src={checkicon}
+                      alt=""
+                    />
+                    <img
+                      className={styles.outsideiconfirst}
+                      src={bigcirclered}
+                      alt=""
+                    />
+                  </div>
+                  <img
+                    className={styles.iconredlinesecond}
+                    src={redline}
+                    alt=""
+                  />
+                  <div className={styles.iconboxthird}>
+                    <img
+                      className={styles.insideiconfirst}
+                      src={checkicon}
+                      alt=""
+                    />
+                    <img
+                      className={styles.outsideiconfirst}
+                      src={bigcirclered}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className={styles.ordersstatustextbox}>
+                  <div className={styles.ordersstatustext}>پرداخت شده</div>
+                  <div className={styles.ordersstatustext}>در حال انجام</div>
+                  <div className={styles.ordersstatustext}>پایان یافته</div>
+                </div>
+              </div>
+            )}
+            <div className={styles.orderdetailbox}>
+              <div className={styles.orderbox}>
+                <div className={styles.orderseparator}></div>
+                {props
+                  ? props.data.invoiceItems.map((item, index) => (
+                      <div className={styles.order} key={index}>
+                        <div className={styles.rightorderbox}>
+                          <div className={styles.picbox}>
+                            <img
+                              className={styles.pic}
+                              src={item.product.imageURL}
+                              alt=""
+                            />
+                          </div>
+                          <div className={styles.ordertextbox}>
+                            <div className={styles.orderdetailstextone}>
+                              <div className={styles.orderdetailstextonetext}>
+                                {item.product.title}
+                              </div>
+                            </div>
+                            <div className={styles.orderdetailstexttwo}>
+                              ریجن : ‌اروپا
+                            </div>
+                            <div className={styles.orderdetailstexthree}>
+                              <div className={styles.orderdetailstexthreeleft}>
+                                <div
+                                  className={
+                                    styles.orderdetailstexthreelefttext
+                                  }
+                                >
+                                  تومان
+                                </div>
+                                <div
+                                  className={
+                                    styles.orderdetailstexthreeleftnumber
+                                  }
+                                >
+                                  {item.product.price}
+                                </div>
+                              </div>
+                              <div className={styles.orderdetailstexthreeright}>
+                                : قیمت
+                              </div>
+                            </div>
+                            <div className={styles.orderdetailstexfour}>
+                              <div className={styles.orderdetailstexfournumber}>
+                                ۲
+                              </div>
+                              <div className={styles.orderdetailstexfourtext}>
+                                : تعداد
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <Popup
+                          isOpen={isPopupOpen}
+                          onClose={closePopup}
+                          title={"جزئیات سفارش"}
+                          content={<AddToCart id={item.product.id} />}
+                        />
+                        <div
+                          className={styles.lefttorderbox}
+                          onClick={() => openPopup()}
+                        >
+                          <div className={styles.leftordertext}>
+                            اضافه کردن به سبد خرید
+                          </div>
+                          <img
+                            className={styles.bigplus}
+                            src={bigplus}
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    ))
+                  : console.log("loading")}
+              </div>
+              <div className={styles.lastseparator}></div>
+              <div className={styles.ordertotalprice}>
+                <div className={styles.ordertotalpricetitle}>: قیمت نهایی</div>
+                <div className={styles.ordertotalpriceval}>
+                  {props.data.totalPeice} تومان
+                </div>
+              </div>
+              <div
+                className={styles.lastbutton}
+                onClick={() => handlerepeatorder()}
+              >
+                <div className={styles.lastbuttontext}>تکرار سفارش</div>
+                <img className={styles.repeat} src={repeat} alt="" />
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     );
 }
