@@ -51,7 +51,7 @@ export default function AdminLittleCart({id , name, image, showPopup , descripti
       // onClick={() => openPopup()}
     >
       <div className={showPopup ? styles.GameTitlePopupOpen : styles.GameTitle}>
-        <div className={styles.GameTitleText}>{name}</div>
+        <div className={styles.GameTitleText}  onClick={() => window.location.href = "/adminpanel/:Products/" + id}>{name}</div>
         <div className={styles.under}>
           <div className={styles.underText}>{description}</div>
           <SmallBuyButton admin={true} open={openPopup} />

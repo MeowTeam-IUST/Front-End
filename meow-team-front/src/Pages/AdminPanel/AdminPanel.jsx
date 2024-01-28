@@ -8,17 +8,25 @@ import AdminPanelSidebar from '../../Components/AdminPanelSidebar/AdminPanelSide
 export default function AdminPanel() {
   const navigate = useNavigate();
   const { itemPath1 } = useParams();
-
+  console.log(itemPath1)
+  const [p, setP] = React.useState(false)
   const choosenItemIndex = items.findIndex((item) => item.path === window.location.pathname.split('/adminpanel/:')[1]);
-
+  
+  // if (window.location.pathname.includes("/adminpanel/:Products/"))
+  // {
+  //   setP(true)
+  // }
   const [choosenItem, setChoosenItem] = useState(() => {
-    return choosenItemIndex !== -1 ? choosenItemIndex : 0;
+    return choosenItemIndex == -1 ? window.location.pathname.includes("/adminpanel/:Products")? 2:  0 : choosenItemIndex;
   });
 
 
   useEffect(() => {
     const selectedPath = items[choosenItem].path;
-    navigate(`/adminpanel/:${selectedPath}`);
+    if(window.location.pathname.includes("/adminpanel/:Products/"))
+      navigate(window.location.pathname);
+    else
+      navigate(`/adminpanel/:${selectedPath}`);
   }, [choosenItem, navigate]);
 
   const SelectedComponent = items[choosenItem].component;

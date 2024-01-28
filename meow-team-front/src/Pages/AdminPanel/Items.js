@@ -31,7 +31,7 @@ export const items = [
         name: 'محصولات',
         component: ProductsCat,
         icon: Basket,
-        path: 'Products',
+        path: 'Products/*',
         item : 2
     },
     {

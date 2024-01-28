@@ -8,6 +8,8 @@ import Productcard from '../../Components/Productcard/Productcard'
 import Add from '../../Components/Add/Add';
 import Requests from '../../API/Requests';
 export default function ProductsCat(){
+    let id = window.location.pathname.split('/adminpanel/:Products/')[1]
+    console.log(id)
     const [imageUploaded, setImageUploaded] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [title, setTitle] = useState('');
@@ -16,7 +18,8 @@ export default function ProductsCat(){
 
     useEffect(() => {
       const fetchProducts = async () => {
-        const productsData = await Requests().getProducts(1);
+        const productsData = await Requests().getProducts(id);
+        console.log(productsData);
         setCards(productsData);
       };
     

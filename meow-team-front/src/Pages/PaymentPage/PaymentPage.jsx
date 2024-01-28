@@ -22,7 +22,7 @@ export default function PaymentPage() {
     return(
       <>
         <p className={styles.wait}>پرداخت با موفقیت انجام شد</p>
-        <div onClick={()=> window.location.href = "/t"}>بازگشت به سایت</div>
+        <div onClick={()=> window.location.href = "/"}>بازگشت به سایت</div>
 
         {/* <WaveTopBottomLoading size="large" color="#E52A49" /> */}
       </>
