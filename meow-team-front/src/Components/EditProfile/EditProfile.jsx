@@ -11,6 +11,7 @@ import Popup from '../Popup/Popup';
 export function EditProfile() {
   const [selectedImage, setSelectedImage] = useState(null);
   const state = useSelector((state) => state.User); // Access the "User" slice of the state
+  console.log(state)
   const dispatch = useDispatch();
   const [isPopupOpen, setPopupOpen] = useState(false);
 
