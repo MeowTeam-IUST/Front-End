@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import styles from './State2.module.scss';
 import Requests from '../../../API/Requests';
 
-export default function State2({ changeState, Cart, TotalPrice }) {
+export default function State2({ changeState, Cart, TotalPrice, total, setTotal , discount, setDiscount }) {
   const [describthion, setDescribthion] = useState('');
 
   const submit = async () => {
     try {
-      const res = await Requests().payment({});
+      const res = await Requests().payment({"discountTitle": discount});
       console.log(res.data);
       window.location.href = res.data.data;
     } catch (error) {
@@ -16,7 +16,7 @@ export default function State2({ changeState, Cart, TotalPrice }) {
   };
   const wallet = async () => {
     try {
-      const res = await Requests().buyFromWallet({});
+      const res = await Requests().buyFromWallet({"discountTitle": discount});
       console.log(res.data);
       
     } catch (error) {
@@ -43,7 +43,7 @@ export default function State2({ changeState, Cart, TotalPrice }) {
           <div className={styles.box}>
           <div className={styles.item}>
                 <div>قیمت نهایی:</div>
-                <div>{TotalPrice} تومان</div>
+                <div>{total} تومان</div>
               </div>
           </div>
           <div className={styles.box}>

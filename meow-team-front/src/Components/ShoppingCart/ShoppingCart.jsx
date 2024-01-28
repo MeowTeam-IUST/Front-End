@@ -35,6 +35,8 @@ export default function ShoppingCart() {
     { id: 2, title: 'تایید و پرداخت ', active: false, component: State2 },
     { id: 3, title: 'ثبت نهایی ', active: false, component: State3 },
   ];
+  const [total, setTotal] = React.useState()
+  const [discount, setDiscount] = React.useState()
 
   const activeState = states.find((state) => state.id === activeStateId);
 
@@ -46,7 +48,7 @@ export default function ShoppingCart() {
     <React.Fragment>
       {
         cart?.length == 0 ? <Empty/> : 
-        activeState && React.createElement(activeState.component, { changeState: handleChangeState, Cart: cart, TotalPrice: totalPrice })
+        activeState && React.createElement(activeState.component, { changeState: handleChangeState, Cart: cart, TotalPrice: totalPrice , total: total, setTotal: setTotal, discount: discount, setDiscount : setDiscount })
       }
     </React.Fragment>
   );

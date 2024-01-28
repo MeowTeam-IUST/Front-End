@@ -1,5 +1,6 @@
 import React from 'react'
 // import styles  from '../../Pages/ProductPage/ProductPage.module.scss'
+import { useParams } from 'react-router-dom';
 import styles from "./Comments.module.scss"
 import { useState,useEffect } from 'react';
 import Requests from '../../API/Requests';
@@ -39,13 +40,14 @@ export function UserBox({userlogo, usertext, onCommentSubmit}) {
     const [text, setText] = useState('');
 
     const [rating, setRating] = useState(0);
+    const id = 1;
 
     const handleRating = (rate) => {
         setRating(rate);
     };
 
     const handleSubmit = () => {
-        onCommentSubmit(text, rating);
+        onCommentSubmit(text, rating, id);
         setText('');
         setRating(0);
     };
@@ -80,24 +82,42 @@ export function UserBox({userlogo, usertext, onCommentSubmit}) {
     );
 }
 
-export function CommentsSection({comments: initialComments, userbox}) {
-    const [comments, setComments] = useState(initialComments);
+export function CommentsSection({userbox, id}) {
+  const [comments, setComments] = useState([]);
 
-    const handleCommentSubmit = (text) => {
-        // Add the new comment to the beginning of the comments array
-        Requests().postComment()
-        setComments([{text, name: 'User', date: 'Just now'}, ...comments]);
+  const fetchComments = async () => {
+    const commentsData = await Requests().getComments(id);
+    setComments(commentsData);
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, [id]);
+
+  const handleCommentSubmit = async (text, rating) => {
+    const comment = {
+      id: null, // You'll need to replace this with the actual ID
+      categoryID: id, // And this with the actual category ID
+      description: text
     };
 
-    return (
-      <div className={styles.AllComments}>
-        <div className={styles.CommentsList}>
-          {comments.map((comment, index) => (
-            <Comment key={index} {...comment} />
-          ))}
-        </div>
+    await Requests().postComment(comment);
+    fetchComments(); // Fetch comments again after a new comment is posted
+  };
 
-        <UserBox {...userbox} onCommentSubmit={handleCommentSubmit} />
+  return (
+    <div className={styles.AllComments}>
+      <div className={styles.CommentsList}>
+        {comments.map((comment, index) => (
+          <Comment 
+            key={index} 
+            text={comment.description} 
+            // include other fields as needed
+          />
+        ))}
       </div>
-    );
+
+      <UserBox {...userbox} onCommentSubmit={handleCommentSubmit} />
+    </div>
+  );
 }

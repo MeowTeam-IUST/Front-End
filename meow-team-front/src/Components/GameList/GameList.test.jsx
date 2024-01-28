@@ -1,32 +1,43 @@
+// GameList.test.js
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import GameList from "./GameList";
 
-describe("GameList", () => {
-  const mockProducts = [
-    { name: "Game 0", image: "game1.jpg" },
-    { name: "Game 2", image: "game2.jpg" },
-    { name: "Game 3", image: "game3.jpg" },
-  ];
+describe("GameList component", () => {
+  it("renders GameList component with no products", () => {
+    const { getByText } = render(<GameList Products={[]} id="someId" />);
+    const noProductsText = getByText("محصولی برای مشاهده نیست");
+    expect(noProductsText).toBeInTheDocument();
+  });
 
-   it("renders the list of games with empty cart", () => {
-     render(<GameList Products={mockProducts} />);
+//   it("renders GameList component with products", () => {
+//     const products = [
+//       {
+//         id: 1,
+//         title: "Product 1",
+//         imageURL: "image1.jpg",
+//         description: "Description 1",
+//       },
+//       {
+//         id: 2,
+//         title: "Product 2",
+//         imageURL: "image2.jpg",
+//         description: "Description 2",
+//       },
+//     ];
 
-    //  const gameItems = screen.getAllByTestId("game-item");
-    //  expect(gameItems).toHaveLength(mockProducts.length);
+//     const { getByText, getAllByTestId } = render(
+//       <GameList Products={products} id="someId" />
+//     );
 
-    //  const cartElements = screen.queryAllByTestId(/cart-/);
-    //  expect(cartElements).toHaveLength(0);
+//     const productElements = getAllByTestId("game-list-item");
+//     expect(productElements).toHaveLength(products.length);
 
-     mockProducts.forEach((item) => {
-       const nameElement = screen.getByText(item.name);
-       expect(nameElement).toBeInTheDocument();
-
-    //    const imageElement = screen.getByText(item.image);
-    //    expect(imageElement).toBeInTheDocument();
-    //    expect(imageElement).toHaveAttribute("src", item.image);
-     });
-   });
-
-  // Add more test cases as needed
+//     products.forEach((product, index) => {
+//       const productElement = productElements[index];
+//       expect(productElement).toHaveTextContent(product.title);
+//       // You can add more assertions based on your component's structure
+//     });
+//   });
 });

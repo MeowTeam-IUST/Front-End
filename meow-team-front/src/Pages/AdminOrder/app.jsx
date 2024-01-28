@@ -1,9 +1,9 @@
 import React,{useState} from "react";
-import AdminOrder from "./Orders";
-import AdminOrderDetails from "./AdminOrderDetails";
+import {AdminOrder} from "./Orders";
+import {AdminOrderDetails} from "./AdminOrderDetails";
 import { width } from "@mui/system";
 
-function OrderApp() {
+export function OrderApp() {
     const [propvalues, setPropValues] = React.useState({
         item: null,
         currentForm: "Order",
@@ -23,5 +23,3 @@ function OrderApp() {
     </div>
     );
 }
-
-export default OrderApp;

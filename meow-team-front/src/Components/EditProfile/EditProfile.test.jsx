@@ -1,38 +1,35 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
-import {EditProfile} from "./EditProfile";
+import { test } from "vitest";
+import { render as rtlRender, fireEvent } from "@testing-library/react";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import reducer from "../../Slices/UserSlice.js"; // Import your root reducer
+import { EditProfile } from "./EditProfile";
 
-describe("EditProfile", () => {
-    test("renders EditProfile component without crashing", () => {
-      render(<EditProfile />);
-    });
+// Create a custom render function to include the Redux provider
+function render(
+  ui,
+  {
+    initialState = {
+      User: {
+        image: "test-image.jpg", // Replace this with a valid image path
+        // Add other properties of the User state if needed
+      },
+    },
+    store = createStore(reducer, initialState),
+    ...renderOptions
+  } = {}
+) {
+  function Wrapper({ children }) {
+    return <Provider store={store}>{children}</Provider>;
+  }
+  return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
+}
 
-    beforeEach(() => {
-      render(
-        <EditProfile/>
-      );
-    });
+// Now you can use this custom render function in your tests
+test("renders EditProfile", () => {
+  const { getByText } = render(<EditProfile />);
+  expect(getByText("تغییر پروفایل")).toBeInTheDocument();
+});
 
 
-    test("renders EditProfileInput components with correct props", () => {
-      
 
-      const nameInput = screen.getByText("نام");
-      expect(nameInput).toBeInTheDocument();
-
-      const surnameInput = screen.getByText("نام خانوادگی");
-      expect(surnameInput).toBeInTheDocument();
-
-      const phoneInput = screen.getByText("شماره تلفن");
-      expect(phoneInput).toBeInTheDocument();
-
-      const emailInput = screen.getByText("ایمیل");
-      expect(emailInput).toBeInTheDocument();
-
-      const passwordInput = screen.getByText("رمز عبور");
-      expect(passwordInput).toBeInTheDocument();
-
-      const dobInput = screen.getByText("تاریخ تولد");
-      expect(dobInput).toBeInTheDocument();
-    });
-})

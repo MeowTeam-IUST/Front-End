@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./AddCategoryPopUp.module.scss";
 import Draggable from "react-draggable";
-import { FileDrop } from "../filedrop";
 import Requests from "../../API/Requests";
 import { useDispatch,useSelector } from 'react-redux';
 import { setEditPopUp } from '../../Slices/StateSlice';

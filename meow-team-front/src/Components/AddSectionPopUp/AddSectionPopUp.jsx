@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import styles from "./AddSectionPopUp.module.scss";
 import Draggable from "react-draggable";
-import { FileDrop } from "../filedrop";
+
 import Requests from "../../API/Requests";
 export const AddSectionPopUp = ({ isOpen, onClose, refresh , setRefresh }) => {
   const fileInputRef = React.createRef();

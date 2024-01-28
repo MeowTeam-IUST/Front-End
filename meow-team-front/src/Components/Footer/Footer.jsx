@@ -52,59 +52,106 @@ export default function Footer() {
           <div className={styles.Text1}>OpexShop@gmail.com</div>
           <div className={styles.Text1}> ۰۲۱۴۴۳۲۲۵۹۵ </div>
         </div>
-    </div >
-    <div className={styles.FooterMobile}>
-      <div className={styles.FooterItems}>
-        {url.includes('/Dashboard') ? (
-          <div className={styles.CircleSelect}>
-            <img className={styles.SelectedSearchIcon} src={search_white}  alt=""/>
-            <img className={styles.SearchCircleIcon} src={circle}  alt=""/>
-          </div>
-        ) : (
-          <img className={styles.searchicon} src={search} onClick={() => HandelClick('/Dashboard')} alt=""/>
-        )}
       </div>
-      <div className={styles.FooterItems}>
-        {url.includes('/login') ? (
-          <div className={styles.CircleSelect}>
-            <img className={styles.SelectedCommentIcon} src={comment_white}  alt=""/>
-            <img className={styles.CommentCircleIcon} src={circle} alt=""/>
-          </div>
-        ) : (
-          <img className={styles.commenticon} src={comment} onClick={() => HandelClick('/login')} alt=""/>
-        )}
+      <div className={styles.FooterMobile}>
+        <div className={styles.FooterItems}>
+          {url.includes("/Dashboard") ? (
+            <div className={styles.CircleSelect}>
+              <img
+                className={styles.SelectedSearchIcon}
+                src={search_white}
+                alt=""
+              />
+              <img className={styles.SearchCircleIcon} src={circle} alt="" />
+            </div>
+          ) : (
+            <img
+              className={styles.searchicon}
+              src={search}
+              onClick={() => HandelClick("/Dashboard")}
+              alt=""
+            />
+          )}
+        </div>
+        <div className={styles.FooterItems}>
+          {url.includes("/login") ? (
+            <div className={styles.CircleSelect}>
+              <img
+                className={styles.SelectedCommentIcon}
+                src={comment_white}
+                alt=""
+              />
+              <img className={styles.CommentCircleIcon} src={circle} alt="" />
+            </div>
+          ) : (
+            <img
+              className={styles.commenticon}
+              src={comment}
+              onClick={() => HandelClick("/login")}
+              alt=""
+              
+            />
+          )}
+        </div>
+        <div className={styles.FooterItems}>
+          {url.includes("/") && url.endsWith("/") ? (
+            <div className={styles.CircleSelect}>
+              <img
+                className={styles.SelectedHomeIcon}
+                src={home_white}
+                alt=""
+              />
+              <img className={styles.HomeCircleIcon} src={circle} alt="" />
+            </div>
+          ) : (
+            <img
+              className={styles.homeicon}
+              src={home}
+              onClick={() => HandelClick("/")}
+              alt=""
+            />
+          )}
+        </div>
+        <div className={styles.FooterItems}>
+          {url.includes("/dashboard/:shoppingcart") ? (
+            <div className={styles.CircleSelect}>
+              <img
+                className={styles.SelectedShopIcon}
+                src={shop_white}
+                alt=""
+              />
+              <img className={styles.ShopCircleIcon} src={circle} alt="" />
+            </div>
+          ) : (
+            <img
+              className={styles.shopicon}
+              src={shop}
+              onClick={() => HandelClick("/dashboard/:shoppingcart")}
+              alt=""
+            />
+          )}
+        </div>
+        <div className={styles.FooterItems}>
+          {url.includes("/dashboard") &&
+          !url.includes("/dashboard/:shoppingcart") ? (
+            <div className={styles.CircleSelect}>
+              <img
+                className={styles.SelectedPersonIcon}
+                src={person_white}
+                alt=""
+              />
+              <img className={styles.PersonCircleIcon} src={circle} alt="" />
+            </div>
+          ) : (
+            <img
+              className={styles.personicon}
+              src={person}
+              onClick={() => HandelClick("/dashboard")}
+              alt=""
+            />
+          )}
+        </div>
       </div>
-      <div className={styles.FooterItems}>
-        {url.includes('/') && url.endsWith("/") ? (
-          <div className={styles.CircleSelect}>
-            <img className={styles.SelectedHomeIcon} src={home_white}  alt=""/>
-            <img className={styles.HomeCircleIcon} src={circle}  alt=""/>
-          </div>
-        ) : (
-          <img className={styles.homeicon} src={home} onClick={() => HandelClick('/')} alt=""/>
-        )}
-      </div>
-      <div className={styles.FooterItems}>
-        {url.includes('/dashboard/:shoppingcart') ? (
-          <div className={styles.CircleSelect}>
-            <img className={styles.SelectedShopIcon} src={shop_white} alt=""/>
-            <img className={styles.ShopCircleIcon} src={circle} alt=""/>
-          </div>
-        ) : (
-          <img className={styles.shopicon} src={shop} onClick={() => HandelClick('/dashboard/:shoppingcart')} alt=""/>
-        )}
-      </div>
-      <div className={styles.FooterItems}>
-        {(url.includes('/dashboard') && !url.includes('/dashboard/:shoppingcart')) ? (
-          <div className={styles.CircleSelect}>
-            <img className={styles.SelectedPersonIcon} src={person_white}  alt=""/>
-            <img className={styles.PersonCircleIcon} src={circle}  alt=""/>
-          </div>
-        ) : (
-          <img className={styles.personicon} src={person} onClick={() => HandelClick('/dashboard')} alt=""/>
-        )}
-      </div>
-    </div>
     </>
   );
 }

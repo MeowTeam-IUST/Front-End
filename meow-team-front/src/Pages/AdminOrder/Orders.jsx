@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     },
 });
 
-function AdminOrder(props) {
+export function AdminOrder(props) {
     const classes = useStyles();
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const [checktick, Setchecktick] = useState(false);
@@ -373,8 +373,6 @@ function AdminOrder(props) {
     </div> 
   );
 }
-
-export default AdminOrder;
 const parti = [
     { label: 'حذف کردن'},
 ];

@@ -95,7 +95,11 @@ export default function ProductPage(){
 
             <div
               className={styles.GamePicture}
-              style={{ backgroundImage: `url(${BASE_URL + "/" + categoryDetails.bannerURL})` }}
+              style={{
+                backgroundImage: `url(${
+                  BASE_URL + "/" + categoryDetails.bannerURL
+                })`,
+              }}
             ></div>
           </div>
           <div className={styles.MenuSection}>
@@ -117,12 +121,11 @@ export default function ProductPage(){
             <div className={styles.MenuProducts}>
               {products.map((product) => (
                 <Productcard
-                  id = {product.id}
+                  id={product.id}
                   name={product.title}
                   price={`${product.price} تومان`}
-                  image={
-                    "https://www.uplooder.net/img/image/67/fe6e711a27d4daacee44991c75f39669/Rectangle-15.png"
-                  }
+                  image={`${BASE_URL + "/" + product.imageURL}`}
+                  description={product.description}
                 />
               ))}
             </div>
@@ -151,6 +154,7 @@ export default function ProductPage(){
                   // Add more initial comments here
                 ]}
                 userbox={{ usertext: "افزودن نظر" }}
+                id={id}
               />
             </div>
           </div>
