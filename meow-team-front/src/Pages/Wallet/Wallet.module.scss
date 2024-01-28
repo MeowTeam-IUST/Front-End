@@ -72,11 +72,11 @@
                 display: flex;
                 align-self: stretch;
                 padding: 10px;
-                justify-content: flex-end;
+                direction: rtl;
                 align-items: center;
                 border-radius: 10px;
-                border: 1px solid #000;
-                direction: ltr;
+                border: 1px solid var(--Opex---black, #a7a7a7);
+                
                 height: 20px;
             }
 
@@ -97,6 +97,13 @@
                 font-size: medium;
                 font-style: normal;
                 font-weight: 700;
+                transition-duration: 0.4s;
+
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.03);
+                    transition-duration: 0.4s;
+                }
 
             }
 

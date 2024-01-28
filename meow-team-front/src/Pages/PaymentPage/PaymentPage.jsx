@@ -19,23 +19,33 @@ export default function PaymentPage() {
     )
   }
   const succes = () => {
-    return(
-      <>
+    return (
+      <div className={styles.paymentPage}>
         <p className={styles.wait}>پرداخت با موفقیت انجام شد</p>
-        <div onClick={()=> window.location.href = "/t"}>بازگشت به سایت</div>
+        <div
+          className={styles.returnButton}
+          onClick={() => (window.location.href = "/t")}
+        >
+          بازگشت به سایت
+        </div>
 
         {/* <WaveTopBottomLoading size="large" color="#E52A49" /> */}
-      </>
-    )
+      </div>
+    );
   }
   const fail = () => {
-    return(
-      <>
+    return (
+      <div className={styles.paymentPage}>
         <p className={styles.wait}>پرداخت با خطا مواجه شد</p>
-        <div onClick={()=> window.location.href = "/dashboard/:shoppingcart"}>بازگشت به سبد خرید</div>
+        <div
+          className={styles.returnButton}
+          onClick={() => (window.location.href = "/dashboard/:shoppingcart")}
+        >
+          بازگشت به سبد خرید
+        </div>
         {/* <WaveTopBottomLoading size="large" color="#E52A49" /> */}
-      </>
-    )
+      </div>
+    );
   }
   const payment = async () => {
     console.log({authority: query.get("Authority"), status: query.get("Status")})

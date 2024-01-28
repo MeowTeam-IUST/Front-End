@@ -76,13 +76,18 @@ export function Wallet () {
               // Convert the date string to a JavaScript Date object
               let date = new Date(item.date);
               let formattedDate = format(date, "yyyy/MM/dd kk:mm:ss");
+
+              let status = "خرید"
+              if (item.type == 0) {
+                status = "شارژ";
+              }
               
               return (
                 <div className={styles.WalletHistoryItem} key={item.id}>
                   <p className={styles.WalletHistoryItemAmount}>
                     {item.amount}
                   </p>
-                  <p className={styles.WalletHistoryItemCause}>شارژ</p>
+                  <p className={styles.WalletHistoryItemCause}>{status}</p>
                   <p className={styles.WalletHistoryItemDate}>
                     {formattedDate}
                   </p>

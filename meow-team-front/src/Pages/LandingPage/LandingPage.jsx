@@ -66,7 +66,7 @@ export default function LandingPage() {
   return (
     <PageLayout>
       <div className={styles.popular}>
-        <CategoryHeader icon={popular} title={"بازی‌های پرطرفدار"} />
+        <CategoryHeader icon={popular} title={"محصولات پرطرفدار"} />
         <div className={styles.PopularGames}>
           {main4categories.map((item) => {
             return (

@@ -20,21 +20,26 @@ export default function WalletPaymentPage() {
   }
   const succes = () => {
     return(
-      <>
+      <div className={styles.paymentPage}>
         <p className={styles.wait}>پرداخت با موفقیت انجام شد</p>
-        <div onClick={()=> window.location.href = "/dashboard/:wallet"}>بازگشت به کیف پول من</div>
+        <div className={styles.returnButton} onClick={()=> window.location.href = "/dashboard/:wallet"}>بازگشت به کیف پول من</div>
         {/* <WaveTopBottomLoading size="large" color="#E52A49" /> */}
-      </>
+      </div>
     )
   }
   const fail = () => {
-    return(
-      <>
+    return (
+      <div className={styles.paymentPage}>
         <p className={styles.wait}>پرداخت با خطا مواجه شد</p>
-        <div onClick={()=> window.location.href = "/dashboard/:wallet"}>بازگشت به کیف پول من</div>
+        <div
+          className={styles.returnButton}
+          onClick={() => (window.location.href = "/dashboard/:wallet")}
+        >
+          بازگشت به کیف پول من
+        </div>
         {/* <WaveTopBottomLoading size="large" color="#E52A49" /> */}
-      </>
-    )
+      </div>
+    );
   }
   const payment = async () => {
     console.log({authority: query.get("Authority"), status: query.get("Status")})

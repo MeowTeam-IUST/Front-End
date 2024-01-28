@@ -114,6 +114,13 @@
             line-height: normal;
             box-shadow: $header_shadow;
             min-height: 100px;
+            transition-duration: 0.4s;
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.01);
+                transition-duration: 0.4s;
+            }
             
             .header{
                 color: #FFF;
