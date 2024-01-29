@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import { MyOrders } from "./MyOrders";
 import { MyOrdersdetails } from "./MyOrdersDetails";
+import styles from "./MyOrders.module.scss";
 
 export function MyOrderApp() {
     const [propvalues, setPropValues] = useState({
@@ -15,7 +16,7 @@ export function MyOrderApp() {
         });
     }
     return(
-    <div>
+    <div className={styles.All}>
     {
         propvalues.currentForm === "MyOrders" ? <MyOrders onFormSwitch={toggleForm}/> : <MyOrdersdetails data={propvalues.item} onFormSwitch={toggleForm}/>
     }

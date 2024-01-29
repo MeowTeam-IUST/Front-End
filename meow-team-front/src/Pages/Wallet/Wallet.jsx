@@ -2,18 +2,21 @@ import React from "react";
 import styles from "./Wallet.module.scss";
 import { useState, useEffect } from "react";
 import Requests from "../../API/Requests";
+import { format } from "date-fns";
 
 
 export function Wallet () {
 
     const [walletAmount, setWalletAmount] = useState(0)
-    const [chargeAmount , setChargeAmount] = useState(0) 
+    const [chargeAmount , setChargeAmount] = useState() 
+    const [transactions , setTransactions] = useState([]) 
     
     const getWalletOnLoad = async (event) => {
       try {
         const res = await Requests().getWallet();
         // console.log(res.data.data.amount);
         setWalletAmount(res.data.data.amount)
+        setTransactions(res.data.data.transactions)
       } catch (error) {
         console.error("Error getting wallet:", error);
       }
@@ -56,6 +59,7 @@ export function Wallet () {
               type="number"
               value={chargeAmount}
               onChange={handleChargeAmountChange}
+              placeholder="مثال : 14000"
             />
             <button
               className={styles.AddToWalletButton}
@@ -68,23 +72,28 @@ export function Wallet () {
         <div className={styles.WalletBottom}>
           <h2>سوابق تراکنش های شما</h2>
           <div className={styles.WalletHistoryList}>
-            <div className={styles.WalletHistoryItem}>
-              <p className={styles.WalletHistoryItemAmount}>+ ۲۴۰۰۰ تومان</p>
-              <p className={styles.WalletHistoryItemCause}>شارژ کیف پول</p>
-              <p className={styles.WalletHistoryItemDate}>۱۴۰۲/۷/۱۲</p>
-            </div>
+            {transactions.map((item) => {
+              // Convert the date string to a JavaScript Date object
+              let date = new Date(item.date);
+              let formattedDate = format(date, "yyyy/MM/dd kk:mm:ss");
 
-            <div className={styles.WalletHistoryItem}>
-              <p className={styles.WalletHistoryItemAmount}>+ ۲۴۰۰۰ تومان</p>
-              <p className={styles.WalletHistoryItemCause}>شارژ کیف پول</p>
-              <p className={styles.WalletHistoryItemDate}>۱۴۰۲/۷/۱۲</p>
-            </div>
-
-            <div className={styles.WalletHistoryItem}>
-              <p className={styles.WalletHistoryItemAmount}>+ ۲۴۰۰۰ تومان</p>
-              <p className={styles.WalletHistoryItemCause}>شارژ کیف پول</p>
-              <p className={styles.WalletHistoryItemDate}>۱۴۰۲/۷/۱۲</p>
-            </div>
+              let status = "خرید"
+              if (item.type == 0) {
+                status = "شارژ";
+              }
+              
+              return (
+                <div className={styles.WalletHistoryItem} key={item.id}>
+                  <p className={styles.WalletHistoryItemAmount}>
+                    {item.amount}
+                  </p>
+                  <p className={styles.WalletHistoryItemCause}>{status}</p>
+                  <p className={styles.WalletHistoryItemDate}>
+                    {formattedDate}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

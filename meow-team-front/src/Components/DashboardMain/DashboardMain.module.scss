@@ -12,6 +12,7 @@
     width: 80%;
     /* User Shadow */
     box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
     .back{
         display: flex;
         flex-direction: row;
@@ -23,7 +24,7 @@
 }
 /* Media Query for Mobile Devices */ 
 @media (max-width: 480px) { 
-    .MainContent{
-        align-items: start;
-    }
+    // .MainContent{
+    //     align-items: start;
+    // }
 } 

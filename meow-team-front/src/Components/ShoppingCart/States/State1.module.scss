@@ -117,7 +117,7 @@
     }
 }
 
-@media (min-width : 481px) and (max-width : 1024px) {
+@media (min-width : 481px) and (max-width : 1240px) {
     .main {
         flex-direction: column;
         width: 100%;
@@ -133,6 +133,7 @@
         flex-direction: column;
         .items{
             width: 100%;
+            
         }
         .summary{
             max-width: 90%;

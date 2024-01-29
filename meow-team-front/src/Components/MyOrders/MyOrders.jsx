@@ -1,7 +1,7 @@
 import React,{ useState ,useEffect } from "react"
 import repeat from '../../assets/repeat.svg'
 import info from '../../assets/info.svg'
-import styles from "./MyOrders.module.css";
+import styles from "./MyOrders.module.scss";
 import axios from 'axios';
 
 export function MyOrders(props) {
@@ -86,7 +86,7 @@ export function MyOrders(props) {
     }, [data]);
     const fetchData = async () => {
         try {
-            const response = await axios.get(`http://45.147.99.177:9000/api/Account/get_all_user_invoice/`, {
+            const response = await axios.get(`https://45.147.99.177:9001/api/Account/get_all_user_invoice/`, {
                 headers: {
                     'accept': 'text/plain' ,
                     'Content-Type': 'application/json' ,

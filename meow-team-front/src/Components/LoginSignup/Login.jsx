@@ -154,6 +154,8 @@ function Login(props) {
                 fontFamily: "Shabnam",
                 marginTop: "0.8rem",
                 backgroundColor: "rgb(242, 27, 27)",
+                height: "45px",
+                borderRadius: "10px",
               }}
               variant="contained"
               type="submit"

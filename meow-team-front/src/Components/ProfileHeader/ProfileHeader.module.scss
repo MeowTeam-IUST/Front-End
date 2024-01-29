@@ -44,10 +44,13 @@
         .exitButtonImg {
             color: white;
         }
+        margin-left: -8px;
     }
 
     .exitButton:hover {
         cursor: pointer;
+        transform: scale(1.04);
+        transition-duration: 0.4s;
     }
 
 .profile:hover {
@@ -57,6 +60,11 @@
     transition-duration: 0.4s;
     .name {
         color: $color1;
+        transition-duration: 0.4s;
+    }
+    .exitButton {
+        background-color: white;
+        color: black;
         transition-duration: 0.4s;
     }
 }

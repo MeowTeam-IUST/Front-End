@@ -53,7 +53,7 @@ export function ProfileHeader({name, image}) {
       <Popup
         isOpen={isPopupOpen}
         onClose={closePopup}
-        title={"ورود/ثبت نام"}
+        title={"ورود / ثبت نام"}
         content={<LoginVerify />}
       />
     </div>

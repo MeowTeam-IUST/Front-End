@@ -169,10 +169,12 @@ function ConfirmCode(props) {
                 loading={load.is_loading}
                 sx={{
                   fontFamily: "Shabnam",
-                  width: "10rem",
-                  marginRight: "0.5rem",
+                  width: "100%",
+                  
                   marginTop: "0.8rem",
                   backgroundColor: "rgb(242, 27, 27)",
+                  height: "45px",
+                  borderRadius: "10px",
                 }}
                 variant="contained"
                 type="submit"
@@ -184,12 +186,14 @@ function ConfirmCode(props) {
                 onClick={() => changestate()}
                 sx={{
                   fontFamily: "Shabnam",
-                  width: "10rem",
-                  marginLeft: "0.5rem",
+                  width: "100%",
                   marginTop: "0.8rem",
-                  backgroundColor: "rgb(255, 255, 255)",
+                  backgroundColor: "rgb(200, 200, 200)",
                   color: "black",
-                  border: 1,
+                  
+                  height: "45px",
+                  borderRadius: "10px",
+                  
                 }}
                 variant="contained"
               >

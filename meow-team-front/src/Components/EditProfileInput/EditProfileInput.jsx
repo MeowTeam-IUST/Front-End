@@ -82,17 +82,15 @@ export default function EditProfileInput({ title, value , type }) {
           </div>
         </div>
       ) : (
-        <div className={styles.EditProfileInput}>
+        <div
+          className={styles.EditProfileInput}
+          onClick={() => setOpenEdit(true)}
+        >
           <div className={styles.detail}>
             <div className={styles.title}>{title}</div>
             <div className={styles.value}>{value}</div>
           </div>
-          <img
-            className={styles.button}
-            src={edit}
-            alt="Edit"
-            onClick={() => setOpenEdit(true)}
-          />
+          <img className={styles.button} src={edit} alt="Edit" />
         </div>
       )}
     </>

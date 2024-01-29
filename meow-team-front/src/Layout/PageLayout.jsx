@@ -38,14 +38,18 @@ export default function PageLayout ({ children }) {
   return (
     <div className={styles.PageLayout} dir="rtl">
       <div className={styles.HeadContainer}>
-        <div className={state.isAdmin? styles.Head : styles.x}>
-          {
-            state.isAdmin && 
+        <div className={state.isAdmin ? styles.Head : styles.x}>
+          {state.isAdmin && (
             <div className={styles.admin}>
               شما ادمین هستید، برای دسترسی به پنل ادمین کلیک کنید.
-              <div className={styles.adminButton} onClick={()=>window.location.href = '/AdminPanel'}>پنل ادمین</div>
+              <div
+                className={styles.adminButton}
+                onClick={() => (window.location.href = "/AdminPanel")}
+              >
+                پنل ادمین
+              </div>
             </div>
-          }
+          )}
           <Header />
           <div className={styles.Category}>
             <CategoryHeader icon={bars} title={"دسته‌بندی محصولات"} />
@@ -57,7 +61,9 @@ export default function PageLayout ({ children }) {
           </div>
         </div>
       </div>
-      <div className={styles.container}>{children}</div>
+      <div className={styles.allContainer}>
+        <div className={styles.container}>{children}</div>
+      </div>
       <Footer />
     </div>
   );
