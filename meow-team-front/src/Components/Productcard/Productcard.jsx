@@ -7,7 +7,7 @@ import Popup from '../Popup/Popup.jsx'; // Adjust the path based on your file st
 import AddToCart from '../AddToCart/AddToCart'
 import { BASE_URL } from '../../API/consts';
 
-export default function Productcard({name, price, changeButtonColor,showdiv,onDelete,applyLTR, onSave , image , id , description}) {
+export default function Productcard({name, price, changeButtonColor,showdiv,onDelete,applyLTR, onSave , image , id , description, refresh , setRefresh}) {
 
   const [isPopupOpen, setPopupOpen] = useState(false);
 
@@ -18,8 +18,23 @@ export default function Productcard({name, price, changeButtonColor,showdiv,onDe
   const closePopup = () => {
     setPopupOpen(false);
   };
+  const clickon = () => {
+    if (changeButtonColor)
+      DEL()
+    else
+      openPopup();
+  };
+  const DEL = async () =>  {
+    console.log(id)
+    try {
+      const res = await Requests().DelProduct(id);
+      console.log(res.data);
+    } catch (error) {
+      console.error("Errordeleted product:", error);
+    }
+    setRefresh(!refresh)
 
-        
+}
     return (
       <div
         className={styles.productCard}
@@ -35,8 +50,8 @@ export default function Productcard({name, price, changeButtonColor,showdiv,onDe
         <div className={styles.productCardInfo}>
           <div className={styles.nameButton}>{name}</div>
           <div className={styles.priceButton}>{price}</div>
-          <button className={styles.buyButton} onClick={openPopup}>
-            {changeButtonColor ? "ویرایش" : "خرید"}
+          <button className={styles.buyButton} onClick={()=>clickon()}>
+            {changeButtonColor ? "حذف" : "خرید"}
           </button>
         </div>
 

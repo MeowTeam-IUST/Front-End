@@ -8,7 +8,7 @@ export const AddproductPopUp1 = ({ isOpen, onClose , parentId , setRefresh, refr
   const fileInputRef = React.createRef();
   const [TitleValue, setTitleValue] = useState("");
   const [SubTitleValue, setSubTitleValue] = useState("");
-  const [Amount, setAmount] = useState(0);
+  const [Amount, setAmount] = useState();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [selectedImage, setSelectedImage] = useState(null);
   console.log("object")

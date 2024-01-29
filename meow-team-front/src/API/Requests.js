@@ -321,6 +321,17 @@ const getComments = async (categoryId) => {
       return [];
     }
   };
+  const DelProduct = async (id) => {
+    try {
+      const response = await API().DEL(`api/Product/delete/${id}`, {}, AutorizeHeader);
+      const productsData = response.data.data;
+      console.log("deleting product:", productsData);
+      return productsData;
+    } catch (err) {
+      console.error("Error deleting product:", err);
+      return [];
+    }
+  };
   const addCategory = async (data) => {
     try {
       const response = await API().POST(
@@ -395,6 +406,7 @@ const getComments = async (categoryId) => {
     getProduct,
     EditCategory,
     get4mainCategory,
-    addProduct
+    addProduct,
+    DelProduct
   };
 }

@@ -43,7 +43,7 @@ export default function ProductsCat({id}){
         setImage(BASE_URL+"/"+productsData.imageURL)
     
         setTitleValue(productsData.title)
-        setSubTitleValue(productsData.description)
+        setDescription(productsData.description)
         // setParentId(productsData.parentID)
       };
       fetchProductDetail()
@@ -52,15 +52,6 @@ export default function ProductsCat({id}){
     }, [refresh]);
 
 
-    // useEffect(() => {
-    //   const fetchCategoryDetails = async () => {
-    //     const categoryDetails = await Requests().getCategoryDetails(112); // Replace '1' with the actual category ID
-    //     setTitle(categoryDetails.title);
-    //     setDescription(categoryDetails.description);
-    //   };
-
-    //   fetchCategoryDetails();
-    // }, []);
     
     const handleDelete = (index) => {
       const newCards = [...cards];
@@ -74,41 +65,42 @@ export default function ProductsCat({id}){
       setCards(newCards);
     };
 
-    // const handleFileChange = (event) => {
-    //     const file = event.target.files[0];
-    //     const reader = new FileReader();
-      
-    //     reader.onloadend = () => {
-    //       setSelectedImage(reader.result);
-    //     }
-      
-    //     if (file) {
-    //       reader.readAsDataURL(file);
-    //     } else {
-    //       setSelectedImage(null);
-    //     }
-    //   }
-      // const handleSubmit = async () => {
-      //   const category = {
-      //     id:null,
-      //     title: title,
-      //     imageURL: "string",
-      //     description: description,
-      //     isActive: true,
-      //     parentID: null
-      //   };
-      //   const response = await Requests().addCategory(category);
-      //   const newCategoryId = response.data.result.data.id;
-      //   localStorage.setItem('newCategoryId', newCategoryId);
-      //   console.log('idd',newCategoryId) // Replace 'id' with the actual property name in the response
-      //   // Wait for 1 second before fetching the category details
-      //   setTimeout(async () => {
-      //     console.log('idd2',newCategoryId) 
-      //     const categoryDetails = await Requests().getCategoryDetails(newCategoryId);
-      //     setTitle(categoryDetails.title);
-      //     setDescription(categoryDetails.description);
-      //   }, 1000);
-      // };
+    const handleImageChange = (event) => {
+      const file = event.target.files[0];
+      setImage(file);
+  
+      // You can perform additional validation here if needed
+  
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setSelectedImage(reader.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+    const formData = new FormData();
+
+    const handleSubmit = async (event) => {
+      // Add your submit logic here
+      console.log(TitleValue,selectedImage,description)
+      formData.append('Title', TitleValue);
+      formData.append('Picture', image);
+      formData.append('Description', description);
+      formData.append('IsActive', true);
+      // formData.append('ParentID', parentId);
+      formData.append('ID', id);
+      try {
+        const res = await Requests().EditCategory(formData);
+        console.log(res.data);
+      } catch (error) {
+        console.error("Error submitting category:", error);
+      }
+  
+      console.log("Submitted value:", TitleValue);
+      setRefresh(!refresh)
+      // onClose();
+    };
       useEffect(() => {
         const fetchCategoryDetails = async () => {
           // Get the newCategoryId from localStorage
@@ -138,16 +130,10 @@ export default function ProductsCat({id}){
                     <div className={styles.upcatleftt1}>
                     <div className={styles.upcatleftt11}>
                     <div className={styles.upcatleftt12}>
-                    {/* <svg xmlns="http://www.w3.org/2000/svg" width="36" height="18" viewBox="0 0 36 18" fill="none">
-                    <rect width="36" height="18" rx="9" fill="#4318FF"/>
-                    <circle cx="27" cy="9.00014" r="7.07143" fill="white"/>
-                    </svg> */}
-                    {/* <div className={styles.upcatleftt121}>فعال</div> */}
                         
                     </div>
-                    <div className={styles.upcatleftt13} >ثبت تغییرات</div>
+                    <div className={styles.upcatleftt13} onClick={()=> handleSubmit()} >ثبت تغییرات</div>
                     </div>
-                    {/* <div className={styles.upcatleftt14}></div> */}
                     
                     </div>
                 </div>
@@ -173,19 +159,18 @@ export default function ProductsCat({id}){
                   <input
                     type="file"
                     accept="image/*"
-                    // onChange={handleImageChange}
+                    onChange={handleImageChange}
                     style={{ display: "none" }}
                   />
                 </label>
               </div>
               <div className={styles.bottom_left}>
-                {/* <FileDrop fileInputRef={fileInputRef} /> */}
                 {selectedImage ? (
                   <img
                     src={selectedImage}
                     alt="Selected"
                     className={styles.selectedImage}
-                    width={100}
+                    width={300}
                   />
                 ) : (
                   <div className={styles.imagePlaceHolder}>
@@ -209,6 +194,7 @@ export default function ProductsCat({id}){
             {cards.map((card, index) => (
             <Productcard
               key={index}
+              id={card.id}
               image={card.imageURL}
               name={card.title}
               price={`قیمت ${card.price} تومان`}
@@ -216,6 +202,8 @@ export default function ProductsCat({id}){
               changeButtonColor={true}
               onDelete={() => handleDelete(index)}
               applyLTR={true}
+              refresh = {refresh} 
+              setRefresh = {setRefresh}
               onSave={(newName, newPrice) => handleSave(index, newName, newPrice)}
             />
           ))}
