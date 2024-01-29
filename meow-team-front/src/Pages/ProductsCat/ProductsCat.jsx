@@ -185,7 +185,7 @@ export default function ProductsCat({id}){
                     src={selectedImage}
                     alt="Selected"
                     className={styles.selectedImage}
-                    width={100}
+                    
                   />
                 ) : (
                   <div className={styles.imagePlaceHolder}>
@@ -222,7 +222,7 @@ export default function ProductsCat({id}){
           <div className={styles.item}>
           <div className={styles.AddCard}  onClick={openPopup}>
             <div className={styles.Plus}>+</div>
-            <div className={styles.Plus1}>اضافه کردن دسته</div>
+            <div className={styles.Plus1}>اضافه کردن محصول</div>
           </div>
           <AddproductPopUp1 isOpen={isPopupOpen} onClose={closePopup} parentId={id} refresh={refresh} setRefresh={setRefresh} />
         </div>
