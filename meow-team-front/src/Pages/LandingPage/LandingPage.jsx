@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { SetUser } from '../../Slices/UserSlice.js';
 import { useState } from 'react'
 import { BASE_URL } from '../../API/consts'
+import user from "../../assets/user.jpg"
 
 export default function LandingPage() {
   const state = useSelector((state) => state.User); // Access the "User" slice of the state
@@ -55,7 +56,10 @@ export default function LandingPage() {
       {
         setProfileStatus(true); 
         console.log(res.data.data)
-        dispatch(SetUser({firstName:res.data.data.firstName , lastName : res.data.data.lastName , email : res.data.data.email , Image : BASE_URL + "/" + res.data.data.urlImage , birthDate : res.data.data.birthDate, phoneNumber : res.data.data.phoneNumber, isAdmin : res.data.data.isAdmin}));
+        if(res.data.data.urlImage  === null)
+          dispatch(SetUser({firstName:res.data.data.firstName , lastName : res.data.data.lastName , email : res.data.data.email , Image : "https://t4.ftcdn.net/jpg/00/65/77/27/360_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg" , birthDate : res.data.data.birthDate, phoneNumber : res.data.data.phoneNumber, isAdmin : res.data.data.isAdmin}));
+        else
+          dispatch(SetUser({firstName:res.data.data.firstName , lastName : res.data.data.lastName , email : res.data.data.email , Image : BASE_URL + "/" + res.data.data.urlImage , birthDate : res.data.data.birthDate, phoneNumber : res.data.data.phoneNumber, isAdmin : res.data.data.isAdmin}));
 
       }
     }
