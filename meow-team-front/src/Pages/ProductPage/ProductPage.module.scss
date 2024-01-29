@@ -1,6 +1,31 @@
 @import "../../App.scss";
 
   
+@media (max-width: 850px){
+    .GameHeaderSection{
+      flex-direction: column;
+      overflow: auto;
+      max-height: fit-content;
+      .GameTitle {
+        justify-content: center !important;
+        flex-direction: row !important;
+      }
+      .GameRoute {
+        justify-content: center !important;
+        flex-direction: row !important;
+      }
+
+    }
+    .MenuProducts {
+      justify-content: center;
+    }
+    .CommentsSectionBody {
+      flex-direction: column;
+      
+    }
+} 
+
+
   .fullPage{
     margin: -8px;
     padding: 0;
@@ -56,16 +81,18 @@
   }
   .GameHeaderSection{
     display: flex;
-    height: 460px;
+   
     justify-content: flex-end;
     align-items: center;
     gap: 32px !important;
     align-self: stretch;
-    direction: ltr;
+    
+    
   }
   
   .GamePicture{
-    width: 460px ;
+    max-width: 460px ;
+    width: 100%;
     aspect-ratio: 1/1;
     border-radius: 50px;
    background-position: center center;
@@ -80,6 +107,7 @@
     flex-direction: column;
     gap: 32px;
     flex: 1 0 0;
+    direction: ltr;
 
     .GameTitle{
       display: flex;
@@ -115,6 +143,9 @@
       align-items: flex-end;
       gap: 10px;
       align-self: stretch;
+      height: 100%;
+      overflow: hidden;
+      
 
       .AboutGameTitleSection{
         display: flex;
@@ -129,6 +160,7 @@
           font-size: large;
           font-weight: bold;
           line-height: 22px; /* 137.5% */
+          
         }
       }
 
@@ -138,6 +170,8 @@
         text-align: justify;
         font-family: $second_font;
         direction: rtl;
+        height: 100%;
+        overflow: hidden;
       }
     }
 
