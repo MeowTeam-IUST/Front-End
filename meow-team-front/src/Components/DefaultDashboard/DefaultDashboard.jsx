@@ -83,7 +83,7 @@ export default function DefaultDashboard() {
         <div className={styles.RepeatedItem}>
           {/* {console.log(Frequency)}
           <GameList Products={Frequency} isAdmin={false} /> */}
-          {Frequency.map((product) => (
+          {Frequency?.map((product) => (
             <Productcard
               id={product.id}
               name={product.title}
