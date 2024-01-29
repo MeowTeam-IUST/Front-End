@@ -76,7 +76,8 @@ export default function LandingPage() {
                   id={item.id}
                   name={item.title}
                   image={item.imageURL}
-                  description={item.description}
+                  description={item.subTitle
+                  }
                 />
               </div>
             );

@@ -20,7 +20,7 @@ export default function GameList({Products , id }) {
 
   return (
     <div className={styles.GameList}>
-      { ( Products!= null && Products.length != 0 ) ? Products.map((item, index) => {
+      { ( Products!== null && Products.length != 0 ) ? Products.map((item, index) => {
         return (
           <div className={styles.item} key={index}>
             <LittleCart
@@ -28,7 +28,8 @@ export default function GameList({Products , id }) {
               name={item.title}
               image={item.imageURL}
               showPopup={showPopup}
-              description={item.description}
+              description={item.subTitle
+              }
             />
           </div>
         );

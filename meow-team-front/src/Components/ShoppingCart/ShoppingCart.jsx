@@ -43,11 +43,12 @@ export default function ShoppingCart() {
   const handleChangeState = (id) => {
     setActiveStateId(id);
   };
+  console.log(cart)
 
   return (
     <React.Fragment>
       {
-        cart?.length == 0 ? <Empty/> : 
+        cart?.length === 0 ? <Empty/> : 
         activeState && React.createElement(activeState.component, { changeState: handleChangeState, Cart: cart, TotalPrice: totalPrice , total: total, setTotal: setTotal, discount: discount, setDiscount : setDiscount , refresh: refresh , setRefresh: setRefresh })
       }
     </React.Fragment>

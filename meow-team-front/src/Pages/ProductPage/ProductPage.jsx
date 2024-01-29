@@ -118,7 +118,7 @@ export default function ProductPage(){
               </svg>
             </div>
             <div className={styles.MenuProducts}>
-              {products.map((product) => (
+              { ( products!== null && products.length != 0 ) ? products.map((product) => (
                 <Productcard
                   id={product.id}
                   name={product.title}
@@ -126,7 +126,8 @@ export default function ProductPage(){
                   image={`${BASE_URL + "/" + product.imageURL}`}
                   description={product.description}
                 />
-              ))}
+              )) : <div className={styles.txt}>محصولی برای مشاهده نیست</div>
+    }
             </div>
           </div>
           <div className={styles.CommentsSecion}>
