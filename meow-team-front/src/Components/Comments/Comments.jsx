@@ -4,7 +4,11 @@ import { useParams } from 'react-router-dom';
 import styles from "./Comments.module.scss"
 import { useState,useEffect } from 'react';
 import Requests from '../../API/Requests';
+import { useSelector, useDispatch } from "react-redux";
+
 export function Comment({ name, date, text, onDelete, imageUrl}) {
+  const state = useSelector((state) => state.User); // Access the "User" slice of the state
+  console.log(name ,"User_"+state.phoneNumber)
     return (
       <div className={styles.Comment}>
         <div className={styles.CommentHeaderSection}>
@@ -17,21 +21,25 @@ export function Comment({ name, date, text, onDelete, imageUrl}) {
             </div>
             <div className={styles.CommentDate}>{date}</div>
           </div>
-          <button className={styles.replyButton} onClick={onDelete}>
-            <text className={styles.ReplyText}>حذف</text>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="13"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                 d="M20 7v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7H2V5h20v2h-2zm-9 3v7h2v-7h-2zM7 2h10v2H7V2z"
-                fill="#E52A49"
-              />
-            </svg>
-          </button>
+          {
+            name == "User_"+state.phoneNumber &&
+            <button className={styles.replyButton} onClick={onDelete}>
+              <text className={styles.ReplyText}>حذف</text>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M20 7v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7H2V5h20v2h-2zm-9 3v7h2v-7h-2zM7 2h10v2H7V2z"
+                  fill="#E52A49"
+                />
+              </svg>
+            </button>
+
+          }
         </div>
         <div className={styles.CommentText}>{text}</div>
       </div>
