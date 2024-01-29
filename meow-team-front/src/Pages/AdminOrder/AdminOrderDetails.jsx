@@ -12,6 +12,7 @@ import Paper from "@mui/material/Paper";
 import axios from 'axios';
 import RightVector from '../../assets/RightVector.svg'
 import { ShowToast } from '../../Components/LoginSignup/Toastify';
+import { BASE_URL } from '../../API/consts';
 
 const useStyles = makeStyles({
     option: {
@@ -131,7 +132,7 @@ export function AdminOrderDetails(props) {
                         </div>
                         <div className={styles.userdetailpopupcontent}>
                             <div className={styles.userdetailpopuppicturebox}>
-                                <img className={styles.userdetailpopuppicture} src={`https://45.147.99.177:9001/${userdata.urlImage}`}  alt=""/>
+                                <img className={styles.userdetailpopuppicture} src={BASE_URL+ "/" + userdata.urlImage}  alt=""/>
                             </div>
                             <div className={styles.userdetailpopupdetails}>
                                 <div className={styles.userdetailpopupdetailrow}>
@@ -336,7 +337,7 @@ export function AdminOrderDetails(props) {
                             </div>
                         </div>
                         <div className={styles.orderpicbox}>
-                            <img className={styles.orderpic} src={item.product.imageURL}  alt=""/>
+                            <img className={styles.orderpic} src={BASE_URL+ "/" + item.product.imageURL}  alt=""/>
                         </div>
                     </div>
                     ))) : (console.log("loading"))}

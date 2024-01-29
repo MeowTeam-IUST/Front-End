@@ -38,7 +38,7 @@ export default function Productcard({name, price, changeButtonColor,showdiv,onDe
     return (
       <div
         className={styles.productCard}
-        style={{ backgroundImage: `url(${BASE_URL + "/" + image})` }}
+        style={{ backgroundImage: `url(${ image})` }}
       >
         {/* {showdiv && (
           <div className={styles.delete}>

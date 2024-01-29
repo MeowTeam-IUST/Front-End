@@ -196,7 +196,7 @@ export default function ProductsCat({id}){
             <Productcard
               key={index}
               id={card.id}
-              image={card.imageURL}
+              image={BASE_URL+"/"+ card.imageURL}
               name={card.title}
               price={`قیمت ${card.price} تومان`}
               showdiv={true}

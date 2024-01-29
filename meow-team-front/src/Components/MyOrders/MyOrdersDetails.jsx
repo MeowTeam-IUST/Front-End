@@ -16,6 +16,7 @@ import axios from 'axios';
 import { ShowToast } from "../LoginSignup/Toastify";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BASE_URL } from "../../API/consts"
 
 
 export function MyOrdersdetails(props) {
@@ -181,7 +182,7 @@ export function MyOrdersdetails(props) {
                                 <div className={styles.order} key={index}>
                                     <div className={styles.rightorderbox}>
                                         <div className={styles.picbox}>
-                                            <img className={styles.pic} src={item.product.imageURL} alt=""/>
+                                            <img className={styles.pic} src={BASE_URL+ "/"+ item.product.imageURL} alt=""/>
                                         </div>
                                         <div className={styles.ordertextbox}>
                                             <div className={styles.orderdetailstextone}>

@@ -584,6 +584,7 @@
     margin-left: 0px;
     border-radius: 20px;
     background: #FFFFFF;
+    object-fit: cover;
     z-index:0;
 }
 
