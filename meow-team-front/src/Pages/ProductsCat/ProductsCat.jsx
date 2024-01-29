@@ -160,7 +160,7 @@ export default function ProductsCat({id}){
               <div className={styles.bottom_right}>
                 <div className={styles.right_text_section}>
                   <div className={styles.bottom_right_title}>
-                    آپلود عکس محصول
+                    آپلود عکس دسته محصول
                   </div>
                   <div className={styles.bottom_right_subTitle}>
                     از این قسمت می‌توانید برای دسته بندی محصول خود عکس بارگزاری
