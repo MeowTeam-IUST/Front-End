@@ -121,7 +121,7 @@ export function DiscountPage(props) {
     }, [pagenumber]);
 
     const [data, setData] = useState([]);
-    const [totalnumber, setTotalNumber] = useState(0);
+    const [totalnumber, setTotalNumber] = useState();
     useEffect(() => {
         fetchData().then((responsedata) => {
             setData(responsedata);
@@ -142,7 +142,7 @@ export function DiscountPage(props) {
                     'Authorization': 'Bearer ' + localStorage.getItem("token"),
                 }
             });
-            setTotalNumber(response.data.data);
+            setTotalNumber(response.data.data.totalNumber);
             const jsonData = response.data.data;
             const responsedata = jsonData.discounts.map(item => item);
             return responsedata;
@@ -156,7 +156,7 @@ export function DiscountPage(props) {
     const deleteid = async (doactionid) => {
         try {
             console.log(doactionid)
-            const response = await axios.delete('https://45.147.99.177:9001/api/Discount/delete',
+            const response = await axios.post('https://45.147.99.177:9001/api/Discount/delete',
             {
                 ids: doactionid
             },
@@ -194,11 +194,16 @@ export function DiscountPage(props) {
     }
     const [inputValue, setInputValue] = React.useState('');
     const [isPopupOpen, setPopupOpen] = useState(false);
-    const openPopup = () => {
+    const [itemindex, setItemIndex] = React.useState('');
+    const openPopup = (num) => {
+        setItemIndex(num);
         setPopupOpen(true);
     };
     const closePopup = () => {
         setPopupOpen(false);
+        fetchData().then((responsedata) => {
+            setData(responsedata);
+        })
     };
 
     // add values
@@ -232,8 +237,8 @@ export function DiscountPage(props) {
                 {
                     id: null,
                     title: incode,
-                    startTime: "2024-01-28T19:51:10.633Z",
-                    expirationTime: "2024-01-28T19:51:10.633Z",
+                    startTime: instart,
+                    expirationTime: inend,
                     amountOfPercent: indiscount,
                     number: innumber,
                 },
@@ -316,7 +321,7 @@ export function DiscountPage(props) {
                                 height: "50px",
                             }
                         }}
-                        value={instart} views={['year', 'month', 'day', 'hours', 'minutes', 'seconds']}/>
+                        onChange={handleInputStart} value={instart} views={['year', 'month', 'day', 'hours', 'minutes', 'seconds']}/>
                     </LocalizationProvider>
                 </div>
                 <div className={styles.addheaditem}>
@@ -389,9 +394,9 @@ export function DiscountPage(props) {
                                 isOpen={isPopupOpen}
                                 onClose={closePopup}
                                 title={"ویرایش"}
-                                content={<EditDiscount id={index} />}
-                            />
-                            <div className={styles.cardonethirditem} style={{ border: '1px solid rgba(67, 24, 255, 1)' }} onClick={() => openPopup()}>
+                                content={itemindex==index ?(<EditDiscount id={item.id} closePopup={closePopup} />):(<></>)}
+                                />
+                            <div className={styles.cardonethirditem} style={{ border: '1px solid rgba(67, 24, 255, 1)' }} onClick={() => openPopup(index)}>
                                 <div className={styles.carditemtext}>ویرایش</div>
                             </div>
                             <div className={styles.carditem}>

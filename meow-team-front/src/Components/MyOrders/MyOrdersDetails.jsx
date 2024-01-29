@@ -196,7 +196,7 @@ export function MyOrdersdetails(props) {
                                                 <div className={styles.orderdetailstexthreeright}>: قیمت</div>
                                             </div>
                                             <div className={styles.orderdetailstexfour}>
-                                                <div className={styles.orderdetailstexfournumber}>۲</div>
+                                                <div className={styles.orderdetailstexfournumber}>{item.amount}</div>
                                                 <div className={styles.orderdetailstexfourtext}>: تعداد</div>
                                             </div>
                                         </div>

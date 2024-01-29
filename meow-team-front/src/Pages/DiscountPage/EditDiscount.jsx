@@ -4,48 +4,49 @@ import axios from 'axios';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import dayjs from 'dayjs';
 
-export default function EditDiscount({id , CardDescription}) {
-    console.log(id)
-    // const [Discountdata, setDiscountData] = useState(null);
-    // useEffect(() => {
-    //     fetchDiscountData().then((responsedata) => {
-    //         setDiscountData(responsedata);
-    //     })
-    // }, [id]);
-    // useEffect(() => {
-    //     console.log(Discountdata)
-    // }, [Discountdata]);
-    // const fetchDiscountData = async () => { // map the values
-    //     try {
-    //         const response = await axios.get(`https://45.147.99.177:9001/api/Discount/get_by_id/${id}`, {
-    //             headers: {
-    //                 'accept': 'text/plain' ,
-    //                 'Content-Type': 'application/json' ,
-    //                 'Authorization': 'Bearer ' + localStorage.getItem("token"),
-    //             }
-    //         });
-    //         console.log(response)
-    //         const jsonData = response.data.data;
-    //         return jsonData;
-    //     } catch (error) {
-    //       console.error(error);
-    //     }
-    //     finally{
-    //     }
-    // };
+export default function EditDiscount({id , closePopup , CardDescription}) {
+    const [Discountdata, setDiscountData] = useState(null);
+    useEffect(() => {
+        fetchDiscountData().then((responsedata) => {
+            setDiscountData(responsedata);
+        })
+    }, [id]);
+    useEffect(() => {
+        console.log(Discountdata)
+    }, [Discountdata]);
+    const fetchDiscountData = async () => { // map the values
+        try {
+            const response = await axios.get(`https://45.147.99.177:9001/api/Discount/get_by_id/${id}`, {
+                headers: {
+                    'accept': 'text/plain' ,
+                    'Content-Type': 'application/json' ,
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                }
+            });
+            const jsonData = response.data.data;
+            return jsonData;
+        } catch (error) {
+          console.error(error);
+        }
+        finally{
+        }
+    };
 
-
+    const [doactionid, setDoActionId] = useState([id]);
     const deleteid = async () => {
         try {
-            const response = await axios.post(`https://45.147.99.177:9001/api/Discount/delete/${id}`,
+            const response = await axios.post('https://45.147.99.177:9001/api/Discount/delete',
+            {
+                ids: doactionid
+            },
             {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
                     'Accept': 'text/plain',
-                    'Connection': 'keep-alive',
-                    'ngrok-skip-browser-warning' : '235',
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
+
                 },
             });
         } catch (error) {
@@ -61,16 +62,19 @@ export default function EditDiscount({id , CardDescription}) {
                 .post(
                 "https://45.147.99.177:9001/api/Discount/add",
                 {
-                    title: incode,
-                    startTime: instart,
-                    expirationTime: inend,
-                    amountOfPercent: indiscount,
-                    number: inrest,
+                    id: null,
+                    title: incode==""?Discountdata?.title:incode,
+                    startTime: instart==""?Discountdata?.startTime:instart,
+                    expirationTime: inend==""?Discountdata?.expirationTime:inend,
+                    amountOfPercent: indiscount==""?Discountdata?.amountOfPercent:indiscount,
+                    number: inrest==""?Discountdata?.number:inrest,
                 },
                 {
                     headers: {
                         accept: "text/plain",
                         "Content-Type": "application/json",
+                        'Authorization': 'Bearer ' + localStorage.getItem("token"),
+
                     },
                 }
             )
@@ -81,6 +85,7 @@ export default function EditDiscount({id , CardDescription}) {
         finally
         {
         }
+        closePopup()
     }
 
 
@@ -112,7 +117,7 @@ export default function EditDiscount({id , CardDescription}) {
                 <input
                     className={styles.biginput}
                     type="text"
-                    value={indiscount}
+                    value={indiscount=="" ? (Discountdata?.amountOfPercent) : indiscount}
                     onChange={handleInputDiscount}
                     dir="rtl"
                 />
@@ -122,7 +127,7 @@ export default function EditDiscount({id , CardDescription}) {
                 <input
                     className={styles.biginput}
                     type="text"
-                    value={incode}
+                    value={incode=="" ? (Discountdata?.title) : incode}
                     onChange={handleInCode}
                     dir="rtl"
                 />
@@ -148,7 +153,7 @@ export default function EditDiscount({id , CardDescription}) {
                             height: "50px",
                         }
                     }}
-                    onChange={handleInputEnd} value={inend} views={['year', 'month', 'day', 'hours', 'minutes', 'seconds']}/>
+                    onChange={handleInputEnd} value={inend=="" ? dayjs(Discountdata?.expirationTime) : inend} views={['year', 'month', 'day', 'hours', 'minutes', 'seconds']}/>
                 </LocalizationProvider>
             </div>
             <div className={styles.EditDiscountbox}>
@@ -170,27 +175,23 @@ export default function EditDiscount({id , CardDescription}) {
                             height: "50px",
                         }
                     }}
-                    onChange={handleInputStart} value={instart} views={['year', 'month', 'day', 'hours', 'minutes', 'seconds']}/>
+                    onChange={handleInputStart} value={instart=="" ? dayjs(Discountdata?.startTime) : instart} views={['year', 'month', 'day', 'hours', 'minutes', 'seconds']}/>
                 </LocalizationProvider>
             </div>
         </div>
         <div className={styles.EditDiscountrow}>
-            <div className={styles.EditDiscountlitlebox}>
+            <div className={styles.EditDiscountbox}>
                 <div style={{ height : "100%" }}></div>
                 <div className={styles.Editactionbutton} onClick={() => UpdateDiscount()}>
                     <div className={styles.Editactionbuttontext}>اعمال</div>
                 </div>
             </div>
-            <div className={styles.EditDiscountlitlebox}>
-                <div className={styles.Editlitletitle}>:تعداد استفاده شده</div>
-                <div className={styles.Editlitletitle}>123</div>
-            </div>
-            <div className={styles.EditDiscountlitlebox}>
-                <div className={styles.Editlitletitle}>:موجودی</div>
+            <div className={styles.EditDiscountbox}>
+                <div className={styles.Editboxtitle}>:موجودی</div>
                 <input
-                    className={styles.litleinput}
+                    className={styles.biginput}
                     type="text"
-                    value={inrest}
+                    value={inrest=="" ? dayjs(Discountdata?.number) : inrest}
                     onChange={handleInputRest}
                     dir="rtl"
                 />

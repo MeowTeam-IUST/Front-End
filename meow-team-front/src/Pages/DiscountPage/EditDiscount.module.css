@@ -5,6 +5,7 @@
     justify-content: center;
     gap: 15px;
     padding-bottom: 30px;
+    padding-top: 40px;
 }
 
 .EditDiscountrow{
@@ -76,7 +77,7 @@
 
 .Editactionbutton{
     background: #4318FF;
-    width: 110px;
+    width: 194.4px;
     height: 45px;
     padding: 10px;
     border-radius: 15px;
