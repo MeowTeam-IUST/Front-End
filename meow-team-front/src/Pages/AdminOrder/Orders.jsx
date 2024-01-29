@@ -134,6 +134,7 @@ export function AdminOrder(props) {
                 headers: {
                     'accept': 'text/plain' ,
                     'Content-Type': 'application/json' ,
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
                 }
             });
             setTotalNumber(response.data.data.totalNumber);
@@ -152,15 +153,13 @@ export function AdminOrder(props) {
             console.log(doactionid)
             const response = await axios.post('https://45.147.99.177:9001/api/Admin/delete_invoice',
             {
-                invoiceIds: doactionid
+                Ids: doactionid
             },
             {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
                     'Accept': 'text/plain',
-                    'Connection': 'keep-alive',
-                    'ngrok-skip-browser-warning' : '235',
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
                 },
             });
             fetchData().then((responsedata) => {
