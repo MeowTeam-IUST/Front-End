@@ -13,6 +13,8 @@ import axios from 'axios';
 import RightVector from '../../assets/RightVector.svg'
 import { ShowToast } from '../../Components/LoginSignup/Toastify';
 import { BASE_URL } from '../../API/consts';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const useStyles = makeStyles({
     option: {
@@ -103,14 +105,11 @@ export function AdminOrderDetails(props) {
                   },
                 }
             )
-            // .then((response) =>
-            //     console.log(response),
-            //     ShowToast("success", ". انجام شد")
-            // );
+            ShowToast("success", ". انجام شد");
         }
         catch (error)
         {
-            // ShowToast("error", "! مشکلی پیش آمده است");
+            ShowToast("error", "! مشکلی پیش آمده است");
         }
         finally
         {
@@ -186,7 +185,7 @@ export function AdminOrderDetails(props) {
                     </div>
                     <div className={styles.headerrightset}>
                         <div className={styles.headerright}>
-                            <div className={styles.headerrightdoaction} onClick={inputValue ? ChangeState() : (console.log(inputValue))}>
+                            <div className={styles.headerrightdoaction} onClick={inputValue ? (() => ChangeState()) : (console.log(inputValue))}>
                                 <div className={styles.headerrightdoactiontext}>اجرا</div>
                             </div>
                             <Autocomplete
@@ -389,6 +388,7 @@ export function AdminOrderDetails(props) {
                 </div>
             </div>
         </div>
+        <ToastContainer />
     </div>
   );
 }
