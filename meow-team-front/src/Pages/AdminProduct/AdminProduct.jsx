@@ -11,8 +11,8 @@ import { AddSectionPopUp } from "../../Components/AddSectionPopUp/AddSectionPopU
 export default function AdminProduct(){
     const [showPopup, setShowPopup] = useState(false);
     const [allCategories, setAllCategories] = useState([])
-    const [isPopupOpen, setPopupOpen] = useState(false);
     const [refresh , setRefresh] = useState(false);
+    const [isPopupOpen, setPopupOpen] = useState(false);
     const openPopup = () => {
       setPopupOpen(true);
     };

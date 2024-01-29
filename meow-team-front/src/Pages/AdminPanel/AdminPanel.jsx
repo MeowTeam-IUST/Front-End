@@ -8,7 +8,6 @@ import AdminPanelSidebar from '../../Components/AdminPanelSidebar/AdminPanelSide
 export default function AdminPanel() {
   const navigate = useNavigate();
   const { itemPath1 } = useParams();
-  console.log(itemPath1)
   const [p, setP] = React.useState(false)
   const choosenItemIndex = items.findIndex((item) => item.path === window.location.pathname.split('/adminpanel/:')[1]);
   

@@ -1,0 +1,228 @@
+@import "../../App.scss";
+
+.overlay {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  cursor:auto;
+}
+.popupContent{
+  overflow-y: scroll;
+}
+.popupContent::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+.popup {
+  position: absolute;
+  width: max-content;
+  height: 80%;
+  background: $admin_background;
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 10;
+  .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .Title{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--Admin---Title, #2B3674);
+    font-family: Anjoman;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px; /* 75% */
+    letter-spacing: -0.64px;
+  }
+  .popUp_top {
+    background-color: white;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    
+
+    .popUp_Title {
+      font-weight: 900;
+      display: flex;
+      justify-content: space-between;
+      font-size: 24px;
+      color: $admin_title;
+    }
+    .popUp_top_form {
+      display: flex;
+      flex-direction: row;
+      align-self: stretch;
+      justify-content: space-between;
+      gap: 20px;
+
+      .titleSection {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        
+
+        .title {
+          font-size: large;
+          font-weight: 600;
+          color: $admin_title;
+        }
+        .TitleInput {
+          height: 40px;
+          border-radius: 10px;
+          border: 1px solid var(--Admin---Stroke, rgba(163, 174, 208, 0.20));
+          background: var(--Admin---Back, #F4F7FE);
+          padding-right: 10px;
+        }
+      }
+
+      .subTitleSection {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        
+
+        .subTitle {
+          font-size: large;
+          font-weight: 600;
+          color: $admin_title;
+        }
+        .SubtitleInput {
+          height: 40px;
+          border-radius: 10px;
+          border: 1px solid var(--Admin---Stroke, rgba(163, 174, 208, 0.20));
+          background: var(--Admin---Back, #F4F7FE);
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+
+  .popUp_bottom {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px;
+    border-radius: 25px;
+    height: 260px;
+    .bottom_right {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 30px;
+
+
+      .right_text_section {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .bottom_right_title {
+        font-size: 18px;
+        font-weight: 900;
+        color: $admin_title;
+      }
+      .bottom_right_subTitle {
+        font-size: 14px;
+        font-family: $second_font;
+      }
+
+      .uploadButton {
+        background-color: $admin_button;
+        width: 160px;
+        height: 44px;
+        border-radius: 16px;
+        border: none;
+        font-size: 16px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        color: white;
+        cursor: pointer;
+      }
+    }
+
+    .bottom_left {
+      width: 100%;
+      
+
+      .imagePlaceHolder {
+        width: 100%;
+        aspect-ratio: 1/1;
+        background-color: $admin_background;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        border-radius: 24px;
+        border: 2px dashed var(--Admin---Button, #c8bdfc);
+        color: $admin_title;
+        font-weight: 600;
+      }
+      .selectedImage {
+         display: block;
+        width: 100%;
+        aspect-ratio: 1/1;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 24px;
+        object-fit: cover;
+       
+        
+      }
+    }
+
+  }
+
+  .ButtonSection {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 16px;
+    
+    button {
+      flex-grow: 1;
+      height: 48px;
+      border-radius: 16px;
+      border: none;
+      font-size: 16px;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      
+      
+    }
+
+    .SubmitButton {
+      background-color: $admin_button ;
+    }
+
+    .CancelButton {
+      background-color: $--Opex--red;
+    }
+
+
+  }
+}
+
+/* Add any additional styling as needed */

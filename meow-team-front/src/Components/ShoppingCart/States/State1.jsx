@@ -3,7 +3,7 @@ import styles from './State1.module.scss';
 import CartItem from '../../CartItem/CartItem';
 import Requests from '../../../API/Requests';
 
-export default function State1({ changeState, Cart, TotalPrice ,total, setTotal , discount, setDiscount}) {
+export default function State1({ changeState, Cart, TotalPrice ,total, setTotal , discount, setDiscount, refresh , setRefresh}) {
   console.log(Cart)
   // const [discount, setDiscount] = React.useState()
   // const [total, setTotal] = React.useState(TotalPrice)
@@ -25,7 +25,7 @@ export default function State1({ changeState, Cart, TotalPrice ,total, setTotal 
           <div className={styles.main}>
             <div className={styles.items}>
               {Cart?.map((item, index) => (
-                <CartItem key={index}  title={item.productTitle} price={item.productPrice} img={item.imageUrl} quantity={item.amount} describthion={""} id={item.productId} />
+                <CartItem key={index}  title={item.productTitle} price={item.productPrice} img={item.imageUrl} quantity={item.amount} describthion={""} id={item.productId} refresh={refresh} setRefresh={setRefresh} />
               ))}
             </div>
             <div className={styles.summary}>

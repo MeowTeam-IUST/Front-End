@@ -11,7 +11,6 @@ import Popup from '../Popup/Popup';
 export function EditProfile() {
   const [selectedImage, setSelectedImage] = useState(null);
   const state = useSelector((state) => state.User); // Access the "User" slice of the state
-  console.log(state)
   const dispatch = useDispatch();
   const [isPopupOpen, setPopupOpen] = useState(false);
 
@@ -31,7 +30,7 @@ export function EditProfile() {
       formData.append('picture', file);
 
       const res = await Requests().editProfileImage(formData);
-      console.log(res.data);
+      // console.log(res.data);
 
       // You can dispatch an action to update the user's image in the Redux store if needed
       // For example: dispatch(SetUser({ ...state, image: res.data.image }));

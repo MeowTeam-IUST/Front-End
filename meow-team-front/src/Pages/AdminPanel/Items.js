@@ -26,13 +26,13 @@ export const items = [
         item : 1
 
     },
-    {
-        name: 'محصولات',
-        component: ProductsCat,
-        icon: Basket,
-        path: 'Products/*',
-        item : 2
-    },
+    // {
+    //     name: 'محصولات',
+    //     component: ProductsCat,
+    //     icon: Basket,
+    //     path: 'Products/*',
+    //     item : 2
+    // },
     {
         name: 'کد تخفیف',
         component: AdminProduct,

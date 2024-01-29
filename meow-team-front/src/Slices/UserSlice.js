@@ -27,7 +27,10 @@ const UserSlice = createSlice({
       state.image =  action.payload.Image;
       state.phoneNumber = action.payload.phoneNumber;
       state.Token = action.payload.Token;
-      state.isAdmin = action.payload.isAdmin;
+      if (state.isAdmin == true)
+        state.isAdmin == true
+      else
+        state.isAdmin = action.payload.isAdmin;
     },
     DeleteUser: (state, action) => {
       state.set = 0;

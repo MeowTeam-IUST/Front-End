@@ -16,6 +16,8 @@ import { EditCategoryPopUp } from "../AddCategoryPopUp/EditCategoryPopUp";
 
 
 import { BASE_URL } from '../../API/consts';
+import Popup from '../Popup/Popup';
+import { AddProductPopUp } from '../AddProductPopUp/AddProductPopUp';
 
 
 export default function AdminLittleCart({id , name, image, showPopup , description ,  open, setItemToEdit, itemToEdit, refresh,setRefresh }) {
@@ -40,6 +42,15 @@ export default function AdminLittleCart({id , name, image, showPopup , descripti
     // dispatch(setEditPopUp({editPopUp: false}))
 
   };
+  const [isPopupOpenadd, setPopupOpenadd] = useState(false);
+  const openPopupadd = () => {
+    setItem(id);
+    console.log(id, item);
+    setPopupOpenadd(true);
+  };
+   const closePopupadd = () => {
+     setPopupOpenadd(false);
+   };
 
   
 
@@ -51,7 +62,7 @@ export default function AdminLittleCart({id , name, image, showPopup , descripti
       // onClick={() => openPopup()}
     >
       <div className={showPopup ? styles.GameTitlePopupOpen : styles.GameTitle}>
-        <div className={styles.GameTitleText}  onClick={() => window.location.href = "/adminpanel/:Products/" + id}>{name}</div>
+        <div className={styles.GameTitleText}  onClick={openPopupadd}>{name}</div>
         <div className={styles.under}>
           <div className={styles.underText}>{description}</div>
           <SmallBuyButton admin={true} open={openPopup} />
@@ -64,6 +75,11 @@ export default function AdminLittleCart({id , name, image, showPopup , descripti
         id={item}
         refresh={refresh}
         setRefresh={setRefresh}
+      />)}
+      {isPopupOpenadd && (<AddProductPopUp
+        isOpen={isPopupOpenadd}
+        onClose={closePopupadd}
+        id = {item}
       />)}
     </div>
   );

@@ -7,9 +7,8 @@ import gameControlle from '../../assets/game-controlle.svg'
 import Productcard from '../../Components/Productcard/Productcard'
 import Add from '../../Components/Add/Add';
 import Requests from '../../API/Requests';
-export default function ProductsCat(){
-    let id = window.location.pathname.split('/adminpanel/:Products/')[1]
-    console.log(id)
+export default function ProductsCat({id}){
+  console.log(id)
     const [imageUploaded, setImageUploaded] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [title, setTitle] = useState('');
@@ -102,7 +101,6 @@ export default function ProductsCat(){
       
     return(
         <div className={styles.whole} dir='ltr'>
-            <div className={styles.cat}> دسته های محصولات</div>
             <div className={styles.upcat}>
                 <div className={styles.upcatleft}>
                 <div className={styles.upcatleft1}>

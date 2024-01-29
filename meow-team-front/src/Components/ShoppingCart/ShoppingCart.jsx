@@ -11,7 +11,7 @@ import Empty from './States/Empty';
 export default function ShoppingCart() {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-
+  const [refresh , setRefresh] = useState(0)
   const fetchInvoice = async () => {
     try {
       const res = await Requests().getInvoice();
@@ -26,7 +26,7 @@ export default function ShoppingCart() {
 
   useEffect(() => {
     fetchInvoice();
-  }, []);
+  }, [refresh]);
 
   const dispatch = useDispatch();
   const [activeStateId, setActiveStateId] = useState(1);
@@ -48,7 +48,7 @@ export default function ShoppingCart() {
     <React.Fragment>
       {
         cart?.length == 0 ? <Empty/> : 
-        activeState && React.createElement(activeState.component, { changeState: handleChangeState, Cart: cart, TotalPrice: totalPrice , total: total, setTotal: setTotal, discount: discount, setDiscount : setDiscount })
+        activeState && React.createElement(activeState.component, { changeState: handleChangeState, Cart: cart, TotalPrice: totalPrice , total: total, setTotal: setTotal, discount: discount, setDiscount : setDiscount , refresh: refresh , setRefresh: setRefresh })
       }
     </React.Fragment>
   );

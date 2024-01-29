@@ -5,7 +5,7 @@ import negetive from '../../assets/-.svg'
 import Requests from '../../API/Requests'
 import { BASE_URL } from "../../API/consts";
 
-export default function CartItem({title, price, img, quantity , describthion , id }) {
+export default function CartItem({title, price, img, quantity , describthion , id ,refresh , setRefresh}) {
   const [RequestMessage, setRequestMessage] = React.useState('');
   const [quan , setQuan] = React.useState(quantity);
   const AddToCartReq = async () => {
@@ -19,6 +19,7 @@ export default function CartItem({title, price, img, quantity , describthion , i
     if (res.data.isSuccess) {
       console.log('success');
       setQuan(quan+1);
+      setRefresh(refresh+1)
     }
     else {
       console.log(res.data.message);
@@ -37,6 +38,8 @@ export default function CartItem({title, price, img, quantity , describthion , i
     if (res.data.isSuccess) {
       console.log('success');
       setQuan(quan-1);
+      setRefresh(refresh+1)
+
     }
     else {
       console.log(res.data.message);
