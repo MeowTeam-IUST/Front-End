@@ -60,10 +60,17 @@
 @media (max-width: 480px) { 
      .PopularGame {
       border-radius: 25px;
+      .PopularGameTitleSection{
+        gap: 0px !important;
+      }
+      .PopularGameSubTitleText {
+          font-size: 12px !important;
+          margin-top: -5px;
+        }
       .PopularGameTitle {
         padding: 0px 20px;
         .PopularGameTitleText {
-        font-size: 4vw !important;
+        font-size: 14px !important;
         }
       }
       
@@ -74,6 +81,9 @@
 @media (min-width: 481px) and (max-width: 767px) { 
     .PopularGame {
       border-radius: 30px;
+      .PopularGameTitleSection{
+        gap: 2px !important;
+      }
       .PopularGameTitle {
         padding: 0px 20px;
         .PopularGameTitleText {
@@ -88,10 +98,16 @@
 @media (min-width: 768px) and (max-width: 1024px){ 
     .PopularGame {
       border-radius: 25px;
+      .PopularGameTitleSection{
+        gap: 2px !important;
+      }
       .PopularGameTitle {
         padding: 0px 20px;
         .PopularGameTitleText {
         font-size: 15px !important;
+        }
+        .PopularGameSubTitleText {
+          font-size: 12px !important;
         }
       }
       
@@ -102,6 +118,7 @@
 @media (min-width: 1025px) and (max-width: 1280px){ 
     .PopularGame {
       border-radius: 30px;
+      
       .PopularGameTitle {
         padding: 0px 30px;
         .PopularGameTitleText {

@@ -17,9 +17,9 @@
     .GameTitlePopupOpen{
       width: 198px;
       height: 80px;
-      background: var(--Blur---back, rgba(0, 0, 0, 0.20));
+      // background: var(--Blur---back, rgba(0, 0, 0, 0.20));
       // backdrop-filter: blur(15px);
-      border-radius: 0px 0px 30px 30px;
+      border-radius: 0px 0px 20px 20px;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -29,9 +29,9 @@
     .GameTitle{
         width: 100%;
         height: 60px;
-        background: var(--Blur---back, rgba(0, 0, 0, 0.20));
+        // background: var(--Blur---back, rgba(0, 0, 0, 0.20));
         backdrop-filter: blur(15px);
-        border-radius: 0px 0px 30px 30px;
+        border-radius: 0px 0px 20px 20px;
         display: flex;
         flex-direction: column;
         gap: 5px;
@@ -85,10 +85,11 @@
 @media  (max-width: 767px) { 
     .LittleCart {
         width: 150px !important;
-        border-radius: 30px;
+        border-radius: 20px;
         .GameTitle {
           font-size: 13px;
           padding: 8px;
+          gap: 0px !important;
         }
 
         .underText {
@@ -101,7 +102,7 @@
 @media (min-width: 768px) and (max-width: 1024px){ 
     .LittleCart {
         width: 150px !important;
-        border-radius: 30px;
+        border-radius: 20px;
         .GameTitle {
           font-size: 13px;
           padding: 8px;
