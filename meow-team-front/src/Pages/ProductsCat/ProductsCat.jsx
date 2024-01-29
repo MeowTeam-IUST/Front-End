@@ -146,7 +146,7 @@ export default function ProductsCat({id}){
               <div className={styles.bottom_right}>
                 <div className={styles.right_text_section}>
                   <div className={styles.bottom_right_title}>
-                    آپلود عکس محصول
+                    آپلود عکس دسته محصول
                   </div>
                   <div className={styles.bottom_right_subTitle}>
                     از این قسمت می‌توانید برای دسته بندی محصول خود عکس بارگزاری
@@ -170,7 +170,7 @@ export default function ProductsCat({id}){
                     src={selectedImage}
                     alt="Selected"
                     className={styles.selectedImage}
-                    width={300}
+                    
                   />
                 ) : (
                   <div className={styles.imagePlaceHolder}>
@@ -210,7 +210,7 @@ export default function ProductsCat({id}){
           <div className={styles.item}>
           <div className={styles.AddCard}  onClick={openPopup}>
             <div className={styles.Plus}>+</div>
-            <div className={styles.Plus1}>اضافه کردن دسته</div>
+            <div className={styles.Plus1}>اضافه کردن محصول</div>
           </div>
           <AddproductPopUp1 isOpen={isPopupOpen} onClose={closePopup} parentId={id} refresh={refresh} setRefresh={setRefresh} />
         </div>
