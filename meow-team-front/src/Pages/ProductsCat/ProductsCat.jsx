@@ -99,6 +99,7 @@ export default function ProductsCat({id}){
   
       console.log("Submitted value:", TitleValue);
       setRefresh(!refresh)
+      window.location.href = "/adminpanel/:default"
       // onClose();
     };
       useEffect(() => {
