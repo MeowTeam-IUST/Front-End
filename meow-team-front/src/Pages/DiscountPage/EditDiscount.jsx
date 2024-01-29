@@ -5,6 +5,9 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import dayjs from 'dayjs';
+import { ShowToast } from "../../Components/LoginSignup/Toastify";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function EditDiscount({id , closePopup , CardDescription}) {
     const [Discountdata, setDiscountData] = useState(null);
@@ -78,9 +81,13 @@ export default function EditDiscount({id , closePopup , CardDescription}) {
                     },
                 }
             )
+            .then((response) =>
+                ShowToast("success", ". انجام شد")
+            );
         }
         catch (error)
         {
+            ShowToast("error", "! مشکلی پیش آمده است");
         }
         finally
         {
@@ -197,6 +204,7 @@ export default function EditDiscount({id , closePopup , CardDescription}) {
                 />
             </div>
         </div>
+        <ToastContainer />
     </div>
   )
 }

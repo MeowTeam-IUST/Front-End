@@ -16,6 +16,9 @@ import EditDiscount from './EditDiscount';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { ShowToast } from "../../Components/LoginSignup/Toastify";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const useStyles = makeStyles({
     option: {
@@ -147,7 +150,6 @@ export function DiscountPage(props) {
             const responsedata = jsonData.discounts.map(item => item);
             return responsedata;
         } catch (error) {
-          console.error(error);
         }
         finally{
         }
@@ -170,11 +172,12 @@ export function DiscountPage(props) {
                     'Authorization': 'Bearer ' + localStorage.getItem("token"),
                 },
             });
+            ShowToast("success", ". انجام شد")
             fetchData().then((responsedata) => {
                 setData(responsedata);
             })
         } catch (error) {
-          console.error(error);
+            ShowToast("error", "! مشکلی پیش آمده است");
         }
         finally{
         }
@@ -252,7 +255,7 @@ export function DiscountPage(props) {
             )
             .then((response) =>
                 console.log(response),
-                // ShowToast("success", ". انجام شد")
+                ShowToast("success", ". انجام شد")
             );
             fetchData().then((responsedata) => {
                 setData(responsedata);
@@ -260,7 +263,7 @@ export function DiscountPage(props) {
         }
         catch (error)
         {
-            // ShowToast("error", "! مشکلی پیش آمده است");
+            ShowToast("error", "! مشکلی پیش آمده است");
         }
         finally
         {
@@ -390,12 +393,13 @@ export function DiscountPage(props) {
                 <div className={styles.cards}>
                     {data ? (data.map((item, index) => (
                         <div className={styles.card} key={index}>
-                            <Popup
+                            {itemindex==index ? (<Popup
                                 isOpen={isPopupOpen}
                                 onClose={closePopup}
                                 title={"ویرایش"}
-                                content={itemindex==index ?(<EditDiscount id={item.id} closePopup={closePopup} />):(<></>)}
+                                content={<EditDiscount id={item.id} closePopup={closePopup} />}
                                 />
+                            ):(<></>)}
                             <div className={styles.cardonethirditem} style={{ border: '1px solid rgba(67, 24, 255, 1)' }} onClick={() => openPopup(index)}>
                                 <div className={styles.carditemtext}>ویرایش</div>
                             </div>
@@ -541,6 +545,7 @@ export function DiscountPage(props) {
                 </div>
             </div>
         </div>
+        <ToastContainer />
     </div> 
   );
 }
