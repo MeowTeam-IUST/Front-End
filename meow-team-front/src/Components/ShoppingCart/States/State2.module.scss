@@ -6,6 +6,104 @@
     width: 100%;
     height: 1px;
 }
+
+.ordersstatus{
+    width: 50%;
+    height: 83px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ordersstatusiconbox{
+    /* height: 52px; */
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.iconboxfirst{
+    position: relative;
+}
+.outsideiconfirst{
+    height: 67px;
+    margin-top: 5px;
+    margin-left: 0px;
+    position: relative;
+    z-index: 1;
+}
+.insideiconfirst{
+    height: 25px;
+    position: absolute;
+    bottom: 29px;
+    left: 19px;
+    z-index: 2
+}
+
+.iconboxsecond{
+    position: relative;
+}
+.outsideiconsecond{
+    height: 67px;
+    margin-top: 5px;
+    margin-left: 0px;
+    position: relative;
+    z-index: 1;
+}
+.insideiconsecond{
+    height: 23px;
+    position: absolute;
+    bottom: 29px;
+    left: 23px;
+    z-index: 2;
+}
+
+.iconboxthird{
+    position: relative;
+}
+.outsideiconthird{
+    height: 67px;
+    margin-top: 5px;
+    margin-left: 0px;
+    position: relative;
+    z-index: 1;
+}
+.insideiconthird{
+    height: 23px;
+    position: absolute;
+    bottom: 29px;
+    left: 23px;
+    z-index: 2
+}
+
+.ordersstatustextbox{
+    // height: 30px;
+    // width: 75%;
+    display: flex;
+    flex-direction: row;
+    // justify-self: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 3px;
+    gap: 40px;
+}
+
+.ordersstatustext{
+    // height: 24px;
+    width: 100px;
+    font-family: Anjoman;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #9CA3AF;
+}
+
 .main{
     display: flex;
     // min-height: 666px;

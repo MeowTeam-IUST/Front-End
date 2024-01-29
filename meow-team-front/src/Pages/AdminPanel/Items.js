@@ -10,6 +10,7 @@ import Dashboard from '../../assets/Dashboard.svg'
 import AdminProduct from '../AdminProduct/AdminProduct'
 import ProductsCat from '../ProductsCat/ProductsCat'
 import {OrderApp} from '../AdminOrder/app'
+import { DiscountPage } from '../DiscountPage/DiscountPage'
 export const items = [
     {
         name: 'داشبورد',
@@ -35,7 +36,7 @@ export const items = [
     // },
     {
         name: 'کد تخفیف',
-        component: AdminProduct,
+        component: DiscountPage,
         icon: history,
         path: 'SalesStatus',
         item : 3

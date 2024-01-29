@@ -1,5 +1,5 @@
 import React, {useState , useEffect} from 'react';
-import styles from './Order.module.css'
+import styles from './DiscountPage.module.css'
 import expand_more from '../../assets/expand_more.svg'
 import arrow_right from '../../assets/keyboard_arrow_right.svg'
 import arrow_left from '../../assets/keyboard_arrow_left.svg'
@@ -11,6 +11,11 @@ import { TextField } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import { makeStyles } from '@mui/styles';
 import Paper from "@mui/material/Paper";
+import Popup from '../../Components/Popup/Popup';
+import EditDiscount from './EditDiscount';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 const useStyles = makeStyles({
     option: {
@@ -24,7 +29,7 @@ const useStyles = makeStyles({
     },
 });
 
-export function AdminOrder(props) {
+export function DiscountPage(props) {
     const classes = useStyles();
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const [checktick, Setchecktick] = useState(false);
@@ -116,7 +121,7 @@ export function AdminOrder(props) {
     }, [pagenumber]);
 
     const [data, setData] = useState([]);
-    const [totalnumber, setTotalNumber] = useState(0);
+    const [totalnumber, setTotalNumber] = useState();
     useEffect(() => {
         fetchData().then((responsedata) => {
             setData(responsedata);
@@ -130,15 +135,16 @@ export function AdminOrder(props) {
     }, [totalnumber]);
     const fetchData = async () => {
         try {
-            const response = await axios.get(`https://45.147.99.177:9001/api/Admin/get_invoice/${pagenumber}`, {
+            const response = await axios.get(`https://45.147.99.177:9001/api/Discount/get_all/${pagenumber}`, {
                 headers: {
                     'accept': 'text/plain' ,
                     'Content-Type': 'application/json' ,
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
                 }
             });
             setTotalNumber(response.data.data.totalNumber);
             const jsonData = response.data.data;
-            const responsedata = jsonData.invoices.map(item => item);
+            const responsedata = jsonData.discounts.map(item => item);
             return responsedata;
         } catch (error) {
           console.error(error);
@@ -150,9 +156,9 @@ export function AdminOrder(props) {
     const deleteid = async (doactionid) => {
         try {
             console.log(doactionid)
-            const response = await axios.post('https://45.147.99.177:9001/api/Admin/delete_invoice',
+            const response = await axios.post('https://45.147.99.177:9001/api/Discount/delete',
             {
-                invoiceIds: doactionid
+                ids: doactionid
             },
             {
                 headers: {
@@ -161,6 +167,7 @@ export function AdminOrder(props) {
                     'Accept': 'text/plain',
                     'Connection': 'keep-alive',
                     'ngrok-skip-browser-warning' : '235',
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
                 },
             });
             fetchData().then((responsedata) => {
@@ -186,36 +193,194 @@ export function AdminOrder(props) {
         doactionid.length = 0;
     }
     const [inputValue, setInputValue] = React.useState('');
-  return (
-    <div className={styles.layout} dir='ltr'>
+    const [isPopupOpen, setPopupOpen] = useState(false);
+    const [itemindex, setItemIndex] = React.useState('');
+    const openPopup = (num) => {
+        setItemIndex(num);
+        setPopupOpen(true);
+    };
+    const closePopup = () => {
+        setPopupOpen(false);
+        fetchData().then((responsedata) => {
+            setData(responsedata);
+        })
+    };
+
+    // add values
+    const [inend, setInEnd] = React.useState("");
+    const handleInputEnd = (event) => {    
+        setInEnd(event);
+    };
+    const [instart, setInStart] = React.useState("");
+    const handleInputStart = (event) => {
+        setInStart(event);
+    };
+    const [indiscount, setInDiscount] = React.useState("");
+    const handleInputDiscount = (event) => {
+        setInDiscount(event.target.value);
+    };
+    const [innumber, setInNumber] = React.useState("");
+    const handleInputNumber = (event) => {
+        setInNumber(event.target.value);
+    };
+    const [incode, setInCode] = React.useState("");
+    const handleInCode = (event) => {
+        setInCode(event.target.value);
+    };
+
+    
+    async function AddDiscount(){
+        try{
+            await axios
+            .post(
+                "https://45.147.99.177:9001/api/Discount/add",
+                {
+                    id: null,
+                    title: incode,
+                    startTime: instart,
+                    expirationTime: inend,
+                    amountOfPercent: indiscount,
+                    number: innumber,
+                },
+                {
+                    headers: {
+                        accept: "text/plain",
+                        "Content-Type": "application/json",
+                        'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                    },
+                }
+            )
+            .then((response) =>
+                console.log(response),
+                // ShowToast("success", ". انجام شد")
+            );
+            fetchData().then((responsedata) => {
+                setData(responsedata);
+            })
+        }
+        catch (error)
+        {
+            // ShowToast("error", "! مشکلی پیش آمده است");
+        }
+        finally
+        {
+        }
+        // return false
+    }
+    
+    const [value, onChange] = useState(new Date());
+    return (
+        <div className={styles.layout} dir='ltr'>
         <div className={styles.container}>
-            <div className={styles.subjecttext}>سفارشات</div>
+            <div className={styles.subjecttext}>کد های تخفیف</div>
+            <div className={styles.adddiscount}>
+                <div className={styles.addheaditem}>
+                    <div style={{ height : "100%" }}></div>
+                    <div className={styles.addbutton} onClick={() => AddDiscount()}>
+                        <div className={styles.addbuttontext}>افزودن</div>
+                    </div>
+                </div>
+                <div className={styles.addheaditem}>
+                    <div className={styles.additemtitle}>: تاریخ پایان</div>
+                    {/* <input
+                        className={styles.inputadd}
+                        type="text"
+                        value={inend}
+                        onChange={handleInputEnd}
+                        dir="rtl"
+                    /> */}
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DateTimePicker 
+                        sx={{
+                            width: "100%",
+                            '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                                borderRadius: '15px',
+                                border: '1px solid #A3AED0',
+                                height: "50px",
+                            }
+                        }}
+                        onChange={handleInputEnd} value={inend} views={['year', 'month', 'day', 'hours', 'minutes', 'seconds']}/>
+                    </LocalizationProvider>
+                </div>
+                <div className={styles.addheaditem}>
+                    <div className={styles.additemtitle}>: تاریخ شروع</div>
+                    {/* <input
+                        className={styles.inputadd}
+                        type="text"
+                        value={instart}
+                        onChange={handleInputStart}
+                        dir="rtl"
+                    /> */}
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DateTimePicker 
+                        sx={{
+                            width: "100%",
+                            '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                                borderRadius: '15px',
+                                border: '1px solid #A3AED0',
+                                height: "50px",
+                            }
+                        }}
+                        onChange={handleInputStart} value={instart} views={['year', 'month', 'day', 'hours', 'minutes', 'seconds']}/>
+                    </LocalizationProvider>
+                </div>
+                <div className={styles.addheaditem}>
+                    <div className={styles.additemtitle}>: درصد تخفیف</div>
+                    <input
+                        className={styles.inputadd}
+                        type="text"
+                        value={indiscount}
+                        onChange={handleInputDiscount}
+                        dir="rtl"
+                    />
+                </div>
+                <div className={styles.addheaditem}>
+                    <div className={styles.additemtitle}>: تعداد</div>
+                    <input
+                        className={styles.inputadd}
+                        type="text"
+                        value={innumber}
+                        onChange={handleInputNumber}
+                        dir="rtl"
+                    />
+                </div>
+                <div className={styles.addheaditem}>
+                    <div className={styles.additemtitle}>: کد</div>
+                    <input
+                        className={styles.inputadd}
+                        type="text"
+                        value={incode}
+                        onChange={handleInCode}
+                        dir="rtl"
+                    />
+                </div>
+            </div>
             <div className={styles.content}>
                 <div className={styles.header}>
                     <div className={styles.headeritems}>
-                        <div className={styles.headeritem}>
+                        {/* <div className={styles.headeritem}>
                             <div className={styles.headerselectactionicon}>
-                                <img className={styles.headerexpandmoreicon} src={expand_more}  alt=""/>
+                            <img className={styles.headerexpandmoreicon} src={expand_more}  alt=""/>
                             </div>
                             <div className={styles.headerfourthitemtext}>مجموع قیمت</div>
+                        </div> */}
+                        <div className={styles.headeritem}>
+                            <div className={styles.headerselectactionicon}>
+                                <img className={styles.headerexpandmoreicon} src={expand_more}  alt=""/>
+                            </div>
+                            <div className={styles.headerthirditemtext}>تعداد استفاده</div>
                         </div>
                         <div className={styles.headeritem}>
                             <div className={styles.headerselectactionicon}>
                                 <img className={styles.headerexpandmoreicon} src={expand_more}  alt=""/>
                             </div>
-                            <div className={styles.headerthirditemtext}>وضعیت</div>
+                            <div className={styles.headerseconditemtext}>درصد تخفیف</div>
                         </div>
                         <div className={styles.headeritem}>
                             <div className={styles.headerselectactionicon}>
                                 <img className={styles.headerexpandmoreicon} src={expand_more}  alt=""/>
                             </div>
-                            <div className={styles.headerseconditemtext}>تاریخ</div>
-                        </div>
-                        <div className={styles.headeritem}>
-                            <div className={styles.headerselectactionicon}>
-                                <img className={styles.headerexpandmoreicon} src={expand_more}  alt=""/>
-                            </div>
-                            <div className={styles.headerfirstitemtext}>شماره سفارش</div>
+                            <div className={styles.headerfirstitemtext}>کد خفیف</div>
                         </div>
                         <Checkbox {...label} checked={checktick} size="small" sx={{padding:0}} onClick={() => HandelCheckClicktotal()}/>
                     </div>
@@ -225,17 +390,23 @@ export function AdminOrder(props) {
                 <div className={styles.cards}>
                     {data ? (data.map((item, index) => (
                         <div className={styles.card} key={index}>
-                            <div className={styles.carditem}>
-                                <div className={styles.carditemtext}>{item.totalPeice} تومان</div>
+                            <Popup
+                                isOpen={isPopupOpen}
+                                onClose={closePopup}
+                                title={"ویرایش"}
+                                content={itemindex==index ?(<EditDiscount id={item.id} closePopup={closePopup} />):(<></>)}
+                                />
+                            <div className={styles.cardonethirditem} style={{ border: '1px solid rgba(67, 24, 255, 1)' }} onClick={() => openPopup(index)}>
+                                <div className={styles.carditemtext}>ویرایش</div>
                             </div>
-                            <div className={styles.cardonethirditem} style={{ border: item.state == 1 ? '1px solid rgba(229, 42, 73, 1)' : item.state == 2 ? '1px solid rgba(0, 190, 53, 1)' : item.state == 3 ? '1px solid rgba(67, 24, 255, 1)' : 'black' }}>
-                                <div className={styles.carditemtext}>{item.state == 1 ? 'پرداخت شده' : item.state == 2 ? 'در حال انجام' : item.state == 3 ? 'انجام شده' : 'نا مشخص'}</div>
+                            <div className={styles.carditem}>
+                                <div className={styles.carditemtext}>{item.number}</div>
                             </div>
                             <div className={styles.carditem}>
-                                <div className={styles.carditemtext}>{item.strDate}</div>
+                                <div className={styles.carditemtext}>{item.amountOfPercent}</div>
                             </div>
                             <div className={styles.carditem}>
-                                <div className={styles.carditemidlinktext} onClick={() => props.onFormSwitch("Details", data[index])}>{item.id}</div>
+                                <div className={styles.carditemidlinktext} >{item.title}</div>
                             </div>
                             <Checkbox {...label} checked={booleanArray[index]} size="small" sx={{padding:0}} onClick={() => HandelCheckClick(index)}/>
                         </div>

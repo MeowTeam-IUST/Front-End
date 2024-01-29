@@ -1,0 +1,100 @@
+.EditDiscount{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding-bottom: 30px;
+    padding-top: 40px;
+}
+
+.EditDiscountrow{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    width: 418.8px;
+    height: 79px;
+    gap: 30px;
+}
+.EditDiscountbox{
+    width: 194.4px;
+    height: 79px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    /* justify-content: center; */
+}
+
+.Editboxtitle{
+    font-family: Anjoman;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: #000000;
+    margin-right: 3%;
+}
+
+.biginput{
+    width: 194.4px;
+    height: 45px;
+    border-radius: 15px;
+    border: 1px solid #A3AED0;
+    padding-right: 10px;
+    /* border: 1px; */
+}
+
+.EditDiscountlitlebox{
+    width: 119.4px;
+    height: 79px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.Editlitletitle{
+    color: #000000;
+    font-family: Anjoman;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    margin-right: 5%;
+}
+
+.litleinput{
+    width: 119.4px;
+    height: 45px;
+    border-radius: 15px;
+    border: 1px solid #A3AED0;
+    padding-right: 10px;
+}
+
+.Editactionbutton{
+    background: #4318FF;
+    width: 194.4px;
+    height: 45px;
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;   
+    justify-content: center;
+}
+
+.Editactionbutton:hover{
+    cursor: pointer;
+}
+
+.Editactionbuttontext{
+    font-family: Anjoman;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: #FFFFFF;
+}

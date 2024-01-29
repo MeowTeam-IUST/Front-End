@@ -4,8 +4,48 @@ on:
     branches: ['dev','main']
   pull_request:
     branches: ['dev','main']
-      
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - run: npm i fsevents@latest -f --save-optional
+      - name: clean cache
+        run: npm cache clean --force
+      - name: Setup Build (CI) env
+        working-directory: ./meow-team-front
+        run: npm ci --legacy-peer-deps
+      - name: Install dependencies
+        working-directory: ./meow-team-front
+        run: npm install --force
+      - name: Build project
+        env:
+          CI: false
+        working-directory: ./meow-team-front
+        run: npm run build --if-present
+  test:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm i fsevents@latest -f --save-optional
+      - name: Setup Test (CI) env
+        working-directory: ./meow-team-front
+        run: |
+          npm cache clean --force
+          npm ci --legacy-peer-deps
+      - name: Install dependencies
+        working-directory: ./meow-team-front
+        run: npm install --force --legacy-peer-deps
+      - name: Test project
+        working-directory: ./meow-team-front
+        run: npm run test --if-present
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -13,7 +53,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-
       - name: remove unneccessary config files
         working-directory: ./meow-team-front
         run: |
@@ -24,4 +63,4 @@ jobs:
           LIARA_TOKEN: ${{ secrets.LIARA_API_TOKEN }}
         run: |
           npm i -g @liara/cli@5
-          liara deploy --app="meow-team-front" --api-token="$LIARA_TOKEN" --no-app-logs
+          liara deploy --app="meow-team-front" --api-token="$LIARA_TOKEN" --no-app-logs --debug

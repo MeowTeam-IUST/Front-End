@@ -59,10 +59,11 @@ export function AdminOrderDetails(props) {
     }, []);
     const fetchuserData = async () => {
         try {
-            const response = await axios.get(`http://45.147.99.177:9000/api/Admin/get_profile_by_invoice/${props.data.id}`, {
+            const response = await axios.get(`https://45.147.99.177:9001/api/Admin/get_profile_by_invoice/${props.data.id}`, {
                 headers: {
                     'accept': 'text/plain' ,
                     'Content-Type': 'application/json' ,
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
                 }
             });
             console.log(response)
@@ -75,7 +76,8 @@ export function AdminOrderDetails(props) {
         }
     };
 
-    const HandelOrderDetailClick = () => {
+    const HandelOrderDetailClick = (num) => {
+        setItemIndex(num);
         SetOrderDetailShow(true);
     }
     const HandelUserDetailClick = () => {
@@ -87,7 +89,7 @@ export function AdminOrderDetails(props) {
         try{
             await axios
               .post(
-                "http://45.147.99.177:9000/api/Admin/change_state",
+                "https://45.147.99.177:9001/api/Admin/change_state",
                 {
                   id: props.data.id,
                   state: inputValue.label == "پرداخت شده" ? 1 : inputValue.label == "در حال انجام" ? 2 : 3,
@@ -96,6 +98,7 @@ export function AdminOrderDetails(props) {
                   headers: {
                     accept: "text/plain",
                     "Content-Type": "application/json",
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
                   },
                 }
             )
@@ -115,6 +118,8 @@ export function AdminOrderDetails(props) {
     }
     const statetitlestr = props.data.state == 1 ? '{"label":"پرداخت شده"}' : props.data.state == 2 ? '{"label":"در حال انجام"}' : props.data.state == 3 ? '{"label":"انجام شده"}' : '{"label":"نا مشخص"}' ;
     const statetitle = JSON.parse(statetitlestr);
+
+    const [itemindex, setItemIndex] = React.useState('');
   return (
       <div className={styles.layout} dir='ltr'>
         {booluserdetailshow ? (
@@ -126,7 +131,7 @@ export function AdminOrderDetails(props) {
                         </div>
                         <div className={styles.userdetailpopupcontent}>
                             <div className={styles.userdetailpopuppicturebox}>
-                                <img className={styles.userdetailpopuppicture} src={`http://45.147.99.177:9000/${userdata.urlImage}`}  alt=""/>
+                                <img className={styles.userdetailpopuppicture} src={`https://45.147.99.177:9001/${userdata.urlImage}`}  alt=""/>
                             </div>
                             <div className={styles.userdetailpopupdetails}>
                                 <div className={styles.userdetailpopupdetailrow}>
@@ -287,7 +292,7 @@ export function AdminOrderDetails(props) {
                 <div className={styles.orders}>
                     {props ? (props.data.invoiceItems.map((item, index) => (
                     <div className={styles.order} key={index}>
-                        {boolorderdetailshow ? (
+                        {boolorderdetailshow && itemindex==index ? (
                             <div className={styles.orderdetailpopupback} ref={xRef}>
                                 <div className={styles.orderdetailpopup}>
                                     <div className={styles.orderdetailpopupcontainer}>
@@ -308,7 +313,7 @@ export function AdminOrderDetails(props) {
                             </div>
                         ) : (<></>)}
                         <div className={styles.orderdetails}>
-                            <div className={styles.orderdetailsbotton} onClick={() => HandelOrderDetailClick()}>
+                            <div className={styles.orderdetailsbotton} onClick={() => HandelOrderDetailClick(index)}>
                                 <div className={styles.orderdetailsbottontext}>مشاهده توضیحات سفارش</div>
                             </div>
                             <div className={styles.orderdetailstext}>
@@ -316,7 +321,7 @@ export function AdminOrderDetails(props) {
                                     <div className={styles.orderdetailstextonetext}>{item.product.title}</div>
                                     {/* <div className={styles.orderdetailstextonenumber}>۸۰</div> */}
                                 </div>
-                                <div className={styles.orderdetailstexttwo}>ریجن :‌اروپا</div>
+                                {/* <div className={styles.orderdetailstexttwo}>ریجن :‌اروپا</div> */}
                                 <div className={styles.orderdetailstexthree}>
                                     <div className={styles.orderdetailstexthreeleft}>
                                         <div className={styles.orderdetailstexthreelefttext}>تومان</div>

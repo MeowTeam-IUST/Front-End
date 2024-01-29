@@ -6,7 +6,30 @@ import telegram from '../../../assets/telegram.svg';
 export default function State3({ changeState, Cart, TotalPrice }) {
   return (
     <React.Fragment>
-      {/* <div className={styles.line} /> */}
+      <div className={styles.ordersstatus}>
+        <div className={styles.ordersstatusiconbox}>
+            <div className={styles.iconboxfirst}>
+                <img className={styles.insideiconfirst} src={checkicon} alt=""/>
+                <img className={styles.outsideiconfirst} src={bigcirclered} alt=""/>
+            </div>
+            <img className={styles.iconredlinefirst} src={redline} alt=""/>
+            <div className={styles.iconboxfirst}>
+                <img className={styles.insideiconfirst} src={checkicon} alt=""/>
+                <img className={styles.outsideiconfirst} src={bigcirclered} alt=""/>
+            </div>
+            <img className={styles.iconredlinesecond} src={redline} alt=""/>
+            <div className={styles.iconboxsecond}>
+                <img className={styles.insideiconsecond} src={smallcirclered} alt=""/>
+                <img className={styles.outsideiconsecond} src={emptycirclered} alt=""/>
+            </div>
+        </div>
+        <div className={styles.ordersstatustextbox}>
+            <div className={styles.ordersstatustext}>سبد خرید</div>
+            <div className={styles.ordersstatustext}>تایید و پرداخت</div>
+            <div className={styles.ordersstatustext}>ثبت نهایی</div>
+        </div>
+      </div>
+      <div className={styles.line} />
       <div className={styles.main}>
         <div className={styles.box}>
           <div>سفارش شما با شماره پیگیری</div>

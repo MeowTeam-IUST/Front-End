@@ -2,7 +2,7 @@
 
 import React, { useEffect , useState} from 'react';
 import Requests from '../../API/Requests';
-import { WaveTopBottomLoading } from 'react-loadingg';
+// import { WaveTopBottomLoading } from 'react-loadingg';
 import styles from './PaymentPage.module.scss';
 
 export default function PaymentPage() {
@@ -14,7 +14,7 @@ export default function PaymentPage() {
     return(
       <>
         <p className={styles.wait}>لطفا منتظر بمانید</p>
-        <WaveTopBottomLoading size="large" color="#E52A49" />
+        {/* <WaveTopBottomLoading size="large" color="#E52A49" /> */}
       </>
     )
   }
