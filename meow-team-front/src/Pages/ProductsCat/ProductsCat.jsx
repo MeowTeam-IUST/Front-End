@@ -131,7 +131,7 @@ export default function ProductsCat({id}){
                 <div className={styles.upcatleft}>
                 <div className={styles.upcatleft1}>
                 <div className={styles.upcatleft2}>:توضیحات دسته</div>
-                 <input className={styles.upcatleft3} type="text" name="description" 
+                 <textarea className={styles.upcatleft3} type="text" name="description" 
                  value={description} onChange={(e) => setDescription(e.target.value)} />
                     </div>
                   
