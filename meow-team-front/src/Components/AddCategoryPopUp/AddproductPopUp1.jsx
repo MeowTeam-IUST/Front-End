@@ -63,6 +63,11 @@ export const AddproductPopUp1 = ({ isOpen, onClose , parentId , setRefresh, refr
 
     console.log("Submitted value:", TitleValue);
     setRefresh(!refresh)
+    setTitleValue("")
+    setImage(null)
+    setSelectedImage()
+    setSubTitleValue("")
+    setAmount()
     onClose();
   };
 

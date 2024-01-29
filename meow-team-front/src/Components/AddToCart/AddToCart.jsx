@@ -38,7 +38,7 @@ export default function AddToCart({id , CardDescription}) {
 
   return (
     <div className={styles.AddToCart}>
-        <div className={styles.question}>{CardDescription}</div>
+        <div className={styles.question}>یوزر نیم و پسورد اکانت خود را وارد کنید</div>
         <div className={styles.line}/>
         <textarea className={styles.textarea} rows={4} maxRows={4} placeholder="اطلاعات را اینجا وارد کنید ..." onChange={(e)=> setDescribthion(e.target.value)} />
         {
@@ -47,11 +47,11 @@ export default function AddToCart({id , CardDescription}) {
           :
           <div className={styles.down}>
               <div className={styles.button} onClick={()=>AddToCartReq()}>اضافه به سبد خرید</div>
-              <div className={styles.count}>
+              {/* <div className={styles.count}>
                 <img src={plus} alt="plus" className={styles.icon} onClick={() => HandleChange(1)} />
                 <div>{quantity}</div>
                 <img src={negetive} alt="negetive" className={styles.icon} onClick={() => HandleChange(-1)} />
-              </div>
+              </div> */}
           </div>
         }
 

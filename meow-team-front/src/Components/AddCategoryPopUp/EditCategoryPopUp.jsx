@@ -28,7 +28,7 @@ export const EditCategoryPopUp = ({ isOpen, onClose , id , setRefresh, refresh  
       formData.append('Title', TitleValue);
       formData.append('Picture', image);
       formData.append('Banner', image);
-      formData.append('Description', SubTitleValue);
+      formData.append('SubTitle', SubTitleValue);
       formData.append('IsActive', false);
       formData.append('ParentID', parentId);
       formData.append('ID', id);
@@ -50,7 +50,7 @@ export const EditCategoryPopUp = ({ isOpen, onClose , id , setRefresh, refresh  
     setImage(BASE_URL+"/"+productsData.imageURL)
 
     setTitleValue(productsData.title)
-    setSubTitleValue(productsData.description)
+    setSubTitleValue(productsData.subTitle)
     setParentId(productsData.parentID)
   };
   useEffect(() => {
@@ -88,7 +88,7 @@ export const EditCategoryPopUp = ({ isOpen, onClose , id , setRefresh, refresh  
     formData.append('Title', TitleValue);
     formData.append('Picture', image);
     formData.append('Banner', image);
-    formData.append('Description', SubTitleValue);
+    formData.append('subTitle', SubTitleValue);
     formData.append('IsActive', true);
     formData.append('ParentID', parentId);
     formData.append('ID', id);

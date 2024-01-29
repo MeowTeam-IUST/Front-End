@@ -43,7 +43,10 @@ export default function ProductsCat({id}){
         setImage(BASE_URL+"/"+productsData.imageURL)
     
         setTitleValue(productsData.title)
-        setDescription(productsData.description)
+        if(productsData.description != null)
+          setDescription(productsData.description)
+        else
+        setDescription("")
         // setParentId(productsData.parentID)
       };
       fetchProductDetail()
@@ -86,6 +89,7 @@ export default function ProductsCat({id}){
       console.log(TitleValue,selectedImage,description)
       formData.append('Title', TitleValue);
       formData.append('Picture', image);
+      
       formData.append('Description', description);
       formData.append('IsActive', true);
       // formData.append('ParentID', parentId);
@@ -99,6 +103,7 @@ export default function ProductsCat({id}){
   
       console.log("Submitted value:", TitleValue);
       setRefresh(!refresh)
+
       window.location.href = "/adminpanel/:default"
       // onClose();
     };

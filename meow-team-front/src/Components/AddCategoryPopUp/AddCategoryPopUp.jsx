@@ -49,7 +49,7 @@ export const AddCategoryPopUp = ({ isOpen, onClose , parentId , setRefresh, refr
     formData.append('Title', TitleValue);
     formData.append('Picture', image);
     formData.append('Banner', image);
-    formData.append('Description', SubTitleValue);
+    formData.append('SubTitle', SubTitleValue);
     formData.append('IsActive', true);
     formData.append('ParentID', parentId);
     try {
