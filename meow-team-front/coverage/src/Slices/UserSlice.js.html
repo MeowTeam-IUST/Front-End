@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">74.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>48/48</span>
+                <span class='fraction'>38/51</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">74.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>48/48</span>
+                <span class='fraction'>38/51</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -110,7 +110,10 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -130,16 +133,19 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -176,17 +182,20 @@ const UserSlice = createSlice({
   name: "User",
   initialState,
   reducers: {
-    SetUser: (state, action) =&gt; {
-      console.log(action.payload)
-      state.set = 1;
-      state.firstName = action.payload.firstName;
-      state.lastName = action.payload.lastName;
-      state.email = action.payload.email;
-      state.birthDate = action.payload.birthDate;
-      state.image = BASE_URL + "/" + action.payload.image;
-      state.phoneNumber = action.payload.phoneNumber;
-      state.Token = action.payload.Token;
-      state.isAdmin = action.payload.isAdmin;
+    SetUser: <span class="fstat-no" title="function not covered" >(state, action) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      console.log(action.payload)</span>
+<span class="cstat-no" title="statement not covered" >      state.set = 1;</span>
+<span class="cstat-no" title="statement not covered" >      state.firstName = action.payload.firstName;</span>
+<span class="cstat-no" title="statement not covered" >      state.lastName = action.payload.lastName;</span>
+<span class="cstat-no" title="statement not covered" >      state.email = action.payload.email;</span>
+<span class="cstat-no" title="statement not covered" >      state.birthDate = action.payload.birthDate;</span>
+<span class="cstat-no" title="statement not covered" >      state.image =  action.payload.Image;</span>
+<span class="cstat-no" title="statement not covered" >      state.phoneNumber = action.payload.phoneNumber;</span>
+<span class="cstat-no" title="statement not covered" >      state.Token = action.payload.Token;</span>
+<span class="cstat-no" title="statement not covered" >      if (state.isAdmin == true)</span>
+<span class="cstat-no" title="statement not covered" >        state.isAdmin == true</span>
+<span class="cstat-no" title="statement not covered" >      else</span>
+<span class="cstat-no" title="statement not covered" >        state.isAdmin = action.payload.isAdmin;</span>
     },
     DeleteUser: (state, action) =&gt; {
       state.set = 0;
@@ -211,7 +220,7 @@ export default UserSlice.reducer;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-29T18:02:17.292Z
+                at 2024-01-29T15:10:42.405Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
