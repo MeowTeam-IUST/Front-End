@@ -9,7 +9,7 @@ import emptycirclered from '../../../assets/emptycirclered.svg'
 import smallcirclered from '../../../assets/smallcirclered.svg'
 import redline from '../../../assets/redline.svg'
 import grayline from '../../../assets/grayline.svg'
-
+import Requests from '../../../API/Requests';
 export default function State1({ changeState, Cart, TotalPrice ,total, setTotal , discount, setDiscount, refresh , setRefresh}) {
   console.log(Cart)
   // const [discount, setDiscount] = React.useState()
