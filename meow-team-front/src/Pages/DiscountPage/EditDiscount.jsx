@@ -81,9 +81,9 @@ export default function EditDiscount({id , closePopup , CardDescription}) {
                     },
                 }
             )
-            .then((response) =>
-                ShowToast("success", ". انجام شد")
-            );
+            // .then((response) =>
+            //     ShowToast("success", ". انجام شد")
+            // );
         }
         catch (error)
         {
