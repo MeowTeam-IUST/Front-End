@@ -63,6 +63,7 @@ export function AdminOrderDetails(props) {
                 headers: {
                     'accept': 'text/plain' ,
                     'Content-Type': 'application/json' ,
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
                 }
             });
             console.log(response)
@@ -75,7 +76,8 @@ export function AdminOrderDetails(props) {
         }
     };
 
-    const HandelOrderDetailClick = () => {
+    const HandelOrderDetailClick = (num) => {
+        setItemIndex(num);
         SetOrderDetailShow(true);
     }
     const HandelUserDetailClick = () => {
@@ -96,6 +98,7 @@ export function AdminOrderDetails(props) {
                   headers: {
                     accept: "text/plain",
                     "Content-Type": "application/json",
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
                   },
                 }
             )
@@ -115,6 +118,8 @@ export function AdminOrderDetails(props) {
     }
     const statetitlestr = props.data.state == 1 ? '{"label":"پرداخت شده"}' : props.data.state == 2 ? '{"label":"در حال انجام"}' : props.data.state == 3 ? '{"label":"انجام شده"}' : '{"label":"نا مشخص"}' ;
     const statetitle = JSON.parse(statetitlestr);
+
+    const [itemindex, setItemIndex] = React.useState('');
   return (
       <div className={styles.layout} dir='ltr'>
         {booluserdetailshow ? (
@@ -287,7 +292,7 @@ export function AdminOrderDetails(props) {
                 <div className={styles.orders}>
                     {props ? (props.data.invoiceItems.map((item, index) => (
                     <div className={styles.order} key={index}>
-                        {boolorderdetailshow ? (
+                        {boolorderdetailshow && itemindex==index ? (
                             <div className={styles.orderdetailpopupback} ref={xRef}>
                                 <div className={styles.orderdetailpopup}>
                                     <div className={styles.orderdetailpopupcontainer}>
@@ -308,7 +313,7 @@ export function AdminOrderDetails(props) {
                             </div>
                         ) : (<></>)}
                         <div className={styles.orderdetails}>
-                            <div className={styles.orderdetailsbotton} onClick={() => HandelOrderDetailClick()}>
+                            <div className={styles.orderdetailsbotton} onClick={() => HandelOrderDetailClick(index)}>
                                 <div className={styles.orderdetailsbottontext}>مشاهده توضیحات سفارش</div>
                             </div>
                             <div className={styles.orderdetailstext}>

@@ -13,6 +13,9 @@ import { makeStyles } from '@mui/styles';
 import Paper from "@mui/material/Paper";
 import Popup from '../../Components/Popup/Popup';
 import EditDiscount from './EditDiscount';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 const useStyles = makeStyles({
     option: {
@@ -132,15 +135,16 @@ export function DiscountPage(props) {
     }, [totalnumber]);
     const fetchData = async () => {
         try {
-            const response = await axios.get(`https://45.147.99.177:9001/api/Admin/get_invoice/${pagenumber}`, {
+            const response = await axios.get(`https://45.147.99.177:9001/api/Discount/get_all/${pagenumber}`, {
                 headers: {
                     'accept': 'text/plain' ,
                     'Content-Type': 'application/json' ,
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
                 }
             });
-            setTotalNumber(response.data.data.totalNumber);
+            setTotalNumber(response.data.data);
             const jsonData = response.data.data;
-            const responsedata = jsonData.invoices.map(item => item);
+            const responsedata = jsonData.discounts.map(item => item);
             return responsedata;
         } catch (error) {
           console.error(error);
@@ -152,9 +156,9 @@ export function DiscountPage(props) {
     const deleteid = async (doactionid) => {
         try {
             console.log(doactionid)
-            const response = await axios.post('https://45.147.99.177:9001/api/Admin/delete_invoice',
+            const response = await axios.delete('https://45.147.99.177:9001/api/Discount/delete',
             {
-                invoiceIds: doactionid
+                ids: doactionid
             },
             {
                 headers: {
@@ -163,6 +167,7 @@ export function DiscountPage(props) {
                     'Accept': 'text/plain',
                     'Connection': 'keep-alive',
                     'ngrok-skip-browser-warning' : '235',
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
                 },
             });
             fetchData().then((responsedata) => {
@@ -196,13 +201,14 @@ export function DiscountPage(props) {
         setPopupOpen(false);
     };
 
+    // add values
     const [inend, setInEnd] = React.useState("");
-    const handleInputEnd = (event) => {
-        setInEnd(event.target.value);
+    const handleInputEnd = (event) => {    
+        setInEnd(event);
     };
     const [instart, setInStart] = React.useState("");
     const handleInputStart = (event) => {
-        setInStart(event.target.value);
+        setInStart(event);
     };
     const [indiscount, setInDiscount] = React.useState("");
     const handleInputDiscount = (event) => {
@@ -217,36 +223,101 @@ export function DiscountPage(props) {
         setInCode(event.target.value);
     };
 
-  return (
-    <div className={styles.layout} dir='ltr'>
+    
+    async function AddDiscount(){
+        try{
+            await axios
+            .post(
+                "https://45.147.99.177:9001/api/Discount/add",
+                {
+                    id: null,
+                    title: incode,
+                    startTime: "2024-01-28T19:51:10.633Z",
+                    expirationTime: "2024-01-28T19:51:10.633Z",
+                    amountOfPercent: indiscount,
+                    number: innumber,
+                },
+                {
+                    headers: {
+                        accept: "text/plain",
+                        "Content-Type": "application/json",
+                        'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                    },
+                }
+            )
+            .then((response) =>
+                console.log(response),
+                // ShowToast("success", ". انجام شد")
+            );
+            fetchData().then((responsedata) => {
+                setData(responsedata);
+            })
+        }
+        catch (error)
+        {
+            // ShowToast("error", "! مشکلی پیش آمده است");
+        }
+        finally
+        {
+        }
+        // return false
+    }
+    
+    const [value, onChange] = useState(new Date());
+    return (
+        <div className={styles.layout} dir='ltr'>
         <div className={styles.container}>
             <div className={styles.subjecttext}>کد های تخفیف</div>
             <div className={styles.adddiscount}>
                 <div className={styles.addheaditem}>
                     <div style={{ height : "100%" }}></div>
-                    <div className={styles.addbutton} >
+                    <div className={styles.addbutton} onClick={() => AddDiscount()}>
                         <div className={styles.addbuttontext}>افزودن</div>
                     </div>
                 </div>
                 <div className={styles.addheaditem}>
                     <div className={styles.additemtitle}>: تاریخ پایان</div>
-                    <input
+                    {/* <input
                         className={styles.inputadd}
                         type="text"
                         value={inend}
                         onChange={handleInputEnd}
                         dir="rtl"
-                    />
+                    /> */}
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DateTimePicker 
+                        sx={{
+                            width: "100%",
+                            '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                                borderRadius: '15px',
+                                border: '1px solid #A3AED0',
+                                height: "50px",
+                            }
+                        }}
+                        onChange={handleInputEnd} value={inend} views={['year', 'month', 'day', 'hours', 'minutes', 'seconds']}/>
+                    </LocalizationProvider>
                 </div>
                 <div className={styles.addheaditem}>
                     <div className={styles.additemtitle}>: تاریخ شروع</div>
-                    <input
+                    {/* <input
                         className={styles.inputadd}
                         type="text"
                         value={instart}
                         onChange={handleInputStart}
                         dir="rtl"
-                    />
+                    /> */}
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DateTimePicker 
+                        sx={{
+                            width: "100%",
+                            '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                                borderRadius: '15px',
+                                border: '1px solid #A3AED0',
+                                height: "50px",
+                            }
+                        }}
+                        value={instart} views={['year', 'month', 'day', 'hours', 'minutes', 'seconds']}/>
+                    </LocalizationProvider>
                 </div>
                 <div className={styles.addheaditem}>
                     <div className={styles.additemtitle}>: درصد تخفیف</div>
@@ -318,20 +389,19 @@ export function DiscountPage(props) {
                                 isOpen={isPopupOpen}
                                 onClose={closePopup}
                                 title={"ویرایش"}
-                                content={<EditDiscount id={1} />}
-                                // content={<EditDiscount id={item.product.id} />}
+                                content={<EditDiscount id={index} />}
                             />
                             <div className={styles.cardonethirditem} style={{ border: '1px solid rgba(67, 24, 255, 1)' }} onClick={() => openPopup()}>
                                 <div className={styles.carditemtext}>ویرایش</div>
                             </div>
                             <div className={styles.carditem}>
-                                <div className={styles.carditemtext}>{item.totalPeice} تومان</div>
+                                <div className={styles.carditemtext}>{item.number}</div>
                             </div>
                             <div className={styles.carditem}>
-                                <div className={styles.carditemtext}>{item.strDate}</div>
+                                <div className={styles.carditemtext}>{item.amountOfPercent}</div>
                             </div>
                             <div className={styles.carditem}>
-                                <div className={styles.carditemidlinktext} >{item.id}</div>
+                                <div className={styles.carditemidlinktext} >{item.title}</div>
                             </div>
                             <Checkbox {...label} checked={booleanArray[index]} size="small" sx={{padding:0}} onClick={() => HandelCheckClick(index)}/>
                         </div>

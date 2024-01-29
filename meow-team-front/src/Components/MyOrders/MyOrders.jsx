@@ -3,6 +3,9 @@ import repeat from '../../assets/repeat.svg'
 import info from '../../assets/info.svg'
 import styles from "./MyOrders.module.css";
 import axios from 'axios';
+import { ShowToast } from "../LoginSignup/Toastify";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function MyOrders(props) {
     const [booleanArray, setBooleanArray] = useState([false, true, true, true]);
@@ -65,13 +68,45 @@ export function MyOrders(props) {
                         <div className={styles.buttonrighttext}>جزئیات سفارش</div>
                         <img className={styles.buttonrighticon} src={info} alt="" />
                     </div>
-                    <div className={styles.buttonleft}>
+                    <div className={styles.buttonleft} onClick={() => OrderRepeat(item.id)}>
                         <div className={styles.buttonlefttext}>تکرار سفارش</div>
                         <img className={styles.buttonlefticon} src={repeat} alt="" />
                     </div>
                 </div>
             </div>):(<></>)
         ))) : (console.log("loading")))
+    }
+
+    async function OrderRepeat(invoicesid){
+        try{
+            await axios
+            .post(
+                "https://45.147.99.177:9001/api/OrderFlow/invocie_repeat",
+                {
+                    id: invoicesid
+                },
+                {
+                    headers: {
+                        accept: "text/plain",
+                        "Content-Type": "application/json",
+                        'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                    },
+                }
+            )
+            .then((response) =>
+                console.log(response),
+                ShowToast("success", ". به سبد خرید اضافه شد"),
+                console.log('mamad')
+            );
+        }
+        catch (error)
+        {
+            // ShowToast("error", "! مشکلی پیش آمده است");
+        }
+        finally
+        {
+        }
+        // return false
     }
 
     const [data, setData] = useState([]);
@@ -120,6 +155,7 @@ export function MyOrders(props) {
                     {datastate}
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }

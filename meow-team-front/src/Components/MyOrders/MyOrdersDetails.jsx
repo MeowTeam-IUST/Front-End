@@ -12,6 +12,11 @@ import redline from '../../assets/redline.svg'
 import styles from "./MyOrdersDetails.module.css";
 import Popup from '../Popup/Popup.jsx';
 import AddToCart from '../AddToCart/AddToCart'
+import axios from 'axios';
+import { ShowToast } from "../LoginSignup/Toastify";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export function MyOrdersdetails(props) {
     console.log(props)
@@ -21,9 +26,6 @@ export function MyOrdersdetails(props) {
     };
     const closePopup = () => {
         setPopupOpen(false);
-    };
-    const handlerepeatorder = (e) => {
-        // pass orders to shoppingcart page
     };
 
     // fetch orders
@@ -58,6 +60,36 @@ export function MyOrdersdetails(props) {
         finally{
         }
     };
+    async function OrderRepeat(invoicesid){
+        try{
+            await axios
+            .post(
+                "https://45.147.99.177:9001/api/OrderFlow/invocie_repeat",
+                {
+                    id: invoicesid
+                },
+                {
+                    headers: {
+                        accept: "text/plain",
+                        "Content-Type": "application/json",
+                        'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                    },
+                }
+            )
+            .then((response) =>
+                console.log(response),
+                ShowToast("success", ". به سبد خرید اضافه شد"),
+            );
+        }
+        catch (error)
+        {
+            // ShowToast("error", "! مشکلی پیش آمده است");
+        }
+        finally
+        {
+        }
+        // return false
+    }
     return(
         <div className={styles.main}>
             <div className={styles.content}>
@@ -187,13 +219,14 @@ export function MyOrdersdetails(props) {
                             <div className={styles.ordertotalpricetitle}>: قیمت نهایی</div>
                             <div className={styles.ordertotalpriceval}>{props.data.totalPeice} تومان</div>
                         </div>
-                        <div className={styles.lastbutton} onClick={() => handlerepeatorder()}>
+                        <div className={styles.lastbutton} onClick={() => OrderRepeat(props.data.id)}>
                             <div className={styles.lastbuttontext}>تکرار سفارش</div>
                             <img className={styles.repeat} src={repeat} alt="" />
                         </div>
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }
