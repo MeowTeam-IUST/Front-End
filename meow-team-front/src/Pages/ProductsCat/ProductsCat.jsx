@@ -7,23 +7,49 @@ import gameControlle from '../../assets/game-controlle.svg'
 import Productcard from '../../Components/Productcard/Productcard'
 import Add from '../../Components/Add/Add';
 import Requests from '../../API/Requests';
+import { AddCategoryPopUp } from '../../Components/AddCategoryPopUp/AddCategoryPopUp';
+import { AddproductPopUp1 } from '../../Components/AddCategoryPopUp/AddproductPopUp1';
+import { BASE_URL } from '../../API/consts';
 export default function ProductsCat({id}){
-  console.log(id)
+    console.log(id)
     const [imageUploaded, setImageUploaded] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [cards, setCards] = useState([]);
+    const [showPopup, setShowPopup] = useState(false);
+    const [isPopupOpen, setPopupOpen] = useState(false);
+    const [refresh , setRefresh] = useState(false);
+    const [TitleValue, setTitleValue] = useState("");
+    const [SubTitleValue, setSubTitleValue] = useState("");
+    const [image, setImage] = useState(null);
 
+    const openPopup = () => {
+      setPopupOpen(true);
+    };
+    const closePopup = () => {
+      setPopupOpen(false);
+    };
     useEffect(() => {
       const fetchProducts = async () => {
         const productsData = await Requests().getProducts(id);
         console.log(productsData);
         setCards(productsData);
       };
+      const fetchProductDetail = async () => {
+        const productsData = await Requests().getCategoryDetails(id);
+        console.log(productsData  );
+        setSelectedImage(BASE_URL+"/"+productsData.imageURL)
+        setImage(BASE_URL+"/"+productsData.imageURL)
     
+        setTitleValue(productsData.title)
+        setSubTitleValue(productsData.description)
+        // setParentId(productsData.parentID)
+      };
+      fetchProductDetail()
       fetchProducts();
-    }, []);
+      console.log("title: " ,TitleValue)
+    }, [refresh]);
 
 
     // useEffect(() => {
@@ -48,41 +74,41 @@ export default function ProductsCat({id}){
       setCards(newCards);
     };
 
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
+    // const handleFileChange = (event) => {
+    //     const file = event.target.files[0];
+    //     const reader = new FileReader();
       
-        reader.onloadend = () => {
-          setSelectedImage(reader.result);
-        }
+    //     reader.onloadend = () => {
+    //       setSelectedImage(reader.result);
+    //     }
       
-        if (file) {
-          reader.readAsDataURL(file);
-        } else {
-          setSelectedImage(null);
-        }
-      }
-      const handleSubmit = async () => {
-        const category = {
-          id:null,
-          title: title,
-          imageURL: "string",
-          description: description,
-          isActive: true,
-          parentID: null
-        };
-        const response = await Requests().addCategory(category);
-        const newCategoryId = response.data.result.data.id;
-        localStorage.setItem('newCategoryId', newCategoryId);
-        console.log('idd',newCategoryId) // Replace 'id' with the actual property name in the response
-        // Wait for 1 second before fetching the category details
-        setTimeout(async () => {
-          console.log('idd2',newCategoryId) 
-          const categoryDetails = await Requests().getCategoryDetails(newCategoryId);
-          setTitle(categoryDetails.title);
-          setDescription(categoryDetails.description);
-        }, 1000);
-      };
+    //     if (file) {
+    //       reader.readAsDataURL(file);
+    //     } else {
+    //       setSelectedImage(null);
+    //     }
+    //   }
+      // const handleSubmit = async () => {
+      //   const category = {
+      //     id:null,
+      //     title: title,
+      //     imageURL: "string",
+      //     description: description,
+      //     isActive: true,
+      //     parentID: null
+      //   };
+      //   const response = await Requests().addCategory(category);
+      //   const newCategoryId = response.data.result.data.id;
+      //   localStorage.setItem('newCategoryId', newCategoryId);
+      //   console.log('idd',newCategoryId) // Replace 'id' with the actual property name in the response
+      //   // Wait for 1 second before fetching the category details
+      //   setTimeout(async () => {
+      //     console.log('idd2',newCategoryId) 
+      //     const categoryDetails = await Requests().getCategoryDetails(newCategoryId);
+      //     setTitle(categoryDetails.title);
+      //     setDescription(categoryDetails.description);
+      //   }, 1000);
+      // };
       useEffect(() => {
         const fetchCategoryDetails = async () => {
           // Get the newCategoryId from localStorage
@@ -112,43 +138,24 @@ export default function ProductsCat({id}){
                     <div className={styles.upcatleftt1}>
                     <div className={styles.upcatleftt11}>
                     <div className={styles.upcatleftt12}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="18" viewBox="0 0 36 18" fill="none">
+                    {/* <svg xmlns="http://www.w3.org/2000/svg" width="36" height="18" viewBox="0 0 36 18" fill="none">
                     <rect width="36" height="18" rx="9" fill="#4318FF"/>
                     <circle cx="27" cy="9.00014" r="7.07143" fill="white"/>
-                    </svg>
-                    <div className={styles.upcatleftt121}>فعال</div>
+                    </svg> */}
+                    {/* <div className={styles.upcatleftt121}>فعال</div> */}
                         
-                        </div>
-                    <div className={styles.upcatleftt13}>هشدار هنگام خرید</div>
                     </div>
-                    <div className={styles.upcatleftt14}></div>
+                    <div className={styles.upcatleftt13} >ثبت تغییرات</div>
+                    </div>
+                    {/* <div className={styles.upcatleftt14}></div> */}
                     
                     </div>
                 </div>
                 <div className={styles.upcatright}>
                 <div className={styles.upcatright1}>
-                <input className={styles.upcatright11} type="text" value={title}
-                 onChange={(e) => setTitle(e.target.value)} />
+                <input className={styles.upcatright11} type="text" value={TitleValue} onChange={(e) => setTitleValue(e.target.value)} />
                  <div className={styles.upcatright12}>نام دسته محصول</div>
                 </div>
-                {/* <button onClick={handleSubmit} className={styles.cardinpp3} >اضافه کردن</button> */}
-                {/* <div className={styles.cardinp}> 
-                  <div className={styles.cardinp1}>
-                  {!imageUploaded ? 
-                    <div className={styles.cardinp2}>UploadFiles</div> :
-                    <img src={selectedImage} alt="Selected" className={styles.cardinp1} />
-                    }
-                    <div className={styles.cardinp3}>PNG, JPG and GIF files are allowed</div>
-                  </div>
-                  <div className={styles.cardinpp1}> 
-                    <div className={styles.cardinpp2}> 
-                      <div className={styles.cardinpp21}>آپلود عکس کارت</div>
-                      <div className={styles.cardinpp22}>از این قسمت می‌توانید برای کارت محصول خود عکس بارگزاری نمایید</div>
-                    </div>
-                    <input type="file" accept="image/*" id="fileInputProCat" style={{display: 'none'}} onChange={(event) => { handleFileChange(event); setImageUploaded(true); }} />
-                    <button className={styles.cardinpp3} onClick={() => document.getElementById('fileInput').click()}>آپلود فایل</button>
-                  </div>
-                </div> */}
               <div className={styles.popUp_bottom} dir='rtl'>
               <div className={styles.bottom_right}>
                 <div className={styles.right_text_section}>
@@ -160,8 +167,6 @@ export default function ProductsCat({id}){
                     نمایید
                   </div>
                 </div>
-
-                {/* <button className={styles.uploadButton}>آپلود عکس</button> */}
 
                 <label className={styles.uploadButton}>
                   آپلود عکس
@@ -175,11 +180,12 @@ export default function ProductsCat({id}){
               </div>
               <div className={styles.bottom_left}>
                 {/* <FileDrop fileInputRef={fileInputRef} /> */}
-                {imageUploaded ? (
+                {selectedImage ? (
                   <img
-                    src={imageUploaded}
+                    src={selectedImage}
                     alt="Selected"
                     className={styles.selectedImage}
+                    width={100}
                   />
                 ) : (
                   <div className={styles.imagePlaceHolder}>
@@ -203,6 +209,7 @@ export default function ProductsCat({id}){
             {cards.map((card, index) => (
             <Productcard
               key={index}
+              image={card.imageURL}
               name={card.title}
               price={`قیمت ${card.price} تومان`}
               showdiv={true}
@@ -212,6 +219,13 @@ export default function ProductsCat({id}){
               onSave={(newName, newPrice) => handleSave(index, newName, newPrice)}
             />
           ))}
+          <div className={styles.item}>
+          <div className={styles.AddCard}  onClick={openPopup}>
+            <div className={styles.Plus}>+</div>
+            <div className={styles.Plus1}>اضافه کردن دسته</div>
+          </div>
+          <AddproductPopUp1 isOpen={isPopupOpen} onClose={closePopup} parentId={id} refresh={refresh} setRefresh={setRefresh} />
+        </div>
                
             </div>
               

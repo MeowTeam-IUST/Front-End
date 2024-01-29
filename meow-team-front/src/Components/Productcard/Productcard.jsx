@@ -5,8 +5,10 @@ import { useState,useEffect } from 'react';
 import Requests from '../../API/Requests';
 import Popup from '../Popup/Popup.jsx'; // Adjust the path based on your file structure
 import AddToCart from '../AddToCart/AddToCart'
+import { BASE_URL } from '../../API/consts';
 
 export default function Productcard({name, price, changeButtonColor,showdiv,onDelete,applyLTR, onSave , image , id , description}) {
+
   const [isPopupOpen, setPopupOpen] = useState(false);
 
   const openPopup = () => {
@@ -16,53 +18,20 @@ export default function Productcard({name, price, changeButtonColor,showdiv,onDe
   const closePopup = () => {
     setPopupOpen(false);
   };
-            const [showPopup, setShowPopup] = useState(false);
-            const [imageUploaded, setImageUploaded] = useState(false);
 
-            const handleClick = () => {
-                setShowPopup(true);
-            }
-
-            
-        const handleClose = (event) => {
-            event.stopPropagation();
-            setShowPopup(false);
-        }
-        const handleSaveClick = () => {
-            const newName = document.getElementById('nameInput').value;
-            const newPrice = document.getElementById('priceInput').value;
-            onSave(newName, newPrice);
-          };
-        console.log(showPopup)
-        const [selectedImage, setSelectedImage] = useState(null);
-
-        const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-
-        reader.onloadend = () => {
-            setSelectedImage(reader.result);
-        }
-
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            setSelectedImage(null);
-        }
-        }
         
     return (
       <div
         className={styles.productCard}
-        style={{ backgroundImage: `url(${image})` }}
+        style={{ backgroundImage: `url(${BASE_URL + "/" + image})` }}
       >
-        {showdiv && (
+        {/* {showdiv && (
           <div className={styles.delete}>
             <button className={styles.delete1} onClick={onDelete}>
               حذف محصول
             </button>
           </div>
-        )}
+        )} */}
         <div className={styles.productCardInfo}>
           <div className={styles.nameButton}>{name}</div>
           <div className={styles.priceButton}>{price}</div>

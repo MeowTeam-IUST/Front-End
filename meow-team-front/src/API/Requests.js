@@ -233,7 +233,20 @@ const getComments = async (categoryId) => {
     return []; // Return an empty array in case of an error
   }
 };
-
+  //add product
+  const addProduct = async (data) => {
+    try {
+      const response = await API().POST(
+        "api/Product/add",
+        data,
+        AutorizeHeader
+      );
+      console.log("product added:", response);
+      return response;
+    } catch (err) {
+      console.error("Error adding product:", err);
+    }
+  };
   // getCategories
   const getAllCategories = async () => {
     try {
@@ -382,5 +395,6 @@ const getComments = async (categoryId) => {
     getProduct,
     EditCategory,
     get4mainCategory,
+    addProduct
   };
 }
