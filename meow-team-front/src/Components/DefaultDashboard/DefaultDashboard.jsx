@@ -5,6 +5,8 @@ import analytics from '../../assets/analytics.svg'
 import plus from '../../assets/+.svg'
 import GameList from '../GameList/GameList'
 import Requests from '../../API/Requests'
+import Productcard from '../Productcard/Productcard'
+import { BASE_URL } from '../../API/consts'
 export default function DefaultDashboard() {
   const Populares = [
     {
@@ -60,7 +62,10 @@ export default function DefaultDashboard() {
             <div className={styles.Text1}>موجودی کیف پول</div>
             <div className={styles.Text2}>{wallet} تومان</div>
           </div>
-          <div className={styles.button} onClick={()=> window.location.href = "/dashboard/:wallet"}>
+          <div
+            className={styles.button}
+            onClick={() => (window.location.href = "/dashboard/:wallet")}
+          >
             افزایش موجودی
             <img src={plus} alt="Shopping Cart" />
           </div>
@@ -76,7 +81,17 @@ export default function DefaultDashboard() {
       <div className={styles.Repeated}>
         <CategoryHeader icon={analytics} title={"خریدهای پرتکرار شما"} />
         <div className={styles.RepeatedItem}>
-            <GameList Products={Frequency} isAdmin={false} />
+          {/* {console.log(Frequency)}
+          <GameList Products={Frequency} isAdmin={false} /> */}
+          {Frequency.map((product) => (
+            <Productcard
+              id={product.id}
+              name={product.title}
+              price={`${product.price} تومان`}
+              image={`${BASE_URL + "/" + product.imageURL}`}
+              description={product.description}
+            />
+          ))}
         </div>
       </div>
     </div>

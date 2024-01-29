@@ -65,6 +65,14 @@ export default function ProductPage(){
       <PageLayout>
         <div className={styles.GameAndProductsSection}>
           <div className={styles.GameHeaderSection}>
+            <div
+              className={styles.GamePicture}
+              style={{
+                backgroundImage: `url(${
+                  BASE_URL + "/" + categoryDetails.bannerURL
+                })`,
+              }}
+            ></div>
             <div className={styles.GameDetails}>
               <text className={styles.GameTitle}>{categoryDetails.title}</text>
               <text className={styles.GameRoute}>
@@ -87,20 +95,12 @@ export default function ProductPage(){
                     />
                   </svg>
                 </div>
+
                 <text className={styles.AboutGameDetails}>
                   {productDescription}
                 </text>
               </div>
             </div>
-
-            <div
-              className={styles.GamePicture}
-              style={{
-                backgroundImage: `url(${
-                  BASE_URL + "/" + categoryDetails.bannerURL
-                })`,
-              }}
-            ></div>
           </div>
           <div className={styles.MenuSection}>
             <div className={styles.MenuTitle}>

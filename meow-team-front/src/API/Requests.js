@@ -120,7 +120,7 @@ export default function Requests() {
         body,
         AutorizeHeader
       );
-      console.error(res);
+      console.log(res);
       return res;
     } catch (err) {
       console.log(err);

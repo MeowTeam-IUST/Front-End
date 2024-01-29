@@ -1,0 +1,27 @@
+@import "../../App.scss";
+
+.BackAll {
+    display: flex;
+    width: 95%;
+    justify-content:space-between;
+    margin: auto;
+    align-items: center;
+    .backButton {
+        
+        padding: 10px 20px;
+        border-radius: 10px;
+        background-color: $--Opex--red;
+        color: white;
+        transition-duration: 0.3s;
+        border: none;
+
+        &:hover {
+            background-color: $--Opex--red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition-duration: 0.3s;
+            transform: scale(1.03);
+        }
+    }
+}
