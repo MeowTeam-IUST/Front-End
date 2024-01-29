@@ -4,28 +4,30 @@ import { useParams } from 'react-router-dom';
 import styles from "./Comments.module.scss"
 import { useState,useEffect } from 'react';
 import Requests from '../../API/Requests';
-export function Comment({logo, name, date, text}) {
+export function Comment({ name, date, text, onDelete, imageUrl}) {
     return (
       <div className={styles.Comment}>
         <div className={styles.CommentHeaderSection}>
           <div className={styles.CommentHeaderProfileAndDate}>
-            <div className={styles.CommentHeaderProfile}>
-              <div className={styles.CommentProfilePic}> {logo}</div>
+            <div className={styles.CommentHeaderProfile}>  
+            <div className={styles.CommentProfilePic} style={{backgroundImage: `url(${imageUrl || 'https://avatar.iran.liara.run/public/62'})`}}>
+              
+            </div>
               <div className={styles.CommentName}>{name}</div>
             </div>
             <div className={styles.CommentDate}>{date}</div>
           </div>
-          <button className={styles.replyButton}>
-            <text className={styles.ReplyText}>پاسخ</text>
+          <button className={styles.replyButton} onClick={onDelete}>
+            <text className={styles.ReplyText}>حذف</text>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="14"
               height="13"
-              viewBox="0 0 14 13"
+              viewBox="0 0 24 24"
               fill="none"
             >
               <path
-                d="M0.227189 4.64639L5.0398 0.490549C5.46106 0.126745 6.125 0.422089 6.125 0.987213V3.17617C10.5172 3.22646 14 4.10675 14 8.26917C14 9.9492 12.9177 11.6136 11.7214 12.4837C11.348 12.7553 10.816 12.4145 10.9536 11.9743C12.1935 8.00914 10.3655 6.95645 6.125 6.89541V9.29935C6.125 9.86537 5.46056 10.1594 5.0398 9.79601L0.227189 5.63975C-0.0755195 5.37829 -0.0759395 4.90822 0.227189 4.64639Z"
+                 d="M20 7v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7H2V5h20v2h-2zm-9 3v7h2v-7h-2zM7 2h10v2H7V2z"
                 fill="#E52A49"
               />
             </svg>
@@ -36,11 +38,12 @@ export function Comment({logo, name, date, text}) {
     );
 }
 
-export function UserBox({userlogo, usertext, onCommentSubmit}) {
+export function UserBox({userlogo, usertext, onCommentSubmit,id}) {
     const [text, setText] = useState('');
 
     const [rating, setRating] = useState(0);
-    const id = 1;
+    // const id = id;
+   
 
     const handleRating = (rate) => {
         setRating(rate);
@@ -51,10 +54,19 @@ export function UserBox({userlogo, usertext, onCommentSubmit}) {
         setText('');
         setRating(0);
     };
-
+  
     return (
       <div className={styles.SendSection}>
-        <div className={styles.userlogo}>{userlogo}</div>
+        
+        {/* <div className={styles.userlogo}></div> */}
+        {/* {imageUrl ? (
+                <div className={styles.userlogo} style={{backgroundImage: `url(${imageUrl})`}} />
+                // <img src={imageURL} alt="User" />
+              ) : (
+                <img className={styles.userlogo} src="https://avatar.iran.liara.run/public/62" alt="Placeholder" />
+
+              )} */}
+
         <textarea
           className={styles.InputText}
           value={text}
@@ -84,40 +96,52 @@ export function UserBox({userlogo, usertext, onCommentSubmit}) {
 
 export function CommentsSection({userbox, id}) {
   const [comments, setComments] = useState([]);
-
+  
   const fetchComments = async () => {
     const commentsData = await Requests().getComments(id);
     setComments(commentsData);
+    
   };
-
   useEffect(() => {
     fetchComments();
   }, [id]);
 
+ 
   const handleCommentSubmit = async (text, rating) => {
+   
     const comment = {
       id: null, // You'll need to replace this with the actual ID
       categoryID: id, // And this with the actual category ID
+     
       description: text
     };
-
+    
+    
     await Requests().postComment(comment);
     fetchComments(); // Fetch comments again after a new comment is posted
   };
-
+  const handleCommentDelete = async (commentId) => {
+  await Requests().deleteComment(commentId);
+  fetchComments(); // Fetch comments again after a comment is deleted
+};
+  
   return (
     <div className={styles.AllComments}>
       <div className={styles.CommentsList}>
         {comments.map((comment, index) => (
+          
           <Comment 
             key={index} 
+            name={comment.userName}
             text={comment.description} 
+            imageUrl={`https://45.147.99.177:9001/${comment.imageUrl}`}
+            onDelete={() => handleCommentDelete(comment.id)}
             // include other fields as needed
           />
         ))}
       </div>
 
-      <UserBox {...userbox} onCommentSubmit={handleCommentSubmit} />
+      <UserBox {...userbox}  onCommentSubmit={handleCommentSubmit} />
     </div>
   );
 }
